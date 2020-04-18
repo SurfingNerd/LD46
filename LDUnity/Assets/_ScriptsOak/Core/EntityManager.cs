@@ -40,7 +40,7 @@ public class EntityManager : ManagerBase
                 if (distance < npcCorpseDetectionDistance)
                 {
                     foundACorpse = true;
-                    Debug.LogWarning("Corpse detected!! Distance: " + distance);
+                    //Debug.LogWarning("Corpse detected!! Distance: " + distance);
                 }
             }
             npc.ActivateFoundCorpseText(foundACorpse);
@@ -61,10 +61,25 @@ public class EntityManager : ManagerBase
         return Resources.FindObjectsOfTypeAll<CharacterNPC>();
     }
 
-    public Corpse GetCorpseWithinPickupRange(Vector3 position)
+    public CorpseHideout[] GetCorpseHideouts()
+    {
+        //todo: cache for performance
+        return Resources.FindObjectsOfTypeAll<CorpseHideout>();
+    }
+
+    public Corpse GetCorpseWithinRange(Vector3 position)
     {
         var result = GetCorpses().Select(x => new {Corpse = x, distance = Vector3.Distance(x.transform.position, position)})
             .Where(x => x.distance <= corpsePickupRadius).OrderBy(x => x.distance).FirstOrDefault();
         return result != null ? result.Corpse : null;
+    }
+    
+    public CorpseHideout GetCorpseHideoutWithinRange(Vector3 position, bool fullOrEmpty)
+    {
+        var result = GetCorpseHideouts()
+            .Where(x=>  (x.currentCorpse != null) == fullOrEmpty)
+            .Select(x => new {Hideout = x, distance = Vector3.Distance(x.transform.position, position)})
+            .Where(x => x.distance <= corpsePickupRadius).OrderBy(x => x.distance).FirstOrDefault();
+        return result != null ? result.Hideout : null;
     }
 }

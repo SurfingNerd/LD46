@@ -68,21 +68,52 @@ public class CharacterPlayer : Character
         }
     }
 
-    public void TryPickupCorpse()
+    public void TryHandleCorpse()
     {
-        Corpse corpse = EntityManager.Instance.GetCorpseWithinPickupRange(this.transform.position);
-        if (corpse != null)
+        if (currentCorpse != null)
         {
-            if (currentCorpse != null)
-            {
-                throw new NotImplementedException("Holding already a Corpse");
-            }
+            //find a hideout if available.
 
-            currentCorpse = corpse;
-            
-            // using parenting here for moving corpse.
-            // might be suboptimal for animation.
-            currentCorpse.transform.SetParent(this.transform);
+            CorpseHideout hideout = EntityManager.Instance.GetCorpseHideoutWithinRange(this.transform.position, false);
+
+            if (hideout != null)
+            {
+                hideout.currentCorpse = currentCorpse;
+                hideout.currentCorpse.isHidden = true;
+                currentCorpse.transform.SetParent(hideout.transform);
+                currentCorpse = null;
+            }
         }
+        else
+        {
+            
+            
+            //check if there is a corpse.
+            Corpse corpse = EntityManager.Instance.GetCorpseWithinRange(this.transform.position);
+            if (corpse != null)
+            {
+                if (currentCorpse != null)
+                {
+                    throw new NotImplementedException("Holding already a Corpse");
+                }
+                
+                //check the nearest hideout, maybe we picked the corpse just from this hideout.
+                var corpseHideout =  EntityManager.Instance.GetCorpseHideoutWithinRange(this.transform.position, true);
+                if (corpseHideout != null && corpseHideout.currentCorpse == corpse)
+                {
+                    corpseHideout.currentCorpse = null;
+                }
+
+                corpse.isHidden = false;
+                currentCorpse = corpse;
+            
+                // using parenting here for moving corpse.
+                // might be suboptimal for animation.
+                currentCorpse.transform.SetParent(this.transform);
+            }
+        }
+        
+        
+
     }
 }
