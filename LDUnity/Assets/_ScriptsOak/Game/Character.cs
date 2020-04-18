@@ -30,11 +30,12 @@ public class Character : MonoBehaviour
     void Update()
     {
         MoveCharacter();
+        Tick();
     }
 
     public virtual void MoveCharacter()
     {
-        gameObject.transform.position += CurrentDirection * Time.deltaTime * MoveSpeed;
+        SetPosition(gameObject.transform.position + CurrentDirection * Time.deltaTime * MoveSpeed);
     }
 
     public virtual void InitCharacter()
@@ -60,5 +61,16 @@ public class Character : MonoBehaviour
                 CurrentDirection.x = 0;
                 break;
         }
+    }
+
+
+    public void SetPosition(Vector3 newPosition)
+    {
+        gameObject.transform.position = newPosition;
+    }
+
+    public virtual void Tick()
+    {
+
     }
 }

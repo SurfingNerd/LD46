@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CoreManagerTemplates:
   - {fileID: 7226436046277045223, guid: 9aaff4cb4b486b44fba05b79e429595d, type: 3}
+  - {fileID: 8279606182374406928, guid: da18d5b681fb10e4d8fd676eb6cac817, type: 3}
   GameManagerTemplates: []
 --- !u!114 &4932619307773500011
 MonoBehaviour:
