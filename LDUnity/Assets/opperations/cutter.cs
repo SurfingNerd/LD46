@@ -18,6 +18,10 @@ public class cutter : MonoBehaviour {
 			switch (phase){
 				case 0: 
 					if(heldPart!=null){
+						if(clickable.clickedTag != "table"){
+							heldPart.gameObject.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f, 0.15f);
+							BloodManager.KillSpurt();
+						} 
 						heldPart.targetPos = heldPart.getPos();
 						heldPart = null;
 					}
@@ -37,6 +41,8 @@ public class cutter : MonoBehaviour {
 					k.z=rot+90;
 					heldPart=currentBody.Slice(k);
 					//</slice>
+					k.z=0;
+					BloodManager.Spurt(heldPart);
 					break;
 			}
 		}
