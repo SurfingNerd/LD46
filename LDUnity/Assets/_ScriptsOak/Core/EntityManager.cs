@@ -16,6 +16,8 @@ public class EntityManager : ManagerBase
     #endregion // singleton
 
     public float npcCorpseDetectionDistance = 3;
+
+    public float corpsePickupRadius = 1;
     
     // Start is called before the first frame update
     void Start()
@@ -59,4 +61,10 @@ public class EntityManager : ManagerBase
         return Resources.FindObjectsOfTypeAll<CharacterNPC>();
     }
 
+    public Corpse GetCorpseWithinPickupRange(Vector3 position)
+    {
+        var result = GetCorpses().Select(x => new {Corpse = x, distance = Vector3.Distance(x.transform.position, position)})
+            .Where(x => x.distance <= corpsePickupRadius).OrderBy(x => x.distance).FirstOrDefault();
+        return result != null ? result.Corpse : null;
+    }
 }

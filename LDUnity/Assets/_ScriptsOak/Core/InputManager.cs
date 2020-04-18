@@ -38,6 +38,11 @@ public class InputManager : ManagerBase
                 CharacterPlayer.instance.TryEnterAlley();
             }
 
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                CharacterPlayer.instance.TryPickupCropse();
+            }
+
             if (Input.GetKey(KeyCode.A))
             {
                 CharacterPlayer.instance.SetCurrentDirection(EDirection.Left);

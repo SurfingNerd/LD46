@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,8 @@ public class CharacterPlayer : Character
 {
 
     public static CharacterPlayer instance;
+
+    private Corpse currentCorpse;
 
     private void Awake()
     {
@@ -62,6 +65,24 @@ public class CharacterPlayer : Character
                 alley.Interact();
                 break;
             }
+        }
+    }
+
+    public void TryPickupCropse()
+    {
+        Corpse corpse = EntityManager.Instance.GetCorpseWithinPickupRange(this.transform.position);
+        if (corpse != null)
+        {
+            if (currentCorpse != null)
+            {
+                throw new NotImplementedException("Holding already a Corpse");
+            }
+
+            currentCorpse = corpse;
+            
+            // using parenting here for moving corpse.
+            // might be suboptimal for animation.
+            currentCorpse.transform.SetParent(this.transform);
         }
     }
 }
