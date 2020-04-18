@@ -19,4 +19,5 @@ public class BloodManager : MonoBehaviour {
 		spurtCount = tsc;
 		target = _target;
 	}
+	public static void KillSpurt() {	spurtCount = 0;	}
 }
