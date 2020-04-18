@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class CharacterPlayer : Character
 {
-
     public static CharacterPlayer instance;
 
     private Corpse currentCorpse;
@@ -43,10 +42,10 @@ public class CharacterPlayer : Character
 
         CurrentClosestInteractable = EntityManager.Instance.GetClosestInteractableWithinRange(gameObject.transform.position);
 
-        if (CurrentClosestInteractable != null)
-        {
-            Debug.Log("Player is near interactable: " + CurrentClosestInteractable);
-        }
+        // if (CurrentClosestInteractable != null)
+        // {
+        //     Debug.Log("Player is near interactable: " + CurrentClosestInteractable);
+        // }
 
         //for (int i = 0; i < colliders.Length; ++i)
         //{
