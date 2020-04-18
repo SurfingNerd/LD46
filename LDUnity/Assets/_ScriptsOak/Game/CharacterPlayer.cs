@@ -9,6 +9,9 @@ public class CharacterPlayer : Character
 
     private Corpse currentCorpse;
 
+    [SerializeField]
+    SpriteRenderer TooltipRenderer;
+
 
     bool bIsHiding = false;
 
@@ -39,24 +42,24 @@ public class CharacterPlayer : Character
     public override void Tick()
     {
 
-        //Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 1.0f);
+        IInteractable closestInteractable = EntityManager.Instance.GetClosestInteractableWithinRange(gameObject.transform.position);
 
-        CurrentClosestInteractable = EntityManager.Instance.GetClosestInteractableWithinRange(gameObject.transform.position);
 
-        // if (CurrentClosestInteractable != null)
-        // {
-        //     Debug.Log("Player is near interactable: " + CurrentClosestInteractable);
-        // }
+        if (CurrentClosestInteractable != closestInteractable && closestInteractable != null)
+        {
+            Debug.Log("Player is near interactable: " + closestInteractable);
+        }
 
-        //for (int i = 0; i < colliders.Length; ++i)
-        //{
-        //    IInteractable interactable = colliders[i].gameObject.GetComponent<IInteractable>();
+        CurrentClosestInteractable = closestInteractable;
 
-        //    if (interactable != null)
-        //    {
-        //        Debug.Log("Player is near interactable: " + interactable);
-        //    }
-        //}
+        if(CurrentClosestInteractable != null)
+        {
+            TooltipRenderer.sprite = CurrentClosestInteractable.GetInteractIcon();
+        }
+        else
+        {
+            TooltipRenderer.sprite = null;
+        }
     }
 
 
