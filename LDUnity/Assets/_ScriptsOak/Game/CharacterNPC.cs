@@ -19,6 +19,13 @@ public enum EAction
     MAX,
 }
 
+public enum ENPCStatus
+{
+    Neutral,
+    Alert,
+    Alarmed
+}
+
 public class CharacterNPC : Character, IInteractable
 {
     [SerializeField]
@@ -29,14 +36,27 @@ public class CharacterNPC : Character, IInteractable
     [SerializeField]
     float ThinkCooldownMax;
 
+    [SerializeField]
+    public SpriteRenderer TooltipRenderer;
+
+    [SerializeField]
+    Sprite AlertIcon;
+    [SerializeField]
+    Sprite AlarmedIcon;
 
 
+    ENPCStatus CurrentStatus;
     EAction CurrentAction;
 
     float CurrentThinkCooldown = 0.0f;
     float CurrentTaskDuration = 0.0f;
 
     bool bIsDying = false;
+
+    public void SetCurrentAction(EAction action)
+    {
+        CurrentAction = action;
+    }
 
     public override void MoveCharacter()
     {
@@ -45,7 +65,26 @@ public class CharacterNPC : Character, IInteractable
 
     public override void InitCharacter()
     {
+        SetStatus(ENPCStatus.Neutral);
+        SetCurrentAction(EAction.Idle);
+    }
 
+    public void SetStatus(ENPCStatus status)
+    {
+        CurrentStatus = status;
+
+        switch (CurrentStatus)
+        {
+            case ENPCStatus.Neutral:
+                TooltipRenderer.sprite = null;
+                break;
+            case ENPCStatus.Alert:
+                TooltipRenderer.sprite = AlertIcon;
+                break;
+            case ENPCStatus.Alarmed:
+                TooltipRenderer.sprite = AlarmedIcon;
+                break;
+        }
     }
 
     public void HandleGetStabbed()
@@ -83,14 +122,13 @@ public class CharacterNPC : Character, IInteractable
 
         if(bIsDying)
         {
-            
             return;
         }
 
-        CurrentAction = EAction.Idle;
+        //CurrentAction = EAction.Idle;
         CurrentTaskDuration -= Time.deltaTime;
 
-        if(CurrentTaskDuration >= 0.0f)
+        if(CurrentTaskDuration >= 0.0f || CurrentAction == EAction.Busy)
         {
 
         }

@@ -7,9 +7,12 @@ public class Corpse : MonoBehaviour, IInteractable
 
     public bool isHidden = false;
 
+    [SerializeField]
+    Sprite InteractIcon;
+
     public Sprite GetInteractIcon()
     {
-        throw new System.NotImplementedException();
+        return InteractIcon;
     }
 
     public void Interact()
