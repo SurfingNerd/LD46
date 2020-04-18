@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EDecayLevel
+{
+    Fresh,
+    Medium,
+    WellDone
+}
+
 public class Corpse : MonoBehaviour, IInteractable
 {
 
@@ -9,6 +16,29 @@ public class Corpse : MonoBehaviour, IInteractable
 
     [SerializeField]
     Sprite InteractIcon;
+
+    [SerializeField]
+    EDecayLevel DecayLevel = EDecayLevel.Fresh;
+
+    float Decay = 0.0f;
+
+    public void AdvanceDecay()
+    {
+        Decay += Time.deltaTime / 100.0f;
+        if(Decay < 0.3f)
+        {
+            DecayLevel = EDecayLevel.Fresh;
+        }
+        else if(Decay < 0.7f)
+        {
+            DecayLevel = EDecayLevel.Medium;
+        }
+        else
+        {
+            DecayLevel = EDecayLevel.WellDone;
+        }
+        Debug.Log(this + " Decay: " + Decay);
+    }
 
     public Sprite GetInteractIcon()
     {

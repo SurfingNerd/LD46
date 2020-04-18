@@ -42,6 +42,11 @@ public class CharacterPlayer : Character
     public override void Tick()
     {
 
+        if(currentCorpse != null)
+        {
+            currentCorpse.AdvanceDecay();
+        }
+
         IInteractable closestInteractable = EntityManager.Instance.GetClosestInteractableWithinRange(gameObject.transform.position);
 
 
