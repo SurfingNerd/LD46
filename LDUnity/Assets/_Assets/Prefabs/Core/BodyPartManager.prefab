@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1535705875673023878
+--- !u!1 &8712659011683335099
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,43 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1535705875673023879}
-  - component: {fileID: 1535705875673023872}
+  - component: {fileID: 8712659011683335097}
+  - component: {fileID: 8712659011683335098}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: BodyPartManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1535705875673023879
+--- !u!4 &8712659011683335097
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1535705875673023878}
+  m_GameObject: {fileID: 8712659011683335099}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.1437391, y: -2.0681238, z: -31.057478}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1535705875673023872
+--- !u!114 &8712659011683335098
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1535705875673023878}
+  m_GameObject: {fileID: 8712659011683335099}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cce8a5db4ec2f5e4d8f6d56de6c2c35d, type: 3}
+  m_Script: {fileID: 11500000, guid: 02d4ed828ca1bbb4fb4446e5f07e756e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CoreManagerTemplates:
-  - {fileID: 7226436046277045223, guid: 9aaff4cb4b486b44fba05b79e429595d, type: 3}
-  - {fileID: 8279606182374406928, guid: da18d5b681fb10e4d8fd676eb6cac817, type: 3}
-  - {fileID: 8712659011683335098, guid: cc71dc8b4a5924a46add81c4b636e288, type: 3}
-  GameManagerTemplates: []
+  BodyPartList:
+  - {fileID: 1551816507919029202, guid: 17a1a909acaa8904dbff823f619d1ab1, type: 3}

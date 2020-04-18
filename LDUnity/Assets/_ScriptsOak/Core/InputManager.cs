@@ -40,6 +40,7 @@ public class InputManager : ManagerBase
 
             if(Input.GetKeyDown(KeyCode.F))
             {
+                CharacterPlayer.instance.TryPickupBodyPart();
                 CharacterPlayer.instance.TryStabNPC();
             }
 

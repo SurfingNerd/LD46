@@ -49,6 +49,11 @@ public class CharacterPlayer : Character
             {
                 Debug.Log("Player is near NPC: " + npc);
             }
+            BodyPartWorld bodyPart = colliders[i].gameObject.GetComponent<BodyPartWorld>();
+            if (bodyPart != null)
+            {
+                Debug.Log("Player is near Body Part: " + bodyPart);
+            }
         }
     }
 
@@ -81,6 +86,21 @@ public class CharacterPlayer : Character
             {
                 Debug.Log("Player is gonna stab NPC: " + npc);
                 npc.HandleGetStabbed();
+            }
+        }
+    }
+
+    public void TryPickupBodyPart()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 1.0f);
+
+        for (int i = 0; i < colliders.Length; ++i)
+        {
+            BodyPartWorld bodyPart = colliders[i].gameObject.GetComponent<BodyPartWorld>();
+            if (bodyPart != null)
+            {
+                Debug.Log("Player is gonna pick up Body Part: " + bodyPart.PartType);
+                bodyPart.HandlePickedUp();
             }
         }
     }

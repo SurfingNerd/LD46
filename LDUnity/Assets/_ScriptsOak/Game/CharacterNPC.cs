@@ -61,6 +61,11 @@ public class CharacterNPC : Character
 
         bIsDying = true;
         CurrentDirection = Vector3.zero;
+
+        Instantiate(BodyPartManager.Instance.GetBodyPartTemplateByType(DesiredPart), 
+            gameObject.transform.position, 
+            new Quaternion(), 
+            gameObject.transform.parent);
     }
 
     public override void Tick()
@@ -74,10 +79,19 @@ public class CharacterNPC : Character
         }
 
         CurrentAction = EAction.Idle;
-        CurrentThinkCooldown -= Time.deltaTime;
-        if(CurrentThinkCooldown <= 0.0f)
+        CurrentTaskDuration -= Time.deltaTime;
+
+        if(CurrentTaskDuration >= 0.0f)
         {
-            Think();
+
+        }
+        else
+        {
+            CurrentThinkCooldown -= Time.deltaTime;
+            if (CurrentThinkCooldown <= 0.0f)
+            {
+                Think();
+            }
         }
     }
 
