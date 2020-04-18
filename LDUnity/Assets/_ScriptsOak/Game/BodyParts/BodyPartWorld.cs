@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BodyPartWorld : MonoBehaviour
+public class BodyPartWorld : MonoBehaviour, IInteractable
 {
     [SerializeField]
     public EBodyPart PartType;
@@ -24,5 +24,20 @@ public class BodyPartWorld : MonoBehaviour
         Debug.Log("Player picked up Body Part: " + PartType);
 
         Destroy(gameObject);
+    }
+
+    public void Interact()
+    {
+
+    }
+
+    public Sprite GetInteractIcon()
+    {
+        return null;
+    }
+
+    public Vector3 GetPosition()
+    {
+        return gameObject.transform.position;
     }
 }

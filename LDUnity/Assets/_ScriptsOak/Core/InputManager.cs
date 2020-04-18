@@ -29,26 +29,26 @@ public class InputManager : ManagerBase
 
         if (CharacterPlayer.instance != null)
         {
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                CharacterPlayer.instance.TryEnterAlley();
-            }
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                CharacterPlayer.instance.TryEnterAlley();
-            }
+            //if (Input.GetKeyDown(KeyCode.W))
+            //{
+            //    CharacterPlayer.instance.TryEnterAlley();
+            //}
+            //if (Input.GetKeyDown(KeyCode.S))
+            //{
+            //    CharacterPlayer.instance.TryEnterAlley();
+            //}
 
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                CharacterPlayer.instance.TryPickupBodyPart();
-                CharacterPlayer.instance.TryStabNPC();
-                CharacterPlayer.instance.TryRummageCorpseContainer();
-                CharacterPlayer.instance.TryActivateHomeMarker();
-            }
+            //if (Input.GetKeyDown(KeyCode.F))
+            //{
+            //    CharacterPlayer.instance.TryPickupBodyPart();
+            //    CharacterPlayer.instance.TryStabNPC();
+            //    CharacterPlayer.instance.TryRummageCorpseContainer();
+            //    CharacterPlayer.instance.TryActivateHomeMarker();
+            //}
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                CharacterPlayer.instance.TryHandleCorpse();
+                CharacterPlayer.instance.TryInteract();
             }
 
             if (Input.GetKey(KeyCode.A))
@@ -63,8 +63,8 @@ public class InputManager : ManagerBase
             {
                 CharacterPlayer.instance.SetCurrentDirection(EDirection.Neutral);
             }
-            
-            
+
+
         }
     }
 

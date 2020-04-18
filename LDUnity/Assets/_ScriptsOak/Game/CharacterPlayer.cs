@@ -31,117 +31,77 @@ public class CharacterPlayer : Character
         gameObject.transform.localPosition = temp;
     }
 
+    IInteractable CurrentClosestInteractable = null;
+
     public override void Tick()
     {
 
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 1.0f);
+        //Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 1.0f);
 
-        for (int i = 0; i < colliders.Length; ++i)
+        CurrentClosestInteractable = EntityManager.Instance.GetClosestInteractableWithinRange(gameObject.transform.position);
+
+        if(CurrentClosestInteractable != null)
         {
-            Alley alley = colliders[i].gameObject.GetComponent<Alley>();
-            if (alley != null)
-            {
-                Debug.Log("Player is near alley: " + alley);
-            }
-            CharacterNPC npc = colliders[i].gameObject.GetComponent<CharacterNPC>();
-            if (npc != null)
-            {
-                Debug.Log("Player is near NPC: " + npc);
-            }
-            BodyPartWorld bodyPart = colliders[i].gameObject.GetComponent<BodyPartWorld>();
-            if (bodyPart != null)
-            {
-                Debug.Log("Player is near Body Part: " + bodyPart);
-            }
-            CorpseContainer corpseContainer = colliders[i].gameObject.GetComponent<CorpseContainer>();
-            if (corpseContainer != null)
-            {
-                Debug.Log("Player is near Corpse Container: " + corpseContainer);
-            }
-            HomeMarker homeMarker = colliders[i].gameObject.GetComponent<HomeMarker>();
-            if (homeMarker != null)
-            {
-                Debug.Log("Player is near Corpse Container: " + homeMarker);
-            }
+            Debug.Log("Player is near interactable: " + CurrentClosestInteractable);
         }
+
+        //for (int i = 0; i < colliders.Length; ++i)
+        //{
+        //    IInteractable interactable = colliders[i].gameObject.GetComponent<IInteractable>();
+
+        //    if (interactable != null)
+        //    {
+        //        Debug.Log("Player is near interactable: " + interactable);
+        //    }
+        //}
     }
 
-    public void TryEnterAlley()
+
+    public void SetCurrentCorpse(Corpse corpse)
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 1.0f);
-
-        for (int i = 0; i < colliders.Length; ++i)
-        {
-            Alley alley = colliders[i].gameObject.GetComponent<Alley>();
-            if (alley != null)
-            {
-                Debug.Log("Player is transitioning from street: " + alley.GetCurrentStreet() + "using Alley : " + alley +
-                    "; to street: " + alley.GetTargetAlley().GetCurrentStreet() + "to Alley: " + alley.GetTargetAlley() + ";");
-
-                alley.Interact();
-                break;
-            }
-        }
+        currentCorpse = corpse;
     }
 
-    public void TryStabNPC()
+    public void TryInteract()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 1.0f);
+        //IInteractable closestInteractable = EntityManager.Instance.GetClosestInteractableWithinRange(gameObject.transform.position);
 
-        for (int i = 0; i < colliders.Length; ++i)
+        if (CurrentClosestInteractable != null)
         {
-            CharacterNPC npc = colliders[i].gameObject.GetComponent<CharacterNPC>();
-            if (npc != null)
-            {
-                Debug.Log("Player is gonna stab NPC: " + npc);
-                npc.HandleGetStabbed();
-            }
+            CurrentClosestInteractable.Interact();
         }
+
+        //Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 1.0f);
+        //List<IInteractable> interactables = new List<IInteractable>();
+        //Corpse corpse = null;
+        //// gather all interactables
+        //for (int i = 0; i < colliders.Length; ++i)
+        //{
+        //    IInteractable interactable = colliders[i].gameObject.GetComponent<IInteractable>();
+        //    corpse = colliders[i].gameObject.GetComponent<Corpse>();
+
+        //    //if corpse found, interact with that
+        //    if(corpse != null)
+        //    {
+        //        corpse.Interact();
+        //        return;
+        //    }
+        //    if (interactable != null)
+        //    {
+        //        interactables.Add(interactable);
+        //    }
+        //}
+
+        //if(interactables.Count > 0)
+        //{
+        //    Debug.Log("Player is gonna interact with: " + interactables[0]);
+        //    interactables[0].Interact();
+        //}
     }
 
-    public void TryRummageCorpseContainer()
+    public Corpse GetCurrentCorpse()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 1.0f);
-
-        for (int i = 0; i < colliders.Length; ++i)
-        {
-            CorpseContainer container = colliders[i].gameObject.GetComponent<CorpseContainer>();
-            if (container != null)
-            {
-                Debug.Log("Player is gonna rummage Container: " + container);
-                container.Rummage();
-            }
-        }
-    }
-
-    public void TryActivateHomeMarker()
-    {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 1.0f);
-
-        for (int i = 0; i < colliders.Length; ++i)
-        {
-            HomeMarker homeMarker = colliders[i].gameObject.GetComponent<HomeMarker>();
-            if (homeMarker != null)
-            {
-                Debug.Log("Player is gonna activate Home Marker: " + homeMarker);
-                homeMarker.HandleActivate();
-            }
-        }
-    }
-
-    public void TryPickupBodyPart()
-    {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 1.0f);
-
-        for (int i = 0; i < colliders.Length; ++i)
-        {
-            BodyPartWorld bodyPart = colliders[i].gameObject.GetComponent<BodyPartWorld>();
-            if (bodyPart != null)
-            {
-                Debug.Log("Player is gonna pick up Body Part: " + bodyPart.PartType);
-                bodyPart.HandlePickedUp();
-            }
-        }
+        return currentCorpse;
     }
 
     public void TryHandleCorpse()
@@ -191,7 +151,7 @@ public class CharacterPlayer : Character
 
     public void DropOffCorpseAtHome()
     {
-        if(currentCorpse != null)
+        if (currentCorpse != null)
         {
             Destroy(currentCorpse.gameObject);
         }

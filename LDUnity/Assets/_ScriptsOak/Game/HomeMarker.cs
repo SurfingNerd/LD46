@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HomeMarker : MonoBehaviour
+public class HomeMarker : MonoBehaviour, IInteractable
 {
+    [SerializeField]
+    Sprite IconInteract;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,10 +19,20 @@ public class HomeMarker : MonoBehaviour
         
     }
 
-    public void HandleActivate()
+    public void Interact()
     {
         Debug.Log("Player activated Home Marker: " + this);
 
         CharacterPlayer.instance.DropOffCorpseAtHome();
+    }
+
+    public Sprite GetInteractIcon()
+    {
+        return IconInteract;
+    }
+
+    public Vector3 GetPosition()
+    {
+        return gameObject.transform.position;
     }
 }

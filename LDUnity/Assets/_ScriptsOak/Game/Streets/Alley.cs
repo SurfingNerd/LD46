@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Alley : MonoBehaviour
+public class Alley : MonoBehaviour, IInteractable
 {
 
     //[SerializeField]
@@ -10,6 +10,9 @@ public class Alley : MonoBehaviour
 
     [SerializeField]
     Alley TargetAlley;
+
+    [SerializeField]
+    Sprite IconInteract;
 
 
     // Start is called before the first frame update
@@ -38,5 +41,15 @@ public class Alley : MonoBehaviour
     public Alley GetTargetAlley()
     {
         return TargetAlley;
+    }
+
+    public Sprite GetInteractIcon()
+    {
+        return IconInteract;
+    }
+
+    public Vector3 GetPosition()
+    {
+        return gameObject.transform.position;
     }
 }

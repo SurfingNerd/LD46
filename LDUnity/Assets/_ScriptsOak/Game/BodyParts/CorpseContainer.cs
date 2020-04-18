@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CorpseContainer : MonoBehaviour
+public class CorpseContainer : MonoBehaviour, IInteractable
 {
+    [SerializeField]
+    Sprite InteractIcon;
 
     public bool bIsRummaged = false;
 
@@ -19,9 +21,9 @@ public class CorpseContainer : MonoBehaviour
         
     }
 
-    public void Rummage()
+    public void Interact()
     {
-        if(bIsRummaged)
+        if (bIsRummaged)
         {
             return;
         }
@@ -32,5 +34,15 @@ public class CorpseContainer : MonoBehaviour
             gameObject.transform.parent);
 
         bIsRummaged = true;
+    }
+
+    public Sprite GetInteractIcon()
+    {
+        return InteractIcon;
+    }
+
+    public Vector3 GetPosition()
+    {
+        return gameObject.transform.position;
     }
 }
