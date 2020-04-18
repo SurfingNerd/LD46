@@ -41,3 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 3029297113
+    locked: 0
+  - name: Environment
+    uniqueID: 1398857379
+    locked: 0
+  - name: Objects
+    uniqueID: 1894454773
+    locked: 0
+  - name: Player
+    uniqueID: 3033167075
+    locked: 0
+  - name: Overlay
+    uniqueID: 2511037215
+    locked: 0
