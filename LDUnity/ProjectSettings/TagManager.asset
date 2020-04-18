@@ -38,6 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: table
+    uniqueID: 2647506007
+    locked: 0
   - name: parts
     uniqueID: 3043010741
     locked: 0

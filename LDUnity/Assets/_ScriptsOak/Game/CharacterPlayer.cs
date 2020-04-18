@@ -10,6 +10,9 @@ public class CharacterPlayer : Character
 
     private Corpse currentCorpse;
 
+
+    bool bIsHiding = false;
+
     private void Awake()
     {
         instance = this;
@@ -23,135 +26,163 @@ public class CharacterPlayer : Character
     {
 
     }
-
     public void TransitionToStreet(Alley alley)
     {
         gameObject.transform.SetParent(alley.GetTargetAlley().GetCurrentStreet().gameObject.transform);
-
-        //SetPosition(alley.GetTargetAlley().gameObject.transform.position);
         Vector3 temp = alley.GetTargetAlley().gameObject.transform.localPosition;
         temp.y = alley.GetCurrentStreet().StreetYOffset;
-        //temp.x = 0;
         gameObject.transform.localPosition = temp;
     }
+
+    IInteractable CurrentClosestInteractable = null;
 
     public override void Tick()
     {
 
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 1.0f);
+        //Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 1.0f);
 
-        for (int i = 0; i < colliders.Length; ++i)
+        CurrentClosestInteractable = EntityManager.Instance.GetClosestInteractableWithinRange(gameObject.transform.position);
+
+        if (CurrentClosestInteractable != null)
         {
-            Alley alley = colliders[i].gameObject.GetComponent<Alley>();
-            if (alley != null)
-            {
-                Debug.Log("Player is near alley: " + alley);
-            }
-            CharacterNPC npc = colliders[i].gameObject.GetComponent<CharacterNPC>();
-            if (npc != null)
-            {
-                Debug.Log("Player is near NPC: " + npc);
-            }
-            BodyPartWorld bodyPart = colliders[i].gameObject.GetComponent<BodyPartWorld>();
-            if (bodyPart != null)
-            {
-                Debug.Log("Player is near Body Part: " + bodyPart);
-            }
+            Debug.Log("Player is near interactable: " + CurrentClosestInteractable);
         }
+
+        //for (int i = 0; i < colliders.Length; ++i)
+        //{
+        //    IInteractable interactable = colliders[i].gameObject.GetComponent<IInteractable>();
+
+        //    if (interactable != null)
+        //    {
+        //        Debug.Log("Player is near interactable: " + interactable);
+        //    }
+        //}
     }
 
-    public void TryEnterAlley()
+
+    public void SetCurrentCorpse(Corpse corpse)
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 1.0f);
-
-        for (int i = 0; i < colliders.Length; ++i)
-        {
-            Alley alley = colliders[i].gameObject.GetComponent<Alley>();
-            if (alley != null)
-            {
-                Debug.Log("Player is transitioning from street: " + alley.GetCurrentStreet() + "using Alley : " + alley +
-                    "; to street: " + alley.GetTargetAlley().GetCurrentStreet() + "to Alley: " + alley.GetTargetAlley() + ";");
-
-                alley.Interact();
-                break;
-            }
-        }
+        currentCorpse = corpse;
     }
 
-    public void TryStabNPC()
+    public void DropCorpse()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 1.0f);
-
-        for (int i = 0; i < colliders.Length; ++i)
+        if(currentCorpse != null)
         {
-            CharacterNPC npc = colliders[i].gameObject.GetComponent<CharacterNPC>();
-            if (npc != null)
-            {
-                Debug.Log("Player is gonna stab NPC: " + npc);
-                npc.HandleGetStabbed();
-            }
+            currentCorpse.transform.SetParent(gameObject.transform.parent);
+            currentCorpse = null;
         }
     }
-
-    public void TryPickupBodyPart()
+    public void TryInteract()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 1.0f);
+        //IInteractable closestInteractable = EntityManager.Instance.GetClosestInteractableWithinRange(gameObject.transform.position);
 
-        for (int i = 0; i < colliders.Length; ++i)
+        if (CurrentClosestInteractable != null)
         {
-            BodyPartWorld bodyPart = colliders[i].gameObject.GetComponent<BodyPartWorld>();
-            if (bodyPart != null)
-            {
-                Debug.Log("Player is gonna pick up Body Part: " + bodyPart.PartType);
-                bodyPart.HandlePickedUp();
-            }
+            CurrentClosestInteractable.Interact();
         }
+
+        //Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 1.0f);
+        //List<IInteractable> interactables = new List<IInteractable>();
+        //Corpse corpse = null;
+        //// gather all interactables
+        //for (int i = 0; i < colliders.Length; ++i)
+        //{
+        //    IInteractable interactable = colliders[i].gameObject.GetComponent<IInteractable>();
+        //    corpse = colliders[i].gameObject.GetComponent<Corpse>();
+
+        //    //if corpse found, interact with that
+        //    if(corpse != null)
+        //    {
+        //        corpse.Interact();
+        //        return;
+        //    }
+        //    if (interactable != null)
+        //    {
+        //        interactables.Add(interactable);
+        //    }
+        //}
+
+        //if(interactables.Count > 0)
+        //{
+        //    Debug.Log("Player is gonna interact with: " + interactables[0]);
+        //    interactables[0].Interact();
+        //}
     }
 
-    public void TryHandleCorpse()
+    public Corpse GetCurrentCorpse()
+    {
+        return currentCorpse;
+    }
+
+    //public void TryHandleCorpse()
+    //{
+    //    if (currentCorpse != null)
+    //    {
+    //        //find a hideout if available.
+
+    //        Hideout hideout = EntityManager.Instance.GetCorpseHideoutWithinRange(this.transform.position, false);
+
+    //        if (hideout != null)
+    //        {
+    //            hideout.currentCorpse = currentCorpse;
+    //            hideout.currentCorpse.isHidden = true;
+    //            currentCorpse.transform.SetParent(hideout.transform);
+    //            currentCorpse = null;
+    //        }
+    //    }
+    //    else
+    //    {
+    //        //check if there is a corpse.
+    //        Corpse corpse = EntityManager.Instance.GetCorpseWithinRange(this.transform.position);
+    //        if (corpse != null)
+    //        {
+    //            if (currentCorpse != null)
+    //            {
+    //                throw new NotImplementedException("Holding already a Corpse");
+    //            }
+
+    //            //check the nearest hideout, maybe we picked the corpse just from this hideout.
+    //            var corpseHideout = EntityManager.Instance.GetCorpseHideoutWithinRange(this.transform.position, true);
+    //            if (corpseHideout != null && corpseHideout.currentCorpse == corpse)
+    //            {
+    //                corpseHideout.currentCorpse = null;
+    //            }
+
+    //            corpse.isHidden = false;
+    //            currentCorpse = corpse;
+
+    //            // using parenting here for moving corpse.
+    //            // might be suboptimal for animation.
+    //            currentCorpse.transform.SetParent(this.transform);
+    //        }
+    //    }
+
+    //}
+
+    public void DropOffCorpseAtHome()
     {
         if (currentCorpse != null)
         {
-            //find a hideout if available.
+            Destroy(currentCorpse.gameObject);
+        }
+    }
 
-            CorpseHideout hideout = EntityManager.Instance.GetCorpseHideoutWithinRange(this.transform.position, false);
+    public bool IsHiding()
+    {
+        return bIsHiding;
+    }
 
-            if (hideout != null)
-            {
-                hideout.currentCorpse = currentCorpse;
-                hideout.currentCorpse.isHidden = true;
-                currentCorpse.transform.SetParent(hideout.transform);
-                currentCorpse = null;
-            }
+    public void ToggleHiding()
+    {
+        bIsHiding = !bIsHiding;
+        if (bIsHiding)
+        {
+            gameObject.SetActive(false);
         }
         else
         {
-
-
-            //check if there is a corpse.
-            Corpse corpse = EntityManager.Instance.GetCorpseWithinRange(this.transform.position);
-            if (corpse != null)
-            {
-                if (currentCorpse != null)
-                {
-                    throw new NotImplementedException("Holding already a Corpse");
-                }
-
-                //check the nearest hideout, maybe we picked the corpse just from this hideout.
-                var corpseHideout = EntityManager.Instance.GetCorpseHideoutWithinRange(this.transform.position, true);
-                if (corpseHideout != null && corpseHideout.currentCorpse == corpse)
-                {
-                    corpseHideout.currentCorpse = null;
-                }
-
-                corpse.isHidden = false;
-                currentCorpse = corpse;
-
-                // using parenting here for moving corpse.
-                // might be suboptimal for animation.
-                currentCorpse.transform.SetParent(this.transform);
-            }
+            gameObject.SetActive(true);
         }
-
     }
 }

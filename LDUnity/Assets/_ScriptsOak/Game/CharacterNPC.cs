@@ -19,7 +19,7 @@ public enum EAction
     MAX,
 }
 
-public class CharacterNPC : Character
+public class CharacterNPC : Character, IInteractable
 {
     [SerializeField]
     EBodyPart DesiredPart;
@@ -141,5 +141,16 @@ public class CharacterNPC : Character
         {
             foundCorpse.gameObject.SetActive(value);
         }
+    }
+
+    public void Interact()
+    {
+        //throw new System.NotImplementedException();
+    }
+
+    public Sprite GetInteractIcon()
+    {
+        return null;
+        //throw new System.NotImplementedException();
     }
 }

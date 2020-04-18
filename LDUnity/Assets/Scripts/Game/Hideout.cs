@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BodyPartWorld : MonoBehaviour, IInteractable
+public class Hideout : MonoBehaviour, IInteractable
 {
     [SerializeField]
-    public EBodyPart PartType;
-
+    Sprite InteractIcon;
+    //public Corpse currentCorpse;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -19,25 +20,20 @@ public class BodyPartWorld : MonoBehaviour, IInteractable
         
     }
 
-    public void HandlePickedUp()
-    {
-        Debug.Log("Player picked up Body Part: " + PartType);
-
-        Destroy(gameObject);
-    }
-
     public void Interact()
     {
-
+        CharacterPlayer.instance.ToggleHiding();
     }
 
     public Sprite GetInteractIcon()
     {
-        return null;
+        return InteractIcon;
     }
 
     public Vector3 GetPosition()
     {
         return gameObject.transform.position;
     }
+
+    
 }

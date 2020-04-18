@@ -19,7 +19,6 @@ public class StreetManager : ManagerBase
         base.InitManager();
     }
 
-
     public void TransitionStreet(Alley alley)
     {
         //if(CurrentStreet != null)

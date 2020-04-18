@@ -29,40 +29,54 @@ public class InputManager : ManagerBase
 
         if (CharacterPlayer.instance != null)
         {
-            if (Input.GetKeyDown(KeyCode.W))
+            //if (Input.GetKeyDown(KeyCode.W))
+            //{
+            //    CharacterPlayer.instance.TryEnterAlley();
+            //}
+            //if (Input.GetKeyDown(KeyCode.S))
+            //{
+            //    CharacterPlayer.instance.TryEnterAlley();
+            //}
+
+            //if (Input.GetKeyDown(KeyCode.F))
+            //{
+            //    CharacterPlayer.instance.TryPickupBodyPart();
+            //    CharacterPlayer.instance.TryStabNPC();
+            //    CharacterPlayer.instance.TryRummageCorpseContainer();
+            //    CharacterPlayer.instance.TryActivateHomeMarker();
+            //}
+
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                CharacterPlayer.instance.TryEnterAlley();
-            }
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                CharacterPlayer.instance.TryEnterAlley();
+                CharacterPlayer.instance.TryInteract();
             }
 
             if (Input.GetKeyDown(KeyCode.F))
             {
-                CharacterPlayer.instance.TryPickupBodyPart();
-                CharacterPlayer.instance.TryStabNPC();
+                CharacterPlayer.instance.DropCorpse();
             }
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (CharacterPlayer.instance.IsHiding())
             {
-                CharacterPlayer.instance.TryHandleCorpse();
-            }
+                CharacterPlayer.instance.SetCurrentDirection(EDirection.Neutral);
 
-            if (Input.GetKey(KeyCode.A))
-            {
-                CharacterPlayer.instance.SetCurrentDirection(EDirection.Left);
-            }
-            else if (Input.GetKey(KeyCode.D))
-            {
-                CharacterPlayer.instance.SetCurrentDirection(EDirection.Right);
             }
             else
             {
-                CharacterPlayer.instance.SetCurrentDirection(EDirection.Neutral);
+                if (Input.GetKey(KeyCode.A))
+                {
+                    CharacterPlayer.instance.SetCurrentDirection(EDirection.Left);
+                }
+                else if (Input.GetKey(KeyCode.D))
+                {
+                    CharacterPlayer.instance.SetCurrentDirection(EDirection.Right);
+                }
+                else
+                {
+                    CharacterPlayer.instance.SetCurrentDirection(EDirection.Neutral);
+                }
             }
-            
-            
+
         }
     }
 
