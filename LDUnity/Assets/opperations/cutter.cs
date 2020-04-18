@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class cutter : MonoBehaviour {
+	public PartsManager currentBody;
 	private LineRenderer lr;
 	void Start() {
 		lr = GetComponent<LineRenderer>();
@@ -26,6 +27,7 @@ public class cutter : MonoBehaviour {
 		}
 		if(Input.GetMouseButtonUp(0)){
 			lr.enabled = false;
+			currentBody.Slice();
 		}
 		
 		if(lr.enabled)	lr.SetPosition(1,getMouseWorldPos());

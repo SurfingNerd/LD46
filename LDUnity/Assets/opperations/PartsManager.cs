@@ -14,17 +14,20 @@ public class PartsManager : MonoBehaviour{
 		sr.sortingOrder = ++layerIndex;
 
 		sr.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
-
-		Slice();
 	}
 	public void Slice(){//Vector3 slice){ //offset.xy, rot
-		Debug.Log("fsdghfdhjf");
+		Debug.Log(sr.sortingOrder);
 		var mask = new GameObject(){name="mask"};
 		mask.transform.parent = transform;
+
+		mask.transform.localPosition = Vector3.zero;
+		mask.transform.localRotation = Quaternion.identity;
+
 		var sm = mask.AddComponent<SpriteMask>();
 		sm.isCustomRangeActive = true;
-		sm.backSortingLayerID = sm.frontSortingLayerID = sr.sortingLayerID;
-		sm.frontSortingOrder = 100;//sr.sortingOrder;
-		sm.backSortingOrder = 99;//sr.sortingOrder-1;
+		sm.frontSortingLayerID = sm.backSortingLayerID = sr.sortingLayerID;
+		sm.frontSortingOrder = sr.sortingOrder;
+		sm.backSortingOrder = sr.sortingOrder-1;
+		sm.sprite = Resources.Load<Sprite>("mask");
 	}
 }
