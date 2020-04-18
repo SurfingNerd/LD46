@@ -40,7 +40,7 @@ public class InputManager : ManagerBase
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                CharacterPlayer.instance.TryPickupCropse();
+                CharacterPlayer.instance.TryPickupCorpse();
             }
 
             if (Input.GetKey(KeyCode.A))

@@ -68,7 +68,7 @@ public class CharacterPlayer : Character
         }
     }
 
-    public void TryPickupCropse()
+    public void TryPickupCorpse()
     {
         Corpse corpse = EntityManager.Instance.GetCorpseWithinPickupRange(this.transform.position);
         if (corpse != null)
