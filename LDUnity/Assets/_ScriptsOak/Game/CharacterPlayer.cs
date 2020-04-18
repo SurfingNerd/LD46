@@ -58,6 +58,11 @@ public class CharacterPlayer : Character
             {
                 Debug.Log("Player is near Corpse Container: " + corpseContainer);
             }
+            HomeMarker homeMarker = colliders[i].gameObject.GetComponent<HomeMarker>();
+            if (homeMarker != null)
+            {
+                Debug.Log("Player is near Corpse Container: " + homeMarker);
+            }
         }
     }
 
@@ -105,6 +110,21 @@ public class CharacterPlayer : Character
             {
                 Debug.Log("Player is gonna rummage Container: " + container);
                 container.Rummage();
+            }
+        }
+    }
+
+    public void TryActivateHomeMarker()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 1.0f);
+
+        for (int i = 0; i < colliders.Length; ++i)
+        {
+            HomeMarker homeMarker = colliders[i].gameObject.GetComponent<HomeMarker>();
+            if (homeMarker != null)
+            {
+                Debug.Log("Player is gonna activate Home Marker: " + homeMarker);
+                homeMarker.HandleActivate();
             }
         }
     }
@@ -167,5 +187,13 @@ public class CharacterPlayer : Character
             }
         }
 
+    }
+
+    public void DropOffCorpseAtHome()
+    {
+        if(currentCorpse != null)
+        {
+            Destroy(currentCorpse.gameObject);
+        }
     }
 }

@@ -43,6 +43,7 @@ public class InputManager : ManagerBase
                 CharacterPlayer.instance.TryPickupBodyPart();
                 CharacterPlayer.instance.TryStabNPC();
                 CharacterPlayer.instance.TryRummageCorpseContainer();
+                CharacterPlayer.instance.TryActivateHomeMarker();
             }
 
             if (Input.GetKeyDown(KeyCode.E))
