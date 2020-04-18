@@ -48,6 +48,15 @@ public class CharacterNPC : Character
 
     public void HandleGetStabbed()
     {
+        if(bIsDying)
+        {
+            return;
+        }
+
+
+        //TODO: remove red bs
+        GetComponent<SpriteAnimator>().SetColor(Color.red);
+
         Debug.Log(this + " is getting killed and will drop: " + DesiredPart);
 
         bIsDying = true;
