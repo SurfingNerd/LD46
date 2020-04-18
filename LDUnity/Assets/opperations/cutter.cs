@@ -20,14 +20,17 @@ public class cutter : MonoBehaviour {
 	</2 click>*/
 
 	//<click & drag>
+	Vector3 src;
 	void Update() {
 		if (Input.GetMouseButtonDown(0)){
-			lr.SetPosition(0,getMouseWorldPos());
+			lr.SetPosition(0,src=getMouseWorldPos());
 			lr.enabled = true;
 		}
 		if(Input.GetMouseButtonUp(0)){
 			lr.enabled = false;
-			currentBody.Slice();
+			var k = getMouseWorldPos();
+			k.z = Mathf.Atan2(src.y-k.y, src.x-k.x)*Mathf.Rad2Deg+90;
+			currentBody.Slice(k);
 		}
 		
 		if(lr.enabled)	lr.SetPosition(1,getMouseWorldPos());

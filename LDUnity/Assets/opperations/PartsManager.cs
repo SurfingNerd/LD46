@@ -15,13 +15,12 @@ public class PartsManager : MonoBehaviour{
 
 		sr.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
 	}
-	public void Slice(){//Vector3 slice){ //offset.xy, rot
-		Debug.Log(sr.sortingOrder);
+	public void Slice(Vector3 slice){ //offset.xy, rot
 		var mask = new GameObject(){name="mask"};
 		mask.transform.parent = transform;
 
-		mask.transform.localPosition = Vector3.zero;
-		mask.transform.localRotation = Quaternion.identity;
+		mask.transform.position = new Vector3(slice.x,slice.y,0);
+		mask.transform.eulerAngles = new Vector3(0,0,slice.z);
 
 		var sm = mask.AddComponent<SpriteMask>();
 		sm.isCustomRangeActive = true;
