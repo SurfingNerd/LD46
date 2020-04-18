@@ -53,6 +53,11 @@ public class CharacterNPC : Character, IInteractable
 
     bool bIsDying = false;
 
+    public void SetCurrentAction(EAction action)
+    {
+        CurrentAction = action;
+    }
+
     public override void MoveCharacter()
     {
         base.MoveCharacter();
@@ -61,6 +66,7 @@ public class CharacterNPC : Character, IInteractable
     public override void InitCharacter()
     {
         SetStatus(ENPCStatus.Neutral);
+        SetCurrentAction(EAction.Idle);
     }
 
     public void SetStatus(ENPCStatus status)
@@ -116,14 +122,13 @@ public class CharacterNPC : Character, IInteractable
 
         if(bIsDying)
         {
-            
             return;
         }
 
-        CurrentAction = EAction.Idle;
+        //CurrentAction = EAction.Idle;
         CurrentTaskDuration -= Time.deltaTime;
 
-        if(CurrentTaskDuration >= 0.0f)
+        if(CurrentTaskDuration >= 0.0f || CurrentAction == EAction.Busy)
         {
 
         }

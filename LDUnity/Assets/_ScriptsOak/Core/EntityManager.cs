@@ -31,40 +31,65 @@ public class EntityManager : ManagerBase
     // Update is called once per frame
     void Update()
     {
-        if (CharacterPlayer.instance.GetCurrentCorpse() != null && !CharacterPlayer.instance.IsHiding())
+
+        var allNPCs = GetNPCs();
+        //var allCorpses = GetCorpses().Where(x => !x.isHidden);
+        foreach (var npc in allNPCs)
         {
-            var allNPCs = GetNPCs();
-            var allCorpses = GetCorpses().Where(x => !x.isHidden);
-            foreach (var npc in allNPCs)
+            bool foundACorpse = false;
+            bool foundPlayerCarryingCorpse = false;
+
+            var distance = Vector3.Distance(npc.transform.position, CharacterPlayer.instance.transform.position);
+            if (distance < npcCorpseDetectionDistance)
             {
-                bool foundACorpse = false;
-                bool foundPlayerCarryingCorpse = false;
-
-                var distance = Vector3.Distance(npc.transform.position, CharacterPlayer.instance.transform.position);
-                if (distance < npcCorpseDetectionDistance)
+                if (CharacterPlayer.instance.GetCurrentCorpse() != null && !CharacterPlayer.instance.IsHiding())
                 {
-                    foundPlayerCarryingCorpse = true;
-                    npc.ActivateFoundCorpseText(foundACorpse);
-                    npc.SetStatus(ENPCStatus.Alert);
-                    if (foundPlayerCarryingCorpse)
+                    npc.SetCurrentAction(EAction.Busy);
+                    if ((CharacterPlayer.instance.transform.position - npc.transform.position).normalized.x < 0)
                     {
-                        //Debug.Log("Player is seen carrying corpse by: " + npc);
+                        npc.SetCurrentDirection(EDirection.Left);
                     }
-                    //Debug.LogWarning("Corpse detected!! Distance: " + distance);
-                }
+                    else
+                    {
+                        npc.SetCurrentDirection(EDirection.Right);
+                    }
 
-                //foreach (var corpse in allCorpses)
-                //{
-                //    var distance = Vector3.Distance(npc.transform.position, corpse.transform.position);
-                //    if (distance < npcCorpseDetectionDistance)
-                //    {
-                //        foundACorpse = true;
-                //        //Debug.LogWarning("Corpse detected!! Distance: " + distance);
-                //    }
-                //}
-                //npc.ActivateFoundCorpseText(foundACorpse);
+                    if (distance < npcCorpseDetectionDistance / 2)
+                    {
+                        npc.SetStatus(ENPCStatus.Alarmed);
+                    }
+                    else
+                    {
+                        npc.SetStatus(ENPCStatus.Alert);
+                    }
+                }
+                else if(CharacterPlayer.instance.IsHiding())
+                {
+                    npc.SetStatus(ENPCStatus.Neutral);
+                    npc.SetCurrentAction(EAction.Idle);
+                }
+                foundPlayerCarryingCorpse = true;
+                npc.ActivateFoundCorpseText(foundACorpse);
+                
+                if (foundPlayerCarryingCorpse)
+                {
+                    //Debug.Log("Player is seen carrying corpse by: " + npc);
+                }
+                //Debug.LogWarning("Corpse detected!! Distance: " + distance);
             }
+
+            //foreach (var corpse in allCorpses)
+            //{
+            //    var distance = Vector3.Distance(npc.transform.position, corpse.transform.position);
+            //    if (distance < npcCorpseDetectionDistance)
+            //    {
+            //        foundACorpse = true;
+            //        //Debug.LogWarning("Corpse detected!! Distance: " + distance);
+            //    }
+            //}
+            //npc.ActivateFoundCorpseText(foundACorpse);
         }
+
     }
 
     //TODO: cache for performance
