@@ -31,6 +31,7 @@ public class CharacterPlayer : Character
         Vector3 temp = alley.GetTargetAlley().gameObject.transform.localPosition;
         temp.y = alley.GetCurrentStreet().StreetYOffset;
         gameObject.transform.localPosition = temp;
+        SmoothCamera.lockX = true;
     }
 
     IInteractable CurrentClosestInteractable = null;
