@@ -42,6 +42,7 @@ public class InputManager : ManagerBase
             {
                 CharacterPlayer.instance.TryPickupBodyPart();
                 CharacterPlayer.instance.TryStabNPC();
+                CharacterPlayer.instance.TryRummageCorpseContainer();
             }
 
             if (Input.GetKeyDown(KeyCode.E))

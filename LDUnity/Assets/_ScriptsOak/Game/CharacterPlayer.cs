@@ -23,15 +23,11 @@ public class CharacterPlayer : Character
     {
 
     }
-
     public void TransitionToStreet(Alley alley)
     {
         gameObject.transform.SetParent(alley.GetTargetAlley().GetCurrentStreet().gameObject.transform);
-
-        //SetPosition(alley.GetTargetAlley().gameObject.transform.position);
         Vector3 temp = alley.GetTargetAlley().gameObject.transform.localPosition;
         temp.y = alley.GetCurrentStreet().StreetYOffset;
-        //temp.x = 0;
         gameObject.transform.localPosition = temp;
     }
 
@@ -56,6 +52,11 @@ public class CharacterPlayer : Character
             if (bodyPart != null)
             {
                 Debug.Log("Player is near Body Part: " + bodyPart);
+            }
+            CorpseContainer corpseContainer = colliders[i].gameObject.GetComponent<CorpseContainer>();
+            if (corpseContainer != null)
+            {
+                Debug.Log("Player is near Corpse Container: " + corpseContainer);
             }
         }
     }
@@ -93,6 +94,21 @@ public class CharacterPlayer : Character
         }
     }
 
+    public void TryRummageCorpseContainer()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 1.0f);
+
+        for (int i = 0; i < colliders.Length; ++i)
+        {
+            CorpseContainer container = colliders[i].gameObject.GetComponent<CorpseContainer>();
+            if (container != null)
+            {
+                Debug.Log("Player is gonna rummage Container: " + container);
+                container.Rummage();
+            }
+        }
+    }
+
     public void TryPickupBodyPart()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 1.0f);
@@ -126,8 +142,6 @@ public class CharacterPlayer : Character
         }
         else
         {
-
-
             //check if there is a corpse.
             Corpse corpse = EntityManager.Instance.GetCorpseWithinRange(this.transform.position);
             if (corpse != null)
