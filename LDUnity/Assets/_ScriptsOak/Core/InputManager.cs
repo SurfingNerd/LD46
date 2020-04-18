@@ -50,6 +50,8 @@ public class InputManager : ManagerBase
             {
                 CharacterPlayer.instance.SetCurrentDirection(EDirection.Neutral);
             }
+            
+            
         }
     }
 
