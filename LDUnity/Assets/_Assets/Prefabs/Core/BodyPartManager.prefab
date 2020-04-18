@@ -45,3 +45,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BodyPartList:
   - {fileID: 1551816507919029202, guid: 17a1a909acaa8904dbff823f619d1ab1, type: 3}
+  CorpseTemplateList:
+  - {fileID: 1299983242284752614, guid: 4ffa1d218e65efb4daa7129bbdb65326, type: 3}

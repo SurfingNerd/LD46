@@ -9,6 +9,9 @@ public class BodyPartManager : ManagerBase
     [SerializeField]
     List<BodyPartWorld> BodyPartList = new List<BodyPartWorld>();
 
+    [SerializeField]
+    List<Corpse> CorpseTemplateList = new List<Corpse>();
+
 
     Dictionary<EBodyPart, List<BodyPartWorld>> BodyPartDictionary = new Dictionary<EBodyPart, List<BodyPartWorld>>();
 
@@ -39,6 +42,11 @@ public class BodyPartManager : ManagerBase
     public BodyPartWorld GetBodyPartTemplateByType(EBodyPart type)
     {
         return BodyPartDictionary[type][Random.Range(0, BodyPartDictionary[type].Count)];
+    }
+
+    public Corpse GetRandomCorpseTemplate()
+    {
+        return CorpseTemplateList[Random.Range(0, CorpseTemplateList.Count)];
     }
 
 }

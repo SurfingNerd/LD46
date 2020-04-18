@@ -29,6 +29,8 @@ public class CharacterNPC : Character
     [SerializeField]
     float ThinkCooldownMax;
 
+
+
     EAction CurrentAction;
 
     float CurrentThinkCooldown = 0.0f;
@@ -62,10 +64,17 @@ public class CharacterNPC : Character
         bIsDying = true;
         CurrentDirection = Vector3.zero;
 
-        Instantiate(BodyPartManager.Instance.GetBodyPartTemplateByType(DesiredPart), 
-            gameObject.transform.position, 
-            new Quaternion(), 
+        //Instantiate(BodyPartManager.Instance.GetBodyPartTemplateByType(DesiredPart), 
+        //    gameObject.transform.position, 
+        //    new Quaternion(), 
+        //    gameObject.transform.parent);
+
+        Instantiate(BodyPartManager.Instance.GetRandomCorpseTemplate(),
+            gameObject.transform.position,
+            new Quaternion(),
             gameObject.transform.parent);
+
+        Destroy(gameObject);
     }
 
     public override void Tick()

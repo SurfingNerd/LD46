@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1535705875673023879}
   - component: {fileID: 1535705875673023872}
-  - component: {fileID: 4932619307773500011}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -48,17 +47,5 @@ MonoBehaviour:
   - {fileID: 7226436046277045223, guid: 9aaff4cb4b486b44fba05b79e429595d, type: 3}
   - {fileID: 8279606182374406928, guid: da18d5b681fb10e4d8fd676eb6cac817, type: 3}
   - {fileID: 8712659011683335098, guid: cc71dc8b4a5924a46add81c4b636e288, type: 3}
+  - {fileID: 5391382840619682399, guid: 0734dd0df6dcc26c1bc32da890a21706, type: 3}
   GameManagerTemplates: []
---- !u!114 &4932619307773500011
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1535705875673023878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ce68cfc3f60e723fbbb8de767511e63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  npcCorpseDetectionDistance: 3

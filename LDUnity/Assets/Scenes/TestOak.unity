@@ -537,7 +537,7 @@ GameObject:
   - component: {fileID: 451994614}
   - component: {fileID: 451994615}
   m_Layer: 0
-  m_Name: Street1
+  m_Name: StreetMiddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -566,6 +566,7 @@ Transform:
   - {fileID: 856913956}
   - {fileID: 1217832417}
   - {fileID: 890554964}
+  - {fileID: 554775712}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -663,6 +664,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &554775712 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7419234350176961003, guid: f82187c335009c246a56e55efe4b5bb9,
+    type: 3}
+  m_PrefabInstance: {fileID: 7419234349624440139}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &585890183
 GameObject:
   m_ObjectHideFlags: 0
@@ -1241,7 +1248,7 @@ GameObject:
   - component: {fileID: 837914094}
   - component: {fileID: 837914093}
   m_Layer: 0
-  m_Name: Street1 (1)
+  m_Name: StreetBelow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1909,7 +1916,7 @@ GameObject:
   - component: {fileID: 1320570810}
   - component: {fileID: 1320570809}
   m_Layer: 0
-  m_Name: Street1 (2)
+  m_Name: StreetAbove
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3032,6 +3039,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3390343f2fe7eac4bb5594e34ed24c76, type: 3}
+--- !u!1001 &7419234349624440139
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 451994614}
+    m_Modifications:
+    - target: {fileID: 7419234350176960980, guid: f82187c335009c246a56e55efe4b5bb9,
+        type: 3}
+      propertyPath: m_Name
+      value: CorpseHideout
+      objectReference: {fileID: 0}
+    - target: {fileID: 7419234350176961003, guid: f82187c335009c246a56e55efe4b5bb9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.059999943
+      objectReference: {fileID: 0}
+    - target: {fileID: 7419234350176961003, guid: f82187c335009c246a56e55efe4b5bb9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.516027
+      objectReference: {fileID: 0}
+    - target: {fileID: 7419234350176961003, guid: f82187c335009c246a56e55efe4b5bb9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7419234350176961003, guid: f82187c335009c246a56e55efe4b5bb9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7419234350176961003, guid: f82187c335009c246a56e55efe4b5bb9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7419234350176961003, guid: f82187c335009c246a56e55efe4b5bb9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7419234350176961003, guid: f82187c335009c246a56e55efe4b5bb9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7419234350176961003, guid: f82187c335009c246a56e55efe4b5bb9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7419234350176961003, guid: f82187c335009c246a56e55efe4b5bb9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7419234350176961003, guid: f82187c335009c246a56e55efe4b5bb9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7419234350176961003, guid: f82187c335009c246a56e55efe4b5bb9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f82187c335009c246a56e55efe4b5bb9, type: 3}
 --- !u!1001 &7442684148204191672
 PrefabInstance:
   m_ObjectHideFlags: 0
