@@ -28,9 +28,16 @@ public class cutter : MonoBehaviour {
 		}
 		if(Input.GetMouseButtonUp(0)){
 			lr.enabled = false;
+			//<slice>
 			var k = getMouseWorldPos();
-			k.z = Mathf.Atan2(src.y-k.y, src.x-k.x)*Mathf.Rad2Deg+90;
+
+			var rp = (src+k)*.5f-currentBody.transform.position;
+			k.z = Mathf.Atan2(src.y-k.y, src.x-k.x)*Mathf.Rad2Deg;
+			if(Mathf.DeltaAngle(Mathf.Atan2(rp.y, rp.x)*Mathf.Rad2Deg,k.z)>0)k.z+=180;
+
+			k.z += 90;
 			currentBody.Slice(k);
+			//</slice>
 		}
 		
 		if(lr.enabled)	lr.SetPosition(1,getMouseWorldPos());
