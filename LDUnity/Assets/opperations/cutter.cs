@@ -20,8 +20,14 @@ public class cutter : MonoBehaviour {
 
 	//<click & drag>
 	void Update() {
-		if (Input.GetMouseButtonDown(0))lr.SetPosition(0,getMouseWorldPos());
-		lr.enabled = Input.GetMouseButton(0);
+		if (Input.GetMouseButtonDown(0)){
+			lr.SetPosition(0,getMouseWorldPos());
+			lr.enabled = true;
+		}
+		if(Input.GetMouseButtonUp(0)){
+			lr.enabled = false;
+		}
+		
 		if(lr.enabled)	lr.SetPosition(1,getMouseWorldPos());
 	}
 	//</click & drag>
