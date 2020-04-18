@@ -7,6 +7,7 @@ public class cutter : MonoBehaviour {
 	void Start() {
 		lr = GetComponent<LineRenderer>();
 	}
+	/*<2 click>
 	bool lineOn = false;
 	void Update() {
 		if (Input.GetMouseButtonDown(0)){
@@ -15,6 +16,15 @@ public class cutter : MonoBehaviour {
 		}
 		if(lineOn)	lr.SetPosition(1,getMouseWorldPos());
 	}
+	</2 click>*/
+
+	//<click & drag>
+	void Update() {
+		if (Input.GetMouseButtonDown(0))lr.SetPosition(0,getMouseWorldPos());
+		lr.enabled = Input.GetMouseButton(0);
+		if(lr.enabled)	lr.SetPosition(1,getMouseWorldPos());
+	}
+	//</click & drag>
 	public static Vector3 getMouseWorldPos(){
 		var p = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		p.z=0;
