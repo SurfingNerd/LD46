@@ -73,4 +73,9 @@ public class Character : MonoBehaviour
     {
 
     }
+
+    public Vector3 GetPosition()
+    {
+        return gameObject.transform.position;
+    }
 }

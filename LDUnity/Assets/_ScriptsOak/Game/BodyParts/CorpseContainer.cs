@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BodyPartWorld : MonoBehaviour, IInteractable
+public class CorpseContainer : MonoBehaviour, IInteractable
 {
     [SerializeField]
-    public EBodyPart PartType;
+    Sprite InteractIcon;
+
+    public bool bIsRummaged = false;
 
     // Start is called before the first frame update
     void Start()
@@ -19,21 +21,24 @@ public class BodyPartWorld : MonoBehaviour, IInteractable
         
     }
 
-    public void HandlePickedUp()
-    {
-        Debug.Log("Player picked up Body Part: " + PartType);
-
-        Destroy(gameObject);
-    }
-
     public void Interact()
     {
+        if (bIsRummaged)
+        {
+            return;
+        }
 
+        Instantiate(BodyPartManager.Instance.GetRandomCorpseTemplate(),
+            gameObject.transform.position,
+            new Quaternion(),
+            gameObject.transform.parent);
+
+        bIsRummaged = true;
     }
 
     public Sprite GetInteractIcon()
     {
-        return null;
+        return InteractIcon;
     }
 
     public Vector3 GetPosition()
