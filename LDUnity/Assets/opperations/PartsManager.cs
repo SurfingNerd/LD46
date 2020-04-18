@@ -8,6 +8,7 @@ public class PartsManager : MonoBehaviour{
 	private SpriteRenderer sr;
 	private static int layerIndex = 99;
 	private bool started = false;
+	
 	void Start() {
 		if(!started){	started = true;
 			sr = GetComponent<SpriteRenderer>();
@@ -22,36 +23,42 @@ public class PartsManager : MonoBehaviour{
 			}
 
 			if(init0){
-				lastPos = transform.position;
-				lastRot = transform.eulerAngles;
+				lastPos = targetPos = transform.position;
+				// lastRot = transform.eulerAngles;
 			}
 		}
 	}
-	public void Slice(Vector3 slice){ //offset.xy, rot
+	public PartsManager Slice(Vector3 slice){ //offset.xy, rot
 		var mask = new GameObject(){name="mask"};
 		mask.transform.parent = transform;
 
 		mask.transform.position = new Vector3(slice.x,slice.y,0);
 		mask.transform.eulerAngles = new Vector3(0,0,slice.z);
 
+		PartsManager outPart = null;
 		if(root){
-			var part = Instantiate(gameObject,transform.position,transform.rotation).GetComponent<PartsManager>();
+			outPart = Instantiate(gameObject,transform.position,transform.rotation).GetComponent<PartsManager>();
 
-			part.gameObject.name = "bodypart";
-			part.root = false;
-			part.sprite = sprite;
+			outPart.gameObject.name = "bodypart";
+			outPart.root = false;
+			outPart.sprite = sprite;
 
-			part.init0 = false;
-			part.lastPos = transform.position+(transform.position-new Vector3(slice.x,slice.y,0)).normalized*0.25f;
+			outPart.init0 = true;
+			// outPart.lastPos = transform.position+(transform.position-new Vector3(slice.x,slice.y,0)).normalized*0.2f;
+			// outPart.lastRot = new Vector3(0,0,Random.value);
 
-			part.Start();
+			outPart.posOffset = new Vector3(slice.x-transform.position.x,slice.y-transform.position.y,0);
+
+			outPart.Start();
 			slice.z+=180;
-			part.Slice(slice);
+			outPart.Slice(slice);
 		}
 
 		var sm = mask.AddComponent<SpriteMask>();
 		setupMask(sm,sr.sortingOrder,sr.sortingLayerID);
 		sm.sprite = Resources.Load<Sprite>("mask");
+
+		return outPart;
 	}
 
 	private void setupMask(SpriteMask sm, int order, int layerID){
@@ -61,13 +68,24 @@ public class PartsManager : MonoBehaviour{
 		sm.backSortingOrder = order-1;
 	}
 
-	public Vector3 lastPos, lastRot;
+	public Vector3 lastPos, targetPos, posOffset;//, lastRot;
 	public bool init0 = true;
-	const float drag = 0.2f;
+	const float drag = 0.8f;
 	void FixedUpdate(){
-		var delta = transform.position - lastPos;
-		transform.position+=delta;
-		lastPos=transform.position-delta*(1-drag);
+		setPos(getPos()+(targetPos-getPos())*0.1f);
+		var delta = getPos() - lastPos;
+		setPos(getPos()+delta);
+		lastPos=getPos()-delta*drag;
+
+		// delta = transform.eulerAngles - lastRot;
+		// transform.eulerAngles+=delta;
+		// lastRot=transform.eulerAngles-delta*drag;
+	}
+	public Vector3 getPos(){
+		return transform.position+posOffset;
+	}
+	public void setPos(Vector3 pos){
+		transform.position=pos-posOffset;
 	}
 
 }
