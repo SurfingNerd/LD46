@@ -38,6 +38,12 @@ public class InputManager : ManagerBase
                 CharacterPlayer.instance.TryEnterAlley();
             }
 
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                CharacterPlayer.instance.TryPickupBodyPart();
+                CharacterPlayer.instance.TryStabNPC();
+            }
+
             if (Input.GetKeyDown(KeyCode.E))
             {
                 CharacterPlayer.instance.TryHandleCorpse();

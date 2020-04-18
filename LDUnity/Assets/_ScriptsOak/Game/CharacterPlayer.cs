@@ -27,7 +27,7 @@ public class CharacterPlayer : Character
     public void TransitionToStreet(Alley alley)
     {
         gameObject.transform.SetParent(alley.GetTargetAlley().GetCurrentStreet().gameObject.transform);
-        
+
         //SetPosition(alley.GetTargetAlley().gameObject.transform.position);
         Vector3 temp = alley.GetTargetAlley().gameObject.transform.localPosition;
         temp.y = alley.GetCurrentStreet().StreetYOffset;
@@ -40,15 +40,22 @@ public class CharacterPlayer : Character
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 1.0f);
 
-        for(int i = 0; i < colliders.Length; ++i)
+        for (int i = 0; i < colliders.Length; ++i)
         {
             Alley alley = colliders[i].gameObject.GetComponent<Alley>();
-            if(alley != null)
+            if (alley != null)
             {
                 Debug.Log("Player is near alley: " + alley);
-                //alley.Interact();
-                break;
-
+            }
+            CharacterNPC npc = colliders[i].gameObject.GetComponent<CharacterNPC>();
+            if (npc != null)
+            {
+                Debug.Log("Player is near NPC: " + npc);
+            }
+            BodyPartWorld bodyPart = colliders[i].gameObject.GetComponent<BodyPartWorld>();
+            if (bodyPart != null)
+            {
+                Debug.Log("Player is near Body Part: " + bodyPart);
             }
         }
     }
@@ -62,8 +69,41 @@ public class CharacterPlayer : Character
             Alley alley = colliders[i].gameObject.GetComponent<Alley>();
             if (alley != null)
             {
+                Debug.Log("Player is transitioning from street: " + alley.GetCurrentStreet() + "using Alley : " + alley +
+                    "; to street: " + alley.GetTargetAlley().GetCurrentStreet() + "to Alley: " + alley.GetTargetAlley() + ";");
+
                 alley.Interact();
                 break;
+            }
+        }
+    }
+
+    public void TryStabNPC()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 1.0f);
+
+        for (int i = 0; i < colliders.Length; ++i)
+        {
+            CharacterNPC npc = colliders[i].gameObject.GetComponent<CharacterNPC>();
+            if (npc != null)
+            {
+                Debug.Log("Player is gonna stab NPC: " + npc);
+                npc.HandleGetStabbed();
+            }
+        }
+    }
+
+    public void TryPickupBodyPart()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 1.0f);
+
+        for (int i = 0; i < colliders.Length; ++i)
+        {
+            BodyPartWorld bodyPart = colliders[i].gameObject.GetComponent<BodyPartWorld>();
+            if (bodyPart != null)
+            {
+                Debug.Log("Player is gonna pick up Body Part: " + bodyPart.PartType);
+                bodyPart.HandlePickedUp();
             }
         }
     }
@@ -86,8 +126,8 @@ public class CharacterPlayer : Character
         }
         else
         {
-            
-            
+
+
             //check if there is a corpse.
             Corpse corpse = EntityManager.Instance.GetCorpseWithinRange(this.transform.position);
             if (corpse != null)
@@ -96,9 +136,9 @@ public class CharacterPlayer : Character
                 {
                     throw new NotImplementedException("Holding already a Corpse");
                 }
-                
+
                 //check the nearest hideout, maybe we picked the corpse just from this hideout.
-                var corpseHideout =  EntityManager.Instance.GetCorpseHideoutWithinRange(this.transform.position, true);
+                var corpseHideout = EntityManager.Instance.GetCorpseHideoutWithinRange(this.transform.position, true);
                 if (corpseHideout != null && corpseHideout.currentCorpse == corpse)
                 {
                     corpseHideout.currentCorpse = null;
@@ -106,14 +146,12 @@ public class CharacterPlayer : Character
 
                 corpse.isHidden = false;
                 currentCorpse = corpse;
-            
+
                 // using parenting here for moving corpse.
                 // might be suboptimal for animation.
                 currentCorpse.transform.SetParent(this.transform);
             }
         }
-        
-        
 
     }
 }
