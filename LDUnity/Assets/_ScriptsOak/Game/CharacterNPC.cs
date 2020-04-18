@@ -106,7 +106,7 @@ public class CharacterNPC : Character
                 break;
             case EAction.Wander:
                 int trolo = Random.Range(0, 2);
-                if(trolo == 0)
+                if (trolo == 0)
                 {
                     SetCurrentDirection(EDirection.Left);
                 }
@@ -123,6 +123,14 @@ public class CharacterNPC : Character
         }
         CurrentTaskDuration = Random.Range(1.0f, 2.5f);
 
+    }
 
+    public void ActivateFoundCorpseText(bool value)
+    {
+        var foundCorpse = this.transform.Find("found_corpse");
+        if(foundCorpse != null)
+        {
+            foundCorpse.gameObject.SetActive(value);
+        }
     }
 }
