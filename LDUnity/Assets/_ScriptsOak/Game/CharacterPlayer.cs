@@ -10,6 +10,9 @@ public class CharacterPlayer : Character
 
     private Corpse currentCorpse;
 
+
+    bool bIsHiding = false;
+
     private void Awake()
     {
         instance = this;
@@ -40,7 +43,7 @@ public class CharacterPlayer : Character
 
         CurrentClosestInteractable = EntityManager.Instance.GetClosestInteractableWithinRange(gameObject.transform.position);
 
-        if(CurrentClosestInteractable != null)
+        if (CurrentClosestInteractable != null)
         {
             Debug.Log("Player is near interactable: " + CurrentClosestInteractable);
         }
@@ -62,6 +65,14 @@ public class CharacterPlayer : Character
         currentCorpse = corpse;
     }
 
+    public void DropCorpse()
+    {
+        if(currentCorpse != null)
+        {
+            currentCorpse.transform.SetParent(gameObject.transform.parent);
+            currentCorpse = null;
+        }
+    }
     public void TryInteract()
     {
         //IInteractable closestInteractable = EntityManager.Instance.GetClosestInteractableWithinRange(gameObject.transform.position);
@@ -104,56 +115,74 @@ public class CharacterPlayer : Character
         return currentCorpse;
     }
 
-    public void TryHandleCorpse()
-    {
-        if (currentCorpse != null)
-        {
-            //find a hideout if available.
+    //public void TryHandleCorpse()
+    //{
+    //    if (currentCorpse != null)
+    //    {
+    //        //find a hideout if available.
 
-            CorpseHideout hideout = EntityManager.Instance.GetCorpseHideoutWithinRange(this.transform.position, false);
+    //        Hideout hideout = EntityManager.Instance.GetCorpseHideoutWithinRange(this.transform.position, false);
 
-            if (hideout != null)
-            {
-                hideout.currentCorpse = currentCorpse;
-                hideout.currentCorpse.isHidden = true;
-                currentCorpse.transform.SetParent(hideout.transform);
-                currentCorpse = null;
-            }
-        }
-        else
-        {
-            //check if there is a corpse.
-            Corpse corpse = EntityManager.Instance.GetCorpseWithinRange(this.transform.position);
-            if (corpse != null)
-            {
-                if (currentCorpse != null)
-                {
-                    throw new NotImplementedException("Holding already a Corpse");
-                }
+    //        if (hideout != null)
+    //        {
+    //            hideout.currentCorpse = currentCorpse;
+    //            hideout.currentCorpse.isHidden = true;
+    //            currentCorpse.transform.SetParent(hideout.transform);
+    //            currentCorpse = null;
+    //        }
+    //    }
+    //    else
+    //    {
+    //        //check if there is a corpse.
+    //        Corpse corpse = EntityManager.Instance.GetCorpseWithinRange(this.transform.position);
+    //        if (corpse != null)
+    //        {
+    //            if (currentCorpse != null)
+    //            {
+    //                throw new NotImplementedException("Holding already a Corpse");
+    //            }
 
-                //check the nearest hideout, maybe we picked the corpse just from this hideout.
-                var corpseHideout = EntityManager.Instance.GetCorpseHideoutWithinRange(this.transform.position, true);
-                if (corpseHideout != null && corpseHideout.currentCorpse == corpse)
-                {
-                    corpseHideout.currentCorpse = null;
-                }
+    //            //check the nearest hideout, maybe we picked the corpse just from this hideout.
+    //            var corpseHideout = EntityManager.Instance.GetCorpseHideoutWithinRange(this.transform.position, true);
+    //            if (corpseHideout != null && corpseHideout.currentCorpse == corpse)
+    //            {
+    //                corpseHideout.currentCorpse = null;
+    //            }
 
-                corpse.isHidden = false;
-                currentCorpse = corpse;
+    //            corpse.isHidden = false;
+    //            currentCorpse = corpse;
 
-                // using parenting here for moving corpse.
-                // might be suboptimal for animation.
-                currentCorpse.transform.SetParent(this.transform);
-            }
-        }
+    //            // using parenting here for moving corpse.
+    //            // might be suboptimal for animation.
+    //            currentCorpse.transform.SetParent(this.transform);
+    //        }
+    //    }
 
-    }
+    //}
 
     public void DropOffCorpseAtHome()
     {
         if (currentCorpse != null)
         {
             Destroy(currentCorpse.gameObject);
+        }
+    }
+
+    public bool IsHiding()
+    {
+        return bIsHiding;
+    }
+
+    public void ToggleHiding()
+    {
+        bIsHiding = !bIsHiding;
+        if (bIsHiding)
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            gameObject.SetActive(true);
         }
     }
 }

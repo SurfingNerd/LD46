@@ -51,19 +51,31 @@ public class InputManager : ManagerBase
                 CharacterPlayer.instance.TryInteract();
             }
 
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetKeyDown(KeyCode.F))
             {
-                CharacterPlayer.instance.SetCurrentDirection(EDirection.Left);
+                CharacterPlayer.instance.DropCorpse();
             }
-            else if (Input.GetKey(KeyCode.D))
+
+            if (CharacterPlayer.instance.IsHiding())
             {
-                CharacterPlayer.instance.SetCurrentDirection(EDirection.Right);
+                CharacterPlayer.instance.SetCurrentDirection(EDirection.Neutral);
+
             }
             else
             {
-                CharacterPlayer.instance.SetCurrentDirection(EDirection.Neutral);
+                if (Input.GetKey(KeyCode.A))
+                {
+                    CharacterPlayer.instance.SetCurrentDirection(EDirection.Left);
+                }
+                else if (Input.GetKey(KeyCode.D))
+                {
+                    CharacterPlayer.instance.SetCurrentDirection(EDirection.Right);
+                }
+                else
+                {
+                    CharacterPlayer.instance.SetCurrentDirection(EDirection.Neutral);
+                }
             }
-
 
         }
     }

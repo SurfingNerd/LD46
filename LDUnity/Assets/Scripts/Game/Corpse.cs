@@ -23,11 +23,11 @@ public class Corpse : MonoBehaviour, IInteractable
             }
 
             //check the nearest hideout, maybe we picked the corpse just from this hideout.
-            var corpseHideout = EntityManager.Instance.GetCorpseHideoutWithinRange(this.transform.position, true);
-            if (corpseHideout != null && corpseHideout.currentCorpse == this)
-            {
-                corpseHideout.currentCorpse = null;
-            }
+            //var corpseHideout = EntityManager.Instance.GetCorpseHideoutWithinRange(this.transform.position, true);
+            //if (corpseHideout != null && corpseHideout.currentCorpse == this)
+            //{
+            //    corpseHideout.currentCorpse = null;
+            //}
 
             isHidden = false;
             CharacterPlayer.instance.SetCurrentCorpse(this);
@@ -38,15 +38,15 @@ public class Corpse : MonoBehaviour, IInteractable
         }
         else
         {
-            CorpseHideout hideout = EntityManager.Instance.GetCorpseHideoutWithinRange(this.transform.position, false);
+            //Hideout hideout = EntityManager.Instance.GetCorpseHideoutWithinRange(this.transform.position, false);
 
-            if (hideout != null)
-            {
-                hideout.currentCorpse = CharacterPlayer.instance.GetCurrentCorpse();
-                hideout.currentCorpse.isHidden = true;
-                CharacterPlayer.instance.GetCurrentCorpse().transform.SetParent(hideout.transform);
-                CharacterPlayer.instance.SetCurrentCorpse(null);
-            }
+            //if (hideout != null)
+            //{
+            //    //hideout.currentCorpse = CharacterPlayer.instance.GetCurrentCorpse();
+            //    //hideout.currentCorpse.isHidden = true;
+            //    CharacterPlayer.instance.GetCurrentCorpse().transform.SetParent(hideout.transform);
+            //    CharacterPlayer.instance.SetCurrentCorpse(null);
+            //}
         }
     }
 

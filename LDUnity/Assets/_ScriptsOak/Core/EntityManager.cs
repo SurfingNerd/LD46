@@ -73,10 +73,10 @@ public class EntityManager : ManagerBase
         return Resources.FindObjectsOfTypeAll<CharacterNPC>();
     }
 
-    public CorpseHideout[] GetCorpseHideouts()
+    public Hideout[] GetCorpseHideouts()
     {
         //todo: cache for performance
-        return Resources.FindObjectsOfTypeAll<CorpseHideout>();
+        return Resources.FindObjectsOfTypeAll<Hideout>();
     }
 
     public IInteractable GetClosestInteractableWithinRange(Vector3 position)
@@ -93,12 +93,12 @@ public class EntityManager : ManagerBase
         return result != null ? result.Corpse : null;
     }
 
-    public CorpseHideout GetCorpseHideoutWithinRange(Vector3 position, bool fullOrEmpty)
-    {
-        var result = GetCorpseHideouts()
-            .Where(x => (x.currentCorpse != null) == fullOrEmpty)
-            .Select(x => new { Hideout = x, distance = Vector3.Distance(x.transform.position, position) })
-            .Where(x => x.distance <= corpsePickupRadius).OrderBy(x => x.distance).FirstOrDefault();
-        return result != null ? result.Hideout : null;
-    }
+    //public Hideout GetCorpseHideoutWithinRange(Vector3 position, bool fullOrEmpty)
+    //{
+    //    var result = GetCorpseHideouts()
+    //        .Where(x => (x.currentCorpse != null) == fullOrEmpty)
+    //        .Select(x => new { Hideout = x, distance = Vector3.Distance(x.transform.position, position) })
+    //        .Where(x => x.distance <= corpsePickupRadius).OrderBy(x => x.distance).FirstOrDefault();
+    //    return result != null ? result.Hideout : null;
+    //}
 }
