@@ -19,6 +19,13 @@ public enum EAction
     MAX,
 }
 
+public enum ENPCStatus
+{
+    Neutral,
+    Alert,
+    Alarmed
+}
+
 public class CharacterNPC : Character, IInteractable
 {
     [SerializeField]
@@ -29,8 +36,16 @@ public class CharacterNPC : Character, IInteractable
     [SerializeField]
     float ThinkCooldownMax;
 
+    [SerializeField]
+    public SpriteRenderer TooltipRenderer;
+
+    [SerializeField]
+    Sprite AlertIcon;
+    [SerializeField]
+    Sprite AlarmedIcon;
 
 
+    ENPCStatus CurrentStatus;
     EAction CurrentAction;
 
     float CurrentThinkCooldown = 0.0f;
@@ -45,7 +60,25 @@ public class CharacterNPC : Character, IInteractable
 
     public override void InitCharacter()
     {
+        SetStatus(ENPCStatus.Neutral);
+    }
 
+    public void SetStatus(ENPCStatus status)
+    {
+        CurrentStatus = status;
+
+        switch (CurrentStatus)
+        {
+            case ENPCStatus.Neutral:
+                TooltipRenderer.sprite = null;
+                break;
+            case ENPCStatus.Alert:
+                TooltipRenderer.sprite = AlertIcon;
+                break;
+            case ENPCStatus.Alarmed:
+                TooltipRenderer.sprite = AlarmedIcon;
+                break;
+        }
     }
 
     public void HandleGetStabbed()
