@@ -31,11 +31,11 @@ public class InputManager : ManagerBase
         {
             if (Input.GetKeyDown(KeyCode.W))
             {
-
+                CharacterPlayer.instance.TryEnterAlley();
             }
             if (Input.GetKeyDown(KeyCode.S))
             {
-
+                CharacterPlayer.instance.TryEnterAlley();
             }
 
             if (Input.GetKey(KeyCode.A))

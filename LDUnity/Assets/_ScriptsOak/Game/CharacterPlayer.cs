@@ -21,5 +21,47 @@ public class CharacterPlayer : Character
 
     }
 
+    public void TransitionToStreet(Alley alley)
+    {
+        gameObject.transform.SetParent(alley.GetTargetAlley().GetCurrentStreet().gameObject.transform);
+        
+        //SetPosition(alley.GetTargetAlley().gameObject.transform.position);
+        Vector3 temp = alley.GetTargetAlley().gameObject.transform.localPosition;
+        temp.y = alley.GetCurrentStreet().StreetYOffset;
+        //temp.x = 0;
+        gameObject.transform.localPosition = temp;
+    }
 
+    public override void Tick()
+    {
+
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 1.0f);
+
+        for(int i = 0; i < colliders.Length; ++i)
+        {
+            Alley alley = colliders[i].gameObject.GetComponent<Alley>();
+            if(alley != null)
+            {
+                Debug.Log("Player is near alley: " + alley);
+                //alley.Interact();
+                break;
+
+            }
+        }
+    }
+
+    public void TryEnterAlley()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 1.0f);
+
+        for (int i = 0; i < colliders.Length; ++i)
+        {
+            Alley alley = colliders[i].gameObject.GetComponent<Alley>();
+            if (alley != null)
+            {
+                alley.Interact();
+                break;
+            }
+        }
+    }
 }
