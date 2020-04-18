@@ -38,6 +38,17 @@ public class InputManager : ManagerBase
                 CharacterPlayer.instance.TryEnterAlley();
             }
 
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                CharacterPlayer.instance.TryPickupBodyPart();
+                CharacterPlayer.instance.TryStabNPC();
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                CharacterPlayer.instance.TryHandleCorpse();
+            }
+
             if (Input.GetKey(KeyCode.A))
             {
                 CharacterPlayer.instance.SetCurrentDirection(EDirection.Left);
@@ -50,6 +61,8 @@ public class InputManager : ManagerBase
             {
                 CharacterPlayer.instance.SetCurrentDirection(EDirection.Neutral);
             }
+            
+            
         }
     }
 
