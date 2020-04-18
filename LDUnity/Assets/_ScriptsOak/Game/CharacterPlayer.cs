@@ -43,9 +43,11 @@ public class CharacterPlayer : Character
             if(alley != null)
             {
                 Debug.Log("Player is near alley: " + alley);
-                //alley.Interact();
-                break;
-
+            }
+            CharacterNPC npc = colliders[i].gameObject.GetComponent<CharacterNPC>();
+            if(npc != null)
+            {
+                Debug.Log("Player is near NPC: " + npc);
             }
         }
     }
@@ -59,8 +61,26 @@ public class CharacterPlayer : Character
             Alley alley = colliders[i].gameObject.GetComponent<Alley>();
             if (alley != null)
             {
+                Debug.Log("Player is transitioning from street: " +alley.GetCurrentStreet() + "using Alley : " + alley + 
+                    "; to street: " + alley.GetTargetAlley().GetCurrentStreet() + "to Alley: " + alley.GetTargetAlley() + ";");
+
                 alley.Interact();
                 break;
+            }
+        }
+    }
+
+    public void TryStabNPC()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 1.0f);
+
+        for (int i = 0; i < colliders.Length; ++i)
+        {
+            CharacterNPC npc = colliders[i].gameObject.GetComponent<CharacterNPC>();
+            if (npc != null)
+            {
+                Debug.Log("Player is gonna stab NPC: " + npc);
+                npc.HandleGetStabbed();
             }
         }
     }

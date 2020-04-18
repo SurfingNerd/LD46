@@ -38,6 +38,11 @@ public class InputManager : ManagerBase
                 CharacterPlayer.instance.TryEnterAlley();
             }
 
+            if(Input.GetKeyDown(KeyCode.F))
+            {
+                CharacterPlayer.instance.TryStabNPC();
+            }
+
             if (Input.GetKey(KeyCode.A))
             {
                 CharacterPlayer.instance.SetCurrentDirection(EDirection.Left);
