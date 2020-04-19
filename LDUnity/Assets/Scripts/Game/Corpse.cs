@@ -157,7 +157,7 @@ public class Corpse : MonoBehaviour, IInteractable
         }
     }
 
-    public int GetStreetSpriteSortComponent()
+    public int GetStreetSpriteSortIndex()
     {
         StreetSpriteSort sort = GetComponent<StreetSpriteSort>();
 

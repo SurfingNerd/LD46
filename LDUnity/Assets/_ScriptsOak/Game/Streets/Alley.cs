@@ -58,7 +58,7 @@ public class Alley : MonoBehaviour, IInteractable
         return EPlayerAction.Transition;
     }
 
-    public int GetStreetSpriteSortComponent()
+    public int GetStreetSpriteSortIndex()
     {
         StreetSpriteSort sort = GetComponent<StreetSpriteSort>();
 
