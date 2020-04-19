@@ -38,7 +38,7 @@ public class Corpse : MonoBehaviour, IInteractable
         {
             DecayLevel = EDecayLevel.Fresh;
         }
-        else if (Decay < 0.7f)
+        else if (Decay < 0.9f)
         {
             DecayLevel = EDecayLevel.Medium;
         }
@@ -104,7 +104,18 @@ public class Corpse : MonoBehaviour, IInteractable
     // Start is called before the first frame update
     void Start()
     {
-
+        switch (DecayLevel)
+        {
+            case EDecayLevel.Fresh:
+                Decay = 0.0f;
+                break;
+            case EDecayLevel.Medium:
+                Decay = 0.3f;
+                break;
+            case EDecayLevel.WellDone:
+                Decay = 0.9f;
+                break;
+        }
     }
 
     // Update is called once per frame
