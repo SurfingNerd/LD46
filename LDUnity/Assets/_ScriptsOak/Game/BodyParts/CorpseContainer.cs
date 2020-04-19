@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CorpseContainer : MonoBehaviour, IInteractable
+public class CorpseContainer : MonoBehaviour
 {
     [SerializeField]
     Sprite InteractIcon;

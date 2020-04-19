@@ -24,7 +24,7 @@ public class Alley : MonoBehaviour, IInteractable
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void Interact()
@@ -51,5 +51,10 @@ public class Alley : MonoBehaviour, IInteractable
     public Vector3 GetPosition()
     {
         return gameObject.transform.position;
+    }
+
+    public EPlayerAction GetPlayerActionType()
+    {
+        return EPlayerAction.Transition;
     }
 }

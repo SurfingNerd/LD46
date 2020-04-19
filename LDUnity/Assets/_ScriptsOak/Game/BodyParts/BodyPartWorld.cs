@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BodyPartWorld : MonoBehaviour, IInteractable
+public class BodyPartWorld : MonoBehaviour
 {
     [SerializeField]
     public EBodyPart PartType;
