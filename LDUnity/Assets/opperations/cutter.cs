@@ -33,21 +33,38 @@ public class cutter : MonoBehaviour {
 				case 2:
 					lr.enabled = false;
 					//<slice>
-					var k = getMouseWorldPos();
-					var rp = (src+k)*.5f-currentBody.transform.position;
-					float rot = Mathf.Atan2(src.y-k.y, src.x-k.x)*Mathf.Rad2Deg;
-					if(Mathf.DeltaAngle(Mathf.Atan2(rp.y, rp.x)*Mathf.Rad2Deg,rot)>0)rot+=180;
-					k=(src+k)*.5f;
-					k.z=rot+90;
-					heldPart=currentBody.Slice(k);
+					//var k = getMouseWorldPos();
+					//var rp = (src+k)*.5f-currentBody.transform.position;
+					//float rot = Mathf.Atan2(src.y-k.y, src.x-k.x)*Mathf.Rad2Deg;
+					//if(Mathf.DeltaAngle(Mathf.Atan2(rp.y, rp.x)*Mathf.Rad2Deg,rot)>0)rot+=180;
+					//k=(src+k)*.5f;
+					//k.z=rot+90;
+					//heldPart=currentBody.Slice(k);
+
 					//</slice>
-					k.z=0;
-					BloodManager.Spurt(heldPart);
-					break;
+					//k.z=0;
+					RaycastHit2D[] hit = Physics2D.RaycastAll(lr.GetPosition(0), lr.GetPosition(1));
+
+
+					if(hit.Length > 0)
+					{
+                        BodyPartSurgery hitBodyPart = hit[0].collider.gameObject.GetComponent<BodyPartSurgery>();
+
+						if(hitBodyPart != null)
+						{
+							Debug.Log("Heureka bitch");
+							Vector3 cutOffset = hit[0].point - new Vector2(hitBodyPart.gameObject.transform.position.x, hitBodyPart.gameObject.transform.position.y);
+                            BloodManager.Spurt(hitBodyPart, cutOffset);
+                        }
+                    }
+
+
+                    break;
 			}
 		}
 		if(lr.enabled) lr.SetPosition(1,getMouseWorldPos());
 		if(heldPart!=null) heldPart.targetPos = getMouseWorldPos();
+
 	}
 	void FixedUpdate() {}
 	
