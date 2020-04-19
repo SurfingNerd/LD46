@@ -183,6 +183,7 @@ public class CharacterNPC : Character
         Debug.Log("state: " + CurrentStatus + "" +
                   "CurrentTaskDuration: " + CurrentTaskDuration.ToString("##.##") + " - " + currentSleepiness.ToString("#.###"));
 
+        float distance = Vector3.Distance(CharacterPlayer.instance.transform.position, this.transform.position);
 
         if (CurrentStatus == ENPCStatus.Alarmed || CurrentStatus == ENPCStatus.Alert)
         {
@@ -192,8 +193,6 @@ public class CharacterNPC : Character
             }
 
             
-            float distance = Vector3.Distance(CharacterPlayer.instance.transform.position, this.transform.position);
-
             if (distance < EntityManager.Instance.npcCorpseDetectionDistance && !CharacterPlayer.instance.IsHiding())
             {
                 lastKnownPosition = CharacterPlayer.instance.transform.position;
@@ -258,65 +257,41 @@ public class CharacterNPC : Character
             }
         }
 
+
+
+        // START: Stuff from EntityManager
         bool foundACorpse = false;
         bool foundPlayerCarryingCorpse = false;
 
-        if (GetComponent<StreetSpriteSort>().street == CharacterPlayer.instance.gameObject.GetComponent<StreetSpriteSort>().street)
+        if (distance < EntityManager.Instance.npcCorpseDetectionDistance)
         {
-            var distance = Vector3.Distance(gameObject.transform.localPosition, CharacterPlayer.instance.gameObject.transform.localPosition);
-
-            if (distance < EntityManager.Instance.npcCorpseDetectionDistance)
+            if (CharacterPlayer.instance.GetCurrentCorpse() != null && !CharacterPlayer.instance.IsHiding())
             {
-                if (CharacterPlayer.instance.GetCurrentCorpse() != null && !CharacterPlayer.instance.IsHiding())
-                {
-                    SetCurrentAction(EAction.Busy);
-                    if ((CharacterPlayer.instance.transform.position - transform.position).normalized.x < 0)
-                    {
-                        SetCurrentDirection(EDirection.Left);
-                    }
-                    else
-                    {
-                        SetCurrentDirection(EDirection.Right);
-                    }
-
-                    if (distance < EntityManager.Instance.npcCorpseDetectionDistance / 4)
-                    {
-                        CharacterPlayer.instance.HandleGetCaught();
-                        SetStatus(ENPCStatus.Aggressive);
-                    }
-                    else if (distance < EntityManager.Instance.npcCorpseDetectionDistance / 2)
-                    {
-                        SetStatus(ENPCStatus.Alarmed);
-                    }
-                    else
-                    {
-                        SetStatus(ENPCStatus.Alert);
-                    }
-                    foundPlayerCarryingCorpse = true;
-                }
-                else if (CharacterPlayer.instance.IsHiding())
-                {
-                    SetStatus(ENPCStatus.Neutral);
-                    SetCurrentAction(EAction.Idle);
-                }
-                ActivateFoundCorpseText(foundACorpse);
-
-                if (AudioManager.Instance != null)
-                {
-                    if (foundPlayerCarryingCorpse)
-                    {
-                        AudioManager.Instance.SwitchMusic(AudioManager.Instance.ClipMusicChase);
-                        //Debug.Log("Player is seen carrying corpse by: " + npc);
-                    }
-                    else
-                    {
-                        AudioManager.Instance.SwitchMusic(AudioManager.Instance.ClipMusicWander);
-                    }
-                }
-                //Debug.LogWarning("Corpse detected!! Distance: " + distance);
+                FollowCharacter(CharacterPlayer.instance);
             }
-            
+            else if (CharacterPlayer.instance.IsHiding())
+            {
+                SetStatus(ENPCStatus.Neutral);
+            }
+
+            foundPlayerCarryingCorpse = true;
+            ActivateFoundCorpseText(foundACorpse);
+
+            if (AudioManager.Instance != null)
+            {
+                if (foundPlayerCarryingCorpse)
+                {
+                    AudioManager.Instance.SwitchMusic(AudioManager.Instance.ClipMusicChase);
+                    //Debug.Log("Player is seen carrying corpse by: " + npc);
+                }
+                else
+                {
+                    AudioManager.Instance.SwitchMusic(AudioManager.Instance.ClipMusicWander);
+                }
+            }
+            //Debug.LogWarning("Corpse detected!! Distance: " + distance);
         }
+        // END: Stuff from EntityManager
 
     }
 
