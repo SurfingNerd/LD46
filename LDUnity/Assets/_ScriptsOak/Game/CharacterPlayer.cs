@@ -46,6 +46,8 @@ public class CharacterPlayer : Character
 
         StreetSpriteSort.PlayerStreetSwapp(sss.street);
 
+        SmoothCamera.camT.transform.parent = transform.parent;
+
         // delta -= transform.position;
         // SmoothCamera.targetPosition.x-=delta.x;
     }
