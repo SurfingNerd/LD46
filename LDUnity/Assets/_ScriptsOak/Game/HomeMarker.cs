@@ -35,4 +35,11 @@ public class HomeMarker : MonoBehaviour, IInteractable
     {
         return gameObject.transform.position;
     }
+
+    public EPlayerAction GetPlayerActionType()
+    {
+        return EPlayerAction.DropOff;
+    }
+
+
 }

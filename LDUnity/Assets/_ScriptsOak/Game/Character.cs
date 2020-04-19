@@ -17,7 +17,7 @@ public class Character : MonoBehaviour
     public Vector3 CurrentDirection;
 
     [SerializeField]
-    float MoveSpeed = 2.0f;
+    protected float MoveSpeed = 2.0f;
 
     // Start is called before the first frame update
 

@@ -36,6 +36,7 @@ public class Alley : MonoBehaviour, IInteractable
 		}
 	}
 
+
 	public void Interact()
 	{
 		StreetManager.Instance.TransitionStreet(this);
@@ -61,6 +62,11 @@ public class Alley : MonoBehaviour, IInteractable
 	{
 		return gameObject.transform.position;
 	}
+
+    public EPlayerAction GetPlayerActionType()
+    {
+        return EPlayerAction.Transition;
+    }
 }
 
 

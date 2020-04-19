@@ -23,10 +23,11 @@ public enum ENPCStatus
 {
     Neutral,
     Alert,
-    Alarmed
+    Alarmed,
+    Aggressive,
 }
 
-public class CharacterNPC : Character, IInteractable
+public class CharacterNPC : Character
 {
     [SerializeField]
     EBodyPart DesiredPart;
@@ -82,6 +83,9 @@ public class CharacterNPC : Character, IInteractable
                 TooltipRenderer.sprite = AlertIcon;
                 break;
             case ENPCStatus.Alarmed:
+                TooltipRenderer.sprite = AlarmedIcon;
+                break;
+            case ENPCStatus.Aggressive:
                 TooltipRenderer.sprite = AlarmedIcon;
                 break;
         }
@@ -144,7 +148,7 @@ public class CharacterNPC : Character, IInteractable
 
     public void Think()
     {
-        CurrentAction = (EAction)Random.Range(0, (int)EAction.MAX);
+        CurrentAction = (EAction)Random.Range(0, (int)EAction.Busy);
 
         switch (CurrentAction)
         {

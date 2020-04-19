@@ -9,4 +9,6 @@ public interface IInteractable
 
     Vector3 GetPosition();
 
+    EPlayerAction GetPlayerActionType();
+
 }
