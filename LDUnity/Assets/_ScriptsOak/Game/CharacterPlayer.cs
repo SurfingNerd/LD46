@@ -305,6 +305,8 @@ public class CharacterPlayer : Character
         if (currentCorpse != null)
         {
             Destroy(currentCorpse.gameObject);
+
+            GameManager.Instance.CompleteLevel();
         }
     }
 

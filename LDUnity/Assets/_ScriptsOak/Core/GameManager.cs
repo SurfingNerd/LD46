@@ -82,5 +82,24 @@ public class GameManager : ManagerBase
         Player = state;
     }
 
+    public Level GetCurrentLevel()
+    {
+        return CurrentLevel;
+    }
 
+    public void CompleteLevel()
+    {
+        CurrentLevel.EndLevel();
+
+        SetNextLevel();
+    }
+
+    void SetNextLevel()
+    {
+        Destroy(CurrentLevel.gameObject);   
+        CurrentLevelIndex++;
+
+        CurrentLevel = Instantiate(ListLevelTemplates[CurrentLevelIndex]);
+        CurrentLevel.StartLevel();
+    }
 }
