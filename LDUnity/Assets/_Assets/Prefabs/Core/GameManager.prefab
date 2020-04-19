@@ -50,3 +50,5 @@ MonoBehaviour:
   - {fileID: 5391382840619682399, guid: 0734dd0df6dcc26c1bc32da890a21706, type: 3}
   - {fileID: 40416788174747033, guid: b5160f22b2979f843b2dc79119a01e28, type: 3}
   GameManagerTemplates: []
+  ListLevels:
+  - {fileID: 5618783733605936300, guid: 4004b31145c7eb241ab84172d93a5823, type: 3}
