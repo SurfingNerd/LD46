@@ -181,7 +181,19 @@ MonoBehaviour:
   CurrentDirection: {x: 0, y: 0, z: 0}
   MoveSpeed: 5
   TooltipRenderer: {fileID: 1834798621650456064}
-  CarryingCorpseSpeedFactor: 0.5
+  CarryingCorpseSpeedFactorMove: 0.5
+  CarryingCorpseSpeedFactorAction: 0.5
+  ListActionDefinitions:
+  - Action: 1
+    ActionRate: 3
+  - Action: 2
+    ActionRate: 0.2
+  - Action: 3
+    ActionRate: 0.7
+  - Action: 4
+    ActionRate: 5
+  - Action: 5
+    ActionRate: 1
 --- !u!114 &1834798622630503165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,5 +231,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 6
