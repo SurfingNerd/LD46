@@ -13,6 +13,14 @@ public enum EPlayerAction
     PickUp,
     Transition,
     DropOff,
+    MAX
+}
+
+[System.Serializable]
+public class PlayerActionDefinition
+{
+    public EPlayerAction Action = EPlayerAction.None;
+    public float ActionRate = 5.0f;
 }
 
 public class CharacterPlayer : Character
@@ -27,7 +35,14 @@ public class CharacterPlayer : Character
     SpriteRenderer TooltipRenderer;
 
     [SerializeField]
-    float CarryingCorpseSpeedFactor = 0.5f;
+    float CarryingCorpseSpeedFactorMove = 0.5f;
+    [SerializeField]
+    float CarryingCorpseSpeedFactorAction = 0.5f;
+
+    [SerializeField]
+    List<PlayerActionDefinition> ListActionDefinitions = new List<PlayerActionDefinition>();
+
+    Dictionary<EPlayerAction, PlayerActionDefinition> ActionDefinitions = new Dictionary<EPlayerAction, PlayerActionDefinition>();
 
 
     bool bIsHiding = false;
@@ -39,6 +54,11 @@ public class CharacterPlayer : Character
     
 
     protected void Start() {
+
+        for(int i = 0; i < ListActionDefinitions.Count; ++i)
+        {
+            ActionDefinitions.Add(ListActionDefinitions[i].Action, ListActionDefinitions[i]);
+        }
         instance = this;
         sss = GetComponent<StreetSpriteSort>();
         StreetSpriteSort.PlayerStreetSwapp(sss.street);
@@ -52,7 +72,7 @@ public class CharacterPlayer : Character
         }
         if (currentCorpse != null)
         {
-            SetPosition(gameObject.transform.position + CurrentDirection * Time.deltaTime * MoveSpeed * CarryingCorpseSpeedFactor);
+            SetPosition(gameObject.transform.position + CurrentDirection * Time.deltaTime * MoveSpeed * CarryingCorpseSpeedFactorMove);
         }
         else
         {
@@ -118,19 +138,11 @@ public class CharacterPlayer : Character
                 CurrentActionProgress = 1.0f;
                 break;
             case EPlayerAction.Hide:
-                CurrentActionProgress += Time.deltaTime * 5.0f;
-                break;
             case EPlayerAction.Inspect:
-                CurrentActionProgress += Time.deltaTime * 5.0f;
-                break;
             case EPlayerAction.PickUp:
-                CurrentActionProgress += Time.deltaTime * 5.0f;
-                break;
             case EPlayerAction.Transition:
-                CurrentActionProgress += Time.deltaTime * 5.0f;
-                break;
             case EPlayerAction.DropOff:
-                CurrentActionProgress += Time.deltaTime * 5.0f;
+                CurrentActionProgress += Time.deltaTime * ActionDefinitions[CurrentAction].ActionRate * (GetCurrentCorpse() != null ? CarryingCorpseSpeedFactorAction : 1.0f);
                 break;
         }
 
