@@ -21,6 +21,8 @@ public class CharacterPlayer : Character
 
     private Corpse currentCorpse;
 
+  	private StreetSpriteSort sss;
+
     [SerializeField]
     SpriteRenderer TooltipRenderer;
 
@@ -29,15 +31,19 @@ public class CharacterPlayer : Character
 
 
     bool bIsHiding = false;
-
+    
     bool bIsCaught = false;
     EPlayerAction CurrentAction = EPlayerAction.None;
     float CurrentActionProgress = 0.0f;
     bool bJustFinishedAction = false;
+    
 
-    private void Awake()
+    protected void Start()
     {
         instance = this;
+        sss = GetComponent<StreetSpriteSort>();
+        StreetSpriteSort.PlayerStreetSwapp(sss.street);
+        base.Start();
     }
     public override void MoveCharacter()
     {
@@ -129,11 +135,21 @@ public class CharacterPlayer : Character
     }
     public void TransitionToStreet(Alley alley)
     {
+    	// var delta = transform.position;
+
         gameObject.transform.SetParent(alley.GetTargetAlley().GetCurrentStreet().gameObject.transform);
         Vector3 temp = alley.GetTargetAlley().gameObject.transform.localPosition;
         temp.y = alley.GetCurrentStreet().StreetYOffset;
+        sss.street = alley.GetTargetAlley().GetCurrentStreet().streetID;
+        if(currentCorpse!=null)currentCorpse.gameObject.GetComponent<StreetSpriteSort>().street = sss.street;
         gameObject.transform.localPosition = temp;
-        SmoothCamera.lockX = true;
+
+        StreetSpriteSort.PlayerStreetSwapp(sss.street);
+
+        SmoothCamera.camT.transform.parent = transform.parent;
+
+        // delta -= transform.position;
+        // SmoothCamera.targetPosition.x-=delta.x;
     }
 
     IInteractable CurrentClosestInteractable = null;
@@ -151,10 +167,10 @@ public class CharacterPlayer : Character
         IInteractable closestInteractable = EntityManager.Instance.GetClosestInteractableWithinRange(gameObject.transform.position);
 
 
-        if (CurrentClosestInteractable != closestInteractable && closestInteractable != null)
-        {
-            Debug.Log("Player is near interactable: " + closestInteractable);
-        }
+        // if (CurrentClosestInteractable != closestInteractable && closestInteractable != null)
+        // {
+        //     Debug.Log("Player is near interactable: " + closestInteractable);
+        // }
 
         CurrentClosestInteractable = closestInteractable;
 

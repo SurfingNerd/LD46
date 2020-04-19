@@ -4,34 +4,26 @@ using UnityEngine;
 
 public class Street : MonoBehaviour
 {
-    [SerializeField]
-    public float StreetYOffset = 1.876028f;
+	[SerializeField]
+	public float StreetYOffset = 1.876028f;
+	public int streetID;
 
-    private const float yParalaxStep = 7;
+	void Update()
+	{
+		var p = transform.position;
+		p.x=SmoothCamera.Parallax(SmoothCamera.camT.position.x,SmoothCamera.camT.position.y,transform.position.y-StreetYOffset);
+		transform.position = p;
+	}
 
-    private static Transform camT;
+	public void Show()
+	{
+		gameObject.SetActive(true);
+	}
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //Hide();
-        camT = Camera.main.transform;
-    }
-
-    void Update()
-    {
-        var p = transform.position;
-        p.x=camT.position.x*(1-Mathf.Pow(2,(camT.position.y-transform.position.y-StreetYOffset)/yParalaxStep));
-        transform.position = p;
-    }
-
-    public void Show()
-    {
-        gameObject.SetActive(true);
-    }
-
-    public void Hide()
-    {
-        gameObject.SetActive(false);
-    }
+	public void Hide()
+	{
+		gameObject.SetActive(false);
+	}
 }
+
+
