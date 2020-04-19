@@ -136,7 +136,7 @@ public class EntityManager : ManagerBase
 
     public IInteractable GetClosestInteractableWithinRange(Vector3 position, int street)
     {
-        var result = GetAllInteractables().Select(x => new { interactable = x, distance = Mathf.Abs(x.GetPosition().x - position.x), streetIndex = x.GetStreetSpriteSortIndex() })
+        var result = GetAllInteractables().Select(x => new { interactable = x, distance = Mathf.Abs(x.GetPosition().x - position.x)+Mathf.Abs(x.GetPosition().y - position.y)*0.2f, streetIndex = x.GetStreetSpriteSortIndex() })
             .Where(x => x.distance <= corpsePickupRadius && x.streetIndex == street).OrderBy(x => x.distance).FirstOrDefault();
         return result != null ? result.interactable : null;
     }
