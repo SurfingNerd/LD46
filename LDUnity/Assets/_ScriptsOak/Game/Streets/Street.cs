@@ -7,23 +7,32 @@ public class Street : MonoBehaviour
 	[SerializeField]
 	public float StreetYOffset = 1.876028f;
 	public int streetID;
-
-	void Update()
-	{
-		var p = transform.position;
-		p.x=SmoothCamera.Parallax(SmoothCamera.camT.position.x,SmoothCamera.camT.position.y,transform.position.y-StreetYOffset);
-		transform.position = p;
+	private bool rootStreet = true;
+	private Street superStreet;
+	void Awake(){
+		UpdateSubStreetData();
 	}
-
-	public void Show()
-	{
-		gameObject.SetActive(true);
+	void Update() {
+		if(rootStreet){
+			var p = transform.position;
+			p.x=SmoothCamera.Parallax(SmoothCamera.camT.position.x,SmoothCamera.camT.position.y,transform.position.y-StreetYOffset);
+			transform.position = p;
+		}
 	}
-
-	public void Hide()
-	{
-		gameObject.SetActive(false);
+	private void UpdateSubStreetData(){
+		superStreet = transform.parent?.GetComponentInParent<Street>();
+		if(superStreet!=null){
+			superStreet.UpdateSubStreetData();
+			rootStreet = false;
+			superStreet = superStreet.superStreet;
+			streetID = superStreet.streetID;
+		}else{
+			rootStreet = true;
+			superStreet = this;
+		}
+	}
+	public Street GetSuperStreet(){
+		if(superStreet == null) UpdateSubStreetData();
+		return superStreet;
 	}
 }
-
-

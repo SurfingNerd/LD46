@@ -15,28 +15,18 @@ public class Alley : MonoBehaviour, IInteractable
 	[SerializeField]
 	Sprite IconInteract;
 
-
+	public bool trackOtherAlley = false;
 	// Start is called before the first frame update
 	void Start(){
 		CurrentStreet = gameObject.GetComponentInParent<Street>();
 	}
-
 	void Update(){
-		if(!Application.isPlaying){
-			var street = GetComponentInParent<Street>();
-			float y = street.transform.position.y+street.StreetYOffset;
-			street = TargetAlley.gameObject.GetComponentInParent<Street>();
-			var iPosY = street.transform.position.y+street.StreetYOffset;
-			var iPosX = TargetAlley.transform.position.x;
-			if(y>iPosY){
-				var t = transform.position;
-				t.x = -SmoothCamera.Parallax(iPosX,y,iPosY);
-				transform.position = t;
-			}
+		if(trackOtherAlley){
+			var p = transform.position;
+			p.x = TargetAlley.transform.position.x;
+			transform.position = p;
 		}
 	}
-
-
 	public void Interact()
 	{
 		StreetManager.Instance.TransitionStreet(this);

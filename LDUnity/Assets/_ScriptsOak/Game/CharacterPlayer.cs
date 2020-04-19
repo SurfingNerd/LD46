@@ -145,7 +145,7 @@ public class CharacterPlayer : Character
 
         gameObject.transform.SetParent(alley.GetTargetAlley().GetCurrentStreet().gameObject.transform);
         Vector3 temp = alley.GetTargetAlley().gameObject.transform.localPosition;
-        temp.y = alley.GetCurrentStreet().StreetYOffset;
+        temp.y = alley.GetTargetAlley().GetCurrentStreet().StreetYOffset;
         sss.street = alley.GetTargetAlley().GetCurrentStreet().streetID;
         if(currentCorpse!=null)currentCorpse.gameObject.GetComponent<StreetSpriteSort>().street = sss.street;
         gameObject.transform.localPosition = temp;
