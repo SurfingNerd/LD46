@@ -9,7 +9,7 @@ public class Street : MonoBehaviour
 	public int streetID;
 	private bool rootStreet = true;
 	private Street superStreet;
-	void Start(){
+	void Awake(){
 		UpdateSubStreetData();
 	}
 	void Update() {
