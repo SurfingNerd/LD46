@@ -32,7 +32,7 @@ public class EntityManager : ManagerBase
     void Update()
     {
 
-        var allNPCs = GetNPCs();
+        var allNPCs = GetNPCs().Where(x=> x.IsAbleToSee());
         //var allCorpses = GetCorpses().Where(x => !x.isHidden);
         foreach (var npc in allNPCs)
         {
@@ -44,36 +44,15 @@ public class EntityManager : ManagerBase
             {
                 if (CharacterPlayer.instance.GetCurrentCorpse() != null && !CharacterPlayer.instance.IsHiding())
                 {
-                    npc.SetCurrentAction(EAction.Busy);
-                    if ((CharacterPlayer.instance.transform.position - npc.transform.position).normalized.x < 0)
-                    {
-                        npc.SetCurrentDirection(EDirection.Left);
-                    }
-                    else
-                    {
-                        npc.SetCurrentDirection(EDirection.Right);
-                    }
-
-                    if (distance < npcCorpseDetectionDistance / 4)
-                    {
-                        CharacterPlayer.instance.HandleGetCaught();
-                        npc.SetStatus(ENPCStatus.Aggressive);
-                    }
-                    else if (distance < npcCorpseDetectionDistance / 2)
-                    {
-                        npc.SetStatus(ENPCStatus.Alarmed);
-                    }
-                    else
-                    {
-                        npc.SetStatus(ENPCStatus.Alert);
-                    }
-                    foundPlayerCarryingCorpse = true;
+                    npc.FollowCharacter(CharacterPlayer.instance);
                 }
-                else if (CharacterPlayer.instance.IsHiding())
+                
+                else if(CharacterPlayer.instance.IsHiding())
                 {
                     npc.SetStatus(ENPCStatus.Neutral);
-                    npc.SetCurrentAction(EAction.Idle);
                 }
+                
+                foundPlayerCarryingCorpse = true;
                 npc.ActivateFoundCorpseText(foundACorpse);
 
                 if (AudioManager.Instance != null)

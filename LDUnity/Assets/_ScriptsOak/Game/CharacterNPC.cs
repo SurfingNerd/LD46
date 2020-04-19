@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public enum EBodyPart
 {
@@ -11,19 +13,23 @@ public enum EBodyPart
     Leg
 }
 
+/*
 public enum EAction
 {
     Idle,
     Wander,
-    Busy,
+    Following,
     MAX,
 }
+*/
 
 public enum ENPCStatus
 {
     Neutral,
+    MoveToNewPosition,
     Alert,
     Alarmed,
+    Sleeping,
     Aggressive,
 }
 
@@ -38,6 +44,9 @@ public class CharacterNPC : Character
     float ThinkCooldownMax;
 
     [SerializeField]
+    float SleepinessIncrease = 0.01f; 
+
+    [SerializeField]
     public SpriteRenderer TooltipRenderer;
 
     [SerializeField]
@@ -45,19 +54,28 @@ public class CharacterNPC : Character
     [SerializeField]
     Sprite AlarmedIcon;
 
+    [SerializeField] 
+    private Sprite SleepingIcon;
 
     ENPCStatus CurrentStatus;
-    EAction CurrentAction;
+    //EAction CurrentAction;
 
     float CurrentThinkCooldown = 0.0f;
     float CurrentTaskDuration = 0.0f;
 
     bool bIsDying = false;
 
-    public void SetCurrentAction(EAction action)
+    float currentSleepiness = 0.0f;
+
+    private Vector3? lastKnownPosition;
+
+    //last known alley this npc has seen the player fleeing.
+    private Alley lastKnownFleeAlley;
+
+    /*public void SetCurrentAction(EAction action)
     {
         CurrentAction = action;
-    }
+    }*/
 
     public override void MoveCharacter()
     {
@@ -67,7 +85,7 @@ public class CharacterNPC : Character
     public override void InitCharacter()
     {
         SetStatus(ENPCStatus.Neutral);
-        SetCurrentAction(EAction.Idle);
+        // SetCurrentAction(EAction.Idle);
     }
 
     public void SetStatus(ENPCStatus status)
@@ -103,6 +121,15 @@ public class CharacterNPC : Character
                 {
                     AudioManager.Instance.PlayVoiceLine(AudioManager.Instance.ListClipUWot[0]);
                 }
+                break;
+            case ENPCStatus.Sleeping:
+                TooltipRenderer.sprite = SleepingIcon;
+                break;
+            case ENPCStatus.MoveToNewPosition:
+                TooltipRenderer.sprite = null;
+                break;
+            default:
+                Debug.LogError("No Icon for State: " + status);
                 break;
         }
     }
@@ -145,12 +172,82 @@ public class CharacterNPC : Character
             return;
         }
 
+        if (CurrentStatus != ENPCStatus.Sleeping)
+        {
+            currentSleepiness += (SleepinessIncrease * Time.deltaTime);
+        }
+
         //CurrentAction = EAction.Idle;
         CurrentTaskDuration -= Time.deltaTime;
+        
+        Debug.Log("state: " + CurrentStatus + "" +
+                  "CurrentTaskDuration: " + CurrentTaskDuration.ToString("##.##") + " - " + currentSleepiness.ToString("#.###"));
 
-        if(CurrentTaskDuration >= 0.0f || CurrentAction == EAction.Busy)
+
+        if (CurrentStatus == ENPCStatus.Alarmed || CurrentStatus == ENPCStatus.Alert)
         {
+            if (!lastKnownPosition.HasValue && lastKnownFleeAlley == null)
+            {
+                Debug.LogError("Inconsistent State: no last knownPosition.");
+            }
 
+            
+            float distance = Vector3.Distance(CharacterPlayer.instance.transform.position, this.transform.position);
+
+            if (distance < EntityManager.Instance.npcCorpseDetectionDistance && !CharacterPlayer.instance.IsHiding())
+            {
+                lastKnownPosition = CharacterPlayer.instance.transform.position;
+                //EntityManager.Instance.npcCorpseDetectionDistance
+                MoveToTargetPos(lastKnownPosition.Value);
+                
+                //check gameover instance here ?!
+            }
+            else if (lastKnownFleeAlley != null)
+            {
+                var distanceAlley  = Vector3.Distance(lastKnownFleeAlley.transform.position, transform.position);
+                if (distanceAlley < EntityManager.Instance.interactableRadius)
+                {
+                    Alley targetAlley =  lastKnownFleeAlley.GetTargetAlley();
+                    this.transform.position = targetAlley.GetPosition();
+                    this.lastKnownFleeAlley = null;
+                    this.lastKnownPosition = null;
+                    Debug.LogWarning("Warping!");
+                }
+                else
+                {
+                    //abbroach further to this alley.
+                    //because of parallax scrolling the allay moves - so we update the move to every frame.
+                    MoveToTargetPos(lastKnownFleeAlley.GetPosition());
+                }
+
+            } else
+            {
+                //we don't see the player anymore. maybe he used an interactable ?!
+                var interactable = EntityManager.Instance.GetClosestInteractableWithinRange(lastKnownPosition.Value, 1);
+                lastKnownPosition = null;
+                
+                if (interactable is Alley)
+                {
+                    lastKnownFleeAlley = interactable as Alley;
+                }
+                else
+                {
+                    Debug.LogError("Wheres the Player  ? " +interactable.ToString() );
+                }
+
+                // we are moving to the last known position.
+                //maybe there is an interactable there ?
+                //MoveToTargetPos(lastKnownPosition.Value);
+            }
+            //if ()
+            //is player still in sight ?!
+            //GetClosestInteractableWithinRange
+        }
+
+        //if(CurrentTaskDuration >= 0.0f || CurrentAction == EAction.Following)
+        if(CurrentTaskDuration >= 0.0f)
+        {
+            //Debug.Log("current Action: " + CurrentAction);
         }
         else
         {
@@ -162,34 +259,76 @@ public class CharacterNPC : Character
         }
     }
 
+    private void MoveToTargetPos(Vector3 pos)
+    {
+        if ((pos - transform.position).normalized.x < 0)
+        {
+            SetCurrentDirection(EDirection.Left);
+        }
+        else
+        {
+            SetCurrentDirection(EDirection.Right);
+        }
+
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (lastKnownPosition.HasValue)
+        {
+            Gizmos.color = new Color(1, 1, 0, 0.5f);
+            Gizmos.DrawLine(transform.position, lastKnownPosition.Value);
+        }
+    }
+
     public void Think()
     {
-        CurrentAction = (EAction)Random.Range(0, (int)EAction.Busy);
+        //if we are sleepy, we fall asleep.
+        if (currentSleepiness > 1)
+        {
+            //CurrentAction = EAction.Idle;
+            CurrentTaskDuration = 5f;
+            currentSleepiness = 0;
+            SetCurrentDirection(EDirection.Neutral);
+            SetStatus(ENPCStatus.Sleeping);
+            //Debug.LogError("Sleeeping!!");
+        }
+        else
+        {
+            //randomly decide on stay here or to walk to a new Position.
+            int trolo = Random.Range(0, 2);
+            if (trolo == 0)
+            {
+                SetCurrentDirection(EDirection.Left);
+                SetStatus(ENPCStatus.MoveToNewPosition);
+            }
+            else
+            {
+                SetCurrentDirection(EDirection.Right);
+                SetStatus(ENPCStatus.MoveToNewPosition);
+            }
+            CurrentTaskDuration = Random.Range(1.0f, 2.5f);
+        }
+        
 
+        //CurrentAction = (EAction)Random.Range(0, (int)EAction.MAX);
+
+        /*
         switch (CurrentAction)
         {
             case EAction.Idle:
                 CurrentDirection = Vector3.zero;
                 break;
             case EAction.Wander:
-                int trolo = Random.Range(0, 2);
-                if (trolo == 0)
-                {
-                    SetCurrentDirection(EDirection.Left);
-                }
-                else
-                {
-                    SetCurrentDirection(EDirection.Right);
-                }
+
                 break;
-            case EAction.Busy:
+            case EAction.Following:
                 break;
             case EAction.MAX:
                 Debug.LogError("MASSIVE SHITSPLOSION FIX NOW OTT PLS");
                 break;
         }
-        CurrentTaskDuration = Random.Range(1.0f, 2.5f);
-
+        */
     }
 
     public void ActivateFoundCorpseText(bool value)
@@ -210,5 +349,35 @@ public class CharacterNPC : Character
     {
         return null;
         //throw new System.NotImplementedException();
+    }
+
+    public bool IsAbleToSee()
+    {
+        return this.CurrentStatus != ENPCStatus.Sleeping;
+    }
+
+    public void FollowCharacter(CharacterPlayer instance)
+    {
+        float distance =  Vector3.Distance(transform.position, CharacterPlayer.instance.transform.position);
+        MoveToTargetPos(instance.transform.position);
+        
+        if (distance <  EntityManager.Instance.npcCorpseDetectionDistance / 4)
+        {
+            CharacterPlayer.instance.HandleGetCaught();
+            SetStatus(ENPCStatus.Aggressive);
+        } else if (distance < EntityManager.Instance.npcCorpseDetectionDistance / 2)
+        {
+            lastKnownPosition = instance.GetPosition();
+            lastKnownFleeAlley = null;
+            SetStatus(ENPCStatus.Alarmed);
+        }  
+        else if (distance < EntityManager.Instance.npcCorpseDetectionDistance)
+        {
+            lastKnownPosition = instance.GetPosition();
+            lastKnownFleeAlley = null;
+            SetStatus(ENPCStatus.Alert);
+        } else {
+            Debug.LogError("Incosistent State: Cant follow player that is to far away.");
+        }
     }
 }
