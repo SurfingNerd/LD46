@@ -41,11 +41,11 @@ public class CharacterPlayer : Character
     }
     public override void MoveCharacter()
     {
-        if(bIsCaught)
+        if (bIsCaught)
         {
             return;
         }
-        if(currentCorpse != null)
+        if (currentCorpse != null)
         {
             SetPosition(gameObject.transform.position + CurrentDirection * Time.deltaTime * MoveSpeed * CarryingCorpseSpeedFactor);
         }
@@ -64,22 +64,28 @@ public class CharacterPlayer : Character
     {
         bIsCaught = true;
 
-        HUD.Instance.SetGetCaught(true);
+        if (HUD.Instance != null)
+        {
+            HUD.Instance.SetGetCaught(true);
+        }
     }
 
     public void SetJustFinishedAction(bool finished)
     {
         bJustFinishedAction = finished;
-        if(!bJustFinishedAction)
+        if (!bJustFinishedAction)
         {
-            HUD.Instance.SetProgressBarProgress(0.0f);
+            if (HUD.Instance != null)
+            {
+                HUD.Instance.SetProgressBarProgress(0.0f);
+            }
         }
     }
 
     public void StartInteraction()
     {
         CurrentActionProgress = 0.0f;
-        if(CurrentClosestInteractable != null)
+        if (CurrentClosestInteractable != null)
         {
             CurrentAction = CurrentClosestInteractable.GetPlayerActionType();
         }
@@ -87,7 +93,7 @@ public class CharacterPlayer : Character
 
     public void ProgressInteraction()
     {
-        if(bJustFinishedAction || CurrentClosestInteractable == null)
+        if (bJustFinishedAction || CurrentClosestInteractable == null)
         {
             return;
         }
@@ -143,7 +149,7 @@ public class CharacterPlayer : Character
     {
         base.Tick();
 
-        if(currentCorpse != null)
+        if (currentCorpse != null)
         {
             currentCorpse.AdvanceDecay();
         }
@@ -158,7 +164,7 @@ public class CharacterPlayer : Character
 
         CurrentClosestInteractable = closestInteractable;
 
-        if(CurrentClosestInteractable != null)
+        if (CurrentClosestInteractable != null)
         {
             TooltipRenderer.sprite = CurrentClosestInteractable.GetInteractIcon();
         }
@@ -176,7 +182,7 @@ public class CharacterPlayer : Character
 
     public void DropCorpse()
     {
-        if(currentCorpse != null)
+        if (currentCorpse != null)
         {
             currentCorpse.transform.SetParent(gameObject.transform.parent);
             currentCorpse = null;
