@@ -293,7 +293,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &269442339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -579,7 +579,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1022586188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -816,7 +816,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1803121724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1087,6 +1087,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1535705875673023872, guid: 3390343f2fe7eac4bb5594e34ed24c76,
         type: 3}
+      propertyPath: ListLevelTemplates.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535705875673023872, guid: 3390343f2fe7eac4bb5594e34ed24c76,
+        type: 3}
       propertyPath: ListLevels.Array.data[0]
       value: 
       objectReference: {fileID: 0}
@@ -1095,6 +1100,18 @@ PrefabInstance:
       propertyPath: ListLevels.Array.data[1]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1535705875673023872, guid: 3390343f2fe7eac4bb5594e34ed24c76,
+        type: 3}
+      propertyPath: ListLevelTemplates.Array.data[2]
+      value: 
+      objectReference: {fileID: 1180650574380594891, guid: c1adc5b6ce75e6944b72fa5b056136c9,
+        type: 3}
+    - target: {fileID: 1535705875673023872, guid: 3390343f2fe7eac4bb5594e34ed24c76,
+        type: 3}
+      propertyPath: ListLevelTemplates.Array.data[0]
+      value: 
+      objectReference: {fileID: 3337199516959623096, guid: 676b5b2c289679a48a31eaf5c9474c86,
+        type: 3}
     - target: {fileID: 1535705875673023878, guid: 3390343f2fe7eac4bb5594e34ed24c76,
         type: 3}
       propertyPath: m_Name
