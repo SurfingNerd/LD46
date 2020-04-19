@@ -14,7 +14,7 @@ public class GameManager : ManagerBase
     public List<ManagerBase> CoreManagerTemplates = new List<ManagerBase>();
     public List<ManagerBase> GameManagerTemplates = new List<ManagerBase>();
 
-    public List<Level> ListLevels = new List<Level>();
+    public List<Level> ListLevelTemplates = new List<Level>();
 
     List<Level> ListSpawnedLevels = new List<Level>();
 
@@ -46,15 +46,15 @@ public class GameManager : ManagerBase
     {
         base.InitManager();
 
-        for(int i = 0; i < ListLevels.Count; ++i)
+        for(int i = 0; i < ListLevelTemplates.Count; ++i)
         {
-            ListLevels[i].gameObject.SetActive(false);
-            //Level newLevel = Instantiate(ListLevels[i]);
-            //newLevel.gameObject.SetActive(false);
-            //ListSpawnedLevels.Add(newLevel);
+            ListLevelTemplates[i].gameObject.SetActive(false);
+            Level newLevel = Instantiate(ListLevelTemplates[i]);
+            newLevel.gameObject.SetActive(false);
+            ListSpawnedLevels.Add(newLevel);
         }
 
-        ListLevels[0].StartLevel();
+        ListSpawnedLevels[0].StartLevel();
 
         for (int i = 0; i < CoreManagerTemplates.Count; ++i)
         {
