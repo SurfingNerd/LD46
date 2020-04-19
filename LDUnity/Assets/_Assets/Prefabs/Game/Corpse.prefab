@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1299983242284752612}
   - component: {fileID: 1299983242284752615}
   - component: {fileID: 1299983242284752614}
-  - component: {fileID: 1361421183465732288}
+  - component: {fileID: 6767306835807164411}
   m_Layer: 0
   m_Name: Corpse
   m_TagString: Untagged
@@ -130,6 +130,7 @@ MonoBehaviour:
     type: 3}
   DecayLevel: 0
   DecayRate: 0.01
+--- !u!114 &6767306835807164411
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,5 +142,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initStreet: 0
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 5
