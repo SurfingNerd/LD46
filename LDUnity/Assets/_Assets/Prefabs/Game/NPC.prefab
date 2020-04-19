@@ -209,9 +209,11 @@ MonoBehaviour:
   DesiredPart: 0
   ThinkCooldownMin: 0
   ThinkCooldownMax: 0
+  SleepinessIncrease: 0.01
   TooltipRenderer: {fileID: 5950324332004555223}
   AlertIcon: {fileID: 21300000, guid: 095cc0bb762a1b749ba7e7c53da55d99, type: 3}
   AlarmedIcon: {fileID: 21300000, guid: 11bb14bf2a4868b49911fbfbb21dd1be, type: 3}
+  SleepingIcon: {fileID: 21300000, guid: 680f6a7bcb531cc62833a2473b7076c8, type: 3}
 --- !u!61 &890554965
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -94,7 +94,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 4
 --- !u!1 &5618783732628508492
 GameObject:
@@ -195,7 +198,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 2
 --- !u!1 &5618783732891545596
 GameObject:
@@ -291,7 +297,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 4
 --- !u!1 &5618783732932560567
 GameObject:
@@ -443,7 +452,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 4
 --- !u!1 &5618783733002551514
 GameObject:
@@ -539,7 +551,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 4
 --- !u!1 &5618783733134003611
 GameObject:
@@ -635,7 +650,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 4
 --- !u!1 &5618783733152849517
 GameObject:
@@ -731,7 +749,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 3
 --- !u!1 &5618783733268849247
 GameObject:
@@ -827,7 +848,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 3
 --- !u!1 &5618783733310093652
 GameObject:
@@ -924,7 +948,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 2
 --- !u!1 &5618783733323569083
 GameObject:
@@ -1020,7 +1047,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 4
 --- !u!1 &5618783733366107558
 GameObject:
@@ -1116,7 +1146,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 4
 --- !u!1 &5618783733392275484
 GameObject:
@@ -1212,7 +1245,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 4
 --- !u!1 &5618783733435568329
 GameObject:
@@ -1308,7 +1344,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 0
 --- !u!1 &5618783733543995266
 GameObject:
@@ -1404,7 +1443,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 0
 --- !u!1 &5618783733549813401
 GameObject:
@@ -1500,7 +1542,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 4
 --- !u!1 &5618783733567912247
 GameObject:
@@ -1601,7 +1646,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 2
 --- !u!1 &5618783733605936302
 GameObject:
@@ -1619,7 +1667,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5618783733605936301
 Transform:
   m_ObjectHideFlags: 0
@@ -1804,7 +1852,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 2
 --- !u!1 &5618783733783905800
 GameObject:
@@ -1900,7 +1951,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 4
 --- !u!1 &5618783733870524380
 GameObject:
@@ -1996,7 +2050,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 4
 --- !u!1 &5618783733973831134
 GameObject:
@@ -2092,7 +2149,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 3
 --- !u!1 &5618783733987125014
 GameObject:
@@ -2188,7 +2248,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 0
 --- !u!1 &5618783734010003218
 GameObject:
@@ -2284,7 +2347,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 4
 --- !u!1 &5618783734096016446
 GameObject:
@@ -2380,7 +2446,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 4
 --- !u!1 &5618783734113752949
 GameObject:
@@ -2476,7 +2545,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 3
 --- !u!1 &5618783734296184035
 GameObject:
@@ -2627,7 +2699,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 3
 --- !u!1 &5618783734386081793
 GameObject:
@@ -2724,7 +2799,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 2
 --- !u!1 &5618783734404649053
 GameObject:
@@ -2820,7 +2898,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 3
 --- !u!1 &5618783734445117842
 GameObject:
@@ -2916,7 +2997,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 4
 --- !u!1 &5618783734448300796
 GameObject:
@@ -3012,7 +3096,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 4
 --- !u!1 &5618783734590021291
 GameObject:
@@ -3108,7 +3195,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 4
 --- !u!1 &5618783734604030762
 GameObject:
@@ -3204,7 +3294,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 4
 --- !u!1 &5618783734614323336
 GameObject:
@@ -3300,7 +3393,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 4
 --- !u!1 &5618783734622760781
 GameObject:
@@ -3397,7 +3493,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 2
 --- !u!1 &5618783734636450541
 GameObject:
@@ -3493,7 +3592,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 4
 --- !u!1 &5618783734647449136
 GameObject:
@@ -3589,7 +3691,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 4
 --- !u!1 &5618783734651986321
 GameObject:
@@ -3685,7 +3790,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
+  _street: 0
   initLayer: 4
 --- !u!1001 &1408898320515079771
 PrefabInstance:
@@ -3861,6 +3969,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5618783733675387641}
     m_Modifications:
+    - target: {fileID: 5950324332004555223, guid: ecfed6ce8f2b76d43bff1683cea6447a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950324332004555223, guid: ecfed6ce8f2b76d43bff1683cea6447a,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950324332004555223, guid: ecfed6ce8f2b76d43bff1683cea6447a,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950324332004555223, guid: ecfed6ce8f2b76d43bff1683cea6447a,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7442684147315832299, guid: ecfed6ce8f2b76d43bff1683cea6447a,
         type: 3}
       propertyPath: m_Name
@@ -3920,6 +4048,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7442684147315832302, guid: ecfed6ce8f2b76d43bff1683cea6447a,
+        type: 3}
+      propertyPath: CurrentDirection.x
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecfed6ce8f2b76d43bff1683cea6447a, type: 3}
