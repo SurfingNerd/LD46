@@ -9,6 +9,8 @@ public class CharacterPlayer : Character
 
     private Corpse currentCorpse;
 
+  	private StreetSpriteSort sss;
+
     [SerializeField]
     SpriteRenderer TooltipRenderer;
 
@@ -18,6 +20,7 @@ public class CharacterPlayer : Character
     private void Awake()
     {
         instance = this;
+        sss = GetComponent<StreetSpriteSort>();
     }
     public override void MoveCharacter()
     {
@@ -30,15 +33,17 @@ public class CharacterPlayer : Character
     }
     public void TransitionToStreet(Alley alley)
     {
-    	// var deltaX = transform.position.x;
+    	// var delta = transform.position;
 
         gameObject.transform.SetParent(alley.GetTargetAlley().GetCurrentStreet().gameObject.transform);
         Vector3 temp = alley.GetTargetAlley().gameObject.transform.localPosition;
         temp.y = alley.GetCurrentStreet().StreetYOffset;
+        sss.street = alley.GetTargetAlley().GetCurrentStreet().streetID;
+        if(currentCorpse!=null)currentCorpse.gameObject.GetComponent<StreetSpriteSort>().street = sss.street;
         gameObject.transform.localPosition = temp;
 
-        // deltaX -= transform.position.x;
-        // SmoothCamera.xOff=-deltaX;
+        // delta -= transform.position;
+        // SmoothCamera.targetPosition.x-=delta.x;
     }
 
     IInteractable CurrentClosestInteractable = null;

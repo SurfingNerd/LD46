@@ -9,6 +9,8 @@ public class Street : MonoBehaviour
 
     private static Transform camT;
 
+	public int streetID;
+
     // Start is called before the first frame update
     void Start()
     {

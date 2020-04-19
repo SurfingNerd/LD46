@@ -5,7 +5,6 @@ using UnityEngine;
 public class StreetSpriteSort : MonoBehaviour {
 	private SpriteRenderer sr;
 
-	public int initStreet;
 	private int _street;
 	public int street{  
 		get { return _street; }
@@ -27,7 +26,7 @@ public class StreetSpriteSort : MonoBehaviour {
 
 	void Start() { 
 		sr = GetComponent<SpriteRenderer>();
-		_street = initStreet;
+		_street = GetComponentInParent<Street>().streetID;
 		_layer = initLayer;
 		Recalc();
 	}
