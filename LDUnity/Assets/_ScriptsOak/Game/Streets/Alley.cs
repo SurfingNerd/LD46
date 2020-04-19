@@ -2,54 +2,63 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class Alley : MonoBehaviour, IInteractable
 {
 
-    //[SerializeField]
-    Street CurrentStreet;
+	//[SerializeField]
+	Street CurrentStreet;
 
-    [SerializeField]
-    Alley TargetAlley;
+	[SerializeField]
+	Alley TargetAlley;
 
-    [SerializeField]
-    Sprite IconInteract;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        CurrentStreet = gameObject.GetComponentInParent<Street>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void Interact()
-    {
-        StreetManager.Instance.TransitionStreet(this);
-    }
+	[SerializeField]
+	Sprite IconInteract;
 
 
-    public Street GetCurrentStreet()
-    {
-        return CurrentStreet;
-    }
+	// Start is called before the first frame update
+	void Start(){
+		CurrentStreet = gameObject.GetComponentInParent<Street>();
+	}
 
-    public Alley GetTargetAlley()
-    {
-        return TargetAlley;
-    }
+	void Update(){
+		if(!Application.isPlaying){
+			var street = GetComponentInParent<Street>();
+			float y = street.transform.position.y+street.StreetYOffset;
+			TargetAlley.gameObject.GetComponentInParent<Street>();
+			var iPosY = street.transform.position.y+street.StreetYOffset;
+			var iPosX = TargetAlley.transform.position.x;
+			if(y>iPosY){
+				var t = transform.position;
+				t.x = SmoothCamera.Parallax(iPosX,iPosY,y);
+				transform.position = t;
+			}
+		}
+	}
 
-    public Sprite GetInteractIcon()
-    {
-        return IconInteract;
-    }
+	public void Interact()
+	{
+		StreetManager.Instance.TransitionStreet(this);
+	}
 
-    public Vector3 GetPosition()
-    {
-        return gameObject.transform.position;
-    }
+
+	public Street GetCurrentStreet()
+	{
+		return CurrentStreet;
+	}
+
+	public Alley GetTargetAlley()
+	{
+		return TargetAlley;
+	}
+
+	public Sprite GetInteractIcon()
+	{
+		return IconInteract;
+	}
+
+	public Vector3 GetPosition()
+	{
+		return gameObject.transform.position;
+	}
 }

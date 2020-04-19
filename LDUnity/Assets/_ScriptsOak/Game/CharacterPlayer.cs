@@ -30,11 +30,15 @@ public class CharacterPlayer : Character
     }
     public void TransitionToStreet(Alley alley)
     {
+    	// var deltaX = transform.position.x;
+
         gameObject.transform.SetParent(alley.GetTargetAlley().GetCurrentStreet().gameObject.transform);
         Vector3 temp = alley.GetTargetAlley().gameObject.transform.localPosition;
         temp.y = alley.GetCurrentStreet().StreetYOffset;
         gameObject.transform.localPosition = temp;
-        SmoothCamera.lockX = true;
+
+        // deltaX -= transform.position.x;
+        // SmoothCamera.xOff=-deltaX;
     }
 
     IInteractable CurrentClosestInteractable = null;
