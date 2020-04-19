@@ -35,5 +35,8 @@ public class Hideout : MonoBehaviour, IInteractable
         return gameObject.transform.position;
     }
 
-    
+    public EPlayerAction GetPlayerActionType()
+    {
+        return EPlayerAction.Hide;
+    }
 }

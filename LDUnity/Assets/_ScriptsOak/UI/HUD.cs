@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
@@ -13,14 +12,12 @@ public class HUD : MonoBehaviour
     }
 
     [SerializeField]
-    TextMeshProUGUI TextTime = null;
-    [SerializeField]
-    TextMeshProUGUI TextScore = null;
+    Image ImageProgressBar = null;
 
     // Start is called before the first frame update
     void Start()
     {
-        ToggleHUD(false);
+        //ToggleHUD(false);
     }
 
     // Update is called once per frame
@@ -33,5 +30,10 @@ public class HUD : MonoBehaviour
     {
         gameObject.SetActive(visible);
         Debug.Log("HUD " + gameObject.activeSelf);
+    }
+
+    public void SetProgressBarProgress(float progress)
+    {
+        ImageProgressBar.fillAmount = progress;
     }
 }

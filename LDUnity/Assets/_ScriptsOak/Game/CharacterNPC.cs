@@ -26,7 +26,7 @@ public enum ENPCStatus
     Alarmed
 }
 
-public class CharacterNPC : Character, IInteractable
+public class CharacterNPC : Character
 {
     [SerializeField]
     EBodyPart DesiredPart;

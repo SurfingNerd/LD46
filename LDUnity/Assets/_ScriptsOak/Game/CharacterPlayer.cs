@@ -3,6 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+public enum EPlayerAction
+{
+    None,
+    Hide,
+    Inspect,
+    PickUp,
+    Transition,
+    DropOff,
+}
+
 public class CharacterPlayer : Character
 {
     public static CharacterPlayer instance;
@@ -12,8 +24,16 @@ public class CharacterPlayer : Character
     [SerializeField]
     SpriteRenderer TooltipRenderer;
 
+    [SerializeField]
+    float CarryingCorpseSpeedFactor = 0.5f;
+
 
     bool bIsHiding = false;
+
+    bool bIsBusy = false;
+    EPlayerAction CurrentAction = EPlayerAction.None;
+    float CurrentActionProgress = 0.0f;
+    bool bJustFinishedAction = false;
 
     private void Awake()
     {
@@ -21,7 +41,70 @@ public class CharacterPlayer : Character
     }
     public override void MoveCharacter()
     {
-        base.MoveCharacter();
+        if(currentCorpse != null)
+        {
+            SetPosition(gameObject.transform.position + CurrentDirection * Time.deltaTime * MoveSpeed * CarryingCorpseSpeedFactor);
+        }
+        else
+        {
+            base.MoveCharacter();
+        }
+    }
+
+    public void SetJustFinishedAction(bool finished)
+    {
+        bJustFinishedAction = finished;
+        if(!bJustFinishedAction)
+        {
+            HUD.Instance.SetProgressBarProgress(0.0f);
+        }
+    }
+
+    public void StartInteraction()
+    {
+        CurrentActionProgress = 0.0f;
+        if(CurrentClosestInteractable != null)
+        {
+            CurrentAction = CurrentClosestInteractable.GetPlayerActionType();
+        }
+    }
+
+    public void ProgressInteraction()
+    {
+        if(bJustFinishedAction || CurrentClosestInteractable == null)
+        {
+            return;
+        }
+
+        switch (CurrentAction)
+        {
+            case EPlayerAction.None:
+                CurrentActionProgress = 1.0f;
+                break;
+            case EPlayerAction.Hide:
+                CurrentActionProgress += Time.deltaTime * 5.0f;
+                break;
+            case EPlayerAction.Inspect:
+                CurrentActionProgress += Time.deltaTime * 5.0f;
+                break;
+            case EPlayerAction.PickUp:
+                CurrentActionProgress += Time.deltaTime * 5.0f;
+                break;
+            case EPlayerAction.Transition:
+                CurrentActionProgress += Time.deltaTime * 5.0f;
+                break;
+            case EPlayerAction.DropOff:
+                CurrentActionProgress += Time.deltaTime * 5.0f;
+                break;
+        }
+
+        HUD.Instance.SetProgressBarProgress(CurrentActionProgress);
+        if (CurrentActionProgress >= 1.0f)
+        {
+            TryInteract();
+            HUD.Instance.SetProgressBarProgress(0.0f);
+            bJustFinishedAction = true;
+        }
     }
 
     public override void InitCharacter()
@@ -39,8 +122,15 @@ public class CharacterPlayer : Character
 
     IInteractable CurrentClosestInteractable = null;
 
+
     public override void Tick()
     {
+        base.Tick();
+
+        if(currentCorpse != null)
+        {
+            currentCorpse.AdvanceDecay();
+        }
 
         IInteractable closestInteractable = EntityManager.Instance.GetClosestInteractableWithinRange(gameObject.transform.position);
 
@@ -188,4 +278,5 @@ public class CharacterPlayer : Character
             gameObject.SetActive(true);
         }
     }
+
 }

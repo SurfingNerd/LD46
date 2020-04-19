@@ -122,4 +122,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isHidden: 0
-  InteractIcon: {fileID: 21300000, guid: e390e6b6046c5c040ad9214b6b72ddf0, type: 3}
+  InteractIconInspect: {fileID: 21300000, guid: 2f4009cdac4ec4a44a7eaff0cb4d764e,
+    type: 3}
+  InteractIconViable: {fileID: 21300000, guid: 2fc361019992bd44394da0fff9544e2f, type: 3}
+  InteractIconNonViable: {fileID: 21300000, guid: 5122c0f38f83408469fa59546de2c964,
+    type: 3}
+  DecayLevel: 0
+  DecayRate: 0.01

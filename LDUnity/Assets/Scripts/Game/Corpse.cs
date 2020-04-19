@@ -2,61 +2,131 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EDecayLevel
+{
+    Fresh,
+    Medium,
+    WellDone
+}
+
 public class Corpse : MonoBehaviour, IInteractable
 {
 
     public bool isHidden = false;
 
     [SerializeField]
-    Sprite InteractIcon;
+    Sprite InteractIconInspect;
+    [SerializeField]
+    Sprite InteractIconViable;
+    [SerializeField]
+    Sprite InteractIconNonViable;
+
+    [SerializeField]
+    EDecayLevel DecayLevel = EDecayLevel.Fresh;
+
+    [SerializeField]
+    float DecayRate = 0.01f;
+
+    float Decay = 0.0f;
+
+    bool bIsInspected = false;
+
+    public void AdvanceDecay()
+    {
+        Decay += Time.deltaTime * DecayRate;
+        if (Decay < 0.3f)
+        {
+            if(DecayLevel != EDecayLevel.Fresh)
+            {
+                DecayLevel = EDecayLevel.Fresh;
+                Debug.Log(this + " Decay Level Changed to: " + DecayLevel);
+            }
+        }
+        else if (Decay < 0.9f)
+        {
+            if (DecayLevel != EDecayLevel.Medium)
+            {
+                DecayLevel = EDecayLevel.Medium;
+                Debug.Log(this + " Decay Level Changed to: " + DecayLevel);
+            }
+        }
+        else
+        {
+            if (DecayLevel != EDecayLevel.WellDone)
+            {
+                DecayLevel = EDecayLevel.WellDone;
+                Debug.Log(this + " Decay Level Changed to: " + DecayLevel);
+            }
+        }
+    }
 
     public Sprite GetInteractIcon()
     {
-        return InteractIcon;
+        if (bIsInspected)
+        {
+            switch (DecayLevel)
+            {
+                case EDecayLevel.Fresh:
+                    return InteractIconViable;
+                case EDecayLevel.Medium:
+                    return InteractIconViable;
+                case EDecayLevel.WellDone:
+                    return InteractIconNonViable;
+            }
+        }
+        else
+        {
+            return InteractIconInspect;
+        }
+
+        Debug.LogError("SHITSPLOSION TELL OTT TO FIX");
+        return null;
     }
 
     public void Interact()
     {
-        if (CharacterPlayer.instance.GetCurrentCorpse() == null)
+        if(bIsInspected)
         {
-            //check if there is a corpse.
-            if (CharacterPlayer.instance.GetCurrentCorpse() != null)
+            if(DecayLevel != EDecayLevel.WellDone)
             {
-                throw new System.NotImplementedException("Holding already a Corpse");
+                if (CharacterPlayer.instance.GetCurrentCorpse() == null)
+                {
+                    //check if there is a corpse.
+                    if (CharacterPlayer.instance.GetCurrentCorpse() != null)
+                    {
+                        throw new System.NotImplementedException("Holding already a Corpse");
+                    }
+
+                    isHidden = false;
+                    CharacterPlayer.instance.SetCurrentCorpse(this);
+
+                    // using parenting here for moving corpse.
+                    // might be suboptimal for animation.
+                    transform.SetParent(CharacterPlayer.instance.transform);
+                }
             }
-
-            //check the nearest hideout, maybe we picked the corpse just from this hideout.
-            //var corpseHideout = EntityManager.Instance.GetCorpseHideoutWithinRange(this.transform.position, true);
-            //if (corpseHideout != null && corpseHideout.currentCorpse == this)
-            //{
-            //    corpseHideout.currentCorpse = null;
-            //}
-
-            isHidden = false;
-            CharacterPlayer.instance.SetCurrentCorpse(this);
-
-            // using parenting here for moving corpse.
-            // might be suboptimal for animation.
-            transform.SetParent(CharacterPlayer.instance.transform);
         }
         else
         {
-            //Hideout hideout = EntityManager.Instance.GetCorpseHideoutWithinRange(this.transform.position, false);
-
-            //if (hideout != null)
-            //{
-            //    //hideout.currentCorpse = CharacterPlayer.instance.GetCurrentCorpse();
-            //    //hideout.currentCorpse.isHidden = true;
-            //    CharacterPlayer.instance.GetCurrentCorpse().transform.SetParent(hideout.transform);
-            //    CharacterPlayer.instance.SetCurrentCorpse(null);
-            //}
+            bIsInspected = !bIsInspected;
         }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
+        switch (DecayLevel)
+        {
+            case EDecayLevel.Fresh:
+                Decay = 0.0f;
+                break;
+            case EDecayLevel.Medium:
+                Decay = 0.3f;
+                break;
+            case EDecayLevel.WellDone:
+                Decay = 0.9f;
+                break;
+        }
     }
 
     // Update is called once per frame
@@ -68,5 +138,18 @@ public class Corpse : MonoBehaviour, IInteractable
     public Vector3 GetPosition()
     {
         return gameObject.transform.position;
+    }
+
+    public EPlayerAction GetPlayerActionType()
+    {
+        if(bIsInspected)
+        {
+            return EPlayerAction.PickUp;
+
+        }
+        else
+        {
+            return EPlayerAction.Inspect;
+        }
     }
 }

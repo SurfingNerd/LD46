@@ -29,26 +29,19 @@ public class InputManager : ManagerBase
 
         if (CharacterPlayer.instance != null)
         {
-            //if (Input.GetKeyDown(KeyCode.W))
-            //{
-            //    CharacterPlayer.instance.TryEnterAlley();
-            //}
-            //if (Input.GetKeyDown(KeyCode.S))
-            //{
-            //    CharacterPlayer.instance.TryEnterAlley();
-            //}
-
-            //if (Input.GetKeyDown(KeyCode.F))
-            //{
-            //    CharacterPlayer.instance.TryPickupBodyPart();
-            //    CharacterPlayer.instance.TryStabNPC();
-            //    CharacterPlayer.instance.TryRummageCorpseContainer();
-            //    CharacterPlayer.instance.TryActivateHomeMarker();
-            //}
-
             if (Input.GetKeyDown(KeyCode.E))
             {
-                CharacterPlayer.instance.TryInteract();
+                CharacterPlayer.instance.StartInteraction();
+            }
+
+            if (Input.GetKey(KeyCode.E))
+            {
+                CharacterPlayer.instance.ProgressInteraction();
+            }
+
+            if (Input.GetKeyUp(KeyCode.E))
+            {
+                CharacterPlayer.instance.SetJustFinishedAction(false);
             }
 
             if (Input.GetKeyDown(KeyCode.F))
