@@ -100,6 +100,10 @@ public class Corpse : MonoBehaviour, IInteractable
                     isHidden = false;
                     CharacterPlayer.instance.SetCurrentCorpse(this);
 
+                    if(AudioManager.Instance != null)
+                    {
+                        AudioManager.Instance.PlayVoiceLine(AudioManager.Instance.ListClipMonologue[0]);
+                    }
                     // using parenting here for moving corpse.
                     // might be suboptimal for animation.
                     transform.SetParent(CharacterPlayer.instance.transform);
@@ -150,6 +154,20 @@ public class Corpse : MonoBehaviour, IInteractable
         else
         {
             return EPlayerAction.Inspect;
+        }
+    }
+
+    public int GetStreetSpriteSortComponent()
+    {
+        StreetSpriteSort sort = GetComponent<StreetSpriteSort>();
+
+        if (sort != null)
+        {
+            return sort.street;
+        }
+        else
+        {
+            return 0;
         }
     }
 }

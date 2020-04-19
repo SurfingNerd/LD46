@@ -72,6 +72,10 @@ public class CharacterNPC : Character
 
     public void SetStatus(ENPCStatus status)
     {
+        if(CurrentStatus == status)
+        {
+            return;
+        }
         CurrentStatus = status;
 
         switch (CurrentStatus)
@@ -81,12 +85,24 @@ public class CharacterNPC : Character
                 break;
             case ENPCStatus.Alert:
                 TooltipRenderer.sprite = AlertIcon;
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlayVoiceLine(AudioManager.Instance.ListClipUWot[0]);
+                }
                 break;
             case ENPCStatus.Alarmed:
                 TooltipRenderer.sprite = AlarmedIcon;
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlayVoiceLine(AudioManager.Instance.ListClipUWot[0]);
+                }
                 break;
             case ENPCStatus.Aggressive:
                 TooltipRenderer.sprite = AlarmedIcon;
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlayVoiceLine(AudioManager.Instance.ListClipUWot[0]);
+                }
                 break;
         }
     }
