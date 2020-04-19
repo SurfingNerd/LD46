@@ -25,12 +25,12 @@ public class Alley : MonoBehaviour, IInteractable
 		if(!Application.isPlaying){
 			var street = GetComponentInParent<Street>();
 			float y = street.transform.position.y+street.StreetYOffset;
-			TargetAlley.gameObject.GetComponentInParent<Street>();
+			street = TargetAlley.gameObject.GetComponentInParent<Street>();
 			var iPosY = street.transform.position.y+street.StreetYOffset;
 			var iPosX = TargetAlley.transform.position.x;
 			if(y>iPosY){
 				var t = transform.position;
-				t.x = SmoothCamera.Parallax(iPosX,iPosY,y);
+				t.x = -SmoothCamera.Parallax(iPosX,y,iPosY);
 				transform.position = t;
 			}
 		}
@@ -62,3 +62,18 @@ public class Alley : MonoBehaviour, IInteractable
 		return gameObject.transform.position;
 	}
 }
+
+
+// camY = lower street.y+StreetYOffset+cam.offset.y
+
+// camX = lower alley.x-lower street.x
+
+// my street.x = SmoothCamera.Parallax(camT.x,camT.y,my street.y-StreetYOffset);
+
+// lower street.x = SmoothCamera.Parallax(camT.x,camT.y,lower street.y-StreetYOffset);
+
+
+
+// public static float Parallax(float iX, float iY, float tY){
+// 	return iX*(1-Mathf.Pow(2,(iY-tY)/yParalaxStep));
+// }
