@@ -38,8 +38,7 @@ public class CharacterPlayer : Character
     bool bJustFinishedAction = false;
     
 
-    protected void Start()
-    {
+    protected void Start() {
         instance = this;
         sss = GetComponent<StreetSpriteSort>();
         StreetSpriteSort.PlayerStreetSwapp(sss.street);
@@ -141,7 +140,8 @@ public class CharacterPlayer : Character
     }
     public void TransitionToStreet(Alley alley)
     {
-    	// var delta = transform.position;
+    	var sr = transform.GetComponentInParent<Street>().gameObject.GetComponent<SpriteRenderer>();
+    	if(sr != null)sr.enabled = true;//.? doesn't seem to work fsr. #KotlinForLife
 
         gameObject.transform.SetParent(alley.GetTargetAlley().GetCurrentStreet().gameObject.transform);
         Vector3 temp = alley.GetTargetAlley().gameObject.transform.localPosition;
@@ -153,6 +153,9 @@ public class CharacterPlayer : Character
         StreetSpriteSort.PlayerStreetSwapp(sss.street);
 
         SmoothCamera.camT.transform.parent = transform.parent;
+
+    	sr = transform.GetComponentInParent<Street>().gameObject.GetComponent<SpriteRenderer>();
+    	if(sr != null)sr.enabled = false;
 
         // delta -= transform.position;
         // SmoothCamera.targetPosition.x-=delta.x;

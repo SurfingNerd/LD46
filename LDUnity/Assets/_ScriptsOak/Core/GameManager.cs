@@ -48,7 +48,6 @@ public class GameManager : ManagerBase
 
         for(int i = 0; i < ListLevelTemplates.Count; ++i)
         {
-            ListLevelTemplates[i].gameObject.SetActive(false);
             Level newLevel = Instantiate(ListLevelTemplates[i]);
             newLevel.gameObject.SetActive(false);
             ListSpawnedLevels.Add(newLevel);

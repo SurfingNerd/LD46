@@ -137,5 +137,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireExactLayer: 1
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 4
