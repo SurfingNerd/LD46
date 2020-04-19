@@ -190,6 +190,11 @@ public class CharacterPlayer : Character
         if(sordo != null)
         {
             IInteractable closestInteractable = EntityManager.Instance.GetClosestInteractableWithinRange(gameObject.transform.position, sordo.street);
+            if(CurrentClosestInteractable != closestInteractable)
+            {
+                CurrentActionProgress = 0.0f;
+                HUD.Instance.SetProgressBarProgress(0.0f);
+            }
             CurrentClosestInteractable = closestInteractable;
         }
         else
