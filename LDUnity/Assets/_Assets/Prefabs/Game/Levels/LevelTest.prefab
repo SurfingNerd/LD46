@@ -3861,6 +3861,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5618783733675387641}
     m_Modifications:
+    - target: {fileID: 5950324332004555223, guid: ecfed6ce8f2b76d43bff1683cea6447a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950324332004555223, guid: ecfed6ce8f2b76d43bff1683cea6447a,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950324332004555223, guid: ecfed6ce8f2b76d43bff1683cea6447a,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950324332004555223, guid: ecfed6ce8f2b76d43bff1683cea6447a,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7442684147315832299, guid: ecfed6ce8f2b76d43bff1683cea6447a,
         type: 3}
       propertyPath: m_Name
@@ -3920,6 +3940,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7442684147315832302, guid: ecfed6ce8f2b76d43bff1683cea6447a,
+        type: 3}
+      propertyPath: CurrentDirection.x
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecfed6ce8f2b76d43bff1683cea6447a, type: 3}

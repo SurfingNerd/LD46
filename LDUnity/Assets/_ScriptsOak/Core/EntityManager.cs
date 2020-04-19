@@ -31,55 +31,9 @@ public class EntityManager : ManagerBase
     // Update is called once per frame
     void Update()
     {
-
-        var allNPCs = GetNPCs().Where(x=> x.IsAbleToSee());
-        //var allCorpses = GetCorpses().Where(x => !x.isHidden);
-        foreach (var npc in allNPCs)
+        if (GameManager.Instance.IsChangingLevels())
         {
-            bool foundACorpse = false;
-            bool foundPlayerCarryingCorpse = false;
-
-            var distance = Vector3.Distance(npc.transform.position, CharacterPlayer.instance.transform.position);
-            if (distance < npcCorpseDetectionDistance)
-            {
-                if (CharacterPlayer.instance.GetCurrentCorpse() != null && !CharacterPlayer.instance.IsHiding())
-                {
-                    npc.FollowCharacter(CharacterPlayer.instance);
-                }
-                
-                else if(CharacterPlayer.instance.IsHiding())
-                {
-                    npc.SetStatus(ENPCStatus.Neutral);
-                }
-                
-                foundPlayerCarryingCorpse = true;
-                npc.ActivateFoundCorpseText(foundACorpse);
-
-                if (AudioManager.Instance != null)
-                {
-                    if (foundPlayerCarryingCorpse)
-                    {
-                        AudioManager.Instance.SwitchMusic(AudioManager.Instance.ClipMusicChase);
-                        //Debug.Log("Player is seen carrying corpse by: " + npc);
-                    }
-                    else
-                    {
-                        AudioManager.Instance.SwitchMusic(AudioManager.Instance.ClipMusicWander);
-                    }
-                }
-                //Debug.LogWarning("Corpse detected!! Distance: " + distance);
-            }
-
-            //foreach (var corpse in allCorpses)
-            //{
-            //    var distance = Vector3.Distance(npc.transform.position, corpse.transform.position);
-            //    if (distance < npcCorpseDetectionDistance)
-            //    {
-            //        foundACorpse = true;
-            //        //Debug.LogWarning("Corpse detected!! Distance: " + distance);
-            //    }
-            //}
-            //npc.ActivateFoundCorpseText(foundACorpse);
+            return;
         }
 
     }

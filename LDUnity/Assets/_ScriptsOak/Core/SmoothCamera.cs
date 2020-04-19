@@ -15,6 +15,8 @@ public class SmoothCamera : MonoBehaviour
     void Start() { camT = Camera.main.transform; }
     void Update()
     {
+        //TODO: ugly hack to avoid camera getting destroyed because it somehow childed itself into the level???
+        Camera.main.transform.parent = GameManager.Instance.gameObject.transform.parent;
         if(Target == null)
         {
             if(CharacterPlayer.instance != null)
