@@ -163,6 +163,16 @@ public class CharacterNPC : Character
         Destroy(gameObject);
     }
 
+    public bool CheckPlayerIsInVision(out float distance)
+    {
+        distance = Vector3.Distance(CharacterPlayer.instance.transform.position, this.transform.position);
+        bool result = this.CurrentStatus != ENPCStatus.Sleeping
+                      && distance < EntityManager.Instance.npcCorpseDetectionDistance
+                      && !CharacterPlayer.instance.IsHiding();
+
+        return result;
+    } 
+
     public override void Tick()
     {
         base.Tick();
@@ -183,7 +193,9 @@ public class CharacterNPC : Character
         Debug.Log("state: " + CurrentStatus + "" +
                   "CurrentTaskDuration: " + CurrentTaskDuration.ToString("##.##") + " - " + currentSleepiness.ToString("#.###"));
 
-        float distance = Vector3.Distance(CharacterPlayer.instance.transform.position, this.transform.position);
+        float distance = 0;
+        bool isInVision = CheckPlayerIsInVision(out distance);
+
 
         if (CurrentStatus == ENPCStatus.Alarmed || CurrentStatus == ENPCStatus.Alert)
         {
@@ -192,8 +204,7 @@ public class CharacterNPC : Character
                 Debug.LogError("Inconsistent State: no last knownPosition.");
             }
 
-            
-            if (distance < EntityManager.Instance.npcCorpseDetectionDistance && !CharacterPlayer.instance.IsHiding())
+            if (isInVision)
             {
                 lastKnownPosition = CharacterPlayer.instance.transform.position;
                 //EntityManager.Instance.npcCorpseDetectionDistance
@@ -242,6 +253,9 @@ public class CharacterNPC : Character
                         lastKnownPosition = null;
                         lastKnownFleeAlley = interactable as Alley;
                     }
+                    //else (interactable is Hideout)
+                    //{
+                    //}
                     else
                     {
                         Debug.LogError("Wheres the Player  ? " +interactable.ToString() );
@@ -259,11 +273,11 @@ public class CharacterNPC : Character
             //is player still in sight ?!
             //GetClosestInteractableWithinRange
         }
-
-        //if(CurrentTaskDuration >= 0.0f || CurrentAction == EAction.Following)
-        if(CurrentTaskDuration >= 0.0f)
+        else if(CurrentTaskDuration >= 0.0f)
         {
+            //just finish current action.
             //Debug.Log("current Action: " + CurrentAction);
+            
         }
         else
         {
@@ -274,22 +288,20 @@ public class CharacterNPC : Character
             }
         }
 
-
-
         // START: Stuff from EntityManager
         bool foundACorpse = false;
         bool foundPlayerCarryingCorpse = false;
 
-        if (distance < EntityManager.Instance.npcCorpseDetectionDistance)
+        if (isInVision)
         {
             if (CharacterPlayer.instance.GetCurrentCorpse() != null && !CharacterPlayer.instance.IsHiding())
             {
                 FollowCharacter(CharacterPlayer.instance);
             }
-            else if (CharacterPlayer.instance.IsHiding())
+            /*else if (CharacterPlayer.instance.IsHiding())
             {
                 SetStatus(ENPCStatus.Neutral);
-            }
+            }*/
 
             foundPlayerCarryingCorpse = true;
             ActivateFoundCorpseText(foundACorpse);
