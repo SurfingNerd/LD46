@@ -133,20 +133,9 @@ public class CharacterPlayer : Character
             return;
         }
 
-        switch (CurrentAction)
-        {
-            case EPlayerAction.None:
-                CurrentActionProgress = 1.0f;
-                break;
-            case EPlayerAction.Hide:
-            case EPlayerAction.Inspect:
-            case EPlayerAction.PickUp:
-            case EPlayerAction.Transition:
-            case EPlayerAction.DropOff:
-           		Debug.Log("A");
-                CurrentActionProgress += Time.deltaTime * ActionDefinitions[CurrentAction].ActionRate * (GetCurrentCorpse() != null ? CarryingCorpseSpeedFactorAction : 1.0f);
-                break;
-        }
+       
+        CurrentActionProgress += Time.deltaTime * ActionDefinitions[CurrentAction].ActionRate * (GetCurrentCorpse() != null ? CarryingCorpseSpeedFactorAction : 1.0f);
+        
 
         HUD.Instance.SetProgressBarProgress(CurrentActionProgress);
         if (CurrentActionProgress >= 1.0f)
