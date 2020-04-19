@@ -9,8 +9,18 @@ public class Street : MonoBehaviour
 	public int streetID;
 	private bool rootStreet = true;
 	private Street superStreet;
+	[HideInInspector]
+	public Vector2 size;
+	[HideInInspector]
+	public bool lockable = false;
 	void Awake(){
 		UpdateSubStreetData();
+		var boundingBox = GetComponent<BoxCollider2D>();
+		if(boundingBox != null){
+			size = boundingBox.size;
+			lockable = true;
+			Destroy(boundingBox);
+		}
 	}
 	void Update() {
 		if(rootStreet){

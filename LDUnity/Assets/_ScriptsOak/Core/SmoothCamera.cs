@@ -5,12 +5,13 @@ using System.Collections;
 
 public class SmoothCamera : MonoBehaviour
 {
-    public Transform Target;
+    public static Transform Target;
     public float SmoothTime = 0.3F;
     private Vector3 Velocity = Vector3.zero;
     public static Vector3 targetPosition;
     public static Transform camT;
-
+    public static Vector2 lockSize;
+    public static bool locked;
     private const float yParalaxStep = 7;
     void Start() { camT = Camera.main.transform; }
     void Update()

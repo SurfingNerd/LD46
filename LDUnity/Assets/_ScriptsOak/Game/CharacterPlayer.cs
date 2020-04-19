@@ -42,6 +42,7 @@ public class CharacterPlayer : Character
         instance = this;
         sss = GetComponent<StreetSpriteSort>();
         StreetSpriteSort.PlayerStreetSwapp(sss.street);
+        SmoothCamera.Target = transform;
         base.Start();
     }
     public override void MoveCharacter()
@@ -149,17 +150,23 @@ public class CharacterPlayer : Character
     		tempsss.layer = SortLayer.BACKGROUND;
     	}
 
-        gameObject.transform.SetParent(alley.GetTargetAlley().GetCurrentStreet().gameObject.transform);
+    	var destStreet = alley.GetTargetAlley().GetCurrentStreet();
+        gameObject.transform.SetParent(destStreet.gameObject.transform);
         Vector3 temp = alley.GetTargetAlley().gameObject.transform.localPosition;
-        temp.y = alley.GetTargetAlley().GetCurrentStreet().StreetYOffset;
-        sss.street = alley.GetTargetAlley().GetCurrentStreet().streetID;
+        temp.y = destStreet.StreetYOffset;
+        sss.street = destStreet.streetID;
         if(currentCorpse!=null)currentCorpse.gameObject.GetComponent<StreetSpriteSort>().street = sss.street;
         gameObject.transform.localPosition = temp;
 
         StreetSpriteSort.PlayerStreetSwapp(sss.street);
 
-        SmoothCamera.camT.transform.parent = transform.parent;
 
+        SmoothCamera.camT.transform.parent = transform.parent;
+        if(SmoothCamera.locked = destStreet.lockable){
+        	SmoothCamera.Target = destStreet.transform;
+        }else{
+        	SmoothCamera.Target = transform;
+        }
 
         // delta -= transform.position;
         // SmoothCamera.targetPosition.x-=delta.x;
