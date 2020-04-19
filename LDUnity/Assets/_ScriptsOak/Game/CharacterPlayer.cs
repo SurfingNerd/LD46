@@ -134,14 +134,20 @@ public class CharacterPlayer : Character
         }
     }
 
-    public override void InitCharacter()
-    {
-
-    }
     public void TransitionToStreet(Alley alley)
     {
-    	var sr = transform.GetComponentInParent<Street>().gameObject.GetComponent<SpriteRenderer>();
-    	if(sr != null)sr.enabled = true;//.? doesn't seem to work fsr. #KotlinForLife
+    	var tempsss = alley.GetCurrentStreet().GetComponent<StreetSpriteSort>();
+    	if(tempsss != null){
+    		tempsss.spriteColour = Color.white;
+    		tempsss.transitionFrac = 1;
+    		tempsss.layer = SortLayer.BUILDING_FRONT;
+    	}
+    	tempsss = alley.GetTargetAlley().GetCurrentStreet().GetComponent<StreetSpriteSort>();
+    	if(tempsss != null){
+    		tempsss.spriteColour = Color.black;
+    		tempsss.transitionFrac = 1;
+    		tempsss.layer = SortLayer.BACKGROUND;
+    	}
 
         gameObject.transform.SetParent(alley.GetTargetAlley().GetCurrentStreet().gameObject.transform);
         Vector3 temp = alley.GetTargetAlley().gameObject.transform.localPosition;
@@ -154,8 +160,6 @@ public class CharacterPlayer : Character
 
         SmoothCamera.camT.transform.parent = transform.parent;
 
-    	sr = transform.GetComponentInParent<Street>().gameObject.GetComponent<SpriteRenderer>();
-    	if(sr != null)sr.enabled = false;
 
         // delta -= transform.position;
         // SmoothCamera.targetPosition.x-=delta.x;

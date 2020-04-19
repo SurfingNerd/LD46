@@ -11,7 +11,7 @@ public class StreetSpriteSort : MonoBehaviour {
 
 	public Color spriteColour;
 	protected bool isGrey = false;
-	protected float transitionFrac = 0;
+	public float transitionFrac = 0;
 	private const float transitionLength = .5f;
 
 	public int _street;
