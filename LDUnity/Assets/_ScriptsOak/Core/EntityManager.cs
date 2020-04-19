@@ -44,24 +44,9 @@ public class EntityManager : ManagerBase
             {
                 if (CharacterPlayer.instance.GetCurrentCorpse() != null && !CharacterPlayer.instance.IsHiding())
                 {
-                    if ((CharacterPlayer.instance.transform.position - npc.transform.position).normalized.x < 0)
-                    {
-                        npc.SetCurrentDirection(EDirection.Left);
-                    }
-                    else
-                    {
-                        npc.SetCurrentDirection(EDirection.Right);
-                    }
-
-                    if (distance < npcCorpseDetectionDistance / 2)
-                    {
-                        npc.SetStatus(ENPCStatus.Alarmed);
-                    }
-                    else
-                    {
-                        npc.SetStatus(ENPCStatus.Alert);
-                    }
+                    npc.FollowCharacter(CharacterPlayer.instance);
                 }
+                
                 else if(CharacterPlayer.instance.IsHiding())
                 {
                     npc.SetStatus(ENPCStatus.Neutral);
