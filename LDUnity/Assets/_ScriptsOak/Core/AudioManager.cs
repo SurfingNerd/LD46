@@ -10,62 +10,119 @@ public class AudioManager : ManagerBase
     {
         Instance = this;
     }
+
     [SerializeField]
     AudioSource SourceOneShot;
     [SerializeField]
-    AudioSource SourceMusic;
+    AudioSource SourceMusic1;
     [SerializeField]
-    AudioSource SourceShipEngine;
+    AudioSource SourceMusic2;
     [SerializeField]
-    AudioSource SourceShipWheel;
+    AudioSource SourceVoice;
     [SerializeField]
     AudioSource SourceAmbience;
+    [SerializeField]
+    AudioSource SourceFootsteps;
 
     [SerializeField]
-    AudioClip ThemeMusicClip;
+    public AudioClip ClipMusicWander;
+    [SerializeField]
+    public AudioClip ClipMusicChase;
+    [SerializeField]
+    public AudioClip ClipMusicSurgery;
 
     [SerializeField]
-    public AudioClip SplishClip;
+    public List<AudioClip> ListClipMonologue = new List<AudioClip>();
 
     [SerializeField]
-    public AudioClip ShipSplishClip;
+    public List<AudioClip> ListClipUWot = new List<AudioClip>();
 
-    [SerializeField]
-    public AudioClip InsertClip;
+
+    AudioClip QueuedCrossfadeClip = null;
+
 
     public override void InitManager()
     {
         base.InitManager();
 
-        PlayMusic(ThemeMusicClip);
+        SwitchMusic(ClipMusicWander);
     }
 
-    public void PlaySound(AudioClip clip)
+    public void SetFootstepsOn(bool isOn)
+    {
+        SourceFootsteps.mute = !isOn;
+    }
+
+    public void PlaySoundOneShot(AudioClip clip)
     {
         SourceOneShot.PlayOneShot(clip);
     }
 
-    public void PlayMusic(AudioClip musicClip)
+    public void SwitchMusic(AudioClip newMusic)
     {
-        SourceMusic.Stop();
-        SourceMusic.clip = musicClip;
-        SourceMusic.loop = true;
-        SourceMusic.Play();
-    }
-
-    public void ToggleWaterWheelSound(bool active)
-    {
-        if(active)
+        if (SourceMusic1.clip == newMusic || SourceMusic2.clip == newMusic)
         {
-            if (!SourceShipWheel.isPlaying)
-            {
-                SourceShipWheel.Play();
-                SourceOneShot.PlayOneShot(ShipSplishClip);
-            }
+            return;
+        }
+
+        if (bIsCrossfading)
+        {
+            QueuedCrossfadeClip = newMusic;
         }
         else
         {
-            SourceShipWheel.Stop();
+            StartCoroutine(CrossfadeMusicRoutine(newMusic));
+            bIsCrossfading = true;
         }
+    }
+
+    private void Update()
+    {
+        if (QueuedCrossfadeClip && !bIsCrossfading)
+        {
+            StartCoroutine(CrossfadeMusicRoutine(QueuedCrossfadeClip));
+            bIsCrossfading = true;
+            QueuedCrossfadeClip = null;
+        }
+    }
+
+    bool bIsCrossfading = false;
+
+    IEnumerator CrossfadeMusicRoutine(AudioClip newMusic)
+    {
+        float alpha = 0.0f;
+
+        SourceMusic2.volume = 0.0f;
+        SourceMusic2.mute = false;
+        SourceMusic2.clip = newMusic;
+        SourceMusic2.Play();
+        SourceMusic2.loop = true;
+
+        while (alpha < 1.0f)
+        {
+            alpha += Time.deltaTime * 1.0f;
+
+            SourceMusic1.volume = 1.0f - alpha;
+            SourceMusic2.volume = Mathf.Min(1.0f, alpha);
+            yield return null;
+        }
+        SourceMusic1.Stop();
+        SourceMusic1.clip = newMusic;
+        SourceMusic1.time = SourceMusic2.time;
+        SourceMusic1.volume = 1.0f;
+        SourceMusic1.Play();
+
+        SourceMusic2.mute = true;
+        SourceMusic2.Stop();
+
+        bIsCrossfading = false;
+    }
+
+    public void PlayVoiceLine(AudioClip line)
+    {
+        SourceVoice.Stop();
+        SourceVoice.clip = line;
+        SourceVoice.loop = false;
+        SourceVoice.Play();
     }
 }

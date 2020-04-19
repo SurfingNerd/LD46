@@ -67,18 +67,26 @@ public class EntityManager : ManagerBase
                     {
                         npc.SetStatus(ENPCStatus.Alert);
                     }
+                    foundPlayerCarryingCorpse = true;
                 }
                 else if(CharacterPlayer.instance.IsHiding())
                 {
                     npc.SetStatus(ENPCStatus.Neutral);
                     npc.SetCurrentAction(EAction.Idle);
                 }
-                foundPlayerCarryingCorpse = true;
                 npc.ActivateFoundCorpseText(foundACorpse);
                 
-                if (foundPlayerCarryingCorpse)
+                if(AudioManager.Instance != null)
                 {
-                    //Debug.Log("Player is seen carrying corpse by: " + npc);
+                    if (foundPlayerCarryingCorpse)
+                    {
+                        AudioManager.Instance.SwitchMusic(AudioManager.Instance.ClipMusicChase);
+                        //Debug.Log("Player is seen carrying corpse by: " + npc);
+                    }
+                    else
+                    {
+                        AudioManager.Instance.SwitchMusic(AudioManager.Instance.ClipMusicWander);
+                    }
                 }
                 //Debug.LogWarning("Corpse detected!! Distance: " + distance);
             }

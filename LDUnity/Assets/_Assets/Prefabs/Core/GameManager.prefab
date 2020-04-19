@@ -48,4 +48,5 @@ MonoBehaviour:
   - {fileID: 8279606182374406928, guid: da18d5b681fb10e4d8fd676eb6cac817, type: 3}
   - {fileID: 8712659011683335098, guid: cc71dc8b4a5924a46add81c4b636e288, type: 3}
   - {fileID: 5391382840619682399, guid: 0734dd0df6dcc26c1bc32da890a21706, type: 3}
+  - {fileID: 40416788174747033, guid: b5160f22b2979f843b2dc79119a01e28, type: 3}
   GameManagerTemplates: []

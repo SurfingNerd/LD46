@@ -120,9 +120,9 @@ public class SpriteAnimator : MonoBehaviour
             }
         }
         Renderer.sprite = CurrentAnim.SpriteList[CurrentAnimationSpriteIndex];
-        if (CurrentAnim.ClipList.Count > 0)
+        if (CurrentAnim.ClipList.Count > 0 && AudioManager.Instance != null)
         {
-            AudioManager.Instance.PlaySound(CurrentAnim.ClipList[Random.Range(0, CurrentAnim.ClipList.Count)]);
+            AudioManager.Instance.PlaySoundOneShot(CurrentAnim.ClipList[Random.Range(0, CurrentAnim.ClipList.Count)]);
         }
     }
 

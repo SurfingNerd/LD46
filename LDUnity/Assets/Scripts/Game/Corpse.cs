@@ -100,6 +100,10 @@ public class Corpse : MonoBehaviour, IInteractable
                     isHidden = false;
                     CharacterPlayer.instance.SetCurrentCorpse(this);
 
+                    if(AudioManager.Instance != null)
+                    {
+                        AudioManager.Instance.PlayVoiceLine(AudioManager.Instance.ListClipMonologue[0]);
+                    }
                     // using parenting here for moving corpse.
                     // might be suboptimal for animation.
                     transform.SetParent(CharacterPlayer.instance.transform);
