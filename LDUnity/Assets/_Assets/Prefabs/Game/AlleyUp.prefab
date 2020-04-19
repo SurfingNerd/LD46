@@ -137,4 +137,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initStreet: 0
-  initLayer: 1
+  initLayer: 4
