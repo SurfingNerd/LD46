@@ -148,7 +148,7 @@ public class CharacterNPC : Character
 
     public void Think()
     {
-        CurrentAction = (EAction)Random.Range(0, (int)EAction.MAX);
+        CurrentAction = (EAction)Random.Range(0, (int)EAction.Busy);
 
         switch (CurrentAction)
         {
