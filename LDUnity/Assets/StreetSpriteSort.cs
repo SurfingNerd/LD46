@@ -7,12 +7,14 @@ public class StreetSpriteSort : MonoBehaviour {
 
 	private static List<StreetSpriteSort> SSSs = new List<StreetSpriteSort>();
 
+	public bool requireExactLayer = false;
+
 	public Color spriteColour;
 	protected bool isGrey = false;
-	protected float transitionFrac = 0;
+	public float transitionFrac = 0;
 	private const float transitionLength = .5f;
 
-	private int _street;
+	public int _street;
 	public int street{  
 		get { return _street; }
 		set { 
@@ -46,7 +48,7 @@ public class StreetSpriteSort : MonoBehaviour {
 	private static Color grey = new Color(0,0,0,0.3f);
 	public static void PlayerStreetSwapp(int playerStreet){
 		//garbage doesn't matter in a jam game
-		foreach (var sss in SSSs) if(sss.isGrey!=(sss.isGrey = sss.street>playerStreet)) sss.transitionFrac = 1;
+		foreach (var sss in SSSs) if(sss.isGrey!=(sss.isGrey = (sss.requireExactLayer?sss.street!=playerStreet:sss.street>playerStreet))) sss.transitionFrac = 1;
 	}
 	void Update(){
 		if(transitionFrac>0){

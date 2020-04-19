@@ -38,8 +38,7 @@ public class CharacterPlayer : Character
     bool bJustFinishedAction = false;
     
 
-    protected void Start()
-    {
+    protected void Start() {
         instance = this;
         sss = GetComponent<StreetSpriteSort>();
         StreetSpriteSort.PlayerStreetSwapp(sss.street);
@@ -135,13 +134,20 @@ public class CharacterPlayer : Character
         }
     }
 
-    public override void InitCharacter()
-    {
-
-    }
     public void TransitionToStreet(Alley alley)
     {
-    	// var delta = transform.position;
+    	var tempsss = alley.GetCurrentStreet().GetComponent<StreetSpriteSort>();
+    	if(tempsss != null){
+    		tempsss.spriteColour = Color.white;
+    		tempsss.transitionFrac = 1;
+    		tempsss.layer = SortLayer.BUILDING_FRONT;
+    	}
+    	tempsss = alley.GetTargetAlley().GetCurrentStreet().GetComponent<StreetSpriteSort>();
+    	if(tempsss != null){
+    		tempsss.spriteColour = Color.black;
+    		tempsss.transitionFrac = 1;
+    		tempsss.layer = SortLayer.BACKGROUND;
+    	}
 
         gameObject.transform.SetParent(alley.GetTargetAlley().GetCurrentStreet().gameObject.transform);
         Vector3 temp = alley.GetTargetAlley().gameObject.transform.localPosition;
@@ -153,6 +159,7 @@ public class CharacterPlayer : Character
         StreetSpriteSort.PlayerStreetSwapp(sss.street);
 
         SmoothCamera.camT.transform.parent = transform.parent;
+
 
         // delta -= transform.position;
         // SmoothCamera.targetPosition.x-=delta.x;
