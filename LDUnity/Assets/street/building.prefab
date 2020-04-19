@@ -98,7 +98,6 @@ MonoBehaviour:
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
   transitionFrac: 0
-  _street: 0
   initLayer: 2
 --- !u!1 &2085239821172334544
 GameObject:
@@ -198,7 +197,6 @@ MonoBehaviour:
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
   transitionFrac: 0
-  _street: 0
   initLayer: 1
 --- !u!1 &4598937247739474536
 GameObject:
@@ -275,7 +273,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -88
   m_Sprite: {fileID: 567788894246939450, guid: 3f85fccf0f4e3574d8b605c81aff1e20, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -302,7 +300,6 @@ MonoBehaviour:
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
   transitionFrac: 0
-  _street: 0
   initLayer: 3
 --- !u!114 &577283652
 MonoBehaviour:
@@ -316,8 +313,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edf58cd70782e3a428c2b3eed1fc8528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StreetYOffset: -1.9
+  StreetYOffset: -1.75
   streetID: 800
+  size: {x: 0, y: 0}
+  lockable: 0
 --- !u!61 &143187336462125937
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -342,7 +341,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 4.5}
+  m_Size: {x: 5.75, y: 4.5}
   m_EdgeRadius: 0
 --- !u!1 &4598937249110598769
 GameObject:
@@ -448,7 +447,6 @@ MonoBehaviour:
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
   transitionFrac: 0
-  _street: 0
   initLayer: 3
 --- !u!114 &1775002017425427888
 MonoBehaviour:
@@ -462,8 +460,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edf58cd70782e3a428c2b3eed1fc8528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StreetYOffset: -1.9
+  StreetYOffset: -1.75
   streetID: 800
+  size: {x: 0, y: 0}
+  lockable: 0
 --- !u!61 &1957985940363551098
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -488,7 +488,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 4.5}
+  m_Size: {x: 5.75, y: 4.5}
   m_EdgeRadius: 0
 --- !u!1 &4598937249775391337
 GameObject:
@@ -589,7 +589,6 @@ MonoBehaviour:
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
   transitionFrac: 0
-  _street: 0
   initLayer: 3
 --- !u!1 &7277906696339083783
 GameObject:
@@ -689,7 +688,6 @@ MonoBehaviour:
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
   transitionFrac: 0
-  _street: 0
   initLayer: 1
 --- !u!1 &7384395675585913127
 GameObject:
@@ -789,7 +787,6 @@ MonoBehaviour:
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
   transitionFrac: 0
-  _street: 0
   initLayer: 2
 --- !u!1001 &4598937248114148820
 PrefabInstance:

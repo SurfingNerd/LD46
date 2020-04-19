@@ -143,7 +143,7 @@ public class CharacterPlayer : Character
     		tempsss.transitionFrac = 1;
     		tempsss.layer = SortLayer.BUILDING_FRONT;
     	}
-    	tempsss = alley.GetTargetAlley().GetCurrentStreet().GetComponent<StreetSpriteSort>();
+    	tempsss = (CurrentStreet=alley.GetTargetAlley().GetCurrentStreet()).GetComponent<StreetSpriteSort>();
     	if(tempsss != null){
     		tempsss.spriteColour = Color.black;
     		tempsss.transitionFrac = 1;
@@ -151,11 +151,10 @@ public class CharacterPlayer : Character
     	}
     	var delta = transform.position.y;
 
-    	var destStreet = alley.GetTargetAlley().GetCurrentStreet();
-        gameObject.transform.SetParent(destStreet.gameObject.transform);
+        gameObject.transform.SetParent(CurrentStreet.gameObject.transform);
         Vector3 temp = alley.GetTargetAlley().gameObject.transform.localPosition;
-        temp.y = destStreet.StreetYOffset;
-        sss.street = destStreet.streetID;
+        temp.y = CurrentStreet.StreetYOffset;
+        sss.street = CurrentStreet.streetID;
         if(currentCorpse!=null)currentCorpse.gameObject.GetComponent<StreetSpriteSort>().street = sss.street;
         gameObject.transform.localPosition = temp;
 
@@ -165,9 +164,9 @@ public class CharacterPlayer : Character
 
 
         // SmoothCamera.camT.transform.parent = transform.parent;
-        if(SmoothCamera.locked = destStreet.lockable){
-        	SmoothCamera.Target = destStreet.transform;
-        	SmoothCamera.lockSize = destStreet.size;
+        if(SmoothCamera.locked = CurrentStreet.lockable){
+        	SmoothCamera.Target = CurrentStreet.transform;
+        	SmoothCamera.lockSize = CurrentStreet.size;
         }else{
         	SmoothCamera.Target = transform;
         	// SmoothCamera.targetPosition.x=-transform.position.x/SmoothCamera.Parallax(1,0,delta);

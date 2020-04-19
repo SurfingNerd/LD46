@@ -14,7 +14,7 @@ public class StreetSpriteSort : MonoBehaviour {
 	public float transitionFrac = 0;
 	private const float transitionLength = .5f;
 
-	public int _street;
+	private int _street;
 	public int street{  
 		get { return _street; }
 		set { 

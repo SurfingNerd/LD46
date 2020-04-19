@@ -11,18 +11,18 @@ public enum EDirection
     Neutral,
 }
 
-public class Character : MonoBehaviour
-{
+public class Character : MonoBehaviour {
 
     public Vector3 CurrentDirection;
+
+    protected Street CurrentStreet;
 
     [SerializeField]
     protected float MoveSpeed = 2.0f;
 
     // Start is called before the first frame update
 
-    protected void Start()
-    {
+    protected void Start() {
         InitCharacter();
     }
 
@@ -40,7 +40,7 @@ public class Character : MonoBehaviour
 
     public virtual void InitCharacter()
     {
-
+    	CurrentStreet = GetComponentInParent<Street>();
     }
 
     public void SetCurrentDirection(EDirection dir)
@@ -64,9 +64,16 @@ public class Character : MonoBehaviour
     }
 
 
-    public void SetPosition(Vector3 newPosition)
-    {
+    public void SetPosition(Vector3 newPosition) {
+    	if(CurrentStreet!=null&&CurrentStreet.lockable){
+    		var delta = newPosition - CurrentStreet.transform.position;
+    		delta.x = Mathf.Sign(delta.x)*Mathf.Min(Mathf.Abs(delta.x), CurrentStreet.size.x/2);
+    		delta.y = Mathf.Sign(delta.y)*Mathf.Min(Mathf.Abs(delta.y), CurrentStreet.size.y/2);
+    		newPosition = CurrentStreet.transform.position + delta;
+    	}
+
         gameObject.transform.position = newPosition;
+
     }
 
     public virtual void Tick()
