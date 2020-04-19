@@ -17,13 +17,10 @@ public class GameManager : ManagerBase
     public List<Level> ListLevelTemplates = new List<Level>();
 
     List<Level> ListSpawnedLevels = new List<Level>();
-    Level CurrentLevel;
 
     PlayerState Player = new PlayerState();
 
     int CurrentLevelIndex = 0;
-
-    bool bIsChangingLevels = false;
 
     public int GetCurrentLevelIndex()
     {
@@ -49,14 +46,14 @@ public class GameManager : ManagerBase
     {
         base.InitManager();
 
-        //for(int i = 0; i < ListLevelTemplates.Count; ++i)
-        //{
-        //    Level newLevel = Instantiate(ListLevelTemplates[0]);
-        //    newLevel.gameObject.SetActive(false);
-        //    ListSpawnedLevels.Add(newLevel);
-        //}
-        CurrentLevel = Instantiate(ListLevelTemplates[CurrentLevelIndex]);
-        CurrentLevel.StartLevel();
+        for(int i = 0; i < ListLevelTemplates.Count; ++i)
+        {
+            Level newLevel = Instantiate(ListLevelTemplates[i]);
+            newLevel.gameObject.SetActive(false);
+            ListSpawnedLevels.Add(newLevel);
+        }
+
+        ListSpawnedLevels[0].StartLevel();
 
         for (int i = 0; i < CoreManagerTemplates.Count; ++i)
         {
@@ -84,44 +81,5 @@ public class GameManager : ManagerBase
         Player = state;
     }
 
-    public Level GetCurrentLevel()
-    {
-        return CurrentLevel;
-    }
 
-    public void CompleteLevel()
-    {
-        CurrentLevel.EndLevel();
-
-        SetNextLevel();
-    }
-
-    void SetNextLevel()
-    {
-        bIsChangingLevels = true;
-        Destroy(CurrentLevel.gameObject);   
-        CurrentLevelIndex++;
-
-        CurrentLevel = Instantiate(ListLevelTemplates[CurrentLevelIndex]);
-        CurrentLevel.StartLevel();
-        bIsChangingLevels = false;
-    }
-
-    public void RestartLevel()
-    {
-        bIsChangingLevels = true;
-        Destroy(CurrentLevel.gameObject);
-
-        CurrentLevel = Instantiate(ListLevelTemplates[CurrentLevelIndex]);
-        CurrentLevel.StartLevel();
-        CharacterPlayer.instance.SetCurrentCorpse(null);
-        CharacterPlayer.instance.SetCaught(false);
-        HUD.Instance.SetGetCaught(false);
-        bIsChangingLevels = false;
-    }
-
-    public bool IsChangingLevels()
-    {
-        return bIsChangingLevels;
-    }
 }
