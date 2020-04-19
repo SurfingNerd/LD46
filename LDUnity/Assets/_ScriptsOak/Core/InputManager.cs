@@ -27,7 +27,7 @@ public class InputManager : ManagerBase
         //    SaveGameManager.instance.ClearSave();
         //}
 
-        if (CharacterPlayer.instance != null)
+        if (CharacterPlayer.instance != null && !CharacterPlayer.instance.IsCaught())
         {
             if (Input.GetKeyDown(KeyCode.E))
             {

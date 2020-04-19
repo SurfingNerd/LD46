@@ -21,6 +21,8 @@ public class CharacterPlayer : Character
 
     private Corpse currentCorpse;
 
+  	private StreetSpriteSort sss;
+
     [SerializeField]
     SpriteRenderer TooltipRenderer;
 
@@ -29,19 +31,26 @@ public class CharacterPlayer : Character
 
 
     bool bIsHiding = false;
-
-    bool bIsBusy = false;
+    
+    bool bIsCaught = false;
     EPlayerAction CurrentAction = EPlayerAction.None;
     float CurrentActionProgress = 0.0f;
     bool bJustFinishedAction = false;
+    
 
-    private void Awake()
-    {
+    protected void Start() {
         instance = this;
+        sss = GetComponent<StreetSpriteSort>();
+        StreetSpriteSort.PlayerStreetSwapp(sss.street);
+        base.Start();
     }
     public override void MoveCharacter()
     {
-        if(currentCorpse != null)
+        if (bIsCaught)
+        {
+            return;
+        }
+        if (currentCorpse != null)
         {
             SetPosition(gameObject.transform.position + CurrentDirection * Time.deltaTime * MoveSpeed * CarryingCorpseSpeedFactor);
         }
@@ -51,19 +60,37 @@ public class CharacterPlayer : Character
         }
     }
 
+    public bool IsCaught()
+    {
+        return bIsCaught;
+    }
+
+    public void HandleGetCaught()
+    {
+        bIsCaught = true;
+
+        if (HUD.Instance != null)
+        {
+            HUD.Instance.SetGetCaught(true);
+        }
+    }
+
     public void SetJustFinishedAction(bool finished)
     {
         bJustFinishedAction = finished;
-        if(!bJustFinishedAction)
+        if (!bJustFinishedAction)
         {
-            HUD.Instance.SetProgressBarProgress(0.0f);
+            if (HUD.Instance != null)
+            {
+                HUD.Instance.SetProgressBarProgress(0.0f);
+            }
         }
     }
 
     public void StartInteraction()
     {
         CurrentActionProgress = 0.0f;
-        if(CurrentClosestInteractable != null)
+        if (CurrentClosestInteractable != null)
         {
             CurrentAction = CurrentClosestInteractable.GetPlayerActionType();
         }
@@ -71,7 +98,7 @@ public class CharacterPlayer : Character
 
     public void ProgressInteraction()
     {
-        if(bJustFinishedAction || CurrentClosestInteractable == null)
+        if (bJustFinishedAction || CurrentClosestInteractable == null)
         {
             return;
         }
@@ -107,17 +134,35 @@ public class CharacterPlayer : Character
         }
     }
 
-    public override void InitCharacter()
-    {
-
-    }
     public void TransitionToStreet(Alley alley)
     {
+    	var tempsss = alley.GetCurrentStreet().GetComponent<StreetSpriteSort>();
+    	if(tempsss != null){
+    		tempsss.spriteColour = Color.white;
+    		tempsss.transitionFrac = 1;
+    		tempsss.layer = SortLayer.BUILDING_FRONT;
+    	}
+    	tempsss = alley.GetTargetAlley().GetCurrentStreet().GetComponent<StreetSpriteSort>();
+    	if(tempsss != null){
+    		tempsss.spriteColour = Color.black;
+    		tempsss.transitionFrac = 1;
+    		tempsss.layer = SortLayer.BACKGROUND;
+    	}
+
         gameObject.transform.SetParent(alley.GetTargetAlley().GetCurrentStreet().gameObject.transform);
         Vector3 temp = alley.GetTargetAlley().gameObject.transform.localPosition;
-        temp.y = alley.GetCurrentStreet().StreetYOffset;
+        temp.y = alley.GetTargetAlley().GetCurrentStreet().StreetYOffset;
+        sss.street = alley.GetTargetAlley().GetCurrentStreet().streetID;
+        if(currentCorpse!=null)currentCorpse.gameObject.GetComponent<StreetSpriteSort>().street = sss.street;
         gameObject.transform.localPosition = temp;
-        SmoothCamera.lockX = true;
+
+        StreetSpriteSort.PlayerStreetSwapp(sss.street);
+
+        SmoothCamera.camT.transform.parent = transform.parent;
+
+
+        // delta -= transform.position;
+        // SmoothCamera.targetPosition.x-=delta.x;
     }
 
     IInteractable CurrentClosestInteractable = null;
@@ -127,22 +172,23 @@ public class CharacterPlayer : Character
     {
         base.Tick();
 
-        if(currentCorpse != null)
+        if (currentCorpse != null)
         {
             currentCorpse.AdvanceDecay();
         }
 
-        IInteractable closestInteractable = EntityManager.Instance.GetClosestInteractableWithinRange(gameObject.transform.position);
-
-
-        if (CurrentClosestInteractable != closestInteractable && closestInteractable != null)
+        StreetSpriteSort sordo = GetComponent<StreetSpriteSort>();
+        if(sordo != null)
         {
-            Debug.Log("Player is near interactable: " + closestInteractable);
+            IInteractable closestInteractable = EntityManager.Instance.GetClosestInteractableWithinRange(gameObject.transform.position, sordo.street);
+            CurrentClosestInteractable = closestInteractable;
+        }
+        else
+        {
+            CurrentClosestInteractable = null;
         }
 
-        CurrentClosestInteractable = closestInteractable;
-
-        if(CurrentClosestInteractable != null)
+        if (CurrentClosestInteractable != null)
         {
             TooltipRenderer.sprite = CurrentClosestInteractable.GetInteractIcon();
         }
@@ -150,6 +196,14 @@ public class CharacterPlayer : Character
         {
             TooltipRenderer.sprite = null;
         }
+
+
+        // if (CurrentClosestInteractable != closestInteractable && closestInteractable != null)
+        // {
+        //     Debug.Log("Player is near interactable: " + closestInteractable);
+        // }
+
+
     }
 
 
@@ -160,7 +214,7 @@ public class CharacterPlayer : Character
 
     public void DropCorpse()
     {
-        if(currentCorpse != null)
+        if (currentCorpse != null)
         {
             currentCorpse.transform.SetParent(gameObject.transform.parent);
             currentCorpse = null;

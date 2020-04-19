@@ -29,7 +29,8 @@ public enum ENPCStatus
     MoveToNewPosition,
     Alert,
     Alarmed,
-    Sleeping
+    Sleeping,
+    Aggressive,
 }
 
 public class CharacterNPC : Character
@@ -89,6 +90,10 @@ public class CharacterNPC : Character
 
     public void SetStatus(ENPCStatus status)
     {
+        if(CurrentStatus == status)
+        {
+            return;
+        }
         CurrentStatus = status;
 
         switch (CurrentStatus)
@@ -98,9 +103,24 @@ public class CharacterNPC : Character
                 break;
             case ENPCStatus.Alert:
                 TooltipRenderer.sprite = AlertIcon;
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlayVoiceLine(AudioManager.Instance.ListClipUWot[0]);
+                }
                 break;
             case ENPCStatus.Alarmed:
                 TooltipRenderer.sprite = AlarmedIcon;
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlayVoiceLine(AudioManager.Instance.ListClipUWot[0]);
+                }
+                break;
+            case ENPCStatus.Aggressive:
+                TooltipRenderer.sprite = AlarmedIcon;
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlayVoiceLine(AudioManager.Instance.ListClipUWot[0]);
+                }
                 break;
             case ENPCStatus.Sleeping:
                 TooltipRenderer.sprite = SleepingIcon;
@@ -203,8 +223,7 @@ public class CharacterNPC : Character
             } else
             {
                 //we don't see the player anymore. maybe he used an interactable ?!
-                
-                var interactable = EntityManager.Instance.GetClosestInteractableWithinRange(lastKnownPosition.Value);
+                var interactable = EntityManager.Instance.GetClosestInteractableWithinRange(lastKnownPosition.Value, 1);
                 lastKnownPosition = null;
                 
                 if (interactable is Alley)
@@ -342,18 +361,23 @@ public class CharacterNPC : Character
         float distance =  Vector3.Distance(transform.position, CharacterPlayer.instance.transform.position);
         MoveToTargetPos(instance.transform.position);
         
-        if (distance < EntityManager.Instance.npcCorpseDetectionDistance / 2)
+        if (distance <  EntityManager.Instance.npcCorpseDetectionDistance / 4)
+        {
+            CharacterPlayer.instance.HandleGetCaught();
+            SetStatus(ENPCStatus.Aggressive);
+        } else if (distance < EntityManager.Instance.npcCorpseDetectionDistance / 2)
         {
             lastKnownPosition = instance.GetPosition();
             lastKnownFleeAlley = null;
             SetStatus(ENPCStatus.Alarmed);
-        }
-        else
+        }  
+        else if (distance < EntityManager.Instance.npcCorpseDetectionDistance)
         {
             lastKnownPosition = instance.GetPosition();
             lastKnownFleeAlley = null;
-            
             SetStatus(ENPCStatus.Alert);
+        } else {
+            Debug.LogError("Incosistent State: Cant follow player that is to far away.");
         }
     }
 }
