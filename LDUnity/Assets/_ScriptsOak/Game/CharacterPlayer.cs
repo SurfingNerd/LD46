@@ -68,12 +68,21 @@ public class CharacterPlayer : Character
 
     public void HandleGetCaught()
     {
+        if(bIsCaught)
+        {
+            return;
+        }
         bIsCaught = true;
 
         if (HUD.Instance != null)
         {
             HUD.Instance.SetGetCaught(true);
         }
+    }
+
+    public void SetCaught(bool isCaught)
+    {
+        bIsCaught = isCaught;
     }
 
     public void SetJustFinishedAction(bool finished)

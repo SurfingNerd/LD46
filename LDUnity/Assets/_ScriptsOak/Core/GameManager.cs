@@ -23,6 +23,8 @@ public class GameManager : ManagerBase
 
     int CurrentLevelIndex = 0;
 
+    bool bIsChangingLevels = false;
+
     public int GetCurrentLevelIndex()
     {
         return CurrentLevelIndex;
@@ -96,20 +98,30 @@ public class GameManager : ManagerBase
 
     void SetNextLevel()
     {
+        bIsChangingLevels = true;
         Destroy(CurrentLevel.gameObject);   
         CurrentLevelIndex++;
 
         CurrentLevel = Instantiate(ListLevelTemplates[CurrentLevelIndex]);
         CurrentLevel.StartLevel();
+        bIsChangingLevels = false;
     }
 
     public void RestartLevel()
     {
+        bIsChangingLevels = true;
         Destroy(CurrentLevel.gameObject);
 
         CurrentLevel = Instantiate(ListLevelTemplates[CurrentLevelIndex]);
         CurrentLevel.StartLevel();
-
+        CharacterPlayer.instance.SetCurrentCorpse(null);
+        CharacterPlayer.instance.SetCaught(false);
         HUD.Instance.SetGetCaught(false);
+        bIsChangingLevels = false;
+    }
+
+    public bool IsChangingLevels()
+    {
+        return bIsChangingLevels;
     }
 }
