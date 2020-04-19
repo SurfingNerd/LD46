@@ -69,14 +69,14 @@ public class EntityManager : ManagerBase
                     }
                     foundPlayerCarryingCorpse = true;
                 }
-                else if(CharacterPlayer.instance.IsHiding())
+                else if (CharacterPlayer.instance.IsHiding())
                 {
                     npc.SetStatus(ENPCStatus.Neutral);
                     npc.SetCurrentAction(EAction.Idle);
                 }
                 npc.ActivateFoundCorpseText(foundACorpse);
-                
-                if(AudioManager.Instance != null)
+
+                if (AudioManager.Instance != null)
                 {
                     if (foundPlayerCarryingCorpse)
                     {
@@ -136,8 +136,8 @@ public class EntityManager : ManagerBase
 
     public IInteractable GetClosestInteractableWithinRange(Vector3 position, int street)
     {
-        var result = GetAllInteractables().Select(x => new { interactable = x, distance = Vector3.Distance(x.GetPosition(), position) })
-            .Where(x => x.distance <= corpsePickupRadius).OrderBy(x => x.distance).FirstOrDefault();
+        var result = GetAllInteractables().Select(x => new { interactable = x, distance = Vector3.Distance(x.GetPosition(), position), streetIndex = x.GetStreetSpriteSortIndex() })
+            .Where(x => x.distance <= corpsePickupRadius && x.streetIndex == street).OrderBy(x => x.distance).FirstOrDefault();
         return result != null ? result.interactable : null;
     }
 

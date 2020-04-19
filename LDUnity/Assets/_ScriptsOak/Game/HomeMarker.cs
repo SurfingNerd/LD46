@@ -41,7 +41,7 @@ public class HomeMarker : MonoBehaviour, IInteractable
         return EPlayerAction.DropOff;
     }
 
-    public int GetStreetSpriteSortComponent()
+    public int GetStreetSpriteSortIndex()
     {
         StreetSpriteSort sort = GetComponent<StreetSpriteSort>();
 

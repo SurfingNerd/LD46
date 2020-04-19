@@ -40,7 +40,7 @@ public class Hideout : MonoBehaviour, IInteractable
         return EPlayerAction.Hide;
     }
 
-    public int GetStreetSpriteSortComponent()
+    public int GetStreetSpriteSortIndex()
     {
         StreetSpriteSort sort = GetComponent<StreetSpriteSort>();
 
