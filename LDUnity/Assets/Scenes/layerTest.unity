@@ -177,6 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 3
 --- !u!212 &68279933
 SpriteRenderer:
@@ -322,6 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 4
 --- !u!1 &214353105
 GameObject:
@@ -367,6 +369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 3
 --- !u!212 &214353108
 SpriteRenderer:
@@ -593,6 +596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 4
 --- !u!1 &260943385
 GameObject:
@@ -688,6 +692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 0
 --- !u!1 &275304199
 GameObject:
@@ -783,6 +788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 4
 --- !u!1 &379485907
 GameObject:
@@ -878,6 +884,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 4
 --- !u!1 &440028142
 GameObject:
@@ -923,6 +930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 2
 --- !u!212 &440028145
 SpriteRenderer:
@@ -1142,6 +1150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 4
 --- !u!4 &554775712 stripped
 Transform:
@@ -1193,6 +1202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 2
 --- !u!212 &577283653
 SpriteRenderer:
@@ -1339,6 +1349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 4
 --- !u!1 &592898597
 GameObject:
@@ -1434,6 +1445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 4
 --- !u!1 &606775454
 GameObject:
@@ -1529,6 +1541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 4
 --- !u!1 &618753855
 GameObject:
@@ -1624,6 +1637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 4
 --- !u!1 &624532450
 GameObject:
@@ -1719,6 +1733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 4
 --- !u!1 &672050163
 GameObject:
@@ -1814,6 +1829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 4
 --- !u!1 &685643933
 GameObject:
@@ -1909,6 +1925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 4
 --- !u!1 &837914092
 GameObject:
@@ -2027,6 +2044,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 2
 --- !u!212 &878004497
 SpriteRenderer:
@@ -2129,6 +2147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 3
 --- !u!212 &896796568
 SpriteRenderer:
@@ -2224,6 +2243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 3
 --- !u!212 &929601877
 SpriteRenderer:
@@ -2369,6 +2389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 4
 --- !u!1 &1121602005
 GameObject:
@@ -2464,6 +2485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 4
 --- !u!1 &1217832415
 GameObject:
@@ -2602,6 +2624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 6
 --- !u!1001 &1281428527
 PrefabInstance:
@@ -2772,6 +2795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 4
 --- !u!1 &1320570808
 GameObject:
@@ -2922,6 +2946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 4
 --- !u!1 &1553385027
 GameObject:
@@ -2953,6 +2978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 2
 --- !u!212 &1553385029
 SpriteRenderer:
@@ -3117,6 +3143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 0
 --- !u!1 &1652344726
 GameObject:
@@ -3212,6 +3239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 4
 --- !u!1 &1686695992
 GameObject:
@@ -3262,6 +3290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 2
 --- !u!212 &1686695995
 SpriteRenderer:
@@ -3487,6 +3516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 4
 --- !u!1001 &1786032485
 PrefabInstance:
@@ -3667,6 +3697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 4
 --- !u!1 &1823316422
 GameObject:
@@ -3762,6 +3793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 0
 --- !u!1001 &1866592223
 PrefabInstance:
@@ -3882,6 +3914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 3
 --- !u!212 &1925032787
 SpriteRenderer:
@@ -3977,6 +4010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 2
 --- !u!212 &1949757534
 SpriteRenderer:
@@ -4123,6 +4157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 4
 --- !u!1 &2054691550
 GameObject:
@@ -4337,6 +4372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 4
 --- !u!1001 &2096960177
 PrefabInstance:
@@ -4479,6 +4515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteColour: {r: 0, g: 0, b: 0, a: 0}
   initLayer: 3
 --- !u!212 &2111280997
 SpriteRenderer:

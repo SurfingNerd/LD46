@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6806213953512238961}
   - component: {fileID: 7185962223604224247}
   m_Layer: 0
-  m_Name: AlleyUp
+  m_Name: Alley
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -136,5 +136,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initStreet: 0
   initLayer: 4

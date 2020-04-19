@@ -17,10 +17,12 @@ public class CharacterPlayer : Character
 
     bool bIsHiding = false;
 
-    private void Awake()
+    protected void Start()
     {
         instance = this;
         sss = GetComponent<StreetSpriteSort>();
+        StreetSpriteSort.PlayerStreetSwapp(sss.street);
+        base.Start();
     }
     public override void MoveCharacter()
     {
@@ -41,6 +43,8 @@ public class CharacterPlayer : Character
         sss.street = alley.GetTargetAlley().GetCurrentStreet().streetID;
         if(currentCorpse!=null)currentCorpse.gameObject.GetComponent<StreetSpriteSort>().street = sss.street;
         gameObject.transform.localPosition = temp;
+
+        StreetSpriteSort.PlayerStreetSwapp(sss.street);
 
         // delta -= transform.position;
         // SmoothCamera.targetPosition.x-=delta.x;
