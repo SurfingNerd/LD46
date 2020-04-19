@@ -36,17 +36,28 @@ public class Corpse : MonoBehaviour, IInteractable
         Decay += Time.deltaTime * DecayRate;
         if (Decay < 0.3f)
         {
-            DecayLevel = EDecayLevel.Fresh;
+            if(DecayLevel != EDecayLevel.Fresh)
+            {
+                DecayLevel = EDecayLevel.Fresh;
+                Debug.Log(this + " Decay Level Changed to: " + DecayLevel);
+            }
         }
         else if (Decay < 0.9f)
         {
-            DecayLevel = EDecayLevel.Medium;
+            if (DecayLevel != EDecayLevel.Medium)
+            {
+                DecayLevel = EDecayLevel.Medium;
+                Debug.Log(this + " Decay Level Changed to: " + DecayLevel);
+            }
         }
         else
         {
-            DecayLevel = EDecayLevel.WellDone;
+            if (DecayLevel != EDecayLevel.WellDone)
+            {
+                DecayLevel = EDecayLevel.WellDone;
+                Debug.Log(this + " Decay Level Changed to: " + DecayLevel);
+            }
         }
-        Debug.Log(this + " Decay: " + Decay);
     }
 
     public Sprite GetInteractIcon()
