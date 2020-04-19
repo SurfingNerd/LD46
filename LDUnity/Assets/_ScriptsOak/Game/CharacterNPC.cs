@@ -23,7 +23,8 @@ public enum ENPCStatus
 {
     Neutral,
     Alert,
-    Alarmed
+    Alarmed,
+    Aggressive,
 }
 
 public class CharacterNPC : Character
@@ -82,6 +83,9 @@ public class CharacterNPC : Character
                 TooltipRenderer.sprite = AlertIcon;
                 break;
             case ENPCStatus.Alarmed:
+                TooltipRenderer.sprite = AlarmedIcon;
+                break;
+            case ENPCStatus.Aggressive:
                 TooltipRenderer.sprite = AlarmedIcon;
                 break;
         }

@@ -30,7 +30,7 @@ public class CharacterPlayer : Character
 
     bool bIsHiding = false;
 
-    bool bIsBusy = false;
+    bool bIsCaught = false;
     EPlayerAction CurrentAction = EPlayerAction.None;
     float CurrentActionProgress = 0.0f;
     bool bJustFinishedAction = false;
@@ -41,6 +41,10 @@ public class CharacterPlayer : Character
     }
     public override void MoveCharacter()
     {
+        if(bIsCaught)
+        {
+            return;
+        }
         if(currentCorpse != null)
         {
             SetPosition(gameObject.transform.position + CurrentDirection * Time.deltaTime * MoveSpeed * CarryingCorpseSpeedFactor);
@@ -49,6 +53,18 @@ public class CharacterPlayer : Character
         {
             base.MoveCharacter();
         }
+    }
+
+    public bool IsCaught()
+    {
+        return bIsCaught;
+    }
+
+    public void HandleGetCaught()
+    {
+        bIsCaught = true;
+
+        HUD.Instance.SetGetCaught(true);
     }
 
     public void SetJustFinishedAction(bool finished)

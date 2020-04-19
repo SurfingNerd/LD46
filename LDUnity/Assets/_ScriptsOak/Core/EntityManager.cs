@@ -54,7 +54,12 @@ public class EntityManager : ManagerBase
                         npc.SetCurrentDirection(EDirection.Right);
                     }
 
-                    if (distance < npcCorpseDetectionDistance / 2)
+                    if (distance < npcCorpseDetectionDistance / 4)
+                    {
+                        CharacterPlayer.instance.HandleGetCaught();
+                        npc.SetStatus(ENPCStatus.Aggressive);
+                    }
+                    else if (distance < npcCorpseDetectionDistance / 2)
                     {
                         npc.SetStatus(ENPCStatus.Alarmed);
                     }
