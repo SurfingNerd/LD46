@@ -32,7 +32,7 @@ public class EntityManager : ManagerBase
     void Update()
     {
 
-        var allNPCs = GetNPCs();
+        var allNPCs = GetNPCs().Where(x=> x.IsAbleToSee());
         //var allCorpses = GetCorpses().Where(x => !x.isHidden);
         foreach (var npc in allNPCs)
         {
@@ -44,7 +44,6 @@ public class EntityManager : ManagerBase
             {
                 if (CharacterPlayer.instance.GetCurrentCorpse() != null && !CharacterPlayer.instance.IsHiding())
                 {
-                    npc.SetCurrentAction(EAction.Busy);
                     if ((CharacterPlayer.instance.transform.position - npc.transform.position).normalized.x < 0)
                     {
                         npc.SetCurrentDirection(EDirection.Left);
@@ -66,8 +65,8 @@ public class EntityManager : ManagerBase
                 else if(CharacterPlayer.instance.IsHiding())
                 {
                     npc.SetStatus(ENPCStatus.Neutral);
-                    npc.SetCurrentAction(EAction.Idle);
                 }
+                
                 foundPlayerCarryingCorpse = true;
                 npc.ActivateFoundCorpseText(foundACorpse);
                 
