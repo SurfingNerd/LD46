@@ -222,17 +222,34 @@ public class CharacterNPC : Character
             } else
             {
                 //we don't see the player anymore. maybe he used an interactable ?!
-                var interactable = EntityManager.Instance.GetClosestInteractableWithinRange(lastKnownPosition.Value, 1);
-                lastKnownPosition = null;
-                
-                if (interactable is Alley)
+                StreetSpriteSort sort = this.GetComponent<StreetSpriteSort>();
+                int streetID = 1;
+                if (sort == null)
                 {
-                    lastKnownFleeAlley = interactable as Alley;
+                    Debug.LogWarning("Unable to determine Street ID of NPC ", this);
                 }
                 else
                 {
-                    Debug.LogError("Wheres the Player  ? " +interactable.ToString() );
+                    streetID = sort.street;
                 }
+                
+                var interactable = EntityManager.Instance.GetClosestInteractableWithinRange(lastKnownPosition.Value, streetID);
+
+                if (interactable != null)
+                {
+                    if (interactable is Alley)
+                    {
+                        lastKnownPosition = null;
+                        lastKnownFleeAlley = interactable as Alley;
+                    }
+                    else
+                    {
+                        Debug.LogError("Wheres the Player  ? " +interactable.ToString() );
+                    }
+                    
+                }
+                
+
 
                 // we are moving to the last known position.
                 //maybe there is an interactable there ?
