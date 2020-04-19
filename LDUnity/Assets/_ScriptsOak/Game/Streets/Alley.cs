@@ -23,12 +23,13 @@ public class Alley : MonoBehaviour, IInteractable
 
 	void Update(){
 		if(!Application.isPlaying){
-			var street = GetComponentInParent<Street>();
+			var street = GetComponentInParent<Street>().GetSuperStreet();
+			int mID = street.streetID;
 			float y = street.transform.position.y+street.StreetYOffset;
-			street = TargetAlley.gameObject.GetComponentInParent<Street>();
+			street = TargetAlley.gameObject.GetComponentInParent<Street>().GetSuperStreet();
 			var iPosY = street.transform.position.y+street.StreetYOffset;
 			var iPosX = TargetAlley.transform.position.x;
-			if(y>iPosY){
+			if(mID<street.streetID){
 				var t = transform.position;
 				t.x = -SmoothCamera.Parallax(iPosX,y,iPosY);
 				transform.position = t;
