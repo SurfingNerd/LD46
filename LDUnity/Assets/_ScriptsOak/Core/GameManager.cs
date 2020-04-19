@@ -102,4 +102,14 @@ public class GameManager : ManagerBase
         CurrentLevel = Instantiate(ListLevelTemplates[CurrentLevelIndex]);
         CurrentLevel.StartLevel();
     }
+
+    public void RestartLevel()
+    {
+        Destroy(CurrentLevel.gameObject);
+
+        CurrentLevel = Instantiate(ListLevelTemplates[CurrentLevelIndex]);
+        CurrentLevel.StartLevel();
+
+        HUD.Instance.SetGetCaught(false);
+    }
 }

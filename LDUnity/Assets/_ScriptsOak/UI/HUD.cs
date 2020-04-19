@@ -32,9 +32,7 @@ public class HUD : MonoBehaviour
     }
     public void RestartClicked()
     {
-        //TODO: ??? make it work however it should
-        SceneManager.LoadScene("TestOak");
-
+        GameManager.Instance.RestartLevel();
     }
 
     // Update is called once per frame
