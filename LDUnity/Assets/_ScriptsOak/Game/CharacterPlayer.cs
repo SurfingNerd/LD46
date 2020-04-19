@@ -45,10 +45,10 @@ public class CharacterPlayer : Character
         IInteractable closestInteractable = EntityManager.Instance.GetClosestInteractableWithinRange(gameObject.transform.position);
 
 
-        if (CurrentClosestInteractable != closestInteractable && closestInteractable != null)
-        {
-            Debug.Log("Player is near interactable: " + closestInteractable);
-        }
+        // if (CurrentClosestInteractable != closestInteractable && closestInteractable != null)
+        // {
+        //     Debug.Log("Player is near interactable: " + closestInteractable);
+        // }
 
         CurrentClosestInteractable = closestInteractable;
 

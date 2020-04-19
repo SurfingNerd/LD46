@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1299983242284752612}
   - component: {fileID: 1299983242284752615}
   - component: {fileID: 1299983242284752614}
+  - component: {fileID: 1361421183465732288}
   m_Layer: 0
   m_Name: Corpse
   m_TagString: Untagged
@@ -69,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1894454773
-  m_SortingLayer: 3
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d9f455e2efb690f42930d688d3629f68, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
@@ -123,3 +124,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHidden: 0
   InteractIcon: {fileID: 21300000, guid: e390e6b6046c5c040ad9214b6b72ddf0, type: 3}
+--- !u!114 &1361421183465732288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299983242284752608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc177d9816c7c5c49847eb0ee70d4e47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initStreet: 0
+  initLayer: 2
