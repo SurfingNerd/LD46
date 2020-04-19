@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6372784221570688685}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7190558686238263607
 SpriteRenderer:
@@ -97,6 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
   _street: 0
   initLayer: 1
 --- !u!1 &6372784220949842102
@@ -255,6 +256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
   _street: 0
   initLayer: 4
 --- !u!1 &6372784221042648132
@@ -353,6 +355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
   _street: 0
   initLayer: 4
 --- !u!1 &6372784221086687839
@@ -532,6 +535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
   _street: 0
   initLayer: 0
 --- !u!1 &6372784221151321438
@@ -630,6 +634,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
   _street: 0
   initLayer: 4
 --- !u!1 &6372784221220623986
@@ -728,6 +733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
   _street: 0
   initLayer: 4
 --- !u!1 &6372784221570688687
@@ -767,7 +773,6 @@ Transform:
   - {fileID: 6372784221718639581}
   - {fileID: 6372784221151321437}
   - {fileID: 6372784221042648139}
-  - {fileID: 5232818962114503006}
   - {fileID: 6372784221916245253}
   - {fileID: 433518724973368962}
   - {fileID: 6372784222251798178}
@@ -885,6 +890,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
   _street: 0
   initLayer: 4
 --- !u!1 &6372784221718639582
@@ -983,6 +989,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
   _street: 0
   initLayer: 4
 --- !u!1 &6372784221758910625
@@ -1081,6 +1088,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
   _street: 0
   initLayer: 4
 --- !u!1 &6372784221776528349
@@ -1179,6 +1187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
   _street: 0
   initLayer: 4
 --- !u!1 &6372784221789848700
@@ -1277,6 +1286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
   _street: 0
   initLayer: 4
 --- !u!1 &6372784221846764775
@@ -1375,6 +1385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
   _street: 0
   initLayer: 4
 --- !u!1 &6372784221861708134
@@ -1473,6 +1484,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
   _street: 0
   initLayer: 4
 --- !u!1 &6372784221889827524
@@ -1571,6 +1583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
   _street: 0
   initLayer: 4
 --- !u!1 &6372784222017730235
@@ -1669,6 +1682,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
   _street: 0
   initLayer: 4
 --- !u!1 &6372784222161505712
@@ -1767,6 +1781,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
   _street: 0
   initLayer: 4
 --- !u!1 &6372784222220363003
@@ -1857,7 +1872,7 @@ Transform:
   m_Children:
   - {fileID: 6372784221086687838}
   m_Father: {fileID: 6372784221570688685}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6372784222251798179
 SpriteRenderer:
@@ -1964,6 +1979,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
   _street: 0
   initLayer: 6
 --- !u!1 &6372784222365865038
@@ -2062,6 +2078,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
   _street: 0
   initLayer: 4
 --- !u!1 &6372784222423523990
@@ -2160,6 +2177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
   _street: 0
   initLayer: 4
 --- !u!1 &6372784222556057559
@@ -2258,6 +2276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
   _street: 0
   initLayer: 4
 --- !u!1 &6372784222610290167
@@ -2356,6 +2375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
   _street: 0
   initLayer: 4
 --- !u!1 &6372784222724387461
@@ -2454,6 +2474,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
   _street: 0
   initLayer: 0
 --- !u!1 &6372784222790176746
@@ -2552,6 +2573,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
   _street: 0
   initLayer: 4
 --- !u!1 &6372784222797437520
@@ -2650,6 +2672,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
   _street: 0
   initLayer: 4
 --- !u!1 &6372784222951368142
@@ -2748,6 +2771,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
   _street: 0
   initLayer: 0
 --- !u!1 &6372784222953942229
@@ -2846,6 +2870,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
+  transitionFrac: 0
   _street: 0
   initLayer: 4
 --- !u!1 &6682504168513316912
@@ -2973,12 +2998,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a16f058118b9c3545b967729c99b69ee, type: 3}
---- !u!4 &6372784221589443431 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6806213953512238960, guid: a16f058118b9c3545b967729c99b69ee,
-    type: 3}
-  m_PrefabInstance: {fileID: 433518723981835287}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6372784221589443429 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6806213953512238962, guid: a16f058118b9c3545b967729c99b69ee,
@@ -2991,118 +3010,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d7b92396e8ae6a4b98572227671a313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &1651187844865330734
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 6372784221570688685}
-    m_Modifications:
-    - target: {fileID: 6806213953512238960, guid: a16f058118b9c3545b967729c99b69ee,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 14.13
-      objectReference: {fileID: 0}
-    - target: {fileID: 6806213953512238960, guid: a16f058118b9c3545b967729c99b69ee,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 6806213953512238960, guid: a16f058118b9c3545b967729c99b69ee,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6806213953512238960, guid: a16f058118b9c3545b967729c99b69ee,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6806213953512238960, guid: a16f058118b9c3545b967729c99b69ee,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6806213953512238960, guid: a16f058118b9c3545b967729c99b69ee,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6806213953512238960, guid: a16f058118b9c3545b967729c99b69ee,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6806213953512238960, guid: a16f058118b9c3545b967729c99b69ee,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 6806213953512238960, guid: a16f058118b9c3545b967729c99b69ee,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6806213953512238960, guid: a16f058118b9c3545b967729c99b69ee,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6806213953512238960, guid: a16f058118b9c3545b967729c99b69ee,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6806213953512238961, guid: a16f058118b9c3545b967729c99b69ee,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 2.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 6806213953512238962, guid: a16f058118b9c3545b967729c99b69ee,
-        type: 3}
-      propertyPath: TargetAlley
-      value: 
-      objectReference: {fileID: 7325004721884581593}
-    - target: {fileID: 6806213953512238962, guid: a16f058118b9c3545b967729c99b69ee,
-        type: 3}
-      propertyPath: trackOtherAlley
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6806213953512238963, guid: a16f058118b9c3545b967729c99b69ee,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6806213953512238967, guid: a16f058118b9c3545b967729c99b69ee,
-        type: 3}
-      propertyPath: m_Name
-      value: BuildingEntrence
-      objectReference: {fileID: 0}
-    - target: {fileID: 6806213953512238967, guid: a16f058118b9c3545b967729c99b69ee,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a16f058118b9c3545b967729c99b69ee, type: 3}
---- !u!4 &5232818962114503006 stripped
+--- !u!4 &6372784221589443431 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6806213953512238960, guid: a16f058118b9c3545b967729c99b69ee,
     type: 3}
-  m_PrefabInstance: {fileID: 1651187844865330734}
+  m_PrefabInstance: {fileID: 433518723981835287}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5232818962114503004 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6806213953512238962, guid: a16f058118b9c3545b967729c99b69ee,
-    type: 3}
-  m_PrefabInstance: {fileID: 1651187844865330734}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d7b92396e8ae6a4b98572227671a313, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &4505507456534928904
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3574,7 +3487,7 @@ PrefabInstance:
     - target: {fileID: 6806213953512238960, guid: a16f058118b9c3545b967729c99b69ee,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6806213953512238960, guid: a16f058118b9c3545b967729c99b69ee,
         type: 3}
@@ -3795,6 +3708,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a16f058118b9c3545b967729c99b69ee, type: 3}
+--- !u!4 &433518725200426326 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6806213953512238960, guid: a16f058118b9c3545b967729c99b69ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 6372784222820260390}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &433518725200426324 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6806213953512238962, guid: a16f058118b9c3545b967729c99b69ee,
@@ -3807,12 +3726,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d7b92396e8ae6a4b98572227671a313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &433518725200426326 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6806213953512238960, guid: a16f058118b9c3545b967729c99b69ee,
-    type: 3}
-  m_PrefabInstance: {fileID: 6372784222820260390}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6372784222832907861
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3897,12 +3810,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a16f058118b9c3545b967729c99b69ee, type: 3}
---- !u!4 &433518725355551013 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6806213953512238960, guid: a16f058118b9c3545b967729c99b69ee,
-    type: 3}
-  m_PrefabInstance: {fileID: 6372784222832907861}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &433518725355551015 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6806213953512238962, guid: a16f058118b9c3545b967729c99b69ee,
@@ -3915,6 +3822,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d7b92396e8ae6a4b98572227671a313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &433518725355551013 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6806213953512238960, guid: a16f058118b9c3545b967729c99b69ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 6372784222832907861}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7467558017498922857
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3926,7 +3839,7 @@ PrefabInstance:
         type: 3}
       propertyPath: TargetAlley
       value: 
-      objectReference: {fileID: 5232818962114503004}
+      objectReference: {fileID: 0}
     - target: {fileID: 4598937249775391337, guid: 1ae7c631614a72a4bbca97545f6ed53d,
         type: 3}
       propertyPath: m_Name
@@ -3970,7 +3883,7 @@ PrefabInstance:
     - target: {fileID: 4598937249775391340, guid: 1ae7c631614a72a4bbca97545f6ed53d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4598937249775391340, guid: 1ae7c631614a72a4bbca97545f6ed53d,
         type: 3}
@@ -3989,24 +3902,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ae7c631614a72a4bbca97545f6ed53d, type: 3}
---- !u!4 &6372784221916245253 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4598937249775391340, guid: 1ae7c631614a72a4bbca97545f6ed53d,
-    type: 3}
-  m_PrefabInstance: {fileID: 7467558017498922857}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &433518723856061903 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7036367028555311782, guid: 1ae7c631614a72a4bbca97545f6ed53d,
-    type: 3}
-  m_PrefabInstance: {fileID: 7467558017498922857}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d7b92396e8ae6a4b98572227671a313, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &433518724655376768 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7036367027748263657, guid: 1ae7c631614a72a4bbca97545f6ed53d,
@@ -4019,9 +3914,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d7b92396e8ae6a4b98572227671a313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7325004721884581593 stripped
+--- !u!114 &433518723856061903 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 145729887831454128, guid: 1ae7c631614a72a4bbca97545f6ed53d,
+  m_CorrespondingSourceObject: {fileID: 7036367028555311782, guid: 1ae7c631614a72a4bbca97545f6ed53d,
     type: 3}
   m_PrefabInstance: {fileID: 7467558017498922857}
   m_PrefabAsset: {fileID: 0}
@@ -4031,6 +3926,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d7b92396e8ae6a4b98572227671a313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &6372784221916245253 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4598937249775391340, guid: 1ae7c631614a72a4bbca97545f6ed53d,
+    type: 3}
+  m_PrefabInstance: {fileID: 7467558017498922857}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8974324419741095612
 PrefabInstance:
   m_ObjectHideFlags: 0
