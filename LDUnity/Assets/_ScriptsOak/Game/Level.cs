@@ -19,10 +19,23 @@ public class Level : MonoBehaviour
     public void StartLevel()
     {
         gameObject.SetActive(true);
+
+        HomeMarker home = GetComponentInChildren<HomeMarker>();
+        
+
+        // forgive me padre for I have sinned
+        CharacterPlayer.instance.SetPosition(home.GetPosition());
+        CharacterPlayer.instance.gameObject.transform.SetParent(home.gameObject.transform.parent);
+        Street backstreetsBackAlright = home.gameObject.transform.parent.gameObject.GetComponent<Street>();
+        Vector3 temp = CharacterPlayer.instance.gameObject.transform.localPosition;
+        temp.y = backstreetsBackAlright.StreetYOffset;
+        CharacterPlayer.instance.gameObject.transform.localPosition = temp;
     }
 
     public void EndLevel()
     {
         gameObject.SetActive(false);
+
+        //TODO: Open Surgery (haha)
     }
 }

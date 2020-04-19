@@ -170,15 +170,16 @@ public class CharacterPlayer : Character
             currentCorpse.AdvanceDecay();
         }
 
-        IInteractable closestInteractable = EntityManager.Instance.GetClosestInteractableWithinRange(gameObject.transform.position);
-
-
-        // if (CurrentClosestInteractable != closestInteractable && closestInteractable != null)
-        // {
-        //     Debug.Log("Player is near interactable: " + closestInteractable);
-        // }
-
-        CurrentClosestInteractable = closestInteractable;
+        StreetSpriteSort sordo = GetComponent<StreetSpriteSort>();
+        if(sordo != null)
+        {
+            IInteractable closestInteractable = EntityManager.Instance.GetClosestInteractableWithinRange(gameObject.transform.position, sordo.street);
+            CurrentClosestInteractable = closestInteractable;
+        }
+        else
+        {
+            CurrentClosestInteractable = null;
+        }
 
         if (CurrentClosestInteractable != null)
         {
@@ -188,6 +189,14 @@ public class CharacterPlayer : Character
         {
             TooltipRenderer.sprite = null;
         }
+
+
+        // if (CurrentClosestInteractable != closestInteractable && closestInteractable != null)
+        // {
+        //     Debug.Log("Player is near interactable: " + closestInteractable);
+        // }
+
+
     }
 
 

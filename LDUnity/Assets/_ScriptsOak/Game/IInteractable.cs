@@ -11,4 +11,6 @@ public interface IInteractable
 
     EPlayerAction GetPlayerActionType();
 
+    int GetStreetSpriteSortComponent();
+
 }

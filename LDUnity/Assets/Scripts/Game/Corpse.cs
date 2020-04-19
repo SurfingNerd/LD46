@@ -156,4 +156,18 @@ public class Corpse : MonoBehaviour, IInteractable
             return EPlayerAction.Inspect;
         }
     }
+
+    public int GetStreetSpriteSortComponent()
+    {
+        StreetSpriteSort sort = GetComponent<StreetSpriteSort>();
+
+        if (sort != null)
+        {
+            return sort.street;
+        }
+        else
+        {
+            return 0;
+        }
+    }
 }

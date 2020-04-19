@@ -134,7 +134,7 @@ public class EntityManager : ManagerBase
         return Resources.FindObjectsOfTypeAll<Hideout>();
     }
 
-    public IInteractable GetClosestInteractableWithinRange(Vector3 position)
+    public IInteractable GetClosestInteractableWithinRange(Vector3 position, int street)
     {
         var result = GetAllInteractables().Select(x => new { interactable = x, distance = Vector3.Distance(x.GetPosition(), position) })
             .Where(x => x.distance <= corpsePickupRadius).OrderBy(x => x.distance).FirstOrDefault();

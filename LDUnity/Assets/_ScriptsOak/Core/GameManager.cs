@@ -48,11 +48,13 @@ public class GameManager : ManagerBase
 
         for(int i = 0; i < ListLevels.Count; ++i)
         {
-            Level newLevel = Instantiate(ListLevels[i]);
-            newLevel.gameObject.SetActive(false);
-            ListSpawnedLevels.Add(newLevel);
+            ListLevels[i].gameObject.SetActive(false);
+            //Level newLevel = Instantiate(ListLevels[i]);
+            //newLevel.gameObject.SetActive(false);
+            //ListSpawnedLevels.Add(newLevel);
         }
-        ListSpawnedLevels[0].StartLevel();
+
+        ListLevels[0].StartLevel();
 
         for (int i = 0; i < CoreManagerTemplates.Count; ++i)
         {
