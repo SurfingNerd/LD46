@@ -203,11 +203,14 @@ public class CharacterNPC : Character
         bool isInVision = CheckPlayerIsInVision(out distance);
 
 
-        if (CurrentStatus == ENPCStatus.Alarmed || CurrentStatus == ENPCStatus.Alert)
+        if (CurrentStatus == ENPCStatus.Alarmed || CurrentStatus == ENPCStatus.Alert || CurrentStatus == ENPCStatus.Aggressive)
         {
             if (!lastKnownPosition.HasValue && lastKnownFleeAlley == null)
             {
-                Debug.LogError("Inconsistent State: no last knownPosition.");
+                //lost all tracks, where is she ?
+                Debug.LogWarning("Inconsistent State: no last knownPosition. setting NPC Status back to Neutral.");
+                SetStatus(ENPCStatus.Neutral);
+                return;
             }
 
             if (isInVision)
@@ -223,11 +226,14 @@ public class CharacterNPC : Character
                 var distanceAlley  = Vector3.Distance(lastKnownFleeAlley.transform.position, transform.position);
                 if (distanceAlley < EntityManager.Instance.interactableRadius)
                 {
-                    Alley targetAlley =  lastKnownFleeAlley.GetTargetAlley();
-                    this.transform.position = targetAlley.GetPosition();
+                    //Alley targetAlley =  lastKnownFleeAlley.GetTargetAlley();
+                    
+                    Debug.LogWarning("Warping!");
+                    TransitionToStreet(lastKnownFleeAlley);
+                    
+                    //this.transform.position = targetAlley.GetPosition();
                     this.lastKnownFleeAlley = null;
                     this.lastKnownPosition = null;
-                    Debug.LogWarning("Warping!");
                 }
                 else
                 {
@@ -240,6 +246,11 @@ public class CharacterNPC : Character
             {
                 //we don't see the player anymore. maybe he used an interactable ?!
                 StreetSpriteSort sort = this.GetComponent<StreetSpriteSort>();
+                if (sort == null)
+                {
+                    Debug.LogError("This NPC does not have a StreetSpriteSort", this);
+                    return;
+                }
                 int streetID = 1;
                 if (sort == null)
                 {
@@ -259,9 +270,6 @@ public class CharacterNPC : Character
                         lastKnownPosition = null;
                         lastKnownFleeAlley = interactable as Alley;
                     }
-                    //else (interactable is Hideout)
-                    //{
-                    //}
                     else
                     {
                         Debug.LogError("Wheres the Player  ? " +interactable.ToString() );
@@ -328,6 +336,18 @@ public class CharacterNPC : Character
         }
         // END: Stuff from EntityManager
 
+    }
+
+    public void TransitionToStreet(Alley alley)
+    {
+        CurrentStreet = alley.GetTargetAlley().GetCurrentStreet();
+        gameObject.transform.SetParent(CurrentStreet.gameObject.transform);
+        Vector3 temp = alley.GetTargetAlley().gameObject.transform.localPosition;
+        temp.y = CurrentStreet.StreetYOffset;
+
+        StreetSpriteSort sss = GetComponent<StreetSpriteSort>();
+        sss.street = CurrentStreet.streetID;
+        gameObject.transform.localPosition = temp;
     }
 
     private void MoveToTargetPos(Vector3 pos)
@@ -434,7 +454,7 @@ public class CharacterNPC : Character
         
         if (distance <  EntityManager.Instance.npcCorpseDetectionDistance / 4)
         {
-            CharacterPlayer.instance.HandleGetCaught();
+            //CharacterPlayer.instance.HandleGetCaught();
             SetStatus(ENPCStatus.Aggressive);
         } else if (distance < EntityManager.Instance.npcCorpseDetectionDistance / 2)
         {
