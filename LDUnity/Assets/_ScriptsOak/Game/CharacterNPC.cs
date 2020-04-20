@@ -316,7 +316,7 @@ public class CharacterNPC : Character
                     }
                     else
                     {
-                        Debug.LogError("Wheres the Player  ? " + interactable.ToString());
+                        LogWarn("Wheres the Player  ? " + interactable.ToString());
                     }
 
                 }
