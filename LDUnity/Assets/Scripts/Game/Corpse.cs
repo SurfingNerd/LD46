@@ -40,12 +40,16 @@ public class Corpse : MonoBehaviour, IInteractable
 
     bool bIsInspected = false;
 
+    bool bHasClipPlayedInspect = false;
+
+    bool bHasClipPlayedMonologue = false;
+
     public void AdvanceDecay()
     {
         Decay += Time.deltaTime * DecayRate;
         if (Decay < 0.3f)
         {
-            if(DecayLevel != EDecayLevel.Fresh)
+            if (DecayLevel != EDecayLevel.Fresh)
             {
                 DecayLevel = EDecayLevel.Fresh;
                 Debug.Log(this + " Decay Level Changed to: " + DecayLevel);
@@ -94,12 +98,13 @@ public class Corpse : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if(bIsInspected)
+        if (bIsInspected)
         {
-            if(DecayLevel != EDecayLevel.WellDone)
+            if (CharacterPlayer.instance.GetCurrentCorpse() == null)
             {
-                if (CharacterPlayer.instance.GetCurrentCorpse() == null)
+                if (DecayLevel != EDecayLevel.WellDone)
                 {
+
                     //check if there is a corpse.
                     if (CharacterPlayer.instance.GetCurrentCorpse() != null)
                     {
@@ -110,19 +115,46 @@ public class Corpse : MonoBehaviour, IInteractable
                     CharacterPlayer.instance.SetCurrentCorpse(this);
                     Rendy.sprite = DragSprite;
 
-                    if(AudioManager.Instance != null)
+                    if (!bHasClipPlayedMonologue)
                     {
-                        AudioManager.Instance.PlayVoiceLine(AudioManager.Instance.ListClipMonologue[0]);
+                        AudioManager.Instance.PlayVoiceLine(AudioManager.Instance.ClipsCarryingCorpse[Random.Range(0, AudioManager.Instance.ClipsCarryingCorpse.Count)]);
+                        bHasClipPlayedMonologue = true;
                     }
                     // using parenting here for moving corpse.
                     // might be suboptimal for animation.
                     transform.SetParent(CharacterPlayer.instance.transform);
                 }
+                else
+                {
+                    
+                }
+            }
+            else
+            {
+
             }
         }
+
         else
         {
             bIsInspected = !bIsInspected;
+
+            if(DecayLevel != EDecayLevel.WellDone)
+            {
+                if (!bHasClipPlayedInspect)
+                {
+                    AudioManager.Instance.PlayVoiceLine(AudioManager.Instance.ClipsViable[Random.Range(0, AudioManager.Instance.ClipsViable.Count)]);
+                    bHasClipPlayedInspect = true;
+                }
+            }
+            else
+            {
+                if (!bHasClipPlayedInspect)
+                {
+                    AudioManager.Instance.PlayVoiceLine(AudioManager.Instance.ClipsNonViable[Random.Range(0, AudioManager.Instance.ClipsNonViable.Count)]);
+                    bHasClipPlayedInspect = true;
+                }
+            }
         }
     }
 
@@ -156,7 +188,7 @@ public class Corpse : MonoBehaviour, IInteractable
 
     public EPlayerAction GetPlayerActionType()
     {
-        if(bIsInspected)
+        if (bIsInspected)
         {
             return EPlayerAction.PickUp;
 

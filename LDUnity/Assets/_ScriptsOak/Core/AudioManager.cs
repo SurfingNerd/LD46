@@ -40,12 +40,30 @@ public class AudioManager : ManagerBase
 
     AudioClip QueuedCrossfadeClip = null;
 
+    public AudioClip ClipOpening;
+    public AudioClip ClipFinale;
+
+    public List<AudioClip> ClipsCarryingCorpse = new List<AudioClip>();
+    public List<AudioClip> ClipsNPCBarks = new List<AudioClip>();
+    public List<AudioClip> ClipsNonViable = new List<AudioClip>();
+    public List<AudioClip> ClipsViable = new List<AudioClip>();
+
+
+    public AudioClip ClipSurgeryFace;
+    public AudioClip ClipSurgeryLegs;
+    public AudioClip ClipSurgeryArms;
+    public AudioClip ClipSurgeryTorso;
+    public AudioClip ClipSurgeryHair;
+
+
 
     public override void InitManager()
     {
         base.InitManager();
 
         SwitchMusic(ClipMusicWander);
+
+        PlaySoundOneShot(ClipOpening);
     }
 
     public void SetFootstepsOn(bool isOn)

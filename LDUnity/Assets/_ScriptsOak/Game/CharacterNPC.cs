@@ -107,21 +107,21 @@ public class CharacterNPC : Character
                 TooltipRenderer.sprite = AlertIcon;
                 if (AudioManager.Instance != null)
                 {
-                    AudioManager.Instance.PlayVoiceLine(AudioManager.Instance.ListClipUWot[0]);
+                    AudioManager.Instance.PlayVoiceLine(AudioManager.Instance.ClipsNPCBarks[Random.Range(0, AudioManager.Instance.ClipsNPCBarks.Count)]);
                 }
                 break;
             case ENPCStatus.Alarmed:
                 TooltipRenderer.sprite = AlarmedIcon;
                 if (AudioManager.Instance != null)
                 {
-                    AudioManager.Instance.PlayVoiceLine(AudioManager.Instance.ListClipUWot[0]);
+                    AudioManager.Instance.PlayVoiceLine(AudioManager.Instance.ClipsNPCBarks[Random.Range(0, AudioManager.Instance.ClipsNPCBarks.Count)]);
                 }
                 break;
             case ENPCStatus.Aggressive:
                 TooltipRenderer.sprite = AlarmedIcon;
                 if (AudioManager.Instance != null)
                 {
-                    AudioManager.Instance.PlayVoiceLine(AudioManager.Instance.ListClipUWot[0]);
+                    AudioManager.Instance.PlayVoiceLine(AudioManager.Instance.ClipsNPCBarks[Random.Range(0, AudioManager.Instance.ClipsNPCBarks.Count)]);
                 }
                 break;
             case ENPCStatus.Sleeping:

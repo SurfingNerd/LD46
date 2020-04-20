@@ -1691,7 +1691,7 @@ PrefabInstance:
         type: 3}
       propertyPath: ListSurgeryBodyTemplates.Array.data[1]
       value: 
-      objectReference: {fileID: 3969148178688722569, guid: 63a3ee9c349850346a7d7d857da8482d,
+      objectReference: {fileID: 3969148178688722569, guid: 5aca7f9a9b368bc409185866c84c5ee6,
         type: 3}
     - target: {fileID: 1535705875673023872, guid: 3390343f2fe7eac4bb5594e34ed24c76,
         type: 3}
@@ -1703,7 +1703,7 @@ PrefabInstance:
         type: 3}
       propertyPath: ListSurgeryBodyTemplates.Array.data[3]
       value: 
-      objectReference: {fileID: 3969148178688722569, guid: 5aca7f9a9b368bc409185866c84c5ee6,
+      objectReference: {fileID: 3969148178688722569, guid: 63a3ee9c349850346a7d7d857da8482d,
         type: 3}
     - target: {fileID: 1535705875673023872, guid: 3390343f2fe7eac4bb5594e34ed24c76,
         type: 3}

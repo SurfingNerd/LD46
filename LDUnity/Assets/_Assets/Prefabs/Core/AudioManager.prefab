@@ -299,7 +299,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -436,13 +436,51 @@ MonoBehaviour:
   SourceVoice: {fileID: 40416788215526878}
   SourceAmbience: {fileID: 40416788574964057}
   SourceFootsteps: {fileID: 3665679094410731276}
-  ClipMusicWander: {fileID: 8300000, guid: 1804116b46b1d4943a0cb4f8a19f04ec, type: 3}
+  ClipMusicWander: {fileID: 8300000, guid: a381e313172c5af4282afc571c1aba0d, type: 3}
   ClipMusicChase: {fileID: 8300000, guid: 9e52b753082d78a49bbdc010cc1848ed, type: 3}
   ClipMusicSurgery: {fileID: 8300000, guid: babf4f6b0f8825c4d86d326a568b6601, type: 3}
   ListClipMonologue:
   - {fileID: 8300000, guid: 0193e1a1019a53840a458c65610364b5, type: 3}
   ListClipUWot:
   - {fileID: 8300000, guid: f5235559ce21b40498216d7c3d9d5640, type: 3}
+  ClipOpening: {fileID: 8300000, guid: 37366621036808d48acfe5b78b91c9a9, type: 3}
+  ClipFinale: {fileID: 8300000, guid: 43b65947ac041084fa508e8796652a80, type: 3}
+  ClipsCarryingCorpse:
+  - {fileID: 8300000, guid: c80d9d4876e0be744a965a2f189848a3, type: 3}
+  - {fileID: 8300000, guid: 967d021a15b2d5648bceaac51ba8dd07, type: 3}
+  - {fileID: 8300000, guid: b5949f5c14ce4504e84edd89615b83d6, type: 3}
+  - {fileID: 8300000, guid: 771df05e259ac7742ad327f6088f9f47, type: 3}
+  - {fileID: 8300000, guid: 6049ea1a89fb7f44e9174222ee27a16e, type: 3}
+  - {fileID: 8300000, guid: 86950ffde75422449917a012cbd04dd8, type: 3}
+  ClipsNPCBarks:
+  - {fileID: 8300000, guid: ed594e5a39f84d84095a8a5d9031cfac, type: 3}
+  - {fileID: 8300000, guid: 888229d7e340d694f802e9c6054fd387, type: 3}
+  - {fileID: 8300000, guid: 2fceb5ec2231c434b88d745acc7f320d, type: 3}
+  - {fileID: 8300000, guid: 12a27c60bc0b70f428f5e2a078f7fa56, type: 3}
+  - {fileID: 8300000, guid: 6f31eb276c57ab547a00d29b5bd02cf3, type: 3}
+  - {fileID: 8300000, guid: 97370188b1b63164cbbeea4503ada25b, type: 3}
+  - {fileID: 8300000, guid: 198174123addd5348aa81f29cce1cf63, type: 3}
+  ClipsNonViable:
+  - {fileID: 8300000, guid: 2734181f254bbfe4ca0f783ac87a091a, type: 3}
+  - {fileID: 8300000, guid: a7139129ac9746c41abb6cee029f5287, type: 3}
+  - {fileID: 8300000, guid: 165c972c0b293204bbf763b65ed17efa, type: 3}
+  - {fileID: 8300000, guid: bf3f183c428e8744fafe48777d43eca0, type: 3}
+  - {fileID: 8300000, guid: 2e8d3f9a38270e54eb857776443179b5, type: 3}
+  - {fileID: 8300000, guid: d5420100345f35a4bb602107ab1a0334, type: 3}
+  - {fileID: 8300000, guid: b4214ffd040e6584daf6a8bcd4c7869a, type: 3}
+  ClipsViable:
+  - {fileID: 8300000, guid: 58078c5c2c443ab4ca2d5d3302548e0f, type: 3}
+  - {fileID: 8300000, guid: 83f3824ad9567f147890ba7db4b6e293, type: 3}
+  - {fileID: 8300000, guid: 8f26ac3c5c4e89b459b5206e82efc61d, type: 3}
+  - {fileID: 8300000, guid: 0112e6bcaaf7e4a49afab6ef262e2b5a, type: 3}
+  - {fileID: 8300000, guid: b59bc1b3a1c32db42827f767784331a0, type: 3}
+  - {fileID: 8300000, guid: 5c89261e4d9c9ff44b9a19e65ea0e7ff, type: 3}
+  - {fileID: 8300000, guid: 7e9db83dcf16f10468ea7a3c88c02542, type: 3}
+  ClipSurgeryFace: {fileID: 8300000, guid: 272849a5febcc724897156a915bb9e26, type: 3}
+  ClipSurgeryLegs: {fileID: 8300000, guid: 7413a2f20504d6d458209073a78f70ed, type: 3}
+  ClipSurgeryArms: {fileID: 8300000, guid: 02e960a37fc1c644880e802397b1802d, type: 3}
+  ClipSurgeryTorso: {fileID: 8300000, guid: 79b67fb56089bc04183645e7fb6940a6, type: 3}
+  ClipSurgeryHair: {fileID: 8300000, guid: 5449174b59bcfd642a0e511916b86d9f, type: 3}
 --- !u!1 &40416788215526877
 GameObject:
   m_ObjectHideFlags: 0
