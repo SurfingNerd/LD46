@@ -103,10 +103,17 @@ public class GameManager : ManagerBase
 
     public void NotifySurgeryEnded()
     {
-        HUD.Instance.GetComponent<Canvas>().worldCamera = OutsideManager.Instance.CamRef;
-        SurgeryManager.Instance.gameObject.SetActive(false);
-        OutsideManager.Instance.gameObject.SetActive(true);
-        SetNextLevel();
+        if(CurrentLevelIndex == 4)
+        {
+            HUD.Instance.ShowGameWinScreen();
+        }
+        else
+        {
+            HUD.Instance.GetComponent<Canvas>().worldCamera = OutsideManager.Instance.CamRef;
+            SurgeryManager.Instance.gameObject.SetActive(false);
+            OutsideManager.Instance.gameObject.SetActive(true);
+            SetNextLevel();
+        }
     }
 
     void SetNextLevel()

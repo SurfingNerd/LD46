@@ -22,6 +22,8 @@ public class HUD : MonoBehaviour
     Button ButtonRestart = null;
     [SerializeField]
     public Button ButtonEndSurgery = null;
+    [SerializeField]
+    TextMeshProUGUI TextWin = null;
 
     // Start is called before the first frame update
     void Start()
@@ -73,5 +75,11 @@ public class HUD : MonoBehaviour
             ButtonRestart.gameObject.SetActive(false);
             TextCaught.gameObject.SetActive(false);
         }
+    }
+
+    public void ShowGameWinScreen()
+    {
+        ImageCaught.gameObject.SetActive(true);
+        TextWin.gameObject.SetActive(true);
     }
 }
