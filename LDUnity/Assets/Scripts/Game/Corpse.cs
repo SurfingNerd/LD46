@@ -22,7 +22,7 @@ public class Corpse : MonoBehaviour, IInteractable
     Sprite InteractIconNonViable;
 
     [SerializeField]
-    EDecayLevel DecayLevel = EDecayLevel.Fresh;
+    public EDecayLevel DecayLevel = EDecayLevel.Fresh;
 
     [SerializeField]
     public SpriteRenderer Rendy;
@@ -120,9 +120,7 @@ public class Corpse : MonoBehaviour, IInteractable
                         AudioManager.Instance.PlayVoiceLine(AudioManager.Instance.ClipsCarryingCorpse[Random.Range(0, AudioManager.Instance.ClipsCarryingCorpse.Count)]);
                         bHasClipPlayedMonologue = true;
                     }
-                    // using parenting here for moving corpse.
-                    // might be suboptimal for animation.
-                    transform.SetParent(CharacterPlayer.instance.transform);
+                    
                 }
                 else
                 {
