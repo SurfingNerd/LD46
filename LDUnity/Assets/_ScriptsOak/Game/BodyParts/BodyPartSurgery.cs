@@ -52,6 +52,8 @@ public class BodyPartSurgery : MonoBehaviour
     public void Attach()
     {
         bIsDetached = false;
+        BodySurgery.Henry.AddReplacedBodypart(Type);
+
         gameObject.transform.position = Vector3.zero;
 
         gameObject.transform.SetParent(BodySurgery.Henry.gameObject.transform);
