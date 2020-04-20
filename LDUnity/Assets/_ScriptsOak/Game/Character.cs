@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EDirection
-{
+public enum EDirection{
     Left,
     Right,
     Up,

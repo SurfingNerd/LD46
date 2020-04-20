@@ -94,6 +94,8 @@ GameObject:
   - component: {fileID: 1834798622630503164}
   - component: {fileID: 1834798622630503165}
   - component: {fileID: 1834798622630503162}
+  - component: {fileID: 1466286551484980221}
+  - component: {fileID: -9023568279961001023}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -181,6 +183,8 @@ MonoBehaviour:
   CurrentDirection: {x: 0, y: 0, z: 0}
   MoveSpeed: 5
   CharacterAnimator: {fileID: 1834798622630503165}
+  LogOutput: 0
+  bShouldInvertX: 0
   TooltipRenderer: {fileID: 1834798621650456064}
   CarryingCorpseSpeedFactorMove: 0.5
   CarryingCorpseSpeedFactorAction: 0.75
@@ -259,3 +263,41 @@ MonoBehaviour:
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
   transitionFrac: 0
   initLayer: 6
+--- !u!61 &1466286551484980221
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834798622630503105}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.32}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 2.5, y: 2.5}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.64, y: 0.64}
+  m_EdgeRadius: 0
+--- !u!114 &-9023568279961001023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834798622630503105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b74dc3d858f41d748a47c8324ebba1e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

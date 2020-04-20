@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 890554965}
   - component: {fileID: 6360366223352628049}
   - component: {fileID: 4103594377865843935}
+  - component: {fileID: -5845784859623379190}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -188,6 +189,8 @@ MonoBehaviour:
   ThinkCooldownMin: 0
   ThinkCooldownMax: 0
   SleepinessIncrease: 0.01
+  currentSleepiness: 0
+  harmlessNPCCheat: 0
   TooltipRenderer: {fileID: 5950324332004555223}
   AlertIcon: {fileID: 21300000, guid: 095cc0bb762a1b749ba7e7c53da55d99, type: 3}
   AlarmedIcon: {fileID: 21300000, guid: 11bb14bf2a4868b49911fbfbb21dd1be, type: 3}
@@ -205,7 +208,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.32}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -278,3 +281,15 @@ MonoBehaviour:
     SpriteList: []
     AnimRate: 0.125
     ClipList: []
+--- !u!114 &-5845784859623379190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7442684147315832299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b74dc3d858f41d748a47c8324ebba1e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
