@@ -43,7 +43,7 @@ public class StreetSpriteSort : MonoBehaviour {
 	}
 	private void Recalc() {
 		sr.sortingLayerID = 0;
-		sr.sortingOrder = 1000*_street+(int)_layer;
+		sr.sortingOrder = 2000*_street+100*(int)_layer+Random.Range(0,100);
 	}
 	private static Color grey = new Color(0,0,0,0.3f), trans = new Color(0,0,0,0);
 	public static void PlayerStreetSwapp(int playerStreet){
