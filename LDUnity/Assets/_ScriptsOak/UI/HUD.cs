@@ -17,8 +17,6 @@ public class HUD : MonoBehaviour
     [SerializeField]
     Image ImageProgressBarDecay = null;
     [SerializeField]
-    TextMeshProUGUI TextCaught = null;
-    [SerializeField]
     Image ImageCaught = null;
 
     [SerializeField]
@@ -46,7 +44,6 @@ public class HUD : MonoBehaviour
         ButtonToggleHelp.onClick.AddListener(ToggleHelp);
 
         ButtonRestart.gameObject.SetActive(false);
-        TextCaught.gameObject.SetActive(false);
         ButtonEndSurgery.gameObject.SetActive(false);
     }
     public void RestartClicked()
@@ -80,17 +77,13 @@ public class HUD : MonoBehaviour
     {
         if(isCaught)
         {
-            TextCaught.text = "YOU HAVE BEEN CAUGHT";
             ImageCaught.gameObject.SetActive(true);
             ButtonRestart.gameObject.SetActive(true);
-            TextCaught.gameObject.SetActive(true);
         }
         else
         {
-            TextCaught.text = "";
             ImageCaught.gameObject.SetActive(false);
             ButtonRestart.gameObject.SetActive(false);
-            TextCaught.gameObject.SetActive(false);
         }
     }
 
