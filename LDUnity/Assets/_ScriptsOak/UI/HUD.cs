@@ -30,8 +30,9 @@ public class HUD : MonoBehaviour
 
     [SerializeField]
     public Button ButtonToggleHelp = null;
+    [SerializeField]
+    public Button ButtonExit = null;
 
-    
 
     // Start is called before the first frame update
     void Start()
@@ -40,9 +41,11 @@ public class HUD : MonoBehaviour
         ButtonRestart.onClick.AddListener(RestartClicked);
         ButtonEndSurgery.onClick.AddListener(SurgeryManager.Instance.EndSurgery);
         ButtonToggleHelp.onClick.AddListener(ToggleHelp);
+        ButtonExit.onClick.AddListener(Exit);
 
         ButtonRestart.gameObject.SetActive(false);
         ButtonEndSurgery.gameObject.SetActive(false);
+        ButtonExit.gameObject.SetActive(false);
     }
     public void RestartClicked()
     {
@@ -89,6 +92,12 @@ public class HUD : MonoBehaviour
     {
         ImageCaught.gameObject.SetActive(true);
         TextWin.gameObject.SetActive(true);
+        ButtonExit.gameObject.SetActive(true);
+        AudioManager.Instance.SourceAmbience1.mute = true;
+        AudioManager.Instance.SourceAmbience2.mute = true;
+        AudioManager.Instance.SourceMusic1.mute = true;
+        AudioManager.Instance.SourceMusic2.mute = true;
+
     }
 
     public void ShowBlackness()
@@ -115,5 +124,10 @@ public class HUD : MonoBehaviour
     public void ToggleHelp()
     {
         TutorialScreen.toggleHelp();
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
     }
 }
