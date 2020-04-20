@@ -313,7 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edf58cd70782e3a428c2b3eed1fc8528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StreetYOffset: -1.75
+  StreetYOffset: -2.11
   streetID: 800
   size: {x: 0, y: 0}
   lockable: 1
@@ -460,7 +460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edf58cd70782e3a428c2b3eed1fc8528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StreetYOffset: -1.75
+  StreetYOffset: -2.11
   streetID: 800
   size: {x: 0, y: 0}
   lockable: 1
@@ -813,12 +813,12 @@ PrefabInstance:
     - target: {fileID: 6806213953512238960, guid: a16f058118b9c3545b967729c99b69ee,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.59
+      value: -1.5900002
       objectReference: {fileID: 0}
     - target: {fileID: 6806213953512238960, guid: a16f058118b9c3545b967729c99b69ee,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.45
+      value: -1.1300001
       objectReference: {fileID: 0}
     - target: {fileID: 6806213953512238960, guid: a16f058118b9c3545b967729c99b69ee,
         type: 3}
@@ -928,7 +928,7 @@ PrefabInstance:
     - target: {fileID: 6806213953512238960, guid: a16f058118b9c3545b967729c99b69ee,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.45
+      value: -1.1300004
       objectReference: {fileID: 0}
     - target: {fileID: 6806213953512238960, guid: a16f058118b9c3545b967729c99b69ee,
         type: 3}

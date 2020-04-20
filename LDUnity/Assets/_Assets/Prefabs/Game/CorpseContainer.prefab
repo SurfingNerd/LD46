@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8161963351632147716}
   - component: {fileID: 8161963351632147717}
   - component: {fileID: 1707836474153956591}
+  - component: {fileID: 1330985088954494712}
   m_Layer: 0
   m_Name: CorpseContainer
   m_TagString: Untagged
@@ -70,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1398857379
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5dd39fa9dd4674535900ef7a10aebf86, type: 3}
   m_Color: {r: 1, g: 0.47247043, b: 0.38679248, a: 1}
@@ -121,4 +122,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 005091fe4707e3347b3ba8501aae2599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InteractIcon: {fileID: 0}
   bIsRummaged: 0
+--- !u!114 &1330985088954494712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8161963351632147768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b74dc3d858f41d748a47c8324ebba1e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

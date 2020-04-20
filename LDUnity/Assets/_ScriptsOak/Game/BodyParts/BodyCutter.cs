@@ -86,7 +86,7 @@ public class BodyCutter : MonoBehaviour
                     BodySurgery.Henry.GetSnapPositionForBodyPart(DraggedBodyPart.Type)) < 1.2f)
                 {
                     DraggedBodyPart.bPendingAttach = true;
-                    DraggedBodyPart.transform.position = new Vector3(0.4218822f, 0.1097374f);
+                    DraggedBodyPart.transform.position = Vector3.zero;
                 }
                 else
                 {
