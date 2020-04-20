@@ -96,7 +96,7 @@ public class CharacterNPC : Character
         {
             FootstepDelay -= Time.deltaTime;
 
-            if(FootstepDelay <= 0.0f)
+            if(FootstepDelay <= 0.0f && IntroManager.instance.bIntroDone)
             {
                 FootstepDelay = 0.7f;
 
