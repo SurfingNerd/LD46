@@ -46,12 +46,12 @@ public class BodyCutter : MonoBehaviour
             hitBodyPart = hit.collider.gameObject.GetComponent<BodyPartSurgery>();
             if (hitBodyPart != null)
             {
-                if(LastHitBodyPart != null && LastHitBodyPart != hitBodyPart)
+                if (LastHitBodyPart != null && LastHitBodyPart != hitBodyPart)
                 {
                     LastHitBodyPart.DeHighlight();
                 }
                 LastHitBodyPart = hitBodyPart;
-                if(LastHitBodyPart != null && LastHitBodyPart.bCanBeDetached)
+                if (LastHitBodyPart != null && LastHitBodyPart.bCanBeDetached)
                 {
                     LastHitBodyPart.Highlight(ColorHighlightCut);
                 }
@@ -67,7 +67,7 @@ public class BodyCutter : MonoBehaviour
         }
         else
         {
-            if(LastHitBodyPart != null)
+            if (LastHitBodyPart != null)
             {
                 LastHitBodyPart.DeHighlight();
                 LastHitBodyPart = null;
@@ -79,7 +79,7 @@ public class BodyCutter : MonoBehaviour
             if (hitBodyPart != null)
             {
                 //TODO: start drag body part
-                if(hitBodyPart.bIsDetached)
+                if (hitBodyPart.bIsDetached)
                 {
                     DraggedBodyPart = hitBodyPart;
                     DragOffset = (new Vector3(hit.point.x, hit.point.y) - DraggedBodyPart.gameObject.transform.position);
@@ -105,8 +105,8 @@ public class BodyCutter : MonoBehaviour
                 //TODO: update position of dragged body part
                 DraggedBodyPart.gameObject.transform.position = getMouseWorldPos() - DragOffset;
 
-                if(BodySurgery.Henry.CanAttach(DraggedBodyPart) && 
-                    Vector3.Distance(DraggedBodyPart.SpurtMarker.transform.position, 
+                if (BodySurgery.Henry.CanAttach(DraggedBodyPart) &&
+                    Vector3.Distance(DraggedBodyPart.SpurtMarker.transform.position,
                     BodySurgery.Henry.GetSnapPositionForBodyPart(DraggedBodyPart.Type)) < 1.2f)
                 {
                     DraggedBodyPart.bPendingAttach = true;
@@ -121,8 +121,15 @@ public class BodyCutter : MonoBehaviour
             }
             else
             {
-                LineCut.enabled = true;
                 LineCut.SetPosition(1, getMouseWorldPos());
+                if (Vector3.Distance(LineCut.GetPosition(0), LineCut.GetPosition(1)) > 0.5f)
+                {
+                    LineCut.enabled = true;
+                }
+                else
+                {
+                    LineCut.enabled = false;
+                }
             }
         }
 
@@ -131,7 +138,7 @@ public class BodyCutter : MonoBehaviour
             if (DraggedBodyPart != null)
             {
                 //TODO: drop body part
-                if(DraggedBodyPart.bPendingAttach)
+                if (DraggedBodyPart.bPendingAttach)
                 {
                     DraggedBodyPart.Attach();
 
@@ -139,6 +146,11 @@ public class BodyCutter : MonoBehaviour
                 }
                 else
                 {
+                    if(!SurgeryManager.Instance.PendingPartsToTransfer.Contains(DraggedBodyPart.Type))
+                    {
+                        BloodManager.Spurt(DraggedBodyPart, Vector3.zero);
+                        Destroy(DraggedBodyPart.gameObject);
+                    }
                     AudioManager.Instance.PlaySoundOneShot(AudioManager.Instance.ClipsSurgeryDrop[Random.Range(0, AudioManager.Instance.ClipsSurgeryDrop.Count)]);
                 }
             }
@@ -148,26 +160,36 @@ public class BodyCutter : MonoBehaviour
                 LineCut.SetPosition(1, MouseDragEnd);
                 LineCut.enabled = false;
 
-                RaycastHit2D[] cutHits = Physics2D.RaycastAll(MouseDragStart,
+                if (Vector3.Distance(LineCut.GetPosition(0), LineCut.GetPosition(1)) > 0.5f)
+                {
+                    RaycastHit2D[] cutHits = Physics2D.RaycastAll(MouseDragStart,
                     (MouseDragEnd - MouseDragStart).normalized,
                     Vector3.Distance(MouseDragStart, MouseDragEnd));
 
-                if (cutHits.Length > 0)
-                {
-                    for (int i = 0; i < cutHits.Length; ++i)
+
+                    if (cutHits.Length > 0)
                     {
-                        BodyPartSurgery hitBodyPartCut = cutHits[i].collider.gameObject.GetComponent<BodyPartSurgery>();
-                        if (hitBodyPartCut != null)
+                        for (int i = 0; i < cutHits.Length; ++i)
                         {
-                            Debug.Log("Heureka bitch");
-                            Vector3 cutOffset = cutHits[0].point - new Vector2(hitBodyPartCut.gameObject.transform.position.x, hitBodyPartCut.gameObject.transform.position.y);
-                            BloodManager.Spurt(hitBodyPartCut, cutOffset);
-                            hitBodyPartCut.Detach();
-                            break;
+                            BodyPartSurgery hitBodyPartCut = cutHits[i].collider.gameObject.GetComponent<BodyPartSurgery>();
+                            if (hitBodyPartCut != null)
+                            {
+                                Debug.Log("Heureka bitch");
+                                Vector3 cutOffset = cutHits[0].point - new Vector2(hitBodyPartCut.gameObject.transform.position.x, hitBodyPartCut.gameObject.transform.position.y);
+                                BloodManager.Spurt(hitBodyPartCut, cutOffset);
+                                hitBodyPartCut.Detach();
+                                break;
+                            }
                         }
+
                     }
+                }
+                else
+                {
 
                 }
+
+                
             }
             DraggedBodyPart = null;
         }

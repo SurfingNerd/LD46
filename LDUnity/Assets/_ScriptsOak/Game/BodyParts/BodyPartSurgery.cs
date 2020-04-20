@@ -27,11 +27,21 @@ public class BodyPartSurgery : MonoBehaviour
 
     public void Highlight(Color col)
     {
+        if(GetComponentInParent<BodySurgery>() == BodySurgery.Henry && 
+            !SurgeryManager.Instance.PendingPartsToTransfer.Contains(Type))
+        {
+            return;
+        }
         Rendy.color = col;
     }
 
     public void HighlightLock(Color col )
     {
+        if (GetComponentInParent<BodySurgery>() == BodySurgery.Henry && 
+            !SurgeryManager.Instance.PendingPartsToTransfer.Contains(Type))
+        {
+            return;
+        }
         Rendy.color = col;
     }
 
@@ -55,7 +65,10 @@ public class BodyPartSurgery : MonoBehaviour
 
     public void Detach()
     {
-        if (bIsDetached || !bCanBeDetached)
+        
+        if (bIsDetached || !bCanBeDetached ||
+            GetComponentInParent<BodySurgery>() == BodySurgery.Henry && 
+            !SurgeryManager.Instance.PendingPartsToTransfer.Contains(Type))
         {
             return;
         }
