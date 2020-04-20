@@ -11,16 +11,12 @@ public class Street : MonoBehaviour
 	private Street superStreet;
 	[HideInInspector]
 	public Vector2 size;
-	[HideInInspector]
-	public bool lockable = false;
+	public bool lockable = true;
 	void Awake(){
 		UpdateSubStreetData();
 		var boundingBox = GetComponent<BoxCollider2D>();
-		if(boundingBox != null){
-			size = boundingBox.size;
-			lockable = true;
-			Destroy(boundingBox);
-		}
+		size = boundingBox.size;
+		Destroy(boundingBox);
 	}
 	void Update() {
 		if(rootStreet){
