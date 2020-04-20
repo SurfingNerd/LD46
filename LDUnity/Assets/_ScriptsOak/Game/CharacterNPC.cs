@@ -386,7 +386,7 @@ public class CharacterNPC : Character
         if (currentSleepiness > 1)
         {
             //CurrentAction = EAction.Idle;
-            CurrentTaskDuration = 5f;
+            CurrentTaskDuration = 7f;
             currentSleepiness = 0;
             SetCurrentDirection(EDirection.Neutral);
             SetStatus(ENPCStatus.Sleeping);
