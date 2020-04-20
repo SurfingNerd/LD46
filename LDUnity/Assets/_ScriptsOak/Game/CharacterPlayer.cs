@@ -326,6 +326,7 @@ public class CharacterPlayer : Character
             currentCorpse = null;
 
             AudioManager.Instance.PlaySoundOneShot(AudioManager.Instance.ClipCorpseDrop);
+            HUD.Instance.SetProgressBarProgressDecay(0.0f);
         }
     }
     public void TryInteract()

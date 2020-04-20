@@ -46,7 +46,9 @@ public class Corpse : MonoBehaviour, IInteractable
 
     public void AdvanceDecay()
     {
-        Decay += Time.deltaTime * DecayRate;
+        Decay = Mathf.Clamp(Decay + Time.deltaTime * DecayRate, 0.0f, 1.0f);
+        HUD.Instance.SetProgressBarProgressDecay(Decay);
+
         if (Decay < 0.3f)
         {
             if (DecayLevel != EDecayLevel.Fresh)

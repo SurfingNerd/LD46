@@ -15,6 +15,8 @@ public class HUD : MonoBehaviour
     [SerializeField]
     Image ImageProgressBar = null;
     [SerializeField]
+    Image ImageProgressBarDecay = null;
+    [SerializeField]
     TextMeshProUGUI TextCaught = null;
     [SerializeField]
     Image ImageCaught = null;
@@ -67,6 +69,11 @@ public class HUD : MonoBehaviour
     public void SetProgressBarProgress(float progress)
     {
         ImageProgressBar.fillAmount = progress;
+    }
+
+    public void SetProgressBarProgressDecay(float progress)
+    {
+        ImageProgressBarDecay.fillAmount = progress;
     }
 
     public void SetGetCaught(bool isCaught)
