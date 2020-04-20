@@ -113,6 +113,7 @@ public class CharacterNPC : Character
                 if (AudioManager.Instance != null)
                 {
                     AudioManager.Instance.PlayVoiceLine(AudioManager.Instance.ClipsNPCBarks[Random.Range(0, AudioManager.Instance.ClipsNPCBarks.Count)]);
+                    CharacterAnimator.SetAnimation(EAnimation.Alert, bShouldInvertX, true);
                 }
                 break;
             case ENPCStatus.Alarmed:
@@ -120,6 +121,7 @@ public class CharacterNPC : Character
                 if (AudioManager.Instance != null)
                 {
                     AudioManager.Instance.PlayVoiceLine(AudioManager.Instance.ClipsNPCBarks[Random.Range(0, AudioManager.Instance.ClipsNPCBarks.Count)]);
+                    CharacterAnimator.SetAnimation(EAnimation.Alert, bShouldInvertX, true);
                 }
                 break;
             case ENPCStatus.Aggressive:

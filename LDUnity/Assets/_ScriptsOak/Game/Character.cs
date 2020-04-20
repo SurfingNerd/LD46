@@ -26,6 +26,7 @@ public class Character : MonoBehaviour {
 
     public bool LogOutput = false;
 
+    public bool bShouldInvertX = false;
 
     protected void Log(string info,  Object context = null)
     {
@@ -87,18 +88,20 @@ public class Character : MonoBehaviour {
         {
             case EDirection.Left:
                 CurrentDirection.x = -1;
-                CharacterAnimator.SetAnimation(EAnimation.Move, true, false);
+                bShouldInvertX = true;
+                CharacterAnimator.SetAnimation(EAnimation.Move, bShouldInvertX, false);
                 break;
             case EDirection.Right:
                 CurrentDirection.x = 1;
-                CharacterAnimator.SetAnimation(EAnimation.Move, false, false);
+                bShouldInvertX = false;
+                CharacterAnimator.SetAnimation(EAnimation.Move, bShouldInvertX, false);
                 break;
             case EDirection.Up:
                 break;
             case EDirection.Down:
                 break;
             case EDirection.Neutral:
-                CharacterAnimator.SetAnimation(EAnimation.Idle, false, false);
+                CharacterAnimator.SetAnimation(EAnimation.Idle, bShouldInvertX, false);
                 CurrentDirection.x = 0;
                 break;
         }
