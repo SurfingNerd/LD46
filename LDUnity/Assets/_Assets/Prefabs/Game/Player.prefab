@@ -190,8 +190,8 @@ MonoBehaviour:
   CorpseMarker: {fileID: 5441847671967930130}
   CorpseMarkerInvert: {fileID: 6387444152064013759}
   TooltipRenderer: {fileID: 1834798621650456064}
-  CarryingCorpseSpeedFactorMove: 0.5
-  CarryingCorpseSpeedFactorAction: 0.75
+  CarryingCorpseSpeedFactorMove: 0.4
+  CarryingCorpseSpeedFactorAction: 0.5
   ListActionDefinitions:
   - Action: 1
     ActionRate: 3
