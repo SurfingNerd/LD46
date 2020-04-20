@@ -187,7 +187,7 @@ MonoBehaviour:
   - Action: 1
     ActionRate: 3
   - Action: 2
-    ActionRate: 0.2
+    ActionRate: 2
   - Action: 3
     ActionRate: 0.7
   - Action: 4
