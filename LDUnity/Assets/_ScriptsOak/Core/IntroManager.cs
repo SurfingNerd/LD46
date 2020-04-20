@@ -25,6 +25,7 @@ public class IntroManager : ManagerBase
                 bIntroDone = true;
                 HUD.Instance.HideIntro();
                 AudioManager.Instance.SwitchMusic(AudioManager.Instance.ClipMusicWander);
+                AudioManager.Instance.SwitchAtmosphere(EStreetAtmoType.Canal);
             }
         }
     }

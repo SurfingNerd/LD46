@@ -236,6 +236,7 @@ public class CharacterPlayer : Character
 
         StreetSpriteSort.PlayerStreetSwapp(sss.street);
 
+        AudioManager.Instance.SwitchAtmosphere(CurrentStreet.AtmoType);
 
         // SmoothCamera.camT.transform.parent = transform.parent;
         if(SmoothCamera.locked = CurrentStreet.lockable){
