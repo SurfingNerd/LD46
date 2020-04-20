@@ -66,7 +66,7 @@ public class AudioManager : ManagerBase
 
         SwitchMusic(ClipMusicWander);
 
-        PlaySoundOneShot(ClipOpening, 1.0f);
+        PlaySoundOneShot(ClipOpening);
     }
 
     public void SetFootstepsOn(bool isOn)
@@ -74,7 +74,7 @@ public class AudioManager : ManagerBase
         SourceFootsteps.mute = !isOn;
     }
 
-    public void PlaySoundOneShot(AudioClip clip, float range)
+    public void PlaySoundOneShot(AudioClip clip, float range = 0)
     {
     	SourceOneShot.pitch = 1+range*(Random.value-0.5f);
         SourceOneShot.PlayOneShot(clip);
