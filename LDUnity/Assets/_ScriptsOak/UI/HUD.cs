@@ -119,6 +119,6 @@ public class HUD : MonoBehaviour
 
     public void ToggleHelp()
     {
-        TutorialScreen.Instance.gameObject.SetActive(!TutorialScreen.Instance.gameObject.activeSelf);
+        TutorialScreen.toggleHelp();
     }
 }
