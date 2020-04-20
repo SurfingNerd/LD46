@@ -51,8 +51,43 @@ public class CharacterPlayer : Character
     EPlayerAction CurrentAction = EPlayerAction.None;
     float CurrentActionProgress = 0.0f;
     bool bJustFinishedAction = false;
-    
 
+    public override void SetCurrentDirection(EDirection dir)
+    {
+        switch (dir)
+        {
+            case EDirection.Left:
+                CurrentDirection.x = -1;
+                if(currentCorpse != null)
+                {
+                    CharacterAnimator.SetAnimation(EAnimation.Drag, true, false);
+                }
+                else
+                {
+                    CharacterAnimator.SetAnimation(EAnimation.Move, true, false);
+                }
+                break;
+            case EDirection.Right:
+                CurrentDirection.x = 1;
+                if (currentCorpse != null)
+                {
+                    CharacterAnimator.SetAnimation(EAnimation.Drag, false, false);
+                }
+                else
+                {
+                    CharacterAnimator.SetAnimation(EAnimation.Move, false, false);
+                }
+                break;
+            case EDirection.Up:
+                break;
+            case EDirection.Down:
+                break;
+            case EDirection.Neutral:
+                CharacterAnimator.SetAnimation(EAnimation.Idle, false, false);
+                CurrentDirection.x = 0;
+                break;
+        }
+    }
     protected void Start() {
 
         for(int i = 0; i < ListActionDefinitions.Count; ++i)
@@ -250,6 +285,7 @@ public class CharacterPlayer : Character
         if (currentCorpse != null)
         {
             currentCorpse.transform.SetParent(gameObject.transform.parent);
+            currentCorpse.Rendy.sprite = currentCorpse.DroppedSprite;
             currentCorpse = null;
         }
     }

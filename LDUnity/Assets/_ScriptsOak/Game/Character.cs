@@ -20,6 +20,8 @@ public class Character : MonoBehaviour {
     [SerializeField]
     protected float MoveSpeed = 2.0f;
 
+    public SpriteAnimator CharacterAnimator;
+
     // Start is called before the first frame update
 
     public bool LogOutput = false;
@@ -79,21 +81,24 @@ public class Character : MonoBehaviour {
     	CurrentStreet = GetComponentInParent<Street>();
     }
 
-    public void SetCurrentDirection(EDirection dir)
+    public virtual void SetCurrentDirection(EDirection dir)
     {
         switch (dir)
         {
             case EDirection.Left:
                 CurrentDirection.x = -1;
+                CharacterAnimator.SetAnimation(EAnimation.Move, true, false);
                 break;
             case EDirection.Right:
                 CurrentDirection.x = 1;
+                CharacterAnimator.SetAnimation(EAnimation.Move, false, false);
                 break;
             case EDirection.Up:
                 break;
             case EDirection.Down:
                 break;
             case EDirection.Neutral:
+                CharacterAnimator.SetAnimation(EAnimation.Idle, false, false);
                 CurrentDirection.x = 0;
                 break;
         }
