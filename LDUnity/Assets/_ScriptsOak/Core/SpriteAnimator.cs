@@ -8,6 +8,7 @@ public enum EAnimation
     Move,
     Drag,
     Murder,
+    Alert,
 }
 
 [System.Serializable]

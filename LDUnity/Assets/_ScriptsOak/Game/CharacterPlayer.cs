@@ -58,24 +58,26 @@ public class CharacterPlayer : Character
         {
             case EDirection.Left:
                 CurrentDirection.x = -1;
-                if(currentCorpse != null)
+                bShouldInvertX = true;
+                if (currentCorpse != null)
                 {
-                    CharacterAnimator.SetAnimation(EAnimation.Drag, true, false);
+                    CharacterAnimator.SetAnimation(EAnimation.Drag, bShouldInvertX, false);
                 }
                 else
                 {
-                    CharacterAnimator.SetAnimation(EAnimation.Move, true, false);
+                    CharacterAnimator.SetAnimation(EAnimation.Move, bShouldInvertX, false);
                 }
                 break;
             case EDirection.Right:
                 CurrentDirection.x = 1;
+                bShouldInvertX = false;
                 if (currentCorpse != null)
                 {
-                    CharacterAnimator.SetAnimation(EAnimation.Drag, false, false);
+                    CharacterAnimator.SetAnimation(EAnimation.Drag, bShouldInvertX, false);
                 }
                 else
                 {
-                    CharacterAnimator.SetAnimation(EAnimation.Move, false, false);
+                    CharacterAnimator.SetAnimation(EAnimation.Move, bShouldInvertX, false);
                 }
                 break;
             case EDirection.Up:
@@ -83,7 +85,7 @@ public class CharacterPlayer : Character
             case EDirection.Down:
                 break;
             case EDirection.Neutral:
-                CharacterAnimator.SetAnimation(EAnimation.Idle, false, false);
+                CharacterAnimator.SetAnimation(EAnimation.Idle, bShouldInvertX, false);
                 CurrentDirection.x = 0;
                 break;
         }

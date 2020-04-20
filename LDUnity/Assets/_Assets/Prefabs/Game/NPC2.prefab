@@ -182,6 +182,8 @@ MonoBehaviour:
   CurrentDirection: {x: 0, y: 0, z: 0}
   MoveSpeed: 2
   CharacterAnimator: {fileID: 4103594377865843935}
+  LogOutput: 0
+  bShouldInvertX: 0
   DesiredPart: 0
   ThinkCooldownMin: 0
   ThinkCooldownMax: 0
@@ -262,10 +264,13 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 7825215b0e2a0844f8dc4a1204c2b74b, type: 3}
     AnimRate: 0.125
     ClipList: []
-  - Type: 3
+  - Type: 4
     SpriteList:
-    - {fileID: 21300000, guid: 7825215b0e2a0844f8dc4a1204c2b74b, type: 3}
-    - {fileID: 21300000, guid: 38b83144d56311f45be35185aae30ca7, type: 3}
+    - {fileID: 21300000, guid: 98d3a3fb55ab1fe46b2d4d1db9ae3218, type: 3}
+    - {fileID: 21300000, guid: 6e1f44517fec07b458c350da9737cdad, type: 3}
+    - {fileID: 21300000, guid: 71afdda794c4a624b9f7e5061c0b895e, type: 3}
+    - {fileID: 21300000, guid: b8f4efc1946d31945aa790776dae5d0f, type: 3}
+    - {fileID: 21300000, guid: 8b799518f1c9d5c40ba9e2166aba51e1, type: 3}
     AnimRate: 0.125
     ClipList: []
   DestroyOnFinish: 0
