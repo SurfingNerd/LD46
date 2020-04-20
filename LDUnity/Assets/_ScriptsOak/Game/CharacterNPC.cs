@@ -168,7 +168,13 @@ public class CharacterNPC : Character
         distance = Vector3.Distance(CharacterPlayer.instance.transform.position, this.transform.position);
         bool result = this.CurrentStatus != ENPCStatus.Sleeping
                       && distance < EntityManager.Instance.npcCorpseDetectionDistance
-                      && !CharacterPlayer.instance.IsHiding();
+                      && !CharacterPlayer.instance.IsHiding()
+                      && CharacterPlayer.instance.GetCurrentStreet() == this.GetCurrentStreet();    
+
+        //if (result)
+        //{
+            //check if they are also on the same street level.
+        //}
 
         return result;
     } 
