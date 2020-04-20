@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EStreetAtmoType
+{
+	Street,
+	Indoors,
+	Canal
+}
+
 public class Street : MonoBehaviour
 {
 	[SerializeField]
@@ -12,6 +19,10 @@ public class Street : MonoBehaviour
 	[HideInInspector]
 	public Vector2 size;
 	public bool lockable = true;
+
+	[SerializeField]
+	public EStreetAtmoType AtmoType;
+	
 	void Awake(){
 		UpdateSubStreetData();
 		var boundingBox = GetComponent<BoxCollider2D>();

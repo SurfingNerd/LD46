@@ -11,10 +11,9 @@ public class TutorialScreen : ScreenBase
     private void Awake()
     {
         Instance = this;
-    }
 
-    [SerializeField]
-    TextMeshProUGUI TextTutorialInstruction;
+        gameObject.SetActive(false);
+    }
 
 
     public override void InitScreen()
