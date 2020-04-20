@@ -22,6 +22,35 @@ public class Character : MonoBehaviour {
 
     // Start is called before the first frame update
 
+    public bool LogOutput = false;
+
+
+    protected void Log(string info,  Object context = null)
+    {
+        if (LogOutput)
+        {
+            Debug.Log(info, context);
+        }
+    }
+    
+    
+    protected void LogWarn(string info,  Object context = null)
+    {
+        if (LogOutput)
+        {
+            Debug.LogWarning(info, context);
+        }
+    }
+    
+    
+    protected void LogError(string info,  Object context = null)
+    {
+        if (LogOutput)
+        {
+            Debug.LogError(info, context);
+        }
+    }
+    
     public int GetCurrentStreet()
     {
         StreetSpriteSort sort = this.GetComponent<StreetSpriteSort>();

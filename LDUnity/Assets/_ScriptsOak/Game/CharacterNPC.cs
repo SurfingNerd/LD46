@@ -77,6 +77,12 @@ public class CharacterNPC : Character
         CurrentAction = action;
     }*/
 
+
+    
+    
+    
+    
+
     public override void MoveCharacter()
     {
         base.MoveCharacter();
@@ -195,9 +201,10 @@ public class CharacterNPC : Character
 
         //CurrentAction = EAction.Idle;
         CurrentTaskDuration -= Time.deltaTime;
-        
-        // Debug.Log("state: " + CurrentStatus + "" +
-        //           "CurrentTaskDuration: " + CurrentTaskDuration.ToString("##.##") + " - " + currentSleepiness.ToString("#.###"));
+
+        Log("state: " + CurrentStatus + "" +
+            "CurrentTaskDuration: " + CurrentTaskDuration.ToString("##.##") + " - " +
+            currentSleepiness.ToString("#.###"));
 
         float distance = 0;
         bool isInVision = CheckPlayerIsInVision(out distance);
@@ -218,7 +225,6 @@ public class CharacterNPC : Character
                 lastKnownPosition = CharacterPlayer.instance.transform.position;
                 //EntityManager.Instance.npcCorpseDetectionDistance
                 MoveToTargetPos(lastKnownPosition.Value);
-                
                 //check gameover instance here ?!
             }
             else if (lastKnownFleeAlley != null)
@@ -227,16 +233,16 @@ public class CharacterNPC : Character
                 if (distanceAlley < EntityManager.Instance.interactableRadius)
                 {
                     //Alley targetAlley =  lastKnownFleeAlley.GetTargetAlley();
-                    
-                    Debug.LogWarning("Warping!");
+                    LogWarn("Warping!");
                     TransitionToStreet(lastKnownFleeAlley);
                     
                     //this.transform.position = targetAlley.GetPosition();
-                    this.lastKnownFleeAlley = null;
-                    this.lastKnownPosition = null;
+                    lastKnownFleeAlley = null;
+                    lastKnownPosition = null;
                 }
                 else
                 {
+                    
                     //abbroach further to this alley.
                     //because of parallax scrolling the allay moves - so we update the move to every frame.
                     MoveToTargetPos(lastKnownFleeAlley.GetPosition());
@@ -332,7 +338,7 @@ public class CharacterNPC : Character
                     AudioManager.Instance.SwitchMusic(AudioManager.Instance.ClipMusicWander);
                 }
             }
-            //Debug.LogWarning("Corpse detected!! Distance: " + distance);
+            Log("Corpse detected!! Distance: " + distance);
         }
         // END: Stuff from EntityManager
 
