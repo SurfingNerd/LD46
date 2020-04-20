@@ -106,6 +106,7 @@ public class GameManager : ManagerBase
         if(CurrentLevelIndex == 4)
         {
             HUD.Instance.ShowGameWinScreen();
+            AudioManager.Instance.PlaySoundOneShot(AudioManager.Instance.ClipFinale);
         }
         else
         {
@@ -113,6 +114,7 @@ public class GameManager : ManagerBase
             SurgeryManager.Instance.gameObject.SetActive(false);
             OutsideManager.Instance.gameObject.SetActive(true);
             SetNextLevel();
+            AudioManager.Instance.SwitchMusic(AudioManager.Instance.ClipMusicWander);
         }
     }
 
