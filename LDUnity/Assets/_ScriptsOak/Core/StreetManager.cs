@@ -25,21 +25,6 @@ public class StreetManager : ManagerBase
         //{
         //    CurrentStreet.Hide();
         //}
-        if(alley == null)
-        {
-            Debug.LogError("Tried to transition to NULL alley!");
-            return;
-        }
-        if (alley.GetTargetAlley() == null)
-        {
-            Debug.LogError("Alley: " + alley + "; TargetAlley is NULL!");
-            return;
-        }
-        if (alley.GetTargetAlley().GetCurrentStreet() == null)
-        {
-            Debug.LogError("Alley: " + alley + "; TargetAlley's CurrentStreet is NULL!");
-            return;
-        }
         CurrentStreet = alley.GetTargetAlley().GetCurrentStreet();
         CharacterPlayer.instance.TransitionToStreet(alley);
 

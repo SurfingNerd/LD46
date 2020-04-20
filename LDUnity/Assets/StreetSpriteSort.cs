@@ -14,7 +14,7 @@ public class StreetSpriteSort : MonoBehaviour {
 	public float transitionFrac = 0;
 	private const float transitionLength = .5f;
 
-	public int _street;
+	private int _street;
 	public int street{  
 		get { return _street; }
 		set { 
@@ -45,7 +45,7 @@ public class StreetSpriteSort : MonoBehaviour {
 		sr.sortingLayerID = 0;
 		sr.sortingOrder = 1000*_street+(int)_layer;
 	}
-	private static Color grey = new Color(0,0,0,0.3f);
+	private static Color grey = new Color(0,0,0,0.3f), trans = new Color(0,0,0,0);
 	public static void PlayerStreetSwapp(int playerStreet){
 		//garbage doesn't matter in a jam game
 		foreach (var sss in SSSs) if(sss.isGrey!=(sss.isGrey = (sss.requireExactLayer?sss.street!=playerStreet:sss.street>playerStreet))) sss.transitionFrac = 1;
@@ -53,11 +53,11 @@ public class StreetSpriteSort : MonoBehaviour {
 	void Update(){
 		if(transitionFrac>0){
 			transitionFrac-=Time.deltaTime/transitionLength;
-			if(isGrey)	sr.color = grey*(1-transitionFrac)+spriteColour*transitionFrac;
-			else		sr.color = grey*transitionFrac+spriteColour*(1-transitionFrac);
+			if(isGrey)	sr.color = (requireExactLayer?trans:grey)*(1-transitionFrac)+spriteColour*transitionFrac;
+			else		sr.color = (requireExactLayer?trans:grey)*transitionFrac+spriteColour*(1-transitionFrac);
 		}
 	}
 }
 public enum SortLayer {
-	BACKGROUND, BUILDING_INTERNAL, BUILDING_MID, BUILDING_FRONT, ENVIRONMENT, OBJECTS, PLAYER
+	BACKGROUND, BUILDING_INTERNAL, BUILDING_MID, BUILDING_FRONT, ENVIRONMENT, OBJECTS, PLAYER, GROUND, FOREGROUND_1, FOREGROUND_2, FOREGROUND_3
 }

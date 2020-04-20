@@ -62,6 +62,7 @@ public class CharacterPlayer : Character
         instance = this;
         sss = GetComponent<StreetSpriteSort>();
         StreetSpriteSort.PlayerStreetSwapp(sss.street);
+        SmoothCamera.Target = transform;
         base.Start();
     }
     public override void MoveCharacter()
@@ -132,19 +133,9 @@ public class CharacterPlayer : Character
             return;
         }
 
-        switch (CurrentAction)
-        {
-            case EPlayerAction.None:
-                CurrentActionProgress = 1.0f;
-                break;
-            case EPlayerAction.Hide:
-            case EPlayerAction.Inspect:
-            case EPlayerAction.PickUp:
-            case EPlayerAction.Transition:
-            case EPlayerAction.DropOff:
-                CurrentActionProgress += Time.deltaTime * ActionDefinitions[CurrentAction].ActionRate * (GetCurrentCorpse() != null ? CarryingCorpseSpeedFactorAction : 1.0f);
-                break;
-        }
+       
+        CurrentActionProgress += Time.deltaTime * ActionDefinitions[CurrentAction].ActionRate * (GetCurrentCorpse() != null ? CarryingCorpseSpeedFactorAction : 1.0f);
+        
 
         HUD.Instance.SetProgressBarProgress(CurrentActionProgress);
         if (CurrentActionProgress >= 1.0f)
@@ -163,27 +154,34 @@ public class CharacterPlayer : Character
     		tempsss.transitionFrac = 1;
     		tempsss.layer = SortLayer.BUILDING_FRONT;
     	}
-    	tempsss = alley.GetTargetAlley().GetCurrentStreet().GetComponent<StreetSpriteSort>();
+    	tempsss = (CurrentStreet=alley.GetTargetAlley().GetCurrentStreet()).GetComponent<StreetSpriteSort>();
     	if(tempsss != null){
     		tempsss.spriteColour = Color.black;
     		tempsss.transitionFrac = 1;
     		tempsss.layer = SortLayer.BACKGROUND;
     	}
+    	var delta = transform.position.y;
 
-        gameObject.transform.SetParent(alley.GetTargetAlley().GetCurrentStreet().gameObject.transform);
+        gameObject.transform.SetParent(CurrentStreet.gameObject.transform);
         Vector3 temp = alley.GetTargetAlley().gameObject.transform.localPosition;
-        temp.y = alley.GetTargetAlley().GetCurrentStreet().StreetYOffset;
-        sss.street = alley.GetTargetAlley().GetCurrentStreet().streetID;
+        temp.y = CurrentStreet.StreetYOffset;
+        sss.street = CurrentStreet.streetID;
         if(currentCorpse!=null)currentCorpse.gameObject.GetComponent<StreetSpriteSort>().street = sss.street;
         gameObject.transform.localPosition = temp;
 
+        delta -= transform.position.y;
+
         StreetSpriteSort.PlayerStreetSwapp(sss.street);
 
-        SmoothCamera.camT.transform.parent = transform.parent;
 
-
-        // delta -= transform.position;
-        // SmoothCamera.targetPosition.x-=delta.x;
+        // SmoothCamera.camT.transform.parent = transform.parent;
+        if(SmoothCamera.locked = CurrentStreet.lockable){
+        	SmoothCamera.Target = CurrentStreet.transform;
+        	SmoothCamera.lockSize = CurrentStreet.size;
+        }else{
+        	SmoothCamera.Target = transform;
+        	// SmoothCamera.targetPosition.x=-transform.position.x/SmoothCamera.Parallax(1,0,delta);
+        }
     }
 
     IInteractable CurrentClosestInteractable = null;

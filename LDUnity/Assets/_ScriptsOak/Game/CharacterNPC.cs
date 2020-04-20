@@ -190,8 +190,8 @@ public class CharacterNPC : Character
         //CurrentAction = EAction.Idle;
         CurrentTaskDuration -= Time.deltaTime;
         
-        Debug.Log("state: " + CurrentStatus + "" +
-                  "CurrentTaskDuration: " + CurrentTaskDuration.ToString("##.##") + " - " + currentSleepiness.ToString("#.###"));
+        // Debug.Log("state: " + CurrentStatus + "" +
+        //           "CurrentTaskDuration: " + CurrentTaskDuration.ToString("##.##") + " - " + currentSleepiness.ToString("#.###"));
 
         float distance = 0;
         bool isInVision = CheckPlayerIsInVision(out distance);
