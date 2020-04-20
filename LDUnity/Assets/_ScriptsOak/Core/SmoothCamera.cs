@@ -25,7 +25,7 @@ public class SmoothCamera : MonoBehaviour
 		cam = GetComponent<Camera>();
 		ppc = GetComponent<PixelPerfectCamera>();
 	}
-	private float k = 100;
+	private float k = 16;
 	void Update() {
 		var delta = (locked?200.0f/(cam.aspect<(lockSize.x+2)/(lockSize.y+2)?lockSize.x:lockSize.y):16)-k;
 		k+=Mathf.Sign(delta)*Mathf.Min(Mathf.Abs(delta),Time.deltaTime*zoomTimeMult);
