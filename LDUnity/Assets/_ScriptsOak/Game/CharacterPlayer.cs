@@ -35,7 +35,7 @@ public class CharacterPlayer : Character
     SpriteRenderer TooltipRenderer;
 
     [SerializeField]
-    float CarryingCorpseSpeedFactorMove = 0.5f;
+    float CarryingCorpseSpeedFactorMove = 0.4f;
     [SerializeField]
     float CarryingCorpseSpeedFactorAction = 0.5f;
 
