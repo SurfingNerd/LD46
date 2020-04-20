@@ -176,11 +176,16 @@ public class CharacterPlayer : Character
 
         // SmoothCamera.camT.transform.parent = transform.parent;
         if(SmoothCamera.locked = CurrentStreet.lockable){
-        	SmoothCamera.Target = CurrentStreet.transform;
+        	SmoothCamera.lockPos = Vector3.zero;
         	SmoothCamera.lockSize = CurrentStreet.size;
+        	float dy = CurrentStreet.transform.position.y+CurrentStreet.StreetYOffset-(CurrentStreet.GetSuperStreet().transform.position.y+CurrentStreet.GetSuperStreet().StreetYOffset);
+        	SmoothCamera.lockSize.y+=Mathf.Abs(dy);
+			SmoothCamera.lockPos.y-=dy*0.5f;
+			SmoothCamera.Target = CurrentStreet.transform;
         }else{
         	SmoothCamera.Target = transform;
-        	// SmoothCamera.targetPosition.x=-transform.position.x/SmoothCamera.Parallax(1,0,delta);
+        	SmoothCamera.lockPos = Vector3.zero;
+        // SmoothCamera.targetPosition.x=-transform.position.x/SmoothCamera.Parallax(1,0,delta);
         }
     }
 
