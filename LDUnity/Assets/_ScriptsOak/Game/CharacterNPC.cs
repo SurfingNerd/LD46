@@ -6,11 +6,13 @@ using Random = UnityEngine.Random;
 
 public enum EBodyPart
 {
-    Eyes,
+    Face,
     Hair,
-    Torso,
-    Arm,
-    Leg
+    LeftLeg,
+    RightLeg,
+    LeftArm,
+    RightArm,
+    Torso
 }
 
 /*

@@ -101,7 +101,7 @@ public class Character : MonoBehaviour {
 
 
     public void SetPosition(Vector3 newPosition) {
-    	if(CurrentStreet!=null&&CurrentStreet.lockable){
+    	if(CurrentStreet!=null){
     		var delta = newPosition - CurrentStreet.transform.position;
     		delta.x = Mathf.Sign(delta.x)*Mathf.Min(Mathf.Abs(delta.x), CurrentStreet.size.x/2);
     		delta.y = Mathf.Sign(delta.y)*Mathf.Min(Mathf.Abs(delta.y), CurrentStreet.size.y/2);

@@ -20,15 +20,20 @@ public class HUD : MonoBehaviour
     Image ImageCaught = null;
     [SerializeField]
     Button ButtonRestart = null;
+    [SerializeField]
+    public Button ButtonEndSurgery = null;
 
     // Start is called before the first frame update
     void Start()
     {
         //ToggleHUD(false);
         ButtonRestart.onClick.AddListener(RestartClicked);
+        ButtonEndSurgery.onClick.AddListener(SurgeryManager.Instance.EndSurgery);
+
         ImageCaught.gameObject.SetActive(false);
         ButtonRestart.gameObject.SetActive(false);
         TextCaught.gameObject.SetActive(false);
+        ButtonEndSurgery.gameObject.SetActive(false);
     }
     public void RestartClicked()
     {

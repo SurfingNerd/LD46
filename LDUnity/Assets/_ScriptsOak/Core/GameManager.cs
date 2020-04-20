@@ -15,6 +15,8 @@ public class GameManager : ManagerBase
     public List<ManagerBase> GameManagerTemplates = new List<ManagerBase>();
 
     public List<Level> ListLevelTemplates = new List<Level>();
+    public List<BodySurgery> ListSurgeryBodyTemplates = new List<BodySurgery>();
+
 
     List<Level> ListSpawnedLevels = new List<Level>();
     Level CurrentLevel;
@@ -93,6 +95,17 @@ public class GameManager : ManagerBase
     {
         CurrentLevel.EndLevel();
 
+        SurgeryManager.Instance.StartSurgery();
+        OutsideManager.Instance.gameObject.SetActive(false);
+
+        //SetNextLevel();
+    }
+
+    public void NotifySurgeryEnded()
+    {
+        HUD.Instance.GetComponent<Canvas>().worldCamera = OutsideManager.Instance.CamRef;
+        SurgeryManager.Instance.gameObject.SetActive(false);
+        OutsideManager.Instance.gameObject.SetActive(true);
         SetNextLevel();
     }
 
