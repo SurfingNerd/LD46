@@ -47,7 +47,13 @@ public class CharacterNPC : Character
 
     [SerializeField]
     float SleepinessIncrease = 0.01f; 
+    
+    [SerializeField]
+    public float currentSleepiness = 0.0f;
 
+
+    public bool harmlessNPCCheat = false;
+    
     [SerializeField]
     public SpriteRenderer TooltipRenderer;
 
@@ -67,8 +73,7 @@ public class CharacterNPC : Character
 
     bool bIsDying = false;
 
-    float currentSleepiness = 0.0f;
-
+    
     private Vector3? lastKnownPosition;
 
     //last known alley this npc has seen the player fleeing.
@@ -78,12 +83,6 @@ public class CharacterNPC : Character
     {
         CurrentAction = action;
     }*/
-
-
-    
-    
-    
-    
 
     public override void MoveCharacter()
     {
@@ -462,7 +461,11 @@ public class CharacterNPC : Character
         
         if (distance <  EntityManager.Instance.npcCorpseDetectionDistance / 4)
         {
-            //CharacterPlayer.instance.HandleGetCaught();
+            if (!harmlessNPCCheat)
+            {
+                CharacterPlayer.instance.HandleGetCaught();
+            }
+            
             SetStatus(ENPCStatus.Aggressive);
         } else if (distance < EntityManager.Instance.npcCorpseDetectionDistance / 2)
         {
