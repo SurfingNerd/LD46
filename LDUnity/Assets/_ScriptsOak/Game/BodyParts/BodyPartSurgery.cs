@@ -60,5 +60,6 @@ public class BodyPartSurgery : MonoBehaviour
         gameObject.transform.localPosition = new Vector3(-2.46f, -0.61f, 0);
 
         bCanBeDetached = false;
+        SurgeryManager.Instance.NotifyPartAttached(Type);
     }
 }
