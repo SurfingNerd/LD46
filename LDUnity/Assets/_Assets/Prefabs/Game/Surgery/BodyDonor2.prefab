@@ -342,6 +342,9 @@ MonoBehaviour:
   Type: 0
   SpurtMarker: {fileID: 287491551}
   bIsMatch: 0
+  Rendy: {fileID: 0}
+  HighlightColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
+  PendingAttachColor: {r: 0.33490568, g: 1, b: 0.42566973, a: 1}
   bIsDetached: 0
   bCanBeDetached: 1
   bPendingAttach: 0
@@ -481,6 +484,9 @@ MonoBehaviour:
   Type: 1
   SpurtMarker: {fileID: 1846996038}
   bIsMatch: 0
+  Rendy: {fileID: 0}
+  HighlightColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
+  PendingAttachColor: {r: 0.33490568, g: 1, b: 0.42566973, a: 1}
   bIsDetached: 0
   bCanBeDetached: 1
   bPendingAttach: 0
@@ -770,6 +776,9 @@ MonoBehaviour:
   Type: 5
   SpurtMarker: {fileID: 553944199}
   bIsMatch: 0
+  Rendy: {fileID: 0}
+  HighlightColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
+  PendingAttachColor: {r: 0.33490568, g: 1, b: 0.42566973, a: 1}
   bIsDetached: 0
   bCanBeDetached: 1
   bPendingAttach: 0
@@ -907,6 +916,9 @@ MonoBehaviour:
   Type: 5
   SpurtMarker: {fileID: 954469823}
   bIsMatch: 0
+  Rendy: {fileID: 0}
+  HighlightColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
+  PendingAttachColor: {r: 0.33490568, g: 1, b: 0.42566973, a: 1}
   bIsDetached: 0
   bCanBeDetached: 1
   bPendingAttach: 0
@@ -1043,6 +1055,9 @@ MonoBehaviour:
   Type: 6
   SpurtMarker: {fileID: 2074601091}
   bIsMatch: 1
+  Rendy: {fileID: 0}
+  HighlightColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
+  PendingAttachColor: {r: 0.33490568, g: 1, b: 0.42566973, a: 1}
   bIsDetached: 0
   bCanBeDetached: 1
   bPendingAttach: 0
@@ -1183,6 +1198,9 @@ MonoBehaviour:
   Type: 4
   SpurtMarker: {fileID: 3969148179586902226}
   bIsMatch: 0
+  Rendy: {fileID: 0}
+  HighlightColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
+  PendingAttachColor: {r: 0.33490568, g: 1, b: 0.42566973, a: 1}
   bIsDetached: 0
   bCanBeDetached: 1
   bPendingAttach: 0
@@ -1323,6 +1341,9 @@ MonoBehaviour:
   Type: 2
   SpurtMarker: {fileID: 1944088225}
   bIsMatch: 0
+  Rendy: {fileID: 0}
+  HighlightColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
+  PendingAttachColor: {r: 0.33490568, g: 1, b: 0.42566973, a: 1}
   bIsDetached: 0
   bCanBeDetached: 1
   bPendingAttach: 0
