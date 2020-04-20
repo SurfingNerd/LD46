@@ -1730,17 +1730,22 @@ PrefabInstance:
     - target: {fileID: 2151143838414510626, guid: 830ac58dc17f76247ac6ff68149c7870,
         type: 3}
       propertyPath: m_RefResolutionX
-      value: 200
+      value: 190
       objectReference: {fileID: 0}
     - target: {fileID: 2151143838414510626, guid: 830ac58dc17f76247ac6ff68149c7870,
         type: 3}
       propertyPath: m_RefResolutionY
-      value: 200
+      value: 108
       objectReference: {fileID: 0}
     - target: {fileID: 2151143838414510626, guid: 830ac58dc17f76247ac6ff68149c7870,
         type: 3}
       propertyPath: m_AssetsPPU
-      value: 32
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151143838414510626, guid: 830ac58dc17f76247ac6ff68149c7870,
+        type: 3}
+      propertyPath: m_CropFrameY
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 830ac58dc17f76247ac6ff68149c7870, type: 3}

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 
 public class SurgeryManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class SurgeryManager : MonoBehaviour
     public List<EBodyPart> PendingPartsToTransfer = new List<EBodyPart>();
 
     public Camera CamRef;
+    // public PixelPerfectCamera ppc;
 
     private void Awake()
     {
@@ -68,6 +70,7 @@ public class SurgeryManager : MonoBehaviour
                 AudioManager.Instance.PlayVoiceLine(AudioManager.Instance.ClipSurgeryFace);
                 break;
         }
+        // ppc.cropFrameY = true; 
     }
 
     public void EndSurgery()
@@ -75,6 +78,7 @@ public class SurgeryManager : MonoBehaviour
         Destroy(CurrentDonor.gameObject);
         GameManager.Instance.NotifySurgeryEnded();
         HUD.Instance.ButtonEndSurgery.gameObject.SetActive(false);
+        // ppc.cropFrameY = false;
     }
 
     public void NotifyPartAttached(EBodyPart part)
