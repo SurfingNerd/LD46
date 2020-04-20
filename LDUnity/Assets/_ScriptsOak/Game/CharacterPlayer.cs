@@ -38,7 +38,7 @@ public class CharacterPlayer : Character
     SpriteRenderer TooltipRenderer;
 
     [SerializeField]
-    float CarryingCorpseSpeedFactorMove = 0.5f;
+    float CarryingCorpseSpeedFactorMove = 0.4f;
     [SerializeField]
     float CarryingCorpseSpeedFactorAction = 0.5f;
 
@@ -268,6 +268,8 @@ public class CharacterPlayer : Character
 
             if (currentCorpse.DecayLevel == EDecayLevel.WellDone)
             {
+                //AudioManager.Instance.PlayVoiceLine(AudioManager.);
+                AudioManager.Instance.PlayVoiceLine(AudioManager.Instance.ClipsNonViable[UnityEngine.Random.Range(0, AudioManager.Instance.ClipsNonViable.Count)]);
                 DropCorpse();
             }
         }

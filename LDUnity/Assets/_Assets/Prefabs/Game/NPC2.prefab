@@ -188,8 +188,9 @@ MonoBehaviour:
   DesiredPart: 0
   ThinkCooldownMin: 0
   ThinkCooldownMax: 0
-  SleepinessIncrease: 0.01
+  SleepinessIncrease: 0.05
   currentSleepiness: 0
+  AlarmedDuration: 12
   harmlessNPCCheat: 0
   TooltipRenderer: {fileID: 5950324332004555223}
   AlertIcon: {fileID: 21300000, guid: 095cc0bb762a1b749ba7e7c53da55d99, type: 3}

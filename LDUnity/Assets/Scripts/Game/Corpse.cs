@@ -6,6 +6,7 @@ public enum EDecayLevel
 {
     Fresh,
     Medium,
+    AlmostDone,
     WellDone
 }
 
@@ -36,6 +37,7 @@ public class Corpse : MonoBehaviour, IInteractable
     [SerializeField]
     float DecayRate = 0.01f;
 
+    [SerializeField]
     float Decay = 0.0f;
 
     bool bIsInspected = false;
@@ -56,6 +58,11 @@ public class Corpse : MonoBehaviour, IInteractable
                 DecayLevel = EDecayLevel.Fresh;
                 Debug.Log(this + " Decay Level Changed to: " + DecayLevel);
             }
+        }
+        else if (Decay < 0.6f)
+        {
+            DecayLevel = EDecayLevel.AlmostDone;
+            Debug.Log(this + " Decay Level Changed to: " + DecayLevel);
         }
         else if (Decay < 0.9f)
         {
@@ -84,6 +91,8 @@ public class Corpse : MonoBehaviour, IInteractable
                 case EDecayLevel.Fresh:
                     return InteractIconViable;
                 case EDecayLevel.Medium:
+                    return InteractIconViable;
+                case EDecayLevel.AlmostDone:
                     return InteractIconViable;
                 case EDecayLevel.WellDone:
                     return InteractIconNonViable;
@@ -170,6 +179,9 @@ public class Corpse : MonoBehaviour, IInteractable
                 break;
             case EDecayLevel.Medium:
                 Decay = 0.3f;
+                break;
+            case EDecayLevel.AlmostDone:
+                Decay = 0.6f;
                 break;
             case EDecayLevel.WellDone:
                 Decay = 0.9f;

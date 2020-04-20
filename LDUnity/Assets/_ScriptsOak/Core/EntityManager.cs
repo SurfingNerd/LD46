@@ -15,7 +15,7 @@ public class EntityManager : ManagerBase
     }
     #endregion // singleton
 
-    public float npcCorpseDetectionDistance = 3;
+    public float npcCorpseDetectionDistance = 5;
 
     public float corpsePickupRadius = 1;
 
