@@ -38,7 +38,7 @@ public class IntroManager : ManagerBase
     {
         base.InitManager();
         IntroDelay = AudioManager.Instance.ClipOpening.length;
-        AudioManager.Instance.PlaySoundOneShot(AudioManager.Instance.ClipOpening);
+        AudioManager.Instance.PlayVoiceLine(AudioManager.Instance.ClipOpening);
 
         HUD.Instance.ShowIntro();
 
