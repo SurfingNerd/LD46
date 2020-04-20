@@ -992,7 +992,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1052,8 +1052,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AssetsPPU: 16
-  m_RefResolutionX: 384
-  m_RefResolutionY: 216
+  m_RefResolutionX: 200
+  m_RefResolutionY: 200
   m_UpscaleRT: 0
   m_PixelSnapping: 0
   m_CropFrameX: 0
@@ -1071,8 +1071,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05542a383de004f46a9024cbace7bb0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 0}
   SmoothTime: 0.3
+  yOff: 0.2
+  ppc: {fileID: 0}
+  zoomTimeMult: 40
 --- !u!1001 &1535705874698550772
 PrefabInstance:
   m_ObjectHideFlags: 0

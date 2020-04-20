@@ -130,12 +130,14 @@ public class CharacterPlayer : Character
     {
         if (bJustFinishedAction || CurrentClosestInteractable == null)
         {
+            Debug.Log($"can't interact. {bJustFinishedAction}, {CurrentClosestInteractable}");
             return;
         }
 
        
         CurrentActionProgress += Time.deltaTime * ActionDefinitions[CurrentAction].ActionRate * (GetCurrentCorpse() != null ? CarryingCorpseSpeedFactorAction : 1.0f);
-        
+
+        //Debug.LogWarning("Progress: " + CurrentActionProgress.ToString());
 
         HUD.Instance.SetProgressBarProgress(CurrentActionProgress);
         if (CurrentActionProgress >= 1.0f)
