@@ -64,7 +64,7 @@ public class Corpse : MonoBehaviour, IInteractable
             DecayLevel = EDecayLevel.AlmostDone;
             Debug.Log(this + " Decay Level Changed to: " + DecayLevel);
         }
-        else if (Decay < 0.9f)
+        else if (Decay < 0.99f)
         {
             if (DecayLevel != EDecayLevel.Medium)
             {
@@ -184,7 +184,7 @@ public class Corpse : MonoBehaviour, IInteractable
                 Decay = 0.6f;
                 break;
             case EDecayLevel.WellDone:
-                Decay = 0.9f;
+                Decay = 0.99f;
                 break;
         }
     }
