@@ -28,14 +28,19 @@ public class PartsManager : MonoBehaviour{
 			}
 		}
 	}
-	public PartsManager Slice(Vector3 slice){ //offset.xy, rot
+	public PartsManager Slice(Vector4 slice){ //offset.xy, rot, length
 		var mask = new GameObject(){name="mask"};
 		mask.transform.parent = transform;
 
 		mask.transform.position = new Vector3(slice.x,slice.y,0);
 		mask.transform.eulerAngles = new Vector3(0,0,slice.z);
 
+		mask.transform.localScale = new Vector3(100, slice.w, 1);
+
 		PartsManager outPart = null;
+
+		var sm = mask.AddComponent<SpriteMask>();
+
 		if(root){
 			outPart = Instantiate(gameObject,transform.position,transform.rotation).GetComponent<PartsManager>();
 
@@ -50,13 +55,15 @@ public class PartsManager : MonoBehaviour{
 			outPart.posOffset = new Vector3(slice.x-transform.position.x,slice.y-transform.position.y,0);
 
 			outPart.Start();
-			slice.z+=180;
 			outPart.Slice(slice);
+			sm.sprite = Resources.Load<Sprite>("maskB");
+		}else{
+			sm.sprite = Resources.Load<Sprite>("maskA");
 		}
-
-		var sm = mask.AddComponent<SpriteMask>();
+		
 		setupMask(sm,sr.sortingOrder,sr.sortingLayerID);
-		sm.sprite = Resources.Load<Sprite>("mask");
+
+
 
 		return outPart;
 	}
