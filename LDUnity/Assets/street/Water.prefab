@@ -1825,7 +1825,7 @@ MonoBehaviour:
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
   transitionFrac: 0
-  initLayer: 0
+  initLayer: 1
 --- !u!1 &4738249839899166728
 GameObject:
   m_ObjectHideFlags: 0
