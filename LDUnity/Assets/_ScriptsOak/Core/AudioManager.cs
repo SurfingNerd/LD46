@@ -64,9 +64,7 @@ public class AudioManager : ManagerBase
     {
         base.InitManager();
 
-        SwitchMusic(ClipMusicWander);
 
-        PlaySoundOneShot(ClipOpening);
     }
 
     public void SetFootstepsOn(bool isOn)
