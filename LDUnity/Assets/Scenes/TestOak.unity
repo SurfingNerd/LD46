@@ -1094,6 +1094,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1535705875673023872, guid: 3390343f2fe7eac4bb5594e34ed24c76,
         type: 3}
+      propertyPath: CoreManagerTemplates.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535705875673023872, guid: 3390343f2fe7eac4bb5594e34ed24c76,
+        type: 3}
       propertyPath: ListLevels.Array.data[0]
       value: 
       objectReference: {fileID: 0}
@@ -1113,6 +1118,12 @@ PrefabInstance:
       propertyPath: ListLevelTemplates.Array.data[0]
       value: 
       objectReference: {fileID: 3337199516959623096, guid: 676b5b2c289679a48a31eaf5c9474c86,
+        type: 3}
+    - target: {fileID: 1535705875673023872, guid: 3390343f2fe7eac4bb5594e34ed24c76,
+        type: 3}
+      propertyPath: CoreManagerTemplates.Array.data[5]
+      value: 
+      objectReference: {fileID: -2578187448226972728, guid: 8dfbdd69e6d1cb64aad1528e9339fe31,
         type: 3}
     - target: {fileID: 1535705875673023878, guid: 3390343f2fe7eac4bb5594e34ed24c76,
         type: 3}

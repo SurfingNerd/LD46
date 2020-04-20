@@ -33,13 +33,16 @@ public class cutter : MonoBehaviour {
 				case 2:
 					lr.enabled = false;
 					//<slice>
+					Vector4 output = Vector4.zero;
 					var k = getMouseWorldPos();
+					output.w = (src-k).magnitude;
 					var rp = (src+k)*.5f-currentBody.transform.position;
 					float rot = Mathf.Atan2(src.y-k.y, src.x-k.x)*Mathf.Rad2Deg;
 					if(Mathf.DeltaAngle(Mathf.Atan2(rp.y, rp.x)*Mathf.Rad2Deg,rot)>0)rot+=180;
 					k=(src+k)*.5f;
-					k.z=rot+90;
-					heldPart=currentBody.Slice(k);
+					output.x = k.x; output.y = k.y;
+					output.z=rot-90;
+					heldPart=currentBody.Slice(output);
 					//</slice>
 					k.z=0;
 					BloodManager.Spurt(heldPart);

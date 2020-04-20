@@ -182,7 +182,7 @@ MonoBehaviour:
   MoveSpeed: 5
   TooltipRenderer: {fileID: 1834798621650456064}
   CarryingCorpseSpeedFactorMove: 0.5
-  CarryingCorpseSpeedFactorAction: 0.5
+  CarryingCorpseSpeedFactorAction: 0.75
   ListActionDefinitions:
   - Action: 1
     ActionRate: 3
@@ -191,7 +191,7 @@ MonoBehaviour:
   - Action: 3
     ActionRate: 0.7
   - Action: 4
-    ActionRate: 5
+    ActionRate: 1.5
   - Action: 5
     ActionRate: 1
 --- !u!114 &1834798622630503165
@@ -234,5 +234,4 @@ MonoBehaviour:
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
   transitionFrac: 0
-  _street: 0
   initLayer: 6
