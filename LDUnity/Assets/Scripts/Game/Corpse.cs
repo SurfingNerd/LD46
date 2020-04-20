@@ -25,6 +25,15 @@ public class Corpse : MonoBehaviour, IInteractable
     EDecayLevel DecayLevel = EDecayLevel.Fresh;
 
     [SerializeField]
+    public SpriteRenderer Rendy;
+
+    [SerializeField]
+    Sprite DragSprite;
+
+    [SerializeField]
+    public Sprite DroppedSprite;
+
+    [SerializeField]
     float DecayRate = 0.01f;
 
     float Decay = 0.0f;
@@ -99,6 +108,7 @@ public class Corpse : MonoBehaviour, IInteractable
 
                     isHidden = false;
                     CharacterPlayer.instance.SetCurrentCorpse(this);
+                    Rendy.sprite = DragSprite;
 
                     if(AudioManager.Instance != null)
                     {

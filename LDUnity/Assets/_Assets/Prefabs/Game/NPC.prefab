@@ -91,10 +91,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7442684147315832300}
   - component: {fileID: 7442684147315832303}
-  - component: {fileID: 7442684147315832301}
   - component: {fileID: 7442684147315832302}
   - component: {fileID: 890554965}
   - component: {fileID: 6360366223352628049}
+  - component: {fileID: 4103594377865843935}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -156,7 +156,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d9f455e2efb690f42930d688d3629f68, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8c179ef223b73be4f8c912d87de5aa98, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -167,31 +167,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7442684147315832301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7442684147315832299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b86967d217fca0e4fb3fac42acdf722e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Renderer: {fileID: 7442684147315832303}
-  AnimList:
-  - Type: 0
-    SpriteList:
-    - {fileID: 21300000, guid: d9f455e2efb690f42930d688d3629f68, type: 3}
-    AnimRate: 0.125
-    ClipList: []
-  DestroyOnFinish: 0
-  CurrentAnim:
-    Type: 0
-    SpriteList: []
-    AnimRate: 0.125
-    ClipList: []
 --- !u!114 &7442684147315832302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,6 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentDirection: {x: 0, y: 0, z: 0}
   MoveSpeed: 2
+  CharacterAnimator: {fileID: 4103594377865843935}
   DesiredPart: 0
   ThinkCooldownMin: 0
   ThinkCooldownMax: 0
@@ -230,8 +206,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 2.5, y: 2.5}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -256,3 +232,45 @@ MonoBehaviour:
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
   transitionFrac: 0
   initLayer: 6
+--- !u!114 &4103594377865843935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7442684147315832299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b86967d217fca0e4fb3fac42acdf722e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Renderer: {fileID: 7442684147315832303}
+  AnimList:
+  - Type: 0
+    SpriteList:
+    - {fileID: 21300000, guid: 8c179ef223b73be4f8c912d87de5aa98, type: 3}
+    - {fileID: 21300000, guid: 8c179ef223b73be4f8c912d87de5aa98, type: 3}
+    AnimRate: 0.125
+    ClipList: []
+  - Type: 1
+    SpriteList:
+    - {fileID: 21300000, guid: 9a27eeee3f7271846a09bdabae18e5ef, type: 3}
+    - {fileID: 21300000, guid: 58f106e1c1d00f442b3903e3816ee3f1, type: 3}
+    - {fileID: 21300000, guid: 676efd809def1ca4ca6c78d0870eb6d6, type: 3}
+    - {fileID: 21300000, guid: be87fd76e5ef91f40bb60110e9313965, type: 3}
+    - {fileID: 21300000, guid: 971ef479be930f04e818ec3abdeb67a4, type: 3}
+    - {fileID: 21300000, guid: f4efcbf4edb8066499120edb46bd6885, type: 3}
+    AnimRate: 0.125
+    ClipList: []
+  - Type: 3
+    SpriteList:
+    - {fileID: 21300000, guid: f4efcbf4edb8066499120edb46bd6885, type: 3}
+    - {fileID: 21300000, guid: 971ef479be930f04e818ec3abdeb67a4, type: 3}
+    AnimRate: 0.125
+    ClipList: []
+  DestroyOnFinish: 0
+  CurrentAnim:
+    Type: 0
+    SpriteList: []
+    AnimRate: 0.125
+    ClipList: []

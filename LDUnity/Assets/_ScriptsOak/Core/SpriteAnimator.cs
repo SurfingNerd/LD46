@@ -6,9 +6,8 @@ public enum EAnimation
 {
     Idle,
     Move,
-    AlleyTransition,
+    Drag,
     Murder,
-    PickUp,
 }
 
 [System.Serializable]
