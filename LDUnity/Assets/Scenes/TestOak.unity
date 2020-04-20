@@ -254,36 +254,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SurgeryManager
       objectReference: {fileID: 0}
-    - target: {fileID: 2151143837346982568, guid: 830ac58dc17f76247ac6ff68149c7870,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2151143838414510626, guid: 830ac58dc17f76247ac6ff68149c7870,
-        type: 3}
-      propertyPath: m_UpscaleRT
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2151143838414510626, guid: 830ac58dc17f76247ac6ff68149c7870,
-        type: 3}
-      propertyPath: m_RefResolutionX
-      value: 190
-      objectReference: {fileID: 0}
-    - target: {fileID: 2151143838414510626, guid: 830ac58dc17f76247ac6ff68149c7870,
-        type: 3}
-      propertyPath: m_RefResolutionY
-      value: 108
-      objectReference: {fileID: 0}
-    - target: {fileID: 2151143838414510626, guid: 830ac58dc17f76247ac6ff68149c7870,
-        type: 3}
-      propertyPath: m_AssetsPPU
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 2151143838414510626, guid: 830ac58dc17f76247ac6ff68149c7870,
-        type: 3}
-      propertyPath: m_CropFrameY
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 830ac58dc17f76247ac6ff68149c7870, type: 3}
 --- !u!1001 &1655721775

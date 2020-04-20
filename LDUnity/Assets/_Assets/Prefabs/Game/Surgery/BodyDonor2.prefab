@@ -343,8 +343,6 @@ MonoBehaviour:
   SpurtMarker: {fileID: 287491551}
   bIsMatch: 0
   Rendy: {fileID: 0}
-  HighlightColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
-  PendingAttachColor: {r: 0.33490568, g: 1, b: 0.42566973, a: 1}
   bIsDetached: 0
   bCanBeDetached: 1
   bPendingAttach: 0
@@ -485,8 +483,6 @@ MonoBehaviour:
   SpurtMarker: {fileID: 1846996038}
   bIsMatch: 0
   Rendy: {fileID: 0}
-  HighlightColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
-  PendingAttachColor: {r: 0.33490568, g: 1, b: 0.42566973, a: 1}
   bIsDetached: 0
   bCanBeDetached: 1
   bPendingAttach: 0
@@ -758,8 +754,9 @@ PolygonCollider2D:
       - {x: 0.54621696, y: -2.467352}
       - {x: 0.57570505, y: -0.30861133}
       - {x: 0.095876694, y: -0.3924575}
-      - {x: 0.08267164, y: -0.69718015}
+      - {x: -0.01445961, y: -0.71958935}
       - {x: 0.03866434, y: -1.7043859}
+      - {x: 0.0015654564, y: -2.2298422}
       - {x: 0.07335472, y: -2.522521}
 --- !u!114 &952172939
 MonoBehaviour:
@@ -777,8 +774,6 @@ MonoBehaviour:
   SpurtMarker: {fileID: 553944199}
   bIsMatch: 0
   Rendy: {fileID: 0}
-  HighlightColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
-  PendingAttachColor: {r: 0.33490568, g: 1, b: 0.42566973, a: 1}
   bIsDetached: 0
   bCanBeDetached: 1
   bPendingAttach: 0
@@ -894,12 +889,15 @@ PolygonCollider2D:
     - - {x: 0.9336114, y: 1.176645}
       - {x: 0.6956415, y: 1.4002349}
       - {x: 0.7057924, y: 1.2541368}
-      - {x: 0.58316135, y: 0.5109237}
-      - {x: 0.66128826, y: -0.12997168}
-      - {x: 0.7732763, y: -0.6050923}
-      - {x: 1.0169802, y: -0.6816617}
-      - {x: 1.1344647, y: -0.54123414}
-      - {x: 1.0408239, y: -0.1454668}
+      - {x: 0.6435728, y: 0.73524976}
+      - {x: 0.7362542, y: 0.46451503}
+      - {x: 0.73319626, y: 0.19773743}
+      - {x: 0.88567257, y: 0.01670307}
+      - {x: 0.98903036, y: -0.38939416}
+      - {x: 1.042871, y: -0.7334293}
+      - {x: 1.341588, y: -0.7224206}
+      - {x: 1.2479477, y: -0.15409482}
+      - {x: 1.1546745, y: 0.20921382}
       - {x: 1.0248933, y: 0.62553775}
 --- !u!114 &646835667
 MonoBehaviour:
@@ -917,8 +915,6 @@ MonoBehaviour:
   SpurtMarker: {fileID: 954469823}
   bIsMatch: 0
   Rendy: {fileID: 0}
-  HighlightColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
-  PendingAttachColor: {r: 0.33490568, g: 1, b: 0.42566973, a: 1}
   bIsDetached: 0
   bCanBeDetached: 1
   bPendingAttach: 0
@@ -1056,8 +1052,6 @@ MonoBehaviour:
   SpurtMarker: {fileID: 2074601091}
   bIsMatch: 1
   Rendy: {fileID: 0}
-  HighlightColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
-  PendingAttachColor: {r: 0.33490568, g: 1, b: 0.42566973, a: 1}
   bIsDetached: 0
   bCanBeDetached: 1
   bPendingAttach: 0
@@ -1199,8 +1193,6 @@ MonoBehaviour:
   SpurtMarker: {fileID: 3969148179586902226}
   bIsMatch: 0
   Rendy: {fileID: 0}
-  HighlightColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
-  PendingAttachColor: {r: 0.33490568, g: 1, b: 0.42566973, a: 1}
   bIsDetached: 0
   bCanBeDetached: 1
   bPendingAttach: 0
@@ -1314,11 +1306,12 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -0.17312002, y: -0.37382507}
-      - {x: -0.5396147, y: -0.2433976}
+      - {x: -0.65520334, y: -0.45673704}
       - {x: -0.80824757, y: -1.3548287}
-      - {x: -0.9666233, y: -2.688675}
-      - {x: -0.3936329, y: -2.6048284}
-      - {x: -0.37382507, y: -2.6316023}
+      - {x: -1.0911036, y: -2.7508988}
+      - {x: -0.58924484, y: -2.7915006}
+      - {x: -0.4271736, y: -2.7382717}
+      - {x: -0.2848301, y: -2.7642493}
       - {x: -0.24605036, y: -1.5403374}
       - {x: -0.17148113, y: -0.91700065}
       - {x: -0.12925339, y: -0.77640986}
@@ -1342,8 +1335,6 @@ MonoBehaviour:
   SpurtMarker: {fileID: 1944088225}
   bIsMatch: 0
   Rendy: {fileID: 0}
-  HighlightColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
-  PendingAttachColor: {r: 0.33490568, g: 1, b: 0.42566973, a: 1}
   bIsDetached: 0
   bCanBeDetached: 1
   bPendingAttach: 0

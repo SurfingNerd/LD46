@@ -81,11 +81,12 @@ public class BodyPartSurgery : MonoBehaviour
             BodySurgery.Henry.DetachedParts.Add(Type);
         }
         gameObject.transform.SetParent(gameObject.transform.parent.parent);
-        gameObject.transform.position = gameObject.transform.position + new Vector3(Random.Range(-0.5f, -0.2f), 0);
+        gameObject.transform.position = gameObject.transform.position + new Vector3(Random.Range(-0.3f, -0.2f), 0);
     }
 
     public void Attach()
     {
+        DeHighlight();
         bIsDetached = false;
         BodySurgery.Henry.AddReplacedBodypart(Type);
 
