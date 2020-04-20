@@ -146,7 +146,7 @@ public class BodyCutter : MonoBehaviour
                 }
                 else
                 {
-                    if(!SurgeryManager.Instance.PendingPartsToTransfer.Contains(DraggedBodyPart.Type))
+                    if(!SurgeryManager.Instance.PendingPartsToTransfer.Contains(DraggedBodyPart.Type) || !DraggedBodyPart.bIsMatch)
                     {
                         BloodManager.Spurt(DraggedBodyPart, Vector3.zero);
                         Destroy(DraggedBodyPart.gameObject);
@@ -172,10 +172,10 @@ public class BodyCutter : MonoBehaviour
                         for (int i = 0; i < cutHits.Length; ++i)
                         {
                             BodyPartSurgery hitBodyPartCut = cutHits[i].collider.gameObject.GetComponent<BodyPartSurgery>();
-                            if (hitBodyPartCut != null)
+                            if (hitBodyPartCut != null && !hitBodyPartCut.bIsDetached)
                             {
                                 Debug.Log("Heureka bitch");
-                                Vector3 cutOffset = cutHits[0].point - new Vector2(hitBodyPartCut.gameObject.transform.position.x, hitBodyPartCut.gameObject.transform.position.y);
+                                Vector3 cutOffset = cutHits[i].point - new Vector2(hitBodyPartCut.gameObject.transform.position.x, hitBodyPartCut.gameObject.transform.position.y);
                                 BloodManager.Spurt(hitBodyPartCut, cutOffset);
                                 hitBodyPartCut.Detach();
                                 break;
