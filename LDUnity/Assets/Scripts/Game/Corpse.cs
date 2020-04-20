@@ -22,7 +22,7 @@ public class Corpse : MonoBehaviour, IInteractable
     Sprite InteractIconNonViable;
 
     [SerializeField]
-    EDecayLevel DecayLevel = EDecayLevel.Fresh;
+    public EDecayLevel DecayLevel = EDecayLevel.Fresh;
 
     [SerializeField]
     float DecayRate = 0.01f;
@@ -104,9 +104,7 @@ public class Corpse : MonoBehaviour, IInteractable
                     {
                         AudioManager.Instance.PlayVoiceLine(AudioManager.Instance.ListClipMonologue[0]);
                     }
-                    // using parenting here for moving corpse.
-                    // might be suboptimal for animation.
-                    transform.SetParent(CharacterPlayer.instance.transform);
+                    
                 }
             }
         }

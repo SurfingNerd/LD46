@@ -203,6 +203,11 @@ public class CharacterPlayer : Character
         if (currentCorpse != null)
         {
             currentCorpse.AdvanceDecay();
+
+            if (currentCorpse.DecayLevel == EDecayLevel.WellDone)
+            {
+                DropCorpse();
+            }
         }
 
         StreetSpriteSort sordo = GetComponent<StreetSpriteSort>();
@@ -243,6 +248,10 @@ public class CharacterPlayer : Character
     public void SetCurrentCorpse(Corpse corpse)
     {
         currentCorpse = corpse;
+        if (currentCorpse != null)
+        {
+            currentCorpse.transform.SetParent(instance.transform);
+        }
     }
 
     public void DropCorpse()
