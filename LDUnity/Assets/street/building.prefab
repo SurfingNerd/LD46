@@ -318,6 +318,7 @@ MonoBehaviour:
   streetID: 800
   size: {x: 0, y: 0}
   lockable: 1
+  AtmoType: 0
 --- !u!61 &143187336462125937
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -466,6 +467,7 @@ MonoBehaviour:
   streetID: 800
   size: {x: 0, y: 0}
   lockable: 1
+  AtmoType: 0
 --- !u!61 &1957985940363551098
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -817,6 +819,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Corpse Almost Done
       objectReference: {fileID: 0}
+    - target: {fileID: 1299983242284752608, guid: 4ffa1d218e65efb4daa7129bbdb65326,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1299983242284752609, guid: 4ffa1d218e65efb4daa7129bbdb65326,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -916,6 +923,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Corpse Almost Done
+      objectReference: {fileID: 0}
+    - target: {fileID: 1299983242284752608, guid: 4ffa1d218e65efb4daa7129bbdb65326,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1299983242284752609, guid: 4ffa1d218e65efb4daa7129bbdb65326,
         type: 3}

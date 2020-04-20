@@ -162,13 +162,13 @@ PrefabInstance:
         type: 3}
       propertyPath: ListLevelTemplates.Array.data[2]
       value: 
-      objectReference: {fileID: 3337199516959623096, guid: 676b5b2c289679a48a31eaf5c9474c86,
+      objectReference: {fileID: 3337199516959623096, guid: 638c2bdcaa2d869e6b1fbcbf171ccb95,
         type: 3}
     - target: {fileID: 1535705875673023872, guid: 3390343f2fe7eac4bb5594e34ed24c76,
         type: 3}
       propertyPath: ListLevelTemplates.Array.data[0]
       value: 
-      objectReference: {fileID: 3337199516959623096, guid: 676b5b2c289679a48a31eaf5c9474c86,
+      objectReference: {fileID: 3337199516959623096, guid: 7e58fb6fb21df1e518ad557315c5ad2d,
         type: 3}
     - target: {fileID: 1535705875673023872, guid: 3390343f2fe7eac4bb5594e34ed24c76,
         type: 3}
@@ -210,19 +210,19 @@ PrefabInstance:
         type: 3}
       propertyPath: ListLevelTemplates.Array.data[1]
       value: 
-      objectReference: {fileID: 3337199516959623096, guid: 676b5b2c289679a48a31eaf5c9474c86,
+      objectReference: {fileID: 3337199516959623096, guid: a2c17469f29825a088a26ba87ebd2467,
         type: 3}
     - target: {fileID: 1535705875673023872, guid: 3390343f2fe7eac4bb5594e34ed24c76,
         type: 3}
       propertyPath: ListLevelTemplates.Array.data[3]
       value: 
-      objectReference: {fileID: 3337199516959623096, guid: 676b5b2c289679a48a31eaf5c9474c86,
+      objectReference: {fileID: 3337199516959623096, guid: d2bc777ba9eb84a61adb4af6f2908854,
         type: 3}
     - target: {fileID: 1535705875673023872, guid: 3390343f2fe7eac4bb5594e34ed24c76,
         type: 3}
       propertyPath: ListLevelTemplates.Array.data[4]
       value: 
-      objectReference: {fileID: 3337199516959623096, guid: 676b5b2c289679a48a31eaf5c9474c86,
+      objectReference: {fileID: 3337199516959623096, guid: 7b660f99c918339369f95ab830dea57e,
         type: 3}
     - target: {fileID: 1535705875673023872, guid: 3390343f2fe7eac4bb5594e34ed24c76,
         type: 3}
