@@ -2,8 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EHideoutType
+{
+    Barrel,
+    Box,
+    Bush,
+    Closet,
+    Sewer,
+}
+
 public class Hideout : MonoBehaviour, IInteractable
 {
+    [SerializeField]
+    EHideoutType Type;
+
     [SerializeField]
     Sprite InteractIcon;
     //public Corpse currentCorpse;

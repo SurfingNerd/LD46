@@ -24,6 +24,9 @@ public class HomeMarker : MonoBehaviour, IInteractable
         Debug.Log("Player activated Home Marker: " + this);
 
         CharacterPlayer.instance.DropOffCorpseAtHome();
+
+        AudioManager.Instance.PlaySoundOneShot(AudioManager.Instance.ClipCorpseDrop);
+
     }
 
     public Sprite GetInteractIcon()

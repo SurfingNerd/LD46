@@ -27,6 +27,8 @@ public class Character : MonoBehaviour {
 
     public bool bShouldInvertX = false;
 
+    protected float FootstepDelay = 0.0f;
+
     protected void Log(string info,  Object context = null)
     {
         if (LogOutput)

@@ -113,6 +113,8 @@ public class Corpse : MonoBehaviour, IInteractable
 
                     isHidden = false;
                     CharacterPlayer.instance.SetCurrentCorpse(this);
+                    AudioManager.Instance.PlaySoundOneShot(AudioManager.Instance.ClipsPickUpCorpse[Random.Range(0, AudioManager.Instance.ClipsPickUpCorpse.Count)]);
+
                     Rendy.sprite = DragSprite;
 
                     if (!bHasClipPlayedMonologue)

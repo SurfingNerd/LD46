@@ -61,11 +61,11 @@ public class InputManager : ManagerBase
             }
             else
             {
-                if (Input.GetKey(KeyCode.A))
+                if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
                 {
                     CharacterPlayer.instance.SetCurrentDirection(EDirection.Left);
                 }
-                else if (Input.GetKey(KeyCode.D))
+                else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
                 {
                     CharacterPlayer.instance.SetCurrentDirection(EDirection.Right);
                 }

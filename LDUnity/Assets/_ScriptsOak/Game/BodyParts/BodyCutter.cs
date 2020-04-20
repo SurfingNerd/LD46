@@ -134,6 +134,12 @@ public class BodyCutter : MonoBehaviour
                 if(DraggedBodyPart.bPendingAttach)
                 {
                     DraggedBodyPart.Attach();
+
+                    AudioManager.Instance.PlaySoundOneShot(AudioManager.Instance.ClipsSurgeryReplace[Random.Range(0, AudioManager.Instance.ClipsSurgeryReplace.Count)]);
+                }
+                else
+                {
+                    AudioManager.Instance.PlaySoundOneShot(AudioManager.Instance.ClipsSurgeryDrop[Random.Range(0, AudioManager.Instance.ClipsSurgeryDrop.Count)]);
                 }
             }
             else

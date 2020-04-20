@@ -61,9 +61,9 @@ public class BodyPartSurgery : MonoBehaviour
         }
         bIsDetached = true;
 
-        AudioManager.Instance.PlaySoundOneShot(AudioManager.Instance.ClipSurgeryCut);
+        AudioManager.Instance.PlaySoundOneShot(AudioManager.Instance.ClipsSurgeryCut[Random.Range(0, AudioManager.Instance.ClipsSurgeryCut.Count)]);
 
-        if(GetComponentInParent<BodySurgery>() == BodySurgery.Henry)
+        if (GetComponentInParent<BodySurgery>() == BodySurgery.Henry)
         {
             BodySurgery.Henry.DetachedParts.Add(Type);
         }

@@ -31,6 +31,9 @@ public class CharacterPlayer : Character
 
   	private StreetSpriteSort sss;
 
+    public Transform CorpseMarker;
+    public Transform CorpseMarkerInvert;
+
     [SerializeField]
     SpriteRenderer TooltipRenderer;
 
@@ -62,10 +65,14 @@ public class CharacterPlayer : Character
                 if (currentCorpse != null)
                 {
                     CharacterAnimator.SetAnimation(EAnimation.Drag, bShouldInvertX, false);
+                    currentCorpse.GetComponent<SpriteRenderer>().flipX = bShouldInvertX;
+                    currentCorpse.transform.localPosition = CorpseMarkerInvert.transform.localPosition;
+                    AudioManager.Instance.SourceBodyDrag.mute = false;
                 }
                 else
                 {
                     CharacterAnimator.SetAnimation(EAnimation.Move, bShouldInvertX, false);
+                    AudioManager.Instance.SourceBodyDrag.mute = true;
                 }
                 break;
             case EDirection.Right:
@@ -74,10 +81,14 @@ public class CharacterPlayer : Character
                 if (currentCorpse != null)
                 {
                     CharacterAnimator.SetAnimation(EAnimation.Drag, bShouldInvertX, false);
+                    currentCorpse.GetComponent<SpriteRenderer>().flipX = bShouldInvertX;
+                    currentCorpse.transform.localPosition = CorpseMarker.transform.localPosition;
+                    AudioManager.Instance.SourceBodyDrag.mute = false;
                 }
                 else
                 {
                     CharacterAnimator.SetAnimation(EAnimation.Move, bShouldInvertX, false);
+                    AudioManager.Instance.SourceBodyDrag.mute = true;
                 }
                 break;
             case EDirection.Up:
@@ -87,6 +98,7 @@ public class CharacterPlayer : Character
             case EDirection.Neutral:
                 CharacterAnimator.SetAnimation(EAnimation.Idle, bShouldInvertX, false);
                 CurrentDirection.x = 0;
+                AudioManager.Instance.SourceBodyDrag.mute = true;
                 break;
         }
     }
@@ -115,6 +127,18 @@ public class CharacterPlayer : Character
         else
         {
             base.MoveCharacter();
+        }
+
+        if (CurrentDirection.x != 0)
+        {
+            FootstepDelay -= Time.deltaTime;
+
+            if (FootstepDelay <= 0.0f)
+            {
+                FootstepDelay = 0.5f;
+
+                AudioManager.Instance.PlaySoundOneShot(AudioManager.Instance.ClipsFootstepsPlayer[UnityEngine.Random.Range(0, AudioManager.Instance.ClipsFootstepsPlayer.Count)], 0.0f, 0.6f);
+            }
         }
     }
 
@@ -288,6 +312,7 @@ public class CharacterPlayer : Character
         if (currentCorpse != null)
         {
             currentCorpse.transform.SetParent(instance.transform);
+            currentCorpse.transform.localPosition = CorpseMarker.transform.localPosition;
         }
     }
 
