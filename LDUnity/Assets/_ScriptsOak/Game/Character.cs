@@ -61,6 +61,7 @@ public class Character : MonoBehaviour {
     }
 
     protected void Start() {
+        Debug.LogWarning("Character Start.");
         InitCharacter();
     }
 

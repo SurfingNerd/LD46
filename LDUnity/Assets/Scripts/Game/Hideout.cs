@@ -18,6 +18,11 @@ public class Hideout : MonoBehaviour, IInteractable
     // Start is called before the first frame update
     void Start()
     {
+        
+    }
+
+    void Awake()
+    {
         GetComponent<SpriteRenderer>().sprite = SpriteVisuals[SpriteVisualID];
     }
 
