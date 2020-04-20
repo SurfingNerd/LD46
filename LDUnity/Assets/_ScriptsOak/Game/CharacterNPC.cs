@@ -224,6 +224,8 @@ public class CharacterNPC : Character
             if (isInVision)
             {
                 lastKnownPosition = CharacterPlayer.instance.transform.position;
+                lastKnownFleeAlley = null; // we saw the player, we don't need to remember potential fleeAlley.
+                
                 //EntityManager.Instance.npcCorpseDetectionDistance
                 MoveToTargetPos(lastKnownPosition.Value);
                 //check gameover instance here ?!
