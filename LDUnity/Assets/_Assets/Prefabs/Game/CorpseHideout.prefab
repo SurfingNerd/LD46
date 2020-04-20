@@ -124,6 +124,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractIcon: {fileID: 21300000, guid: d51a74c698e70d54da4927b06f77640f, type: 3}
+  SpriteVisuals:
+  - {fileID: 21300000, guid: f3e79e79af2909772a7a99421c2e38b7, type: 3}
+  - {fileID: 21300000, guid: 8037747a85223b45b9f3afdbfc75b09d, type: 3}
+  - {fileID: 21300000, guid: 5d0a84546cbe4288ebd1844e71b9e776, type: 3}
+  - {fileID: 21300000, guid: 521d0376edc75e8c19b22ec69f3a7dff, type: 3}
 --- !u!114 &7452192781866501662
 MonoBehaviour:
   m_ObjectHideFlags: 0

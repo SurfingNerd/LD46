@@ -8,10 +8,17 @@ public class Hideout : MonoBehaviour, IInteractable
     Sprite InteractIcon;
     //public Corpse currentCorpse;
     
+    [SerializeField]
+    int SpriteVisualID = 0;
+    
+    [SerializeField]
+    Sprite[] SpriteVisuals = new Sprite[4];    
+    
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        GetComponent<SpriteRenderer>().sprite = SpriteVisuals[SpriteVisualID];
     }
 
     // Update is called once per frame
