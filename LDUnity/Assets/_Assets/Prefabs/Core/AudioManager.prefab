@@ -439,6 +439,8 @@ MonoBehaviour:
   ClipMusicWander: {fileID: 8300000, guid: 1804116b46b1d4943a0cb4f8a19f04ec, type: 3}
   ClipMusicChase: {fileID: 8300000, guid: 9e52b753082d78a49bbdc010cc1848ed, type: 3}
   ClipMusicSurgery: {fileID: 8300000, guid: babf4f6b0f8825c4d86d326a568b6601, type: 3}
+  ClipEffectTransition: {fileID: 8300000, guid: cbbb8d1e4d5ed544a9c8defa7ff8319e,
+    type: 3}
   ListClipMonologue:
   - {fileID: 8300000, guid: 0193e1a1019a53840a458c65610364b5, type: 3}
   ListClipUWot:

@@ -32,6 +32,9 @@ public class AudioManager : ManagerBase
     public AudioClip ClipMusicSurgery;
 
     [SerializeField]
+    public AudioClip ClipEffectTransition;
+
+    [SerializeField]
     public List<AudioClip> ListClipMonologue = new List<AudioClip>();
 
     [SerializeField]
@@ -53,8 +56,9 @@ public class AudioManager : ManagerBase
         SourceFootsteps.mute = !isOn;
     }
 
-    public void PlaySoundOneShot(AudioClip clip)
+    public void PlaySoundOneShot(AudioClip clip, float range)
     {
+    	SourceOneShot.pitch = 1+range*(Random.value-0.5f);
         SourceOneShot.PlayOneShot(clip);
     }
 
