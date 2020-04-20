@@ -51,6 +51,8 @@ public class CharacterNPC : Character
     [SerializeField]
     public float currentSleepiness = 0.0f;
 
+    [SerializeField]
+    public float AlarmedDuration = 8f;
 
     public bool harmlessNPCCheat = false;
     
@@ -70,6 +72,8 @@ public class CharacterNPC : Character
 
     float CurrentThinkCooldown = 0.0f;
     float CurrentTaskDuration = 0.0f;
+
+
 
     bool bIsDying = false;
 
@@ -228,6 +232,9 @@ public class CharacterNPC : Character
                 lastKnownPosition = CharacterPlayer.instance.transform.position;
                 lastKnownFleeAlley = null; // we saw the player, we don't need to remember potential fleeAlley.
                 
+                //we see here, don't give up.
+                this.CurrentTaskDuration = this.AlarmedDuration; 
+
                 //EntityManager.Instance.npcCorpseDetectionDistance
                 MoveToTargetPos(lastKnownPosition.Value);
                 //check gameover instance here ?!
@@ -255,6 +262,14 @@ public class CharacterNPC : Character
 
             } else
             {
+                if (CurrentTaskDuration <= 0) 
+                {
+                    Log("Calming down from State.");
+                    //maybe we chased long enought and can calm down.
+                    SetStatus(ENPCStatus.Neutral);
+                    return;
+                }
+
                 //we don't see the player anymore. maybe he used an interactable ?!
                 StreetSpriteSort sort = this.GetComponent<StreetSpriteSort>();
                 if (sort == null)
@@ -471,16 +486,19 @@ public class CharacterNPC : Character
             }
             
             SetStatus(ENPCStatus.Aggressive);
+            CurrentTaskDuration = AlarmedDuration;
         } else if (distance < EntityManager.Instance.npcCorpseDetectionDistance / 2)
         {
             lastKnownPosition = instance.GetPosition();
             lastKnownFleeAlley = null;
+            CurrentTaskDuration = AlarmedDuration;
             SetStatus(ENPCStatus.Alarmed);
         }  
         else if (distance < EntityManager.Instance.npcCorpseDetectionDistance)
         {
             lastKnownPosition = instance.GetPosition();
             lastKnownFleeAlley = null;
+            CurrentTaskDuration = AlarmedDuration;
             SetStatus(ENPCStatus.Alert);
         } else {
             Debug.LogError("Incosistent State: Cant follow player that is to far away.");
