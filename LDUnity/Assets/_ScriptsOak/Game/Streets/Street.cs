@@ -15,8 +15,10 @@ public class Street : MonoBehaviour
 	void Awake(){
 		UpdateSubStreetData();
 		var boundingBox = GetComponent<BoxCollider2D>();
-		size = boundingBox.size;
-		Destroy(boundingBox);
+		if(boundingBox!=null){
+			size = boundingBox.size;
+			Destroy(boundingBox);
+		}
 	}
 	void Update() {
 		if(rootStreet){

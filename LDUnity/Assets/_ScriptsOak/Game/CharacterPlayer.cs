@@ -189,6 +189,8 @@ public class CharacterPlayer : Character
         	SmoothCamera.lockPos = Vector3.zero;
         // SmoothCamera.targetPosition.x=-transform.position.x/SmoothCamera.Parallax(1,0,delta);
         }
+
+        AudioManager.Instance.PlaySoundOneShot(AudioManager.Instance.ClipEffectTransition,0.25f);
     }
 
     IInteractable CurrentClosestInteractable = null;
