@@ -243,6 +243,8 @@ public class CharacterPlayer : Character
 
             if (currentCorpse.DecayLevel == EDecayLevel.WellDone)
             {
+                //AudioManager.Instance.PlayVoiceLine(AudioManager.);
+                AudioManager.Instance.PlayVoiceLine(AudioManager.Instance.ClipsNonViable[UnityEngine.Random.Range(0, AudioManager.Instance.ClipsNonViable.Count)]);
                 DropCorpse();
             }
         }
