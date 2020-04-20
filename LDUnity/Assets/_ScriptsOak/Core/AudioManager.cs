@@ -14,15 +14,15 @@ public class AudioManager : ManagerBase
     [SerializeField]
     AudioSource SourceOneShot;
     [SerializeField]
-    AudioSource SourceMusic1;
+    public AudioSource SourceMusic1;
     [SerializeField]
-    AudioSource SourceMusic2;
+    public AudioSource SourceMusic2;
     [SerializeField]
     AudioSource SourceVoice;
     [SerializeField]
-    AudioSource SourceAmbience1;
+    public AudioSource SourceAmbience1;
     [SerializeField]
-    AudioSource SourceAmbience2;
+    public AudioSource SourceAmbience2;
     [SerializeField]
     AudioSource SourceFootsteps;
     [SerializeField]
