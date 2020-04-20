@@ -29,6 +29,11 @@ public class IntroManager : ManagerBase
         }
     }
 
+    public void SkipIntro()
+    {
+        IntroDelay = 0.0f;
+    }
+
     public override void InitManager()
     {
         base.InitManager();
