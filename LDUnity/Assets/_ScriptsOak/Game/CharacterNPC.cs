@@ -196,7 +196,7 @@ public class CharacterNPC : Character
     {
         base.Tick();
 
-        if(bIsDying)
+        if(bIsDying || IntroManager.instance == null || !IntroManager.instance.bIntroDone)
         {
             return;
         }

@@ -41,6 +41,8 @@ public class BodyPartSurgery : MonoBehaviour
         }
         bIsDetached = true;
 
+        AudioManager.Instance.PlaySoundOneShot(AudioManager.Instance.ClipSurgeryCut);
+
         if(GetComponentInParent<BodySurgery>() == BodySurgery.Henry)
         {
             BodySurgery.Henry.DetachedParts.Add(Type);
@@ -58,6 +60,8 @@ public class BodyPartSurgery : MonoBehaviour
 
         gameObject.transform.SetParent(BodySurgery.Henry.gameObject.transform);
         gameObject.transform.localPosition = new Vector3(-2.46f, -0.61f, 0);
+
+        AudioManager.Instance.PlayVoiceLine(AudioManager.Instance.ClipsViable[Random.Range(0, AudioManager.Instance.ClipsViable.Count)]);
 
         bCanBeDetached = false;
         SurgeryManager.Instance.NotifyPartAttached(Type);

@@ -58,15 +58,14 @@ public class AudioManager : ManagerBase
     public AudioClip ClipSurgeryTorso;
     public AudioClip ClipSurgeryHair;
 
+    public AudioClip ClipSurgeryCut;
 
 
     public override void InitManager()
     {
         base.InitManager();
 
-        SwitchMusic(ClipMusicWander);
 
-        PlaySoundOneShot(ClipOpening);
     }
 
     public void SetFootstepsOn(bool isOn)

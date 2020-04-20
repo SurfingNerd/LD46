@@ -483,6 +483,7 @@ MonoBehaviour:
   ClipSurgeryArms: {fileID: 8300000, guid: 02e960a37fc1c644880e802397b1802d, type: 3}
   ClipSurgeryTorso: {fileID: 8300000, guid: 79b67fb56089bc04183645e7fb6940a6, type: 3}
   ClipSurgeryHair: {fileID: 8300000, guid: 5449174b59bcfd642a0e511916b86d9f, type: 3}
+  ClipSurgeryCut: {fileID: 8300000, guid: 592a0a27c9f0e4f408c344a195bade59, type: 3}
 --- !u!1 &40416788215526877
 GameObject:
   m_ObjectHideFlags: 0

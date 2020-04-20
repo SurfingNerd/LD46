@@ -18,12 +18,17 @@ public class HUD : MonoBehaviour
     TextMeshProUGUI TextCaught = null;
     [SerializeField]
     Image ImageCaught = null;
+
+    [SerializeField]
+    Image ImageIntro = null;
     [SerializeField]
     Button ButtonRestart = null;
     [SerializeField]
     public Button ButtonEndSurgery = null;
     [SerializeField]
     TextMeshProUGUI TextWin = null;
+    [SerializeField]
+    TextMeshProUGUI TextIntro = null;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +37,6 @@ public class HUD : MonoBehaviour
         ButtonRestart.onClick.AddListener(RestartClicked);
         ButtonEndSurgery.onClick.AddListener(SurgeryManager.Instance.EndSurgery);
 
-        ImageCaught.gameObject.SetActive(false);
         ButtonRestart.gameObject.SetActive(false);
         TextCaught.gameObject.SetActive(false);
         ButtonEndSurgery.gameObject.SetActive(false);
@@ -81,5 +85,27 @@ public class HUD : MonoBehaviour
     {
         ImageCaught.gameObject.SetActive(true);
         TextWin.gameObject.SetActive(true);
+    }
+
+    public void ShowBlackness()
+    {
+        ImageCaught.gameObject.SetActive(true);
+    }
+
+    public void HideBlackness()
+    {
+        ImageCaught.gameObject.SetActive(false);
+    }
+
+    public void ShowIntro()
+    {
+        ImageIntro.gameObject.SetActive(true);
+        TextIntro.gameObject.SetActive(true);
+    }
+
+    public void HideIntro()
+    {
+        ImageIntro.gameObject.SetActive(false);
+        TextIntro.gameObject.SetActive(false);
     }
 }
