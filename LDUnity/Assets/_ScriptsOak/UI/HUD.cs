@@ -30,12 +30,18 @@ public class HUD : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI TextIntro = null;
 
+    [SerializeField]
+    public Button ButtonToggleHelp = null;
+
+    
+
     // Start is called before the first frame update
     void Start()
     {
         //ToggleHUD(false);
         ButtonRestart.onClick.AddListener(RestartClicked);
         ButtonEndSurgery.onClick.AddListener(SurgeryManager.Instance.EndSurgery);
+        ButtonToggleHelp.onClick.AddListener(ToggleHelp);
 
         ButtonRestart.gameObject.SetActive(false);
         TextCaught.gameObject.SetActive(false);
@@ -107,5 +113,12 @@ public class HUD : MonoBehaviour
     {
         ImageIntro.gameObject.SetActive(false);
         TextIntro.gameObject.SetActive(false);
+
+        ToggleHelp();
+    }
+
+    public void ToggleHelp()
+    {
+        TutorialScreen.Instance.gameObject.SetActive(!TutorialScreen.Instance.gameObject.activeSelf);
     }
 }
