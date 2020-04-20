@@ -533,4 +533,49 @@ public class CharacterNPC : Character
             CurrentTaskDuration = AlarmedDuration;
         }
     }
+
+    public override void SetCurrentDirection(EDirection dir)
+    {
+        switch (dir)
+        {
+            case EDirection.Left:
+                CurrentDirection.x = -1;
+                bShouldInvertX = true;
+                if(CurrentStatus == ENPCStatus.Alert ||
+                    CurrentStatus == ENPCStatus.Alarmed ||
+                    CurrentStatus == ENPCStatus.Aggressive )
+                {
+                    CharacterAnimator.SetAnimation(EAnimation.Move, bShouldInvertX, false);
+
+                }
+                else
+                {
+                    CharacterAnimator.SetAnimation(EAnimation.MoveChill, bShouldInvertX, false);
+                }
+                break;
+            case EDirection.Right:
+                CurrentDirection.x = 1;
+                bShouldInvertX = false;
+                if (CurrentStatus == ENPCStatus.Alert ||
+                    CurrentStatus == ENPCStatus.Alarmed ||
+                    CurrentStatus == ENPCStatus.Aggressive)
+                {
+                    CharacterAnimator.SetAnimation(EAnimation.Move, bShouldInvertX, false);
+
+                }
+                else
+                {
+                    CharacterAnimator.SetAnimation(EAnimation.MoveChill, bShouldInvertX, false);
+                }
+                break;
+            case EDirection.Up:
+                break;
+            case EDirection.Down:
+                break;
+            case EDirection.Neutral:
+                CharacterAnimator.SetAnimation(EAnimation.Idle, bShouldInvertX, false);
+                CurrentDirection.x = 0;
+                break;
+        }
+    }
 }

@@ -277,6 +277,14 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 8b799518f1c9d5c40ba9e2166aba51e1, type: 3}
     AnimRate: 0.125
     ClipList: []
+  - Type: 5
+    SpriteList:
+    - {fileID: 21300000, guid: d63b2dce1f1c05c499a1503179f325b5, type: 3}
+    - {fileID: 21300000, guid: 4eb94a6ce337baf49a24dbd94d80a8eb, type: 3}
+    - {fileID: 21300000, guid: 3d0e123888aef0140a58b9cd64b5b387, type: 3}
+    - {fileID: 21300000, guid: 9f5000a2d7087c4489153c07c1a80fcc, type: 3}
+    AnimRate: 0.125
+    ClipList: []
   DestroyOnFinish: 0
   CurrentAnim:
     Type: 0

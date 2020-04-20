@@ -190,6 +190,7 @@ MonoBehaviour:
   ThinkCooldownMax: 0
   SleepinessIncrease: 0.01
   currentSleepiness: 0
+  AlarmedDuration: 8
   harmlessNPCCheat: 0
   TooltipRenderer: {fileID: 5950324332004555223}
   AlertIcon: {fileID: 21300000, guid: 095cc0bb762a1b749ba7e7c53da55d99, type: 3}
@@ -273,6 +274,14 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 5cefd4ed9a9ad8249b3b54e2f0a8adff, type: 3}
     - {fileID: 21300000, guid: e7a50aea745cc064e927bf3b123a92d7, type: 3}
     - {fileID: 21300000, guid: 94c570200ea01a241a445f9502ee9792, type: 3}
+    AnimRate: 0.125
+    ClipList: []
+  - Type: 5
+    SpriteList:
+    - {fileID: 21300000, guid: 44806a3efc09ed04c83c6652a6c6771a, type: 3}
+    - {fileID: 21300000, guid: 0b8362536517afd40bf51a9e6a425845, type: 3}
+    - {fileID: 21300000, guid: b44d3a67455f00f44b4496a3286dc3da, type: 3}
+    - {fileID: 21300000, guid: 299b2490df2a160429cb13280c831d08, type: 3}
     AnimRate: 0.125
     ClipList: []
   DestroyOnFinish: 0

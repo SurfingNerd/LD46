@@ -91,6 +91,7 @@ public class Character : MonoBehaviour {
             case EDirection.Left:
                 CurrentDirection.x = -1;
                 bShouldInvertX = true;
+                
                 CharacterAnimator.SetAnimation(EAnimation.Move, bShouldInvertX, false);
                 break;
             case EDirection.Right:
