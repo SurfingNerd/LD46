@@ -169,7 +169,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -164
   m_Sprite: {fileID: -1529221504129467462, guid: 3f85fccf0f4e3574d8b605c81aff1e20,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -501,6 +501,7 @@ GameObject:
   - component: {fileID: 4598937249775391340}
   - component: {fileID: 4598937249775391343}
   - component: {fileID: 4598937249775391342}
+  - component: {fileID: 8506997228445325824}
   m_Layer: 0
   m_Name: building
   m_TagString: Untagged
@@ -590,6 +591,20 @@ MonoBehaviour:
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
   transitionFrac: 0
   initLayer: 3
+--- !u!114 &8506997228445325824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4598937249775391337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b17ab34ab7beb874587ceb1982639664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 0
+  amount: -0.3
 --- !u!1 &7277906696339083783
 GameObject:
   m_ObjectHideFlags: 0
