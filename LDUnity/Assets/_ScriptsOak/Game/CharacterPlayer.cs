@@ -323,6 +323,8 @@ public class CharacterPlayer : Character
             currentCorpse.transform.SetParent(gameObject.transform.parent);
             currentCorpse.Rendy.sprite = currentCorpse.DroppedSprite;
             currentCorpse = null;
+
+            AudioManager.Instance.PlaySoundOneShot(AudioManager.Instance.ClipCorpseDrop);
         }
     }
     public void TryInteract()
