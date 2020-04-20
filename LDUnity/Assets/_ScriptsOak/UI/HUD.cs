@@ -27,8 +27,6 @@ public class HUD : MonoBehaviour
     public Button ButtonEndSurgery = null;
     [SerializeField]
     TextMeshProUGUI TextWin = null;
-    [SerializeField]
-    TextMeshProUGUI TextIntro = null;
 
     [SerializeField]
     public Button ButtonToggleHelp = null;
@@ -106,19 +104,16 @@ public class HUD : MonoBehaviour
     public void ShowIntro()
     {
         ImageIntro.gameObject.SetActive(true);
-        TextIntro.gameObject.SetActive(true);
     }
 
     public void HideIntro()
     {
         ImageIntro.gameObject.SetActive(false);
-        TextIntro.gameObject.SetActive(false);
-
         ToggleHelp();
     }
 
     public void ToggleHelp()
     {
-        TutorialScreen.Instance.gameObject.SetActive(!TutorialScreen.Instance.gameObject.activeSelf);
+        TutorialScreen.toggleHelp();
     }
 }
