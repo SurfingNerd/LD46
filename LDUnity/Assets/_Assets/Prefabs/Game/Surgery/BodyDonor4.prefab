@@ -283,7 +283,7 @@ SpriteRenderer:
   m_SortingLayerID: -1251956555
   m_SortingLayer: -2
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: fe6f5723345ca0242a10d17273d453e8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dac5c110b120f9b499e1cf4768b4fba5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -342,6 +342,9 @@ MonoBehaviour:
   Type: 0
   SpurtMarker: {fileID: 287491551}
   bIsMatch: 0
+  Rendy: {fileID: 0}
+  HighlightColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
+  PendingAttachColor: {r: 0.33490568, g: 1, b: 0.42566973, a: 1}
   bIsDetached: 0
   bCanBeDetached: 1
   bPendingAttach: 0
@@ -418,7 +421,7 @@ SpriteRenderer:
   m_SortingLayerID: -1251956555
   m_SortingLayer: -2
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 14d4a5c21d798cd4a834024c12acde32, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ab6b3993d80b6af44be73cf10d2826b2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -481,6 +484,9 @@ MonoBehaviour:
   Type: 1
   SpurtMarker: {fileID: 1846996038}
   bIsMatch: 0
+  Rendy: {fileID: 0}
+  HighlightColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
+  PendingAttachColor: {r: 0.33490568, g: 1, b: 0.42566973, a: 1}
   bIsDetached: 0
   bCanBeDetached: 1
   bPendingAttach: 0
@@ -538,6 +544,7 @@ MonoBehaviour:
   bIsHenry: 0
   SnapMarkers: []
   DetachedParts: 
+  ReplacedParts: 
 --- !u!1 &3969148179047083654
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,6 +642,7 @@ MonoBehaviour:
   bIsHenry: 0
   SnapMarkers: []
   DetachedParts: 
+  ReplacedParts: 
 --- !u!1 &3969148179086299089
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,6 +776,9 @@ MonoBehaviour:
   Type: 5
   SpurtMarker: {fileID: 553944199}
   bIsMatch: 0
+  Rendy: {fileID: 0}
+  HighlightColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
+  PendingAttachColor: {r: 0.33490568, g: 1, b: 0.42566973, a: 1}
   bIsDetached: 0
   bCanBeDetached: 1
   bPendingAttach: 0
@@ -844,7 +855,7 @@ SpriteRenderer:
   m_SortingLayerID: -1251956555
   m_SortingLayer: -2
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 7df09121f7d5ce74ba1500d7b1117395, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 39f255230b9a21b4eb0bc43dbc01b82e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -904,7 +915,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 5
   SpurtMarker: {fileID: 954469823}
-  bIsMatch: 0
+  bIsMatch: 1
+  Rendy: {fileID: 0}
+  HighlightColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
+  PendingAttachColor: {r: 0.33490568, g: 1, b: 0.42566973, a: 1}
   bIsDetached: 0
   bCanBeDetached: 1
   bPendingAttach: 0
@@ -981,7 +995,7 @@ SpriteRenderer:
   m_SortingLayerID: -1251956555
   m_SortingLayer: -2
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 77d39f231f6aad747a8dfbc08f99ab51, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e170b1170bf93224ebfc38fae9c79911, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1040,7 +1054,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 6
   SpurtMarker: {fileID: 2074601091}
-  bIsMatch: 1
+  bIsMatch: 0
+  Rendy: {fileID: 0}
+  HighlightColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
+  PendingAttachColor: {r: 0.33490568, g: 1, b: 0.42566973, a: 1}
   bIsDetached: 0
   bCanBeDetached: 1
   bPendingAttach: 0
@@ -1117,7 +1134,7 @@ SpriteRenderer:
   m_SortingLayerID: -1251956555
   m_SortingLayer: -2
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 26f324a7ce7d20841abfc25bf9381a9f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 83732a4902f4e074e8115378fe10427a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1180,7 +1197,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 4
   SpurtMarker: {fileID: 3969148179586902226}
-  bIsMatch: 0
+  bIsMatch: 1
+  Rendy: {fileID: 0}
+  HighlightColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
+  PendingAttachColor: {r: 0.33490568, g: 1, b: 0.42566973, a: 1}
   bIsDetached: 0
   bCanBeDetached: 1
   bPendingAttach: 0
@@ -1321,6 +1341,9 @@ MonoBehaviour:
   Type: 2
   SpurtMarker: {fileID: 1944088225}
   bIsMatch: 0
+  Rendy: {fileID: 0}
+  HighlightColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
+  PendingAttachColor: {r: 0.33490568, g: 1, b: 0.42566973, a: 1}
   bIsDetached: 0
   bCanBeDetached: 1
   bPendingAttach: 0

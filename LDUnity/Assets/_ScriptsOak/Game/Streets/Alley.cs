@@ -30,6 +30,8 @@ public class Alley : MonoBehaviour, IInteractable
 	public void Interact()
 	{
 		StreetManager.Instance.TransitionStreet(this);
+
+		AudioManager.Instance.PlaySoundOneShot(AudioManager.Instance.ClipsStairs[Random.Range(0, AudioManager.Instance.ClipsStairs.Count)]);
 	}
 
 

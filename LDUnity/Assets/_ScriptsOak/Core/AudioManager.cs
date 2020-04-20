@@ -23,6 +23,8 @@ public class AudioManager : ManagerBase
     AudioSource SourceAmbience;
     [SerializeField]
     AudioSource SourceFootsteps;
+    [SerializeField]
+    public AudioSource SourceBodyDrag;
 
     [SerializeField]
     public AudioClip ClipMusicWander;
@@ -58,8 +60,30 @@ public class AudioManager : ManagerBase
     public AudioClip ClipSurgeryTorso;
     public AudioClip ClipSurgeryHair;
 
-    public AudioClip ClipSurgeryCut;
+    public List<AudioClip> ClipsSurgeryCut = new List<AudioClip>();
+    public List<AudioClip> ClipsSurgeryDrop = new List<AudioClip>();
+    public List<AudioClip> ClipsSurgeryReplace = new List<AudioClip>();
 
+
+    public List<AudioClip> ClipsPickUpCorpse = new List<AudioClip>();
+
+    public AudioClip ClipCorpseDrop;
+
+    public List<AudioClip> ClipsStairs = new List<AudioClip>();
+    public AudioClip ClipDoorClose;
+    public List<AudioClip> ClipsFootstepsPlayer = new List<AudioClip>();
+    public List<AudioClip> ClipsFootstepsNPC = new List<AudioClip>();
+
+    public AudioClip ClipHideBarrelIn;
+    public AudioClip ClipHideBarrelOut;
+    public AudioClip ClipHideBoxIn;
+    public AudioClip ClipHideBoxOut;
+    public AudioClip ClipHideBushIn;
+    public AudioClip ClipHideBushOut;
+    public AudioClip ClipHideClosetIn;
+    public AudioClip ClipHideClosetOut;
+    public AudioClip ClipHideSewerIn;
+    public AudioClip ClipHideSewerOut;
 
     public override void InitManager()
     {
@@ -73,10 +97,10 @@ public class AudioManager : ManagerBase
         SourceFootsteps.mute = !isOn;
     }
 
-    public void PlaySoundOneShot(AudioClip clip, float range = 0)
+    public void PlaySoundOneShot(AudioClip clip, float range = 0, float volume = 1.0f)
     {
     	SourceOneShot.pitch = 1+range*(Random.value-0.5f);
-        SourceOneShot.PlayOneShot(clip);
+        SourceOneShot.PlayOneShot(clip, volume);
     }
 
     public void SwitchMusic(AudioClip newMusic)
@@ -123,14 +147,14 @@ public class AudioManager : ManagerBase
         {
             alpha += Time.deltaTime * 1.0f;
 
-            SourceMusic1.volume = 1.0f - alpha;
-            SourceMusic2.volume = Mathf.Min(1.0f, alpha);
+            SourceMusic1.volume = 1.0f - alpha * 0.5f;
+            SourceMusic2.volume = Mathf.Min(1.0f, alpha) * 0.5f;
             yield return null;
         }
         SourceMusic1.Stop();
         SourceMusic1.clip = newMusic;
         SourceMusic1.time = SourceMusic2.time;
-        SourceMusic1.volume = 1.0f;
+        SourceMusic1.volume = 1.0f * 0.5f;
         SourceMusic1.Play();
 
         SourceMusic2.mute = true;

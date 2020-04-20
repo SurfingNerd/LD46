@@ -15,6 +15,12 @@ public class BodyCutter : MonoBehaviour
 
     Vector3 DragOffset = Vector3.zero;
 
+    [SerializeField]
+    Color ColorHighlightCut;
+
+    [SerializeField]
+    Color ColorHighlightAttach;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +28,8 @@ public class BodyCutter : MonoBehaviour
         LineCut.SetPosition(1, Vector3.zero);
         LineCut.enabled = false;
     }
+
+    BodyPartSurgery LastHitBodyPart = null;
 
     // Update is called once per frame
     void Update()
@@ -38,16 +46,32 @@ public class BodyCutter : MonoBehaviour
             hitBodyPart = hit.collider.gameObject.GetComponent<BodyPartSurgery>();
             if (hitBodyPart != null)
             {
-
+                if(LastHitBodyPart != null && LastHitBodyPart != hitBodyPart)
+                {
+                    LastHitBodyPart.DeHighlight();
+                }
+                LastHitBodyPart = hitBodyPart;
+                if(LastHitBodyPart != null && LastHitBodyPart.bCanBeDetached)
+                {
+                    LastHitBodyPart.Highlight(ColorHighlightCut);
+                }
             }
             else
             {
-
+                if (LastHitBodyPart != null)
+                {
+                    LastHitBodyPart.DeHighlight();
+                    LastHitBodyPart = null;
+                }
             }
         }
         else
         {
-
+            if(LastHitBodyPart != null)
+            {
+                LastHitBodyPart.DeHighlight();
+                LastHitBodyPart = null;
+            }
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -86,11 +110,13 @@ public class BodyCutter : MonoBehaviour
                     BodySurgery.Henry.GetSnapPositionForBodyPart(DraggedBodyPart.Type)) < 1.2f)
                 {
                     DraggedBodyPart.bPendingAttach = true;
+                    DraggedBodyPart.HighlightLock(ColorHighlightAttach);
                     DraggedBodyPart.transform.position = Vector3.zero;
                 }
                 else
                 {
                     DraggedBodyPart.bPendingAttach = false;
+                    DraggedBodyPart.DeHighlight();
                 }
             }
             else
@@ -108,6 +134,12 @@ public class BodyCutter : MonoBehaviour
                 if(DraggedBodyPart.bPendingAttach)
                 {
                     DraggedBodyPart.Attach();
+
+                    AudioManager.Instance.PlaySoundOneShot(AudioManager.Instance.ClipsSurgeryReplace[Random.Range(0, AudioManager.Instance.ClipsSurgeryReplace.Count)]);
+                }
+                else
+                {
+                    AudioManager.Instance.PlaySoundOneShot(AudioManager.Instance.ClipsSurgeryDrop[Random.Range(0, AudioManager.Instance.ClipsSurgeryDrop.Count)]);
                 }
             }
             else

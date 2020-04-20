@@ -343,6 +343,9 @@ MonoBehaviour:
   Type: 5
   SpurtMarker: {fileID: 5164416733096735712}
   bIsMatch: 0
+  Rendy: {fileID: 0}
+  HighlightColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
+  PendingAttachColor: {r: 0.33490568, g: 1, b: 0.42566973, a: 1}
   bIsDetached: 0
   bCanBeDetached: 1
   bPendingAttach: 0
@@ -478,6 +481,9 @@ MonoBehaviour:
   Type: 0
   SpurtMarker: {fileID: 5164416733975182535}
   bIsMatch: 0
+  Rendy: {fileID: 0}
+  HighlightColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
+  PendingAttachColor: {r: 0.33490568, g: 1, b: 0.42566973, a: 1}
   bIsDetached: 0
   bCanBeDetached: 1
   bPendingAttach: 0
@@ -676,6 +682,9 @@ MonoBehaviour:
   Type: 1
   SpurtMarker: {fileID: 5164416733097828573}
   bIsMatch: 0
+  Rendy: {fileID: 0}
+  HighlightColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
+  PendingAttachColor: {r: 0.33490568, g: 1, b: 0.42566973, a: 1}
   bIsDetached: 0
   bCanBeDetached: 1
   bPendingAttach: 0
@@ -842,6 +851,9 @@ MonoBehaviour:
   Type: 3
   SpurtMarker: {fileID: 5164416733629746112}
   bIsMatch: 0
+  Rendy: {fileID: 0}
+  HighlightColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
+  PendingAttachColor: {r: 0.33490568, g: 1, b: 0.42566973, a: 1}
   bIsDetached: 0
   bCanBeDetached: 1
   bPendingAttach: 0
@@ -1007,6 +1019,9 @@ MonoBehaviour:
   Type: 4
   SpurtMarker: {fileID: 5164416733169817066}
   bIsMatch: 0
+  Rendy: {fileID: 0}
+  HighlightColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
+  PendingAttachColor: {r: 0.33490568, g: 1, b: 0.42566973, a: 1}
   bIsDetached: 0
   bCanBeDetached: 1
   bPendingAttach: 0
@@ -1238,6 +1253,9 @@ MonoBehaviour:
   Type: 6
   SpurtMarker: {fileID: 5164416734836637601}
   bIsMatch: 0
+  Rendy: {fileID: 0}
+  HighlightColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
+  PendingAttachColor: {r: 0.33490568, g: 1, b: 0.42566973, a: 1}
   bIsDetached: 0
   bCanBeDetached: 1
   bPendingAttach: 0
@@ -1408,6 +1426,9 @@ MonoBehaviour:
   Type: 2
   SpurtMarker: {fileID: 5164416733366006638}
   bIsMatch: 0
+  Rendy: {fileID: 0}
+  HighlightColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
+  PendingAttachColor: {r: 0.33490568, g: 1, b: 0.42566973, a: 1}
   bIsDetached: 0
   bCanBeDetached: 1
   bPendingAttach: 0

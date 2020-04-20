@@ -14,17 +14,37 @@ public class BodyPartSurgery : MonoBehaviour
     [SerializeField]
     public bool bIsMatch = false;
 
+    [SerializeField]
+    SpriteRenderer Rendy;
+
+    Color OriginalColor;
+
     public bool bIsDetached = false;
 
     public bool bCanBeDetached = false;
 
     public bool bPendingAttach = false;
 
+    public void Highlight(Color col)
+    {
+        Rendy.color = col;
+    }
+
+    public void HighlightLock(Color col )
+    {
+        Rendy.color = col;
+    }
+
+    public void DeHighlight()
+    {
+        Rendy.color = OriginalColor;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-
+        Rendy = GetComponent<SpriteRenderer>();
+        OriginalColor = Rendy.color;
     }
 
     // Update is called once per frame
@@ -41,9 +61,9 @@ public class BodyPartSurgery : MonoBehaviour
         }
         bIsDetached = true;
 
-        AudioManager.Instance.PlaySoundOneShot(AudioManager.Instance.ClipSurgeryCut);
+        AudioManager.Instance.PlaySoundOneShot(AudioManager.Instance.ClipsSurgeryCut[Random.Range(0, AudioManager.Instance.ClipsSurgeryCut.Count)]);
 
-        if(GetComponentInParent<BodySurgery>() == BodySurgery.Henry)
+        if (GetComponentInParent<BodySurgery>() == BodySurgery.Henry)
         {
             BodySurgery.Henry.DetachedParts.Add(Type);
         }

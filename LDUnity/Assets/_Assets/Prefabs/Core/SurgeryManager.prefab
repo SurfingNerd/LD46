@@ -5276,6 +5276,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LineCut: {fileID: 2151143838414510624}
+  ColorHighlightCut: {r: 1, g: 0.514151, b: 0.514151, a: 1}
+  ColorHighlightAttach: {r: 0.33490568, g: 1, b: 0.42566973, a: 1}
 --- !u!1 &7343685417526905970
 GameObject:
   m_ObjectHideFlags: 0
