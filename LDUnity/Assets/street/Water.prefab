@@ -411,7 +411,7 @@ MonoBehaviour:
   requireExactLayer: 0
   spriteColour: {r: 0, g: 0, b: 0, a: 0}
   transitionFrac: 0
-  initLayer: 8
+  initLayer: 10
 --- !u!114 &8691309007243710576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2840,7 +2840,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7134112353293947990}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -2.623972, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
