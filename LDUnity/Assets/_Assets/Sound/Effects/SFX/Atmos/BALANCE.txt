@@ -1,0 +1,4 @@
+Good  balance between music and atmos
+
+Music: around -6dB
+Atmos: around -4dB
