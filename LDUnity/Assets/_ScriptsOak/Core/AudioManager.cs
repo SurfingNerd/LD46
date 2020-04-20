@@ -20,7 +20,9 @@ public class AudioManager : ManagerBase
     [SerializeField]
     AudioSource SourceVoice;
     [SerializeField]
-    AudioSource SourceAmbience;
+    AudioSource SourceAmbience1;
+    [SerializeField]
+    AudioSource SourceAmbience2;
     [SerializeField]
     AudioSource SourceFootsteps;
     [SerializeField]
@@ -85,6 +87,10 @@ public class AudioManager : ManagerBase
     public AudioClip ClipHideSewerIn;
     public AudioClip ClipHideSewerOut;
 
+    public AudioClip ClipAtmoStreet;
+    public AudioClip ClipAtmoCanal;
+    public AudioClip ClipAtmoIndoors;
+
     public override void InitManager()
     {
         base.InitManager();
@@ -121,6 +127,40 @@ public class AudioManager : ManagerBase
         }
     }
 
+    public void SwitchAtmosphere(EStreetAtmoType atmoType)
+    {
+
+        AudioClip newAtmo = null;
+
+        switch (atmoType)
+        {
+            case EStreetAtmoType.Street:
+                newAtmo = ClipAtmoStreet;
+                break;
+            case EStreetAtmoType.Indoors:
+                newAtmo = ClipAtmoIndoors;
+                break;
+            case EStreetAtmoType.Canal:
+                newAtmo = ClipAtmoCanal;
+                break;
+        }
+
+        if (SourceAmbience1.clip == newAtmo || SourceAmbience2.clip == newAtmo)
+        {
+            return;
+        }
+
+        if (bIsCrossfadingAtmo)
+        {
+            QueuedCrossfadeClip = newAtmo;
+        }
+        else
+        {
+            StartCoroutine(CrossfadeAtmoRoutine(newAtmo));
+            bIsCrossfadingAtmo = true;
+        }
+    }
+
     private void Update()
     {
         if (QueuedCrossfadeClip && !bIsCrossfading)
@@ -132,6 +172,7 @@ public class AudioManager : ManagerBase
     }
 
     bool bIsCrossfading = false;
+    bool bIsCrossfadingAtmo = false;
 
     IEnumerator CrossfadeMusicRoutine(AudioClip newMusic)
     {
@@ -161,6 +202,35 @@ public class AudioManager : ManagerBase
         SourceMusic2.Stop();
 
         bIsCrossfading = false;
+    }
+
+    IEnumerator CrossfadeAtmoRoutine(AudioClip newMusic)
+    {
+        float alpha = 0.0f;
+
+        SourceAmbience2.volume = 0.0f;
+        SourceAmbience2.mute = false;
+        SourceAmbience2.clip = newMusic;
+        SourceAmbience2.Play();
+        SourceAmbience2.loop = true;
+
+        while (alpha < 1.0f)
+        {
+            alpha += Time.deltaTime * 1.0f;
+
+            SourceAmbience1.volume = 1.0f - alpha * 0.8f;
+            SourceAmbience2.volume = Mathf.Min(1.0f, alpha) * 0.8f;
+            yield return null;
+        }
+        SourceAmbience1.Stop();
+        SourceAmbience1.clip = newMusic;
+        SourceAmbience1.time = SourceAmbience2.time;
+        SourceAmbience1.volume = 1.0f * 0.8f;
+        SourceAmbience1.Play();
+        SourceAmbience2.mute = true;
+        SourceAmbience2.Stop();
+
+        bIsCrossfadingAtmo = false;
     }
 
     public void PlayVoiceLine(AudioClip line)

@@ -15,7 +15,7 @@ public class HUD : MonoBehaviour
     [SerializeField]
     Image ImageProgressBar = null;
     [SerializeField]
-    TextMeshProUGUI TextCaught = null;
+    Image ImageProgressBarDecay = null;
     [SerializeField]
     Image ImageCaught = null;
 
@@ -27,8 +27,6 @@ public class HUD : MonoBehaviour
     public Button ButtonEndSurgery = null;
     [SerializeField]
     TextMeshProUGUI TextWin = null;
-    [SerializeField]
-    TextMeshProUGUI TextIntro = null;
 
     [SerializeField]
     public Button ButtonToggleHelp = null;
@@ -44,7 +42,6 @@ public class HUD : MonoBehaviour
         ButtonToggleHelp.onClick.AddListener(ToggleHelp);
 
         ButtonRestart.gameObject.SetActive(false);
-        TextCaught.gameObject.SetActive(false);
         ButtonEndSurgery.gameObject.SetActive(false);
     }
     public void RestartClicked()
@@ -69,21 +66,22 @@ public class HUD : MonoBehaviour
         ImageProgressBar.fillAmount = progress;
     }
 
+    public void SetProgressBarProgressDecay(float progress)
+    {
+        ImageProgressBarDecay.fillAmount = progress;
+    }
+
     public void SetGetCaught(bool isCaught)
     {
         if(isCaught)
         {
-            TextCaught.text = "YOU HAVE BEEN CAUGHT";
             ImageCaught.gameObject.SetActive(true);
             ButtonRestart.gameObject.SetActive(true);
-            TextCaught.gameObject.SetActive(true);
         }
         else
         {
-            TextCaught.text = "";
             ImageCaught.gameObject.SetActive(false);
             ButtonRestart.gameObject.SetActive(false);
-            TextCaught.gameObject.SetActive(false);
         }
     }
 
@@ -106,13 +104,11 @@ public class HUD : MonoBehaviour
     public void ShowIntro()
     {
         ImageIntro.gameObject.SetActive(true);
-        TextIntro.gameObject.SetActive(true);
     }
 
     public void HideIntro()
     {
         ImageIntro.gameObject.SetActive(false);
-        TextIntro.gameObject.SetActive(false);
 
         ToggleHelp();
     }

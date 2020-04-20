@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13273ef8d87e5746bb0c2f64f271851a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
   InteractIcon: {fileID: 21300000, guid: d51a74c698e70d54da4927b06f77640f, type: 3}
 --- !u!114 &1765950243393912431
 MonoBehaviour:
@@ -330,6 +331,7 @@ MonoBehaviour:
   streetID: -1
   size: {x: 5.75, y: 4.5}
   lockable: 1
+  AtmoType: 0
 --- !u!1 &3058769234196659501
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,6 +542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13273ef8d87e5746bb0c2f64f271851a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
   InteractIcon: {fileID: 21300000, guid: d51a74c698e70d54da4927b06f77640f, type: 3}
 --- !u!114 &1561927249186787449
 MonoBehaviour:
@@ -670,6 +673,7 @@ MonoBehaviour:
   streetID: -1
   size: {x: 5.75, y: 4.5}
   lockable: 1
+  AtmoType: 0
 --- !u!1 &3696862421284334308
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,6 +907,7 @@ MonoBehaviour:
   streetID: 800
   size: {x: 0, y: 0}
   lockable: 0
+  AtmoType: 0
 --- !u!61 &1707840694684228087
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1045,6 +1050,7 @@ MonoBehaviour:
   streetID: 800
   size: {x: 0, y: 0}
   lockable: 0
+  AtmoType: 0
 --- !u!61 &964867466551423996
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1286,6 +1292,7 @@ MonoBehaviour:
   streetID: -1
   size: {x: 5.75, y: 4.5}
   lockable: 1
+  AtmoType: 0
 --- !u!1 &5219970442490356261
 GameObject:
   m_ObjectHideFlags: 0
@@ -1401,6 +1408,7 @@ MonoBehaviour:
   streetID: -1
   size: {x: 5.75, y: 4.5}
   lockable: 1
+  AtmoType: 0
 --- !u!1 &6090372589355274938
 GameObject:
   m_ObjectHideFlags: 0
@@ -1518,6 +1526,7 @@ MonoBehaviour:
   streetID: -1
   size: {x: 5.75, y: 4.5}
   lockable: 1
+  AtmoType: 0
 --- !u!1 &6372784220949842102
 GameObject:
   m_ObjectHideFlags: 0
@@ -1550,8 +1559,8 @@ Transform:
   - {fileID: 433518725355551013}
   - {fileID: 6372784221589443431}
   - {fileID: 6372784221488554263}
-  - {fileID: 5366842301109254541}
-  - {fileID: 5366842301593737853}
+  - {fileID: 6372784222184137849}
+  - {fileID: 6372784222735632265}
   - {fileID: 433518724589467138}
   - {fileID: 8538478437277042994}
   - {fileID: 7860486081186926714}
@@ -1582,6 +1591,7 @@ MonoBehaviour:
   streetID: 0
   size: {x: 0, y: 0}
   lockable: 0
+  AtmoType: 0
 --- !u!61 &1729282559881345295
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1651,7 +1661,7 @@ Transform:
   - {fileID: 4843106770086687882}
   - {fileID: 1001087180325646504}
   - {fileID: 7332642629668945293}
-  - {fileID: 9197910298252330298}
+  - {fileID: 7903814528694687950}
   m_Father: {fileID: 6490698751310130459}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1671,6 +1681,7 @@ MonoBehaviour:
   streetID: 1
   size: {x: 0, y: 0}
   lockable: 0
+  AtmoType: 2
 --- !u!61 &148812856958096891
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1759,6 +1770,7 @@ MonoBehaviour:
   streetID: -1
   size: {x: 0, y: 0}
   lockable: 0
+  AtmoType: 0
 --- !u!61 &5887979042920371611
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2160,6 +2172,7 @@ MonoBehaviour:
   streetID: -1
   size: {x: 5.75, y: 4.5}
   lockable: 1
+  AtmoType: 0
 --- !u!1 &6986836136998099474
 GameObject:
   m_ObjectHideFlags: 0
@@ -2275,6 +2288,7 @@ MonoBehaviour:
   streetID: -1
   size: {x: 5.75, y: 4.5}
   lockable: 1
+  AtmoType: 0
 --- !u!1 &7419907788025145511
 GameObject:
   m_ObjectHideFlags: 0
@@ -2390,6 +2404,7 @@ MonoBehaviour:
   streetID: -1
   size: {x: 5.75, y: 4.5}
   lockable: 1
+  AtmoType: 0
 --- !u!1 &7565775075242841396
 GameObject:
   m_ObjectHideFlags: 0
@@ -9577,7 +9592,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ffa1d218e65efb4daa7129bbdb65326, type: 3}
---- !u!4 &5366842301109254541 stripped
+--- !u!4 &6372784222184137849 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1299983242284752609, guid: 4ffa1d218e65efb4daa7129bbdb65326,
     type: 3}
@@ -9754,7 +9769,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ffa1d218e65efb4daa7129bbdb65326, type: 3}
---- !u!4 &5366842301593737853 stripped
+--- !u!4 &6372784222735632265 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1299983242284752609, guid: 4ffa1d218e65efb4daa7129bbdb65326,
     type: 3}
@@ -11692,7 +11707,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ffa1d218e65efb4daa7129bbdb65326, type: 3}
---- !u!4 &9197910298252330298 stripped
+--- !u!4 &7903814528694687950 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1299983242284752609, guid: 4ffa1d218e65efb4daa7129bbdb65326,
     type: 3}

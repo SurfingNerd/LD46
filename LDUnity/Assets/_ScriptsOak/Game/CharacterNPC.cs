@@ -250,6 +250,11 @@ public class CharacterNPC : Character
                 //EntityManager.Instance.npcCorpseDetectionDistance
                 MoveToTargetPos(lastKnownPosition.Value);
                 //check gameover instance here ?!
+                
+                //Second winning condition:
+                // if the NPC saw you already wtih the corpse,
+                // he will chase you to dead even if you don't wear the corpse anymore.
+                CheckForCatchDistance(distance);
             }
             else if (lastKnownFleeAlley != null)
             {
@@ -311,7 +316,7 @@ public class CharacterNPC : Character
                     }
                     else
                     {
-                        Debug.LogError("Wheres the Player  ? " + interactable.ToString());
+                        LogWarn("Wheres the Player  ? " + interactable.ToString());
                     }
 
                 }
@@ -376,6 +381,7 @@ public class CharacterNPC : Character
         // END: Stuff from EntityManager
 
     }
+
 
     public void TransitionToStreet(Alley alley)
     {
@@ -493,15 +499,8 @@ public class CharacterNPC : Character
 
         if (distance < EntityManager.Instance.npcCorpseDetectionDistance / 4)
         {
-            if (!harmlessNPCCheat)
-            {
-                CharacterPlayer.instance.HandleGetCaught();
-            }
-
-            SetStatus(ENPCStatus.Aggressive);
-            CurrentTaskDuration = AlarmedDuration;
-        }
-        else if (distance < EntityManager.Instance.npcCorpseDetectionDistance / 2)
+            CheckForCatchDistance(distance);
+        } else if (distance < EntityManager.Instance.npcCorpseDetectionDistance / 2)
         {
             lastKnownPosition = instance.GetPosition();
             lastKnownFleeAlley = null;
@@ -521,6 +520,17 @@ public class CharacterNPC : Character
         }
     }
 
+    private void CheckForCatchDistance(float distance)
+    {
+        if (distance <  EntityManager.Instance.npcCorpseDetectionDistance / 4)
+        {
+            if (!harmlessNPCCheat)
+            {
+                CharacterPlayer.instance.HandleGetCaught();
+            }
 
-
+            SetStatus(ENPCStatus.Aggressive);
+            CurrentTaskDuration = AlarmedDuration;
+        }
+    }
 }

@@ -17,7 +17,7 @@ public class Character : MonoBehaviour {
     protected Street CurrentStreet;
 
     [SerializeField]
-    protected float MoveSpeed = 2.0f;
+    protected float MoveSpeed = 1.5f;
 
     public SpriteAnimator CharacterAnimator;
 
@@ -63,6 +63,7 @@ public class Character : MonoBehaviour {
     }
 
     protected void Start() {
+        Debug.LogWarning("Character Start.");
         InitCharacter();
     }
 
