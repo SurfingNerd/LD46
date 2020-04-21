@@ -164,6 +164,7 @@ public class CharacterPlayer : Character
     public void SetCaught(bool isCaught)
     {
         bIsCaught = isCaught;
+        HUD.Instance.SetProgressBarProgressDecay(0.0f);
     }
 
     public void SetJustFinishedAction(bool finished)

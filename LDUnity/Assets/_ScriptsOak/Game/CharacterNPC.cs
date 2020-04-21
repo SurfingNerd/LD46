@@ -96,11 +96,14 @@ public class CharacterNPC : Character
         {
             FootstepDelay -= Time.deltaTime;
 
-            if(FootstepDelay <= 0.0f && IntroManager.instance.bIntroDone)
+            if(FootstepDelay <= 0.0f && IntroManager.instance != null && IntroManager.instance.bIntroDone)
             {
                 FootstepDelay = 0.7f;
 
-                AudioManager.Instance.PlaySoundOneShot(AudioManager.Instance.ClipsFootstepsNPC[Random.Range(0, AudioManager.Instance.ClipsFootstepsNPC.Count)], 0.0f, 0.2f);
+                if(AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlaySoundOneShot(AudioManager.Instance.ClipsFootstepsNPC[Random.Range(0, AudioManager.Instance.ClipsFootstepsNPC.Count)], 0.0f, 0.2f);
+                }
             }
         }
     }
