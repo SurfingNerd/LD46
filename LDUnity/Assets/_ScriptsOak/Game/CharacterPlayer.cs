@@ -195,10 +195,14 @@ public class CharacterPlayer : Character
             return;
         }
 
-       
-        CurrentActionProgress += Time.deltaTime * ActionDefinitions[CurrentAction].ActionRate * (GetCurrentCorpse() != null ? CarryingCorpseSpeedFactorAction : 1.0f);
-
-        //Debug.LogWarning("Progress: " + CurrentActionProgress.ToString());
+        if(ActionDefinitions.ContainsKey(CurrentAction))
+        {
+            CurrentActionProgress += Time.deltaTime * ActionDefinitions[CurrentAction].ActionRate * (GetCurrentCorpse() != null ? CarryingCorpseSpeedFactorAction : 1.0f);
+        }
+        else
+        {
+            CurrentActionProgress += Time.deltaTime;
+        }
 
         HUD.Instance.SetProgressBarProgress(CurrentActionProgress);
         if (CurrentActionProgress >= 1.0f)

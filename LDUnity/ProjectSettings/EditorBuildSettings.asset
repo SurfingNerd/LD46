@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/layerTest.unity
     guid: bd5efe8e6e66e3c428d68ffc01082727
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestOak.unity
     guid: 448a5941995a8f941b3a08af06688769
+  - enabled: 1
+    path: Assets/Scenes/Final.unity
+    guid: f535c45df5f60608fbf9931240166da3
   m_configObjects: {}

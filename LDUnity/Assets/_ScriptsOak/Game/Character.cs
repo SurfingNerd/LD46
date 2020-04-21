@@ -76,7 +76,7 @@ public class Character : MonoBehaviour {
 
     public virtual void MoveCharacter()
     {
-        if (IntroManager.instance.bIntroDone) 
+        if (IntroManager.instance != null && IntroManager.instance.bIntroDone) 
         {
             SetPosition(gameObject.transform.position + CurrentDirection * Time.deltaTime * MoveSpeed);
         }

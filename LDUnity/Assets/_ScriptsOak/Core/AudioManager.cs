@@ -218,14 +218,14 @@ public class AudioManager : ManagerBase
         {
             alpha += Time.deltaTime * 1.0f;
 
-            SourceAmbience1.volume = 1.0f - alpha * 0.8f;
-            SourceAmbience2.volume = Mathf.Min(1.0f, alpha) * 0.8f;
+            SourceAmbience1.volume = 1.0f - alpha * 0.95f;
+            SourceAmbience2.volume = Mathf.Min(1.0f, alpha) * 0.95f;
             yield return null;
         }
         SourceAmbience1.Stop();
         SourceAmbience1.clip = newMusic;
         SourceAmbience1.time = SourceAmbience2.time;
-        SourceAmbience1.volume = 1.0f * 0.8f;
+        SourceAmbience1.volume = 1.0f * 0.95f;
         SourceAmbience1.Play();
         SourceAmbience2.mute = true;
         SourceAmbience2.Stop();

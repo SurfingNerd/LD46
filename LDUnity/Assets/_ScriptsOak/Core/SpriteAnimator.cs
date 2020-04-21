@@ -60,6 +60,10 @@ public class SpriteAnimator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(GetComponent<SpriteRenderer>() != null)
+        {
+            Renderer = GetComponent<SpriteRenderer>();
+        }
         CurrentColor = Color.white;
         if (CurrentAnim == null || CurrentAnim.SpriteList.Count == 0)
         {
