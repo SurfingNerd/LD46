@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class GameManager : ManagerBase
 {
+    public enum GameDifficulty
+    {
+        Easy,
+        Normal,
+        Hard
+    }
+
+
     public static GameManager Instance;
 
     private void Awake()
@@ -26,6 +34,8 @@ public class GameManager : ManagerBase
     int CurrentLevelIndex = 0;
 
     bool bIsChangingLevels = false;
+
+    public GameDifficulty Difficulty = GameDifficulty.Normal;
 
     public int GetCurrentLevelIndex()
     {

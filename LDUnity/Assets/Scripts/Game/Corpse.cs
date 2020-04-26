@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public enum EDecayLevel
 {
@@ -51,35 +53,7 @@ public class Corpse : MonoBehaviour, IInteractable
         Decay = Mathf.Clamp(Decay + Time.deltaTime * DecayRate, 0.0f, 1.0f);
         HUD.Instance.SetProgressBarProgressDecay(Decay);
 
-        if (Decay < 0.3f)
-        {
-            if (DecayLevel != EDecayLevel.Fresh)
-            {
-                DecayLevel = EDecayLevel.Fresh;
-                Debug.Log(this + " Decay Level Changed to: " + DecayLevel);
-            }
-        }
-        else if (Decay < 0.6f)
-        {
-            DecayLevel = EDecayLevel.AlmostDone;
-            Debug.Log(this + " Decay Level Changed to: " + DecayLevel);
-        }
-        else if (Decay < 0.99f)
-        {
-            if (DecayLevel != EDecayLevel.Medium)
-            {
-                DecayLevel = EDecayLevel.Medium;
-                Debug.Log(this + " Decay Level Changed to: " + DecayLevel);
-            }
-        }
-        else
-        {
-            if (DecayLevel != EDecayLevel.WellDone)
-            {
-                DecayLevel = EDecayLevel.WellDone;
-                Debug.Log(this + " Decay Level Changed to: " + DecayLevel);
-            }
-        }
+        DecayLevel = DecayValueToDecayLevel(Decay);
     }
 
     public Sprite GetInteractIcon()
@@ -169,24 +143,69 @@ public class Corpse : MonoBehaviour, IInteractable
         }
     }
 
+            
+    float TresholdMedium = 0.3f;
+    float TreshholdAlmostDone = 0.6f;
+    float TreshholdWellDone = 0.99f;
+    
     // Start is called before the first frame update
     void Start()
     {
-        switch (DecayLevel)
+        Decay = DecayLevelToDecayValue(DecayLevel);
+
+        
+        switch (GameManager.Instance.Difficulty)
         {
-            case EDecayLevel.Fresh:
-                Decay = 0.0f;
+            case GameManager.GameDifficulty.Easy:
+                TresholdMedium = 0.2f;
+                TreshholdAlmostDone = 0.6f;
                 break;
-            case EDecayLevel.Medium:
-                Decay = 0.3f;
+            case GameManager.GameDifficulty.Normal:
+                TresholdMedium = 0.2f;
+                TreshholdAlmostDone = 0.6f;
                 break;
-            case EDecayLevel.AlmostDone:
-                Decay = 0.6f;
-                break;
-            case EDecayLevel.WellDone:
-                Decay = 0.99f;
+            case GameManager.GameDifficulty.Hard:
+                TresholdMedium = 0.2f;
+                TreshholdAlmostDone = 0.6f;
                 break;
         }
+    }
+
+    public EDecayLevel DecayValueToDecayLevel(float value)
+    {
+        if (value < TresholdMedium)
+        {
+            return EDecayLevel.Fresh;
+        }
+        
+        if (value < TreshholdAlmostDone)
+        {
+            return EDecayLevel.Medium;
+        }
+        
+        if (value < TreshholdWellDone)
+        {
+            return EDecayLevel.AlmostDone;
+        }
+        
+        return EDecayLevel.WellDone;
+    }
+    
+    public float DecayLevelToDecayValue(EDecayLevel level)
+    {
+        switch (level)
+        {
+            case EDecayLevel.Fresh:
+                return 0;
+            case EDecayLevel.Medium:
+                return TresholdMedium;
+            case EDecayLevel.AlmostDone:
+                return TreshholdAlmostDone;
+            case EDecayLevel.WellDone:
+                return TreshholdWellDone;
+        }
+
+        throw new NotImplementedException("No Implementation for this decay and difficulty.");
     }
 
     // Update is called once per frame
